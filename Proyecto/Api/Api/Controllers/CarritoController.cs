@@ -18,7 +18,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.AgregarCarrito(entidad.ConsecutivoUsuario, entidad.ConsecutivoProducto, entidad.Cantidad);
 
@@ -51,7 +51,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.EliminarCarrito(ConsecutivoCarrito);
 
@@ -84,7 +84,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarCarrito(ConsecutivoUsuario).ToList();
 
@@ -118,7 +118,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.PagarCarrito(entidad.ConsecutivoUsuario);
 
@@ -151,7 +151,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarFacturas(ConsecutivoUsuario).ToList();
 
@@ -185,7 +185,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarDetalleFacturas(ConsecutivoMaestro).ToList();
 

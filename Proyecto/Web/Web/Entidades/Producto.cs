@@ -15,6 +15,12 @@ namespace Web.Entidades
         public string RutaImagen { get; set; }
         public int IdCategoria { get; set; }
         public string NombreCategoria { get; set; }
+
+        public string Material { get; set; }
+
+        public string Tamanio { get; set; }
+
+        public string ColorBase { get; set; }
     }
 
     public class ConfirmacionProducto

@@ -17,7 +17,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarVentas().FirstOrDefault();
 
@@ -51,7 +51,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarVentasUsuario().FirstOrDefault();
 
@@ -85,7 +85,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarVentasMensuales().ToList();
 

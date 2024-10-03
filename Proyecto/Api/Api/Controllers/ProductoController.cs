@@ -18,7 +18,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarProductos(MostrarTodos).ToList();
 
@@ -52,7 +52,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarProducto(Consecutivo).FirstOrDefault();
 
@@ -86,9 +86,9 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.RegistrarProducto(entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria).FirstOrDefault();
+                    var resp = db.RegistrarProducto(entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio , entidad.ColorBase).FirstOrDefault();
 
                     if (resp > 0)
                     {
@@ -120,7 +120,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.ActualizarImagenProducto(entidad.Consecutivo, entidad.RutaImagen);
 
@@ -153,7 +153,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarTiposCategoria().ToList();
 
@@ -187,9 +187,9 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria);
+                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase);
 
                     if (resp > 0)
                     {
@@ -220,7 +220,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.EliminarProducto(Consecutivo);
 
