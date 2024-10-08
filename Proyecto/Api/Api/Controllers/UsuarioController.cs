@@ -19,7 +19,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.ConsultarUsuario(Consecutivo).FirstOrDefault();
 
@@ -53,7 +53,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.ActualizarUsuario(entidad.Consecutivo, entidad.Contrasenna, entidad.Nombre, entidad.CorreoElectronico);
 
