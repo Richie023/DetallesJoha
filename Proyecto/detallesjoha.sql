@@ -124,7 +124,7 @@ INSERT INTO [dbo].[tCategoria] (Nombre) VALUES
 
 -- Insertar roles iniciales
 INSERT INTO [dbo].[tRol] (NombreRol) VALUES ('Administrador'), ('Cliente');
-
+GO
 -- Procedimientos almacenados
 
 -- Procedimiento para registrar producto
