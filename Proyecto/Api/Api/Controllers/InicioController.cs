@@ -21,7 +21,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var resp = db.RegistrarUsuario(entidad.Identificacion, entidad.Contrasenna, entidad.Nombre, entidad.CorreoElectronico);
 
@@ -54,7 +54,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.IniciarSesionUsuario(entidad.Identificacion, entidad.Contrasenna).FirstOrDefault();
 
@@ -96,7 +96,7 @@ namespace Api.Controllers
 
             try
             {
-                using (var db = new TiendaEntities())
+                using (var db = new DetallesJohaEntities())
                 {
                     var datos = db.RecuperarAccesoUsuario(entidad.Identificacion, entidad.CorreoElectronico).FirstOrDefault();
 
