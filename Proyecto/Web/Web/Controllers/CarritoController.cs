@@ -93,6 +93,13 @@ namespace Web.Controllers
         {
             var respuesta = modelo.ConsultarFacturas(long.Parse(Session["Consecutivo"].ToString()));
 
+            if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+            {
+
+                respuesta = modelo.ConsultarFacturas(0);
+            }
+          
+
             if (respuesta.Codigo == 0)
             {
                 return View(respuesta.Datos);

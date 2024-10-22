@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using System.Web.Mvc;
+using Web.Entidades;
 using Web.Models;
 
 namespace Web.Controllers
@@ -32,5 +35,6 @@ namespace Web.Controllers
             return Json(data.Datos, @"application/json");
         }
 
+     
     }
 }
