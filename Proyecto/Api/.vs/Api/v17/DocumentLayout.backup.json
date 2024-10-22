@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Api\\Controllers\\CarritoController.cs",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Controllers\\CarritoController.cs",
               "RelativeToolTip": "Api\\Controllers\\CarritoController.cs",
-              "ViewState": "AgIAAJsAAAAAAAAAAAAUwKoAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAUwJ0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T04:52:48.461Z",
               "EditorCaption": ""
@@ -63,7 +63,8 @@
               "RelativeToolTip": "Api\\Controllers\\VentasController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T03:54:04.878Z"
+              "WhenOpened": "2024-10-15T03:54:04.878Z",
+              "EditorCaption": ""
             }
           ]
         }
