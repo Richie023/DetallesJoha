@@ -83,7 +83,7 @@ namespace Web.Controllers
         }
 
 
-        [FiltroSeguridad]
+      [FiltroSeguridad]
         [HttpGet]
         public ActionResult PantallaPrincipal()
         {

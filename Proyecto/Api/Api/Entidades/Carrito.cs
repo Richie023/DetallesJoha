@@ -17,9 +17,15 @@ namespace Api.Entidades
         public decimal Total { get; set; }
         public decimal Precio { get; set; }
         public string Nombre { get; set; }
-
+        public string NombreUsuario { get; set; }
         public long ConsecutivoMaestro { get; set; }
         public long ConsecutivoDetalle { get; set; }
+        public string Material { get; set; }
+
+        public string Tamanio { get; set; }
+
+        public string ColorBase { get; set; }
+
     }
 
     public class ConfirmacionCarrito

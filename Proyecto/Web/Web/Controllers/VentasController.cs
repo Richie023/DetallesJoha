@@ -12,6 +12,9 @@ namespace Web.Controllers
     public class VentasController : Controller
     {
         VentasModel model = new VentasModel();
+        CarritoModel modelo = new CarritoModel();
+
+
 
         [HttpGet]
         public ActionResult ConsultaVentas()
@@ -35,6 +38,30 @@ namespace Web.Controllers
             return Json(data.Datos, @"application/json");
         }
 
-     
+        [HttpGet]
+        public ActionResult ConsultarPedidos()
+        {
+            var respuesta = modelo.ConsultarPedidos();
+       
+
+            if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+            {
+
+                respuesta = modelo.ConsultarPedidos();
+            }
+
+
+            if (respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new List<Carrito>());
+            }
+        }
+
+
     }
 }

@@ -144,6 +144,21 @@ namespace Web.Controllers
                 Session["Total"] = 0;
             }
         }
+        [HttpGet]
+        public ActionResult ConsultaPedidos()
+        {
+            var respuesta = modelo.ConsultarPedidos();
+
+            if (respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new List<Carrito>());
+            }
+        }
 
     }
 }

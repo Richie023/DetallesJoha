@@ -98,5 +98,19 @@ namespace Web.Models
             }
         }
 
+        public ConfirmacionCarrito ConsultarPedidos()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Carrito/ConsultarPedidos" ;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionCarrito>().Result;
+                else
+                    return null;
+            }
+        }
+
     }
 }

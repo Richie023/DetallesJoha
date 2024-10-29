@@ -143,6 +143,11 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarFacturas_Result>("ConsultarFacturas", consecutivoUsuarioParameter);
         }
     
+        public virtual ObjectResult<ConsultarPedidos_Result> ConsultarPedidos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPedidos_Result>("ConsultarPedidos");
+        }
+    
         public virtual ObjectResult<ConsultarProducto_Result> ConsultarProducto(Nullable<long> consecutivo)
         {
             var consecutivoParameter = consecutivo.HasValue ?

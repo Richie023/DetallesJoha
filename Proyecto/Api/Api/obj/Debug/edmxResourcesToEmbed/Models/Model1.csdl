@@ -35,6 +35,7 @@
     <FunctionImport Name="ConsultarFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarFacturas_Result)">
       <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
     </FunctionImport>
+    <FunctionImport Name="ConsultarPedidos" ReturnType="Collection(DetallesJohaModel.ConsultarPedidos_Result)" />
     <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
     </FunctionImport>
@@ -116,6 +117,21 @@
     <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Impuesto" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Total" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ConsultarPedidos_Result">
+    <Property Type="Int64" Name="ConsecutivoDetalle" Nullable="false" />
+    <Property Type="Int64" Name="ConsecutivoMaestro" Nullable="false" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Impuesto" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="ConsultarProducto_Result">
     <Property Type="Int64" Name="Consecutivo" Nullable="false" />
