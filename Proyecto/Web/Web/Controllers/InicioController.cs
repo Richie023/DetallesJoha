@@ -83,17 +83,23 @@ namespace Web.Controllers
         }
 
 
-      [FiltroSeguridad]
+  
         [HttpGet]
         public ActionResult PantallaPrincipal()
         {
-            var datos = carritoModel.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
 
-            if (datos.Codigo == 0)
+
+            if (HttpContext.Session["NombreUsuario"] != null)
             {
-                Session["Cantidad"] = datos.Datos.AsEnumerable().Sum(x => x.Cantidad);
-                Session["SubTotal"] = datos.Datos.AsEnumerable().Sum(x => x.SubTotal);
-                Session["Total"] = datos.Datos.AsEnumerable().Sum(x => x.Total);
+                var datos = carritoModel.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
+
+                ;
+                if (datos.Codigo == 0)
+                {
+                    Session["Cantidad"] = datos.Datos.AsEnumerable().Sum(x => x.Cantidad);
+                    Session["SubTotal"] = datos.Datos.AsEnumerable().Sum(x => x.SubTotal);
+                    Session["Total"] = datos.Datos.AsEnumerable().Sum(x => x.Total);
+                }
             }
             else
             {
