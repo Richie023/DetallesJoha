@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="ActualizarImagenProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
           <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
@@ -39,7 +39,6 @@
         <Function Name="ConsultarFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
         </Function>
-        <Function Name="ConsultarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
         </Function>
@@ -70,6 +69,17 @@
           <Parameter Name="Identificacion" Type="varchar" Mode="In" />
           <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="RegistrarInformacionEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreEmpresa" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+          <Parameter Name="Direccion" Type="varchar" Mode="In" />
+          <Parameter Name="AcercaDeNosotros" Type="varchar" Mode="In" />
+          <Parameter Name="Contactanos" Type="varchar" Mode="In" />
+          <Parameter Name="Politicas" Type="varchar" Mode="In" />
+          <Parameter Name="OrdenesDevoluciones" Type="varchar" Mode="In" />
+          <Parameter Name="TerminosCondiciones" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
           <Parameter Name="Precio" Type="decimal" Mode="In" />
@@ -86,8 +96,7 @@
           <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="DetallesJohaModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetallesJohaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -118,40 +127,40 @@
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarCarrito" ReturnType="Collection(DetallesJohaModel.ConsultarCarrito_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarDetalleFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarDetalleFacturas_Result)">
-            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarFacturas_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarPedidos" ReturnType="Collection(DetallesJohaModel.ConsultarPedidos_Result)" />
           <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
-            <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
+          <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
           <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarVentas" ReturnType="Collection(DetallesJohaModel.ConsultarVentas_Result)" />
           <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
           <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
           <FunctionImport Name="EliminarCarrito">
-            <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesionUsuario" ReturnType="Collection(DetallesJohaModel.IniciarSesionUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PagarCarrito">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RecuperarAccesoUsuario" ReturnType="Collection(DetallesJohaModel.RecuperarAccesoUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
@@ -171,6 +180,17 @@
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarInformacionEmpresa">
+            <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="AcercaDeNosotros" Mode="In" Type="String" />
+            <Parameter Name="Contactanos" Mode="In" Type="String" />
+            <Parameter Name="Politicas" Mode="In" Type="String" />
+            <Parameter Name="OrdenesDevoluciones" Mode="In" Type="String" />
+            <Parameter Name="TerminosCondiciones" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ConsultarCarrito_Result">
@@ -356,25 +376,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ConsultarPedidos" FunctionName="DetallesJohaModel.Store.ConsultarPedidos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarPedidos_Result">
-                <ScalarProperty Name="ConsecutivoDetalle" ColumnName="ConsecutivoDetalle" />
-                <ScalarProperty Name="ConsecutivoMaestro" ColumnName="ConsecutivoMaestro" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
-                <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ConsultarProducto" FunctionName="DetallesJohaModel.Store.ConsultarProducto">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarProducto_Result">
@@ -490,6 +491,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="DetallesJohaModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="DetallesJohaModel.Store.RegistrarUsuario" />
+          <FunctionImportMapping FunctionImportName="RegistrarInformacionEmpresa" FunctionName="DetallesJohaModel.Store.RegistrarInformacionEmpresa" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

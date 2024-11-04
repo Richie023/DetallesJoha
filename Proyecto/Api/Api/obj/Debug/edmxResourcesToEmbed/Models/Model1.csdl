@@ -81,6 +81,17 @@
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="RegistrarInformacionEmpresa">
+      <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="AcercaDeNosotros" Mode="In" Type="String" />
+      <Parameter Name="Contactanos" Mode="In" Type="String" />
+      <Parameter Name="Politicas" Mode="In" Type="String" />
+      <Parameter Name="OrdenesDevoluciones" Mode="In" Type="String" />
+      <Parameter Name="TerminosCondiciones" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ConsultarCarrito_Result">
     <Property Type="Int64" Name="ConsecutivoCarrito" Nullable="false" />

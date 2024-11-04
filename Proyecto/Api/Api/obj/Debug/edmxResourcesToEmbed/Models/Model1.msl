@@ -53,25 +53,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ConsultarPedidos" FunctionName="DetallesJohaModel.Store.ConsultarPedidos">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarPedidos_Result">
-          <ScalarProperty Name="ConsecutivoDetalle" ColumnName="ConsecutivoDetalle" />
-          <ScalarProperty Name="ConsecutivoMaestro" ColumnName="ConsecutivoMaestro" />
-          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Precio" ColumnName="Precio" />
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Material" ColumnName="Material" />
-          <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
-          <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ConsultarProducto" FunctionName="DetallesJohaModel.Store.ConsultarProducto">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarProducto_Result">
@@ -187,5 +168,6 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="DetallesJohaModel.Store.RegistrarProducto" />
     <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="DetallesJohaModel.Store.RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="RegistrarInformacionEmpresa" FunctionName="DetallesJohaModel.Store.RegistrarInformacionEmpresa" />
   </EntityContainerMapping>
 </Mapping>
