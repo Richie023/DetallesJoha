@@ -2,9 +2,12 @@
 
 @{
     ViewBag.Title = "PantallaPrincipal";
+    <!--
     Layout = "~/Views/Shared/_LayoutExterno.cshtml";
-}
+    -->
 
+
+}
 
 
 <div class="card-body">
@@ -13,6 +16,7 @@
             <div class="col-sm-12">
                 <div class="col-sm-12">
 
+
                     @if (ViewBag.MsjPantalla != null)
                     {
                         <div class="alert alert-warning" role="alert" style="text-align:center">
@@ -20,47 +24,76 @@
                         </div>
                     }
 
-                    <div class="row">
+                    <div class="products-tabs">
+                        <div id="tab2" class="tab-pane fade in active">
+                            <div class="products-slick" data-nav="#slick-nav-2">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="product">
+                                        <div class="product-img" style="text-align: center;">
+                                            <img src="@item.RutaImagen" alt="" style="width:175px; height:175px; margin-top:20px">
+                                            <div class="product-label">
+                                                <span class="new">NEW</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">Categoría: @item.NombreCategoria</p>
+                                            <h3 class="product-name">@item.NombreProducto</h3>
+                                            <h4 class="product-price">
+                                                ¢@item.Precio.ToString("N2")
+                                                <del class="product-old-price"></del>  <!--agregar parte de descuento-->
 
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-lg-3 col-md-6 col-sm-12" style="margin-bottom: 20px;">
-                                <div class="card">
-                                    <div style="text-align: center;">
-                                        <img class="card-img-top" src="@item.RutaImagen" style="width:175px; height:175px; margin-top:20px">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-weight:bold">@item.NombreProducto</h5>
+                                            </h4>
 
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">Categoría: @item.NombreCategoria</li>
-                                            <li class="list-group-item">Inventario: @item.Inventario</li>
-                                            <li class="list-group-item">Precio: @item.Precio.ToString("N2")</li>
-                                        </ul>
+                                            <!-- Rating -->
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
 
-                                        @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() != "1")
-                                        {
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-2">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <input type="number" id=prd-@item.Consecutivo onkeypress="return ValidarNumeros(this.id)" class="form-control" value="1" min="1" max="@item.Inventario" style="text-align:center">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <a onclick="AgregarCarrito(@item.Consecutivo, @item.Inventario);" class="card-link btn btn-outline-primary">Agregar</a>
-                                                    </div>
+                                            <!-- Wishlist, Compare, and Quick View Buttons -->
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <a class="quick-view small" href="@Url.Action("productoEspecifico","Producto")">
+                                                    <i class="fa fa-eye"></i>
+                                                    <span class="tooltipp">Vista rápida</span>
+                                                </a>
+
+                                            </div>
+
+
+                                            @*@if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() != "1")  {
+
+
+
+                                                }*@
+                                            <!-- Add to Cart Button -->
+                                            <div class="product-btns">
+                                                <input type="number" id="prd-@item.Consecutivo" onkeypress="return ValidarNumeros(this.id)" class="form-control" value="1" min="1" max="@item.Inventario" style="text-align:center; width:50%; margin: 0 auto;">
+
+                                                <div class="add-to-cart">
+                                                    <button onclick="AgregarCarrito(@item.Consecutivo, @item.Inventario);" class="add-to-cart-btn">
+                                                        <i class="fa fa-shopping-cart"></i> Agregar
+                                                    </button>
                                                 </div>
                                             </div>
-                                        }
+
+
+
+
+
+                                        </div>
+
 
                                     </div>
-                                </div>
+                                }
                             </div>
-                        }
-
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -68,7 +101,6 @@
 </div>
 
 <script>
-
     function ValidarNumeros(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
         if (charCode >= 48 && charCode <= 57) {
@@ -93,16 +125,14 @@
         $.ajax({
             url: '/Carrito/AgregarCarrito',
             type: "POST",
-            data:
-            {
+            data: {
                 "idProducto": id,
                 "cantProducto": cantProducto
             },
             success: function (data) {
                 if (data == "OK") {
                     window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
-                }
-                else {
+                } else {
                     alert(data);
                 }
             }
@@ -118,5 +148,6 @@
             timer: 2500
         });
     }
-
 </script>
+
+has context menu

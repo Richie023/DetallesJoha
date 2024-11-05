@@ -480,6 +480,7 @@
     <Content Include="Views\Usuario\ActualizarUsuario.cshtml" />
     <Content Include="Views\Ventas\ConsultaVentas.cshtml" />
     <Content Include="Views\Ventas\ConsultarPedidos.cshtml" />
+    <Content Include="Views\Shared\_LayoutBasico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

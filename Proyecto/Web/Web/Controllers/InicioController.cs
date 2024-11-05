@@ -125,7 +125,7 @@ namespace Web.Controllers
         public ActionResult CerrarSesion()
         {
             Session.Clear();
-            return RedirectToAction("IniciarSesion", "Inicio");
+            return RedirectToAction("PantallaPrincipal", "Inicio");
         }
     }
 }
