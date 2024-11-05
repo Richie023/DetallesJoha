@@ -87,7 +87,22 @@ CREATE TABLE [dbo].[tDetalle](
     [Total] [decimal](18, 2) NOT NULL,
  CONSTRAINT [PK_tDetalle] PRIMARY KEY CLUSTERED ([ConsecutivoDetalle] ASC)
 )
+    -- Tabla de info empresa
+CREATE TABLE tInformacionEmpresa (
+    ConsecutivoInformacion BIGINT IDENTITY(1,1) PRIMARY KEY,
+    NombreEmpresa VARCHAR(200) NOT NULL,
+    Telefono VARCHAR(20) NOT NULL,
+    CorreoElectronico VARCHAR(200) NOT NULL,
+    Direccion VARCHAR(500)  NOT NULL,
+    AcercaDeNosotros VARCHAR(200) NULL,
+    Contactanos  VARCHAR(200) NULL,
+    Politicas  VARCHAR(200)  NULL,
+    OrdenesDevoluciones  VARCHAR(200) NULL,
+    TerminosCondiciones  VARCHAR(200)  NULL
+);
+
 GO
+
 
 -- Agregar claves foráneas
 ALTER TABLE [dbo].[tProducto] ADD CONSTRAINT [FK_tProducto_tCategorias] FOREIGN KEY([IdCategoria])
@@ -525,3 +540,94 @@ BEGIN
     WHERE Consecutivo = @Consecutivo
 END
 GO
+
+-- Procedimiento almacenado para Registrar infro de la empresa 
+CREATE PROCEDURE RegistrarInformacionEmpresa
+    @NombreEmpresa VARCHAR(200),
+    @Telefono VARCHAR(20),
+    @CorreoElectronico VARCHAR(200),
+    @Direccion VARCHAR(500),
+    @AcercaDeNosotros VARCHAR(200),
+    @Contactanos VARCHAR(200),
+    @Politicas VARCHAR(200),
+    @OrdenesDevoluciones VARCHAR(200),
+    @TerminosCondiciones VARCHAR(200)
+AS
+BEGIN
+    SET NOCOUNT OFF;
+
+    -- Verificar si ya existe información de la empresa
+    IF EXISTS (SELECT 1 FROM tInformacionEmpresa)
+    BEGIN
+        -- Actualizar el registro existente
+        UPDATE tInformacionEmpresa
+        SET NombreEmpresa = @NombreEmpresa,
+            Telefono = @Telefono,
+            CorreoElectronico = @CorreoElectronico,
+            Direccion = @Direccion,
+            AcercaDeNosotros = @AcercaDeNosotros,
+            Contactanos = @Contactanos,
+            Politicas = @Politicas,
+            OrdenesDevoluciones = @OrdenesDevoluciones,
+            TerminosCondiciones = @TerminosCondiciones
+        WHERE ConsecutivoInformacion = (SELECT TOP 1 ConsecutivoInformacion FROM tInformacionEmpresa);
+    END
+    ELSE
+    BEGIN
+        -- Insertar un nuevo registro si no existe
+        INSERT INTO tInformacionEmpresa (
+            NombreEmpresa,
+            Telefono,
+            CorreoElectronico,
+            Direccion,
+            AcercaDeNosotros,
+            Contactanos,
+            Politicas,
+            OrdenesDevoluciones,
+            TerminosCondiciones
+        ) VALUES (
+            @NombreEmpresa,
+            @Telefono,
+            @CorreoElectronico,
+            @Direccion,
+            @AcercaDeNosotros,
+            @Contactanos,
+            @Politicas,
+            @OrdenesDevoluciones,
+            @TerminosCondiciones
+        );
+    END
+END;    
+GO 
+--Porcedimiento para actualizar la info
+
+-- Procedimiento para actualizar informacion
+CREATE PROCEDURE ActualizarInfo
+    @ConsecutivoInformacion BIGINT,
+	@NombreEmpresa VARCHAR(200),
+    @Telefono VARCHAR(20),
+    @CorreoElectronico VARCHAR(200),
+    @Direccion VARCHAR(500),
+    @AcercaDeNosotros VARCHAR(200),
+    @Contactanos VARCHAR(200),
+    @Politicas VARCHAR(200),
+    @OrdenesDevoluciones VARCHAR(200),
+    @TerminosCondiciones VARCHAR(200)
+      
+AS
+BEGIN
+    UPDATE dbo.tInformacionEmpresa
+     SET NombreEmpresa =@NombreEmpresa,
+                Telefono = @Telefono,
+                CorreoElectronico = @CorreoElectronico,
+                Direccion = @Direccion,
+                AcercaDeNosotros = @AcercaDeNosotros,
+                Contactanos = @Contactanos,
+                Politicas = @Politicas,
+                OrdenesDevoluciones = @OrdenesDevoluciones,
+                TerminosCondiciones = @TerminosCondiciones
+            WHERE ConsecutivoInformacion =  @ConsecutivoInformacion ;
+        END
+      
+          
+
