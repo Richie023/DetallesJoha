@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>      personas primer ingreso a la pagina
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,16 +7,16 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>Detalles JOHA</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/bootstrap.min.css" />
 
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick.css" />
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick-theme.css" />
-
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
 
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/nouislider.min.css" />
@@ -35,6 +35,9 @@
     <![endif]-->
 
 </head>
+
+
+@*del hesder hasta navigation copiarlo los componentes  para que funcione con admin y cliente con cuenta y sin cuenta*@
 
 <!-- HEADER -->
 <header>
@@ -162,7 +165,7 @@
     <div class="container">
         <!-- responsive-nav -->
         <div id="responsive-nav">
-            <!-- NAV -->
+            <!-- NAV   -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
                 <li><a href="#">Descuentos</a></li>
@@ -170,30 +173,7 @@
                 <li><a href="#">Tazas</a></li>
                 <li><a href="#">Gorras</a></li>
                 <li><a href="#">Accesorios</a></li>
-
-
-                @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
-                {
-                    <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
-                    <li><a href="@Url.Action("ConsultaProductos", "Producto")">Usuarios</a></li>
-                    <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
-                    <li><a href="@Url.Action("ConsultarPedidos", "Ventas")">Pedidos</a></li>
-                    <li><a href="@Url.Action("ConsultarPedidos", "Ventas")">Info E</a></li>
-                }
-                else
-                {
-
-                    <li>
-                        <a href="@Url.Action("ConsultaCarrito", "Carrito")">Mi Carrito</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("ConsultarFacturas", "Carrito")">Mis Compras</a>
-                    </li>
-
-                }
-            </ul>
                 <!-- /NAV -->
-
         </div>
         <!-- /responsive-nav -->
     </div>
@@ -325,6 +305,9 @@
                         <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                        <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
+                        <li class="active"><a href="@Url.Action("RegistraInforE","InfoE")">Empresa</a></li>
+
                     </ul>
                     <span class="copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -341,6 +324,7 @@
     <!-- /bottom footer -->
 </footer>
 <!-- /FOOTER -->
+</html>
 <!-- jQuery Plugins -->
 <script src="~/Estilos/js/jquery.min.js"></script>
 <script src="~/Estilos/js/bootstrap.min.js"></script>
@@ -349,12 +333,4 @@
 <script src="~/Estilos/js/jquery.zoom.min.js"></script>
 <script src="~/Estilos/js/main.js"></script>
 
-<script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
-<script src="~/Estilos/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/Estilos/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="~/Estilos/js/sb-admin-2.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
 
-</html>
