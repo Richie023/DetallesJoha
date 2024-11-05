@@ -22,11 +22,12 @@
                                 @ViewBag.MsjPantalla
                             </div>
                         }
-
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.NombreEmpresa, "Nombre de la Empresa")
-                            @Html.TextBoxFor(m => m.NombreEmpresa, new { @class = "form-control", @placeholder = "Nombre de la Empresa", @required = "true" })
-                        </div>
+                        @using (Html.BeginForm("RegistraInforE", "InfoE", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.NombreEmpresa, "Nombre de la Empresa")
+                                @Html.TextBoxFor(m => m.NombreEmpresa, new { @class = "form-control", @placeholder = "Nombre de la Empresa", @required = "true" })
+                            </div>
 
                         <div class="form-group">
                             @Html.LabelFor(m => m.Telefono, "Teléfono")
@@ -68,4 +69,5 @@
                             @Html.TextAreaFor(m => m.TerminosCondiciones, new { @class = "form-control", @placeholder = "Términos y Condiciones", @rows = "4", @required = "true" })
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <input type="submit" class="btn btn-primary">
+                                }

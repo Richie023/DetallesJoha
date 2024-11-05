@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Api.Entidades
+namespace Web.Entidades
 {
-    public class InfoE
+    public class InforE
     {
+
         public int ConsecutivoInformacion { get; set; }
         public string NombreEmpresa { get; set; }
         public string Telefono { get; set; }
@@ -18,7 +19,6 @@ namespace Api.Entidades
         public string OrdenesDevoluciones { get; set; }
         public string TerminosCondiciones { get; set; }
 
-
         public class ConfirmacionInfoE
         {
             public int Codigo { get; set; }
@@ -28,5 +28,4 @@ namespace Api.Entidades
         }
 
     }
-
 }

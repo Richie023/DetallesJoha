@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>      personas primer ingreso a la pagina
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -37,7 +37,7 @@
 </head>
 
 
-
+@*del hesder hasta navigation copiarlo los componentes  para que funcione con admin y cliente con cuenta y sin cuenta*@
 
 <!-- HEADER -->
 <header>
@@ -165,7 +165,7 @@
     <div class="container">
         <!-- responsive-nav -->
         <div id="responsive-nav">
-            <!-- NAV -->
+            <!-- NAV   -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
                 <li><a href="#">Descuentos</a></li>
@@ -174,7 +174,7 @@
                 <li><a href="#">Gorras</a></li>
                 <li><a href="#">Accesorios</a></li>
                 <!-- /NAV -->
-</div>
+        </div>
         <!-- /responsive-nav -->
     </div>
     <!-- /container -->
@@ -305,6 +305,9 @@
                         <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                         <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                        <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
+                        <li class="active"><a href="@Url.Action("RegistraInforE","InfoE")">Empresa</a></li>
+
                     </ul>
                     <span class="copyright">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -321,6 +324,7 @@
     <!-- /bottom footer -->
 </footer>
 <!-- /FOOTER -->
+</html>
 <!-- jQuery Plugins -->
 <script src="~/Estilos/js/jquery.min.js"></script>
 <script src="~/Estilos/js/bootstrap.min.js"></script>
@@ -330,4 +334,3 @@
 <script src="~/Estilos/js/main.js"></script>
 
 
-</html>
