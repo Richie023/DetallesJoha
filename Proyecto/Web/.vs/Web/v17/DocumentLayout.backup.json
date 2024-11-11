@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -66,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,13 +90,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_LayoutExterno.cshtml",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_LayoutExterno.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Shared\\_LayoutExterno.cshtml",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_LayoutExterno.cshtml",
               "RelativeToolTip": "Web\\Views\\Shared\\_LayoutExterno.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAAADQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-05T02:59:48.113Z",
               "EditorCaption": ""
@@ -115,13 +115,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAAAJsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAOwAAAAAAAAAAAAAALAAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-04T21:32:54.378Z",
               "EditorCaption": ""
@@ -146,9 +146,10 @@
               "RelativeDocumentMoniker": "Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
               "RelativeToolTip": "Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAABxwCEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-30T00:25:41.587Z"
+              "WhenOpened": "2024-10-30T00:25:41.587Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
