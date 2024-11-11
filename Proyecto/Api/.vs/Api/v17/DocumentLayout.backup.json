@@ -19,8 +19,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -29,7 +49,7 @@
               "RelativeDocumentMoniker": "..\\..\\..\\proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "..\\..\\..\\proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADUAAAAAAAAAAAAYwGoAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAcwGoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-04T21:25:50.114Z",
               "EditorCaption": ""
@@ -44,8 +64,7 @@
               "RelativeToolTip": "..\\..\\..\\proyecto\\Web\\Web\\Views\\Shared\\_LayoutExterno.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-04T21:25:43.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T21:25:43.834Z"
             },
             {
               "$type": "Document",
@@ -57,8 +76,7 @@
               "RelativeToolTip": "..\\..\\..\\proyecto\\Web\\Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
               "ViewState": "AgIAAEUAAAAAAAAAAAAAAC4AAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-04T20:50:48.137Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T20:50:48.137Z"
             }
           ]
         }
