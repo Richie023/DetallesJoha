@@ -7,13 +7,13 @@ namespace Web.Entidades
 {
     public class Consulta
     {
-        public long IdResena { get; set; }
-        public string Nombre { get; set; }
-        public string Comentario { get; set; }
+        public long IdResenna { get; set; }    // Cambiar IdResena
+        public string NombreUsuario { get; set; }  // Cambiar Nombre
+        public string CorreoElectronico { get; set; } // Cambiar Correo
         public int Calificacion { get; set; }
-        public DateTime Fecha { get; set; }
+        public string Comentario { get; set; }
+        public DateTime FechaResenna { get; set; }  // Cambiar Fecha
 
-        public string Correo { get; set; }
 
     }
 
