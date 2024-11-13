@@ -1,0 +1,64 @@
+﻿﻿@model List<Web.Entidades.Consulta>
+
+@{
+    ViewBag.Title = "ConsultaResenas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Resenas</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning" role="alert" style="text-align:center">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
+
+                        <div style="margin-bottom:1%; text-align:right">
+                            @*<a class="btn btn-primary" href="@Url.Action("RegistrarProducto","Producto")"> + Agregar</a>*@
+                        </div>
+
+                        <table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th>Id Resena</th>
+                                    <th>Nombre de Usuario</th>
+                                    <th>Correo Electronico</th>
+                                    <th>Calificacion</th>
+                                    <th>Comentario</th>
+                                    <th>Fecha</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@item.IdResena</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Correo</td>
+                                        <td>@item.Calificacion</td>
+                                        <td>@item.Comentario</td>
+                                        <td>@item.Fecha</td>
+
+                                        <td style="text-align:center">
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
