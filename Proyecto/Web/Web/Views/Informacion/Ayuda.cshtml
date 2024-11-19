@@ -1,0 +1,55 @@
+﻿@model Web.Entidades.AyudaCategoriaRespuesta
+
+@{
+    ViewBag.Title = "Ayuda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Consultar Ayuda</h2>
+
+@if (Model == null || Model.Datos == null || !Model.Datos.Any())
+{
+    <div class="alert alert-warning">
+        No se encontraron registros de ayuda.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Categoría</th>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                    <th>Imagen</th>
+                    <th>Última Actualización</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ayuda in Model.Datos)
+                {
+                    <tr>
+                        <td>@ayuda.id</td>
+                        <td>@ayuda.categoria</td>
+                        <td>@ayuda.titulo</td>
+                        <td>@ayuda.contenido</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(ayuda.imagen_url))
+                            {
+                                <img src="@ayuda.imagen_url" alt="Imagen de Ayuda" width="100" />
+                            }
+                            else
+                            {
+                                <span>No disponible</span>
+                            }
+                        </td>
+                        <td>@ayuda.ultima_actualizacion.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

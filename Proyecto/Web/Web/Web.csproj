@@ -143,13 +143,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AvisoPrivacidadController.cs" />
+    <Compile Include="Controllers\AyudaController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\PoliticaDevolucionController.cs" />
+    <Compile Include="Controllers\PreguntasFrecuentesController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
+    <Compile Include="Entidades\AvisoPrivacidad.cs" />
+    <Compile Include="Entidades\Ayuda.cs" />
+    <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Carrito.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
+    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
+    <Compile Include="Entidades\PoliticaDevolucion.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
     <Compile Include="Entidades\Usuario.cs" />
@@ -157,9 +168,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PreguntasFrecuentesModel.cs" />
+    <Compile Include="Models\BlogModel.cs" />
+    <Compile Include="Models\AyudaModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />
     <Compile Include="Models\FiltroSeguridad.cs" />
+    <Compile Include="Models\AvisoPrivacidadModel.cs" />
+    <Compile Include="Models\PoliticaDevolucionModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VentasModel.cs" />
@@ -182,6 +198,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Estilos\css\AvisoPrivacidad.css" />
+    <Content Include="Estilos\css\Ayuda.css" />
+    <Content Include="Estilos\css\Blog.css" />
+    <Content Include="Estilos\css\Footer.css" />
+    <Content Include="Estilos\css\PoliticaDevolucion.css" />
+    <Content Include="Estilos\css\PreguntasFrecuentes.css" />
     <Content Include="Estilos\css\sb-admin-2.css" />
     <Content Include="Estilos\css\sb-admin-2.min.css" />
     <Content Include="Estilos\img\undraw_posting_photo.svg" />
@@ -352,10 +374,22 @@
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
     <Content Include="Views\Usuario\ActualizarUsuario.cshtml" />
     <Content Include="Views\Ventas\ConsultaVentas.cshtml" />
+    <Content Include="Views\Producto\VerProducto.cshtml" />
+    <Content Include="Views\Producto\FiltrarPorCategoria.cshtml" />
+    <Content Include="Views\Informacion\AvisoPrivacidad.cshtml" />
+    <Content Include="Views\Informacion\Ayuda.cshtml" />
+    <Content Include="Views\Informacion\blog.cshtml" />
+    <Content Include="Views\Informacion\PoliticaDevolucion.cshtml" />
+    <Content Include="Views\Informacion\PreguntasFrecuentes.cshtml" />
+    <Content Include="Views\Informacion\BlogInsertar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\" />
+    <Folder Include="Views\Ayuda\" />
+    <Folder Include="Views\Categoria\" />
+    <Folder Include="Views\PoliticaDevolucion\" />
+    <Folder Include="Views\PreguntasFrecuentes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

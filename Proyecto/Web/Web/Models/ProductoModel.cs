@@ -81,6 +81,25 @@ namespace Web.Models
             }
         }
 
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorCategoria(int IdCategoria)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Producto/FiltrarPorCategoria/" + IdCategoria;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionProductoPorCategorias>().Result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+
         public Confirmacion ActualizarProducto(Producto entidad)
         {
             using (var client = new HttpClient())

@@ -22,6 +22,11 @@ namespace Api.Controllers
                 {
                     var datos = db.ConsultarProductos(MostrarTodos).ToList();
 
+                    foreach (var producto in datos)
+                    {
+                        producto.En_promocion = producto.En_promocion ?? false;
+                    }
+
                     if (datos.Count > 0)
                     {
                         respuesta.Codigo = 0;
@@ -35,14 +40,16 @@ namespace Api.Controllers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 respuesta.Codigo = -1;
                 respuesta.Detalle = "Se presentó un error en el sistema";
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             return respuesta;
         }
+
 
         [HttpGet]
         [Route("Producto/ConsultarProducto")]
@@ -88,13 +95,28 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.RegistrarProducto(entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio , entidad.ColorBase).FirstOrDefault();
+                    // Convertimos el valor booleano a int: 1 para true y 0 para false
+                    int enPromocion = entidad.En_promocion ? 1 : 0;
 
-                    if (resp > 0)
+                    // Llama al procedimiento almacenado, pasando el valor convertido a int (1 o 0)
+                    var resp = db.RegistrarProducto(
+                        entidad.NombreProducto,
+                        entidad.Precio,
+                        entidad.Inventario,
+                        entidad.IdCategoria,
+                        entidad.Material,
+                        entidad.Tamanio,
+                        entidad.ColorBase,
+                        entidad.Porcentaje_descuento,  // Asegúrate de que `Porcentaje_descuento` esté presente en el modelo y se envíe
+                        entidad.Fecha_inicio,          // Fecha de inicio de la promoción
+                        entidad.Fecha_fin              // Fecha de fin de la promoción
+                    ).FirstOrDefault(); 
+
+                    if (resp.Consecutivo > 0)
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
-                        respuesta.ConsecutivoGenerado = resp.Value;
+                        respuesta.ConsecutivoGenerado = (long)resp.Consecutivo;
                     }
                     else
                     {
@@ -103,14 +125,16 @@ namespace Api.Controllers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 respuesta.Codigo = -1;
-                respuesta.Detalle = "Se presentó un error en el sistema";
+                respuesta.Detalle = "Se presentó un error en el sistema: " + ex.Message;
             }
 
             return respuesta;
         }
+
+
 
         [HttpPut]
         [Route("Producto/ActualizarImagenProducto")]
@@ -174,6 +198,42 @@ namespace Api.Controllers
             {
                 respuesta.Codigo = -1;
                 respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+        [HttpGet]
+        [Route("Categoria/FiltrarProductosPorCategoria/{IdCategoria}")]
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorCategoria(int IdCategoria)
+        {
+            var respuesta = new ConfirmacionProductoPorCategorias();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.FiltrarProductosPorCategoria(IdCategoria).ToList();
+
+                    if (datos.Count > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Datos = datos.Cast<TiposCategoria>().ToList();
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron productos para la categoría especificada";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema: " + ex.Message;
+                Console.WriteLine(ex);
             }
 
             return respuesta;
