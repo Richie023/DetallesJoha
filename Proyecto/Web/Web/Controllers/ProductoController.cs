@@ -30,6 +30,20 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult VerProducto(long id)
+        {
+            var resultado = modelo.ConsultarProducto(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
+
+
+        [HttpGet]
         public ActionResult RegistrarProducto()
         {
             CargarViewBagCategorias();
@@ -126,6 +140,24 @@ namespace Web.Controllers
 
             ViewBag.TiposCategoria = tiposCategoria;
         }
+
+
+        // Método de acción para filtrar productos por categoría
+        public ActionResult FiltrarPorCategoria(int IdCategoria)
+        {
+            var respuesta = modelo.FiltrarProductosPorCategoria(IdCategoria);
+
+            if (respuesta != null && respuesta.Codigo == 0)
+            {
+                return View("FiltrarPorCategoria", respuesta.Datos); 
+            }
+            else
+            {
+                ViewBag.Error = respuesta?.Detalle ?? "Error al obtener los productos";
+                return View("Error");
+            }
+        }
+
 
     }
 }

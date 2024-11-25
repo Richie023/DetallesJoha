@@ -1,0 +1,27 @@
+﻿@model List<Web.Entidades.Producto>
+@{
+    ViewBag.Title = "FiltrarPorCategoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Productos Filtrados</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <ul>
+        @foreach (var producto in Model)
+        {
+            <li>
+                <h3>@producto.NombreProducto</h3>
+                <p>Precio: ₡@producto.Precio</p>
+                <p>Inventario: @producto.Inventario</p>
+                <img src="@producto.RutaImagen" alt="@producto.NombreProducto" style="width:100px;height:100px;" />
+                <!-- Agrega más detalles según tus necesidades -->
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No se encontraron productos en esta categoría.</p>
+}

@@ -1,0 +1,42 @@
+﻿@model List<Web.Entidades.PoliticaDevolucion>
+
+
+@{
+    ViewBag.Title = "Política de Devolución";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+
+
+
+<div class="container">
+    @if (Model != null && Model.Any()) 
+    {
+        foreach (var seccion in Model.OrderBy(s => s.Orden))
+        {
+            <div class="policy-section">
+                <h2>@seccion.TituloSeccion</h2>
+                @if (!string.IsNullOrEmpty(seccion.SubtituloSeccion))
+                {
+                    <h3>@seccion.SubtituloSeccion</h3>
+                }
+                <p>@seccion.Contenido</p>
+
+                @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1") // Administrador
+                {
+                    <div class="edit-options">
+                        <a href="@Url.Action("Editar", "PoliticaDevolucion", new { id = seccion.Id })" class="btn btn-primary">Editar</a>
+                        <a href="@Url.Action("Eliminar", "PoliticaDevolucion", new { id = seccion.Id })" class="btn btn-danger">Eliminar</a>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <p>No se encontraron secciones de la política de devolución en este momento.</p>
+    }
+</div>
+
+
+
+<link href="~/Estilos/css/cssfooterpoliticadevolucion.css" rel="stylesheet">
