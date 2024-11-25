@@ -5,6 +5,18 @@
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
       <Parameter Name="RutaImagen" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="ActualizarInfo">
+      <Parameter Name="ConsecutivoInformacion" Mode="In" Type="Int64" />
+      <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="AcercaDeNosotros" Mode="In" Type="String" />
+      <Parameter Name="Contactanos" Mode="In" Type="String" />
+      <Parameter Name="Politicas" Mode="In" Type="String" />
+      <Parameter Name="OrdenesDevoluciones" Mode="In" Type="String" />
+      <Parameter Name="TerminosCondiciones" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="ActualizarProducto">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
       <Parameter Name="NombreProducto" Mode="In" Type="String" />
@@ -42,6 +54,7 @@
     <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
       <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="ConsultarResennas" ReturnType="Collection(DetallesJohaModel.ConsultarResennas_Result)" />
     <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
     <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -66,21 +79,6 @@
       <Parameter Name="Identificacion" Mode="In" Type="String" />
       <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="RegistrarProducto" ReturnType="Collection(Int64)">
-      <Parameter Name="NombreProducto" Mode="In" Type="String" />
-      <Parameter Name="Precio" Mode="In" Type="Decimal" />
-      <Parameter Name="Inventario" Mode="In" Type="Int32" />
-      <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
-      <Parameter Name="Material" Mode="In" Type="String" />
-      <Parameter Name="Tamanio" Mode="In" Type="String" />
-      <Parameter Name="ColorBase" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="RegistrarUsuario">
-      <Parameter Name="Identificacion" Mode="In" Type="String" />
-      <Parameter Name="Contrasenna" Mode="In" Type="String" />
-      <Parameter Name="Nombre" Mode="In" Type="String" />
-      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="RegistrarInformacionEmpresa">
       <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
       <Parameter Name="Telefono" Mode="In" Type="String" />
@@ -91,6 +89,26 @@
       <Parameter Name="Politicas" Mode="In" Type="String" />
       <Parameter Name="OrdenesDevoluciones" Mode="In" Type="String" />
       <Parameter Name="TerminosCondiciones" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarProducto" ReturnType="Collection(Int64)">
+      <Parameter Name="NombreProducto" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="Inventario" Mode="In" Type="Int32" />
+      <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="Material" Mode="In" Type="String" />
+      <Parameter Name="Tamanio" Mode="In" Type="String" />
+      <Parameter Name="ColorBase" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarResenna">
+      <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+      <Parameter Name="Calificacion" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarUsuario">
+      <Parameter Name="Identificacion" Mode="In" Type="String" />
+      <Parameter Name="Contrasenna" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ConsultarCarrito_Result">
@@ -169,6 +187,14 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ConsultarResennas_Result">
+    <Property Type="Int64" Name="IdResenna" Nullable="false" />
+    <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Calificacion" Nullable="false" />
+    <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
+    <Property Type="DateTime" Name="FechaResenna" Nullable="false" Precision="23" />
   </ComplexType>
   <ComplexType Name="ConsultarTiposCategoria_Result">
     <Property Type="Int32" Name="IdCategoria" Nullable="false" />

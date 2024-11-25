@@ -145,7 +145,7 @@ namespace Web.Controllers
             }
         }
         [HttpGet]
-        public ActionResult ConsultaPedidos()
+        public ActionResult ConsultarPedidos()
         {
             var respuesta = modelo.ConsultarPedidos();
 

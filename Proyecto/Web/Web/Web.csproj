@@ -147,13 +147,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\InfoEController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Entidades\Carrito.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
+    <Compile Include="Entidades\Consulta.cs" />
+    <Compile Include="Entidades\InforE.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\Resena.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Ventas.cs" />
@@ -161,15 +166,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\ConsultaModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />
     <Compile Include="Models\FiltroSeguridad.cs" />
+    <Compile Include="Models\InforEModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
+    <Compile Include="Models\ResenaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VentasModel.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bd\detalles joha.txt" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.dll" />
@@ -262,6 +271,13 @@
     <Content Include="Estilos\css\style.css" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
+    <Content Include="Imagenes\1.jpg" />
+    <Content Include="Imagenes\19.jpg" />
+    <Content Include="Imagenes\2.jpg" />
+    <Content Include="Imagenes\25.jpg" />
+    <Content Include="Imagenes\26.jpg" />
+    <Content Include="Imagenes\3.jpg" />
+    <Content Include="Imagenes\4.png" />
     <Content Include="img\hotdeal.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\product01.png" />
@@ -479,12 +495,14 @@
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
     <Content Include="Views\Usuario\ActualizarUsuario.cshtml" />
     <Content Include="Views\Ventas\ConsultaVentas.cshtml" />
-    <Content Include="Views\Ventas\ConsultarPedidos.cshtml" />
+    <Content Include="Views\Carrito\ConsultarPedidos.cshtml" />
     <Content Include="Views\Shared\_LayoutBasico.cshtml" />
+    <Content Include="Views\Resena\ConsultarResenas.cshtml" />
+    <Content Include="Views\Resena\RegistrarResena.cshtml" />
+    <Content Include="Views\InfoE\RegistraInforE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Imagenes\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

@@ -120,6 +120,7 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\roslyn\VBCSCompiler.exe
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\roslyn\VBCSCompiler.exe.config
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Antlr3.Runtime.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Dapper.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\EntityFramework.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\EntityFramework.SqlServer.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -142,6 +143,7 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\System.Web.WebPages.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\System.Web.WebPages.Razor.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\WebGrease.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Dapper.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\EntityFramework.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\EntityFramework.SqlServer.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml

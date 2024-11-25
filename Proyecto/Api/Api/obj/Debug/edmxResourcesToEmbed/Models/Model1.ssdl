@@ -4,6 +4,18 @@
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
     <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="ActualizarInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConsecutivoInformacion" Type="bigint" Mode="In" />
+    <Parameter Name="NombreEmpresa" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+    <Parameter Name="Direccion" Type="varchar" Mode="In" />
+    <Parameter Name="AcercaDeNosotros" Type="varchar" Mode="In" />
+    <Parameter Name="Contactanos" Type="varchar" Mode="In" />
+    <Parameter Name="Politicas" Type="varchar" Mode="In" />
+    <Parameter Name="OrdenesDevoluciones" Type="varchar" Mode="In" />
+    <Parameter Name="TerminosCondiciones" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="ActualizarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
     <Parameter Name="NombreProducto" Type="varchar" Mode="In" />
@@ -34,12 +46,14 @@
   <Function Name="ConsultarFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
   </Function>
+  <Function Name="ConsultarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
   </Function>
   <Function Name="ConsultarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MostrarTodos" Type="bit" Mode="In" />
   </Function>
+  <Function Name="ConsultarResennas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="ConsultarTiposCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="ConsultarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
@@ -83,6 +97,11 @@
     <Parameter Name="Material" Type="varchar" Mode="In" />
     <Parameter Name="Tamanio" Type="varchar" Mode="In" />
     <Parameter Name="ColorBase" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="RegistrarResenna" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
+    <Parameter Name="Calificacion" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar" Mode="In" />
   </Function>
   <Function Name="RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Identificacion" Type="varchar" Mode="In" />
