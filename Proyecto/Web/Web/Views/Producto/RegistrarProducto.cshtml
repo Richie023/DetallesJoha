@@ -43,6 +43,28 @@
                                 @Html.TextBoxFor(m => m.Inventario, new { @class = "form-control form-control-user", @placeholder = "Inventario", @type = "number", @required = "true" })
                             </div>
                             <div class="form-group">
+                                @Html.Label("Material")
+                                @Html.TextBoxFor(m => m.Material, new { @class = "form-control form-control-user", @placeholder = "Material del Producto", @required = "true" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Tamaño")
+                                @Html.DropDownListFor(m => m.Tamanio, new List<SelectListItem> {
+                                    new SelectListItem { Text = "S", Value = "S" },
+                                    new SelectListItem { Text = "M", Value = "M" },
+                                    new SelectListItem { Text = "L", Value = "L" },
+                                    new SelectListItem { Text = "XL", Value = "XL" },
+                                    new SelectListItem { Text = "XXL", Value = "XXL" },
+                                    new SelectListItem { Text = "Grande", Value = "Grande" },
+                                    new SelectListItem { Text = "Mediano", Value = "Mediano" },
+                                    new SelectListItem { Text = "Pequeño", Value = "¨Pequeño" }
+                                }, "Seleccione un Tamaño", new { @class = "form-control form-control-user", @required = "true" })
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Color Base")
+                                <input type="color" id="ColorBase" name="ColorBase" class="form-control form-control-user" required />
+                                <small class="form-text text-muted">Seleccione el color base del producto.</small>
+                            </div>
+                            <div class="form-group">
                                 @Html.Label("Imagen")
                                 <input type="file" id="Imagenes" name="Imagenes" class="form-control form-control-user" required>
                             </div>
@@ -82,6 +104,27 @@
 </div>
 
 <script>
+    // Pickr.js - Color picker setup (Alternative to the simple color input above)
+    const pickr = Pickr.create({
+        el: '#color-picker',
+        theme: 'classic', // or 'monolith', 'nano'
+        swatches: [
+            '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A1FF33',
+            '#33A1FF', '#FF9333', '#5733FF', '#57FF33', '#5733A1'
+        ],
+        components: {
+            preview: true,
+            opacity: true,
+            hue: true,
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: true,
+                input: true
+            }
+        }
+    });
+
     // Función para establecer la fecha mínima de inicio y fin como la fecha actual
     function setMinDateForPromocionFields() {
         const today = new Date();
@@ -123,3 +166,4 @@
     // Llamamos a la función cuando la página se carga para establecer la fecha mínima
     document.addEventListener("DOMContentLoaded", setMinDateForPromocionFields);
 </script>
+

@@ -3,44 +3,45 @@ using Api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Api.Controllers
 {
-    public class AvisoPrivacidadController : Controller
+    public class AvisoPrivacidadController : ApiController
     {
 
-            [HttpPost]
-            [Route("AvisoPrivacidad/InsertarAvisoPrivacidad")]
-            public Confirmacion InsertarAvisoPrivacidad(AvisoPrivacidad entidad)
+        [HttpPost]
+        [Route("AvisoPrivacidad/InsertarAvisoPrivacidad")]
+        public Confirmacion InsertarAvisoPrivacidad(AvisoPrivacidad entidad)
+        {
+            var respuesta = new Confirmacion();
+
+            try
             {
-                var respuesta = new Confirmacion();
-
-                try
+                using (var db = new DetallesJohaEntities())
                 {
-                    using (var db = new DetallesJohaEntities())
-                    {
-                        // Llamamos al procedimiento almacenado para insertar
-                        db.InsertAvisoPrivacidad(
-                            entidad.TituloSeccion,
-                            entidad.SubtituloSeccion,
-                            entidad.Contenido,
-                            entidad.Orden
-                        );
+                    // Llamamos al procedimiento almacenado para insertar
+                    db.InsertAvisoPrivacidad(
+                        entidad.TituloSeccion,
+                        entidad.SubtituloSeccion,
+                        entidad.Contenido,
+                        entidad.Orden
+                    );
 
-                        respuesta.Codigo = 0;
-                        respuesta.Detalle = "Registro insertado exitosamente.";
-                    }
+                    respuesta.Codigo = 0;
+                    respuesta.Detalle = "Registro insertado exitosamente.";
                 }
-                catch (Exception ex)
-                {
-                    respuesta.Codigo = -1;
-                    respuesta.Detalle = $"Se presentó un error en el sistema: {ex.Message}";
-                }
-
-                return respuesta;
             }
+            catch (Exception ex)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = $"Se presentó un error en el sistema: {ex.Message}";
+            }
+
+            return respuesta;
+        }
 
         [HttpPut]
         [Route("AvisoPrivacidad/ActualizarAvisoPrivacidad")]
@@ -128,13 +129,13 @@ namespace Api.Controllers
                 {
                     var datos = db.ColsultarAvisoPrivacidad().ToList();
 
-                    if (datos != null)
+                    if (datos.Count > 0)
                     {
                         respuesta.Codigo = 0;
-                        respuesta.Detalle = string.Empty;
-                        respuesta.Datos = datos.Cast<AvisoPrivacidad>().ToList();
+                        respuesta.Detalle = "Colsulta exitosa";
+                        respuesta.Datos = datos;
                     }
-                
+
                     else
                     {
                         respuesta.Codigo = -1;

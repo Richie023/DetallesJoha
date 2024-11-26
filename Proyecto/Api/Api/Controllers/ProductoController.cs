@@ -205,7 +205,7 @@ namespace Api.Controllers
 
 
         [HttpGet]
-        [Route("Categoria/FiltrarProductosPorCategoria/{IdCategoria}")]
+        [Route("Producto/FiltrarProductosPorCategoria")]
         public ConfirmacionProductoPorCategorias FiltrarProductosPorCategoria(int IdCategoria)
         {
             var respuesta = new ConfirmacionProductoPorCategorias();
@@ -219,8 +219,8 @@ namespace Api.Controllers
                     if (datos.Count > 0)
                     {
                         respuesta.Codigo = 0;
-                        respuesta.Detalle = string.Empty;
-                        respuesta.Datos = datos.Cast<TiposCategoria>().ToList();
+                        respuesta.Detalle = "Colsulta exitoso";
+                        respuesta.Datos = datos;
                     }
                     else
                     {
@@ -238,6 +238,79 @@ namespace Api.Controllers
 
             return respuesta;
         }
+
+        [HttpGet]
+        [Route("Producto/FiltrarProductosPorRangoPrecio")]
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorRangoPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
+        {
+            var respuesta = new ConfirmacionProductoPorCategorias();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarProductosPorRangoPrecio(PrecioMinimo, PrecioMaximo).ToList();
+
+                    if (datos.Count > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = "Consulta exitosa";
+                        respuesta.Datos = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron productos en el rango de precios especificado";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema: " + ex.Message;
+                Console.WriteLine(ex);
+            }
+
+            return respuesta;
+        }
+
+
+        [HttpGet]
+        [Route("Producto/FiltrarProductosPorCaracteristicas")]
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorCaracteristicas(string Material, string Color, string Tamanio)
+        {
+            var respuesta = new ConfirmacionProductoPorCategorias();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.FiltrarProductosPorCaracteristicas(Material, Color, Tamanio).ToList();
+
+                    if (datos.Count > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = "Consulta exitosa";
+                        respuesta.Datos = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron productos con las características seleccionadas";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema: " + ex.Message;
+                Console.WriteLine(ex);
+            }
+
+            return respuesta;
+        }
+
+
 
         [HttpPut]
         [Route("Producto/ActualizarProducto")]

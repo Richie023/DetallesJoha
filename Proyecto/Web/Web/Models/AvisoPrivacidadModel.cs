@@ -17,9 +17,15 @@ namespace Web.Models
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
+                { 
                     return respuesta.Content.ReadFromJsonAsync<AvisoPrivacidadRespuesta>().Result;
-                else
+                }
+
+                else 
+                {
                     return null;
+                }
+
             }
         }
 

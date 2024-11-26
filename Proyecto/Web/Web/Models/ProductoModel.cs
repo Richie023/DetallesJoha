@@ -85,7 +85,7 @@ namespace Web.Models
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Producto/FiltrarPorCategoria/" + IdCategoria;
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Producto/FiltrarProductosPorCategoria?IdCategoria=" + IdCategoria;
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
@@ -98,6 +98,45 @@ namespace Web.Models
                 }
             }
         }
+
+
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorRangoPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Producto/FiltrarProductosPorRangoPrecio?PrecioMinimo={PrecioMinimo}&PrecioMaximo={PrecioMaximo}=" + PrecioMinimo + PrecioMaximo;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionProductoPorCategorias>().Result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+
+        public ConfirmacionProductoPorCategorias FiltrarProductosPorCaracteristicas(string Material, string Color, string Tamanio)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Producto/FiltrarProductosPorCaracteristicas?Material={Material}&Color={Color}&Tamanio={Tamanio}";
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionProductoPorCategorias>().Result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
 
 
         public Confirmacion ActualizarProducto(Producto entidad)

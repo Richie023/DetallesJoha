@@ -1,0 +1,65 @@
+﻿@model Web.Entidades.AvisoPrivacidad
+
+@{
+    ViewBag.Title = "Eliminar Aviso de Privacidad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .btn-primary {
+        background-color: #3498db;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-secondary {
+        background-color: #95a5a6;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+    .btn-danger {
+        background-color: #e74c3c;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center font-weight-bold">@ViewBag.Title</h1>
+    <p class="text-center text-danger">¿Estás seguro de que deseas eliminar este aviso de privacidad?</p>
+
+    <div class="alert alert-warning">
+        <h4>@Model.TituloSeccion</h4>
+        <p>@Model.Contenido</p>
+    </div>
+
+    <form asp-action="EliminarConfirmado" method="post" class="text-center">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+

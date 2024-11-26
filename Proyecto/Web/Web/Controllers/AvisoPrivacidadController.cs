@@ -17,7 +17,7 @@ namespace Web.Controllers
 
 
         [HttpGet]
-        public ActionResult VerAvisoPrivacidad()
+        public ActionResult AvisoPrivacidad()
         {
             var respuesta = modelo.ColsultarAvisoPrivacidad();
 
@@ -85,7 +85,7 @@ namespace Web.Controllers
             }
 
             ViewBag.MsjPantalla = "No se encontró el aviso de privacidad solicitado.";
-            return RedirectToAction("VerAvisoPrivacidad");
+            return RedirectToAction("AvisoPrivacidad");
         }
 
         
@@ -104,7 +104,7 @@ namespace Web.Controllers
 
                 if (respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerAvisoPrivacidad");
+                    return RedirectToAction("AvisoPrivacidad");
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace Web.Controllers
 
                 if (respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerAvisoPrivacidad");
+                    return RedirectToAction("AvisoPrivacidad");
                 }
                 else
                 {
@@ -141,7 +141,7 @@ namespace Web.Controllers
                 ViewBag.MsjPantalla = $"Error al eliminar: {ex.Message}";
             }
 
-            return RedirectToAction("VerAvisoPrivacidad");
+            return RedirectToAction("AvisoPrivacidad");
         }
     }
 }

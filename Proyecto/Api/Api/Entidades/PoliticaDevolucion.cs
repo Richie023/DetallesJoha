@@ -19,7 +19,7 @@ namespace Api.Entidades
     {
         public int Codigo { get; set; } 
         public string Detalle { get; set; } 
-        public List<PoliticaDevolucion> Datos { get; set; }
+        public Object Datos { get; set; }
         public PoliticaDevolucion Dato { get; set; }
     }
 

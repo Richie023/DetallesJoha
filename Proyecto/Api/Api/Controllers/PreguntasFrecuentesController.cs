@@ -22,7 +22,7 @@ namespace Api.Controllers
                 {
                     var datos = db.ColsutarPGF().ToList();
 
-                    if (datos.Any())
+                    if (datos.Count > 0)
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
@@ -125,7 +125,7 @@ namespace Api.Controllers
                 {
                     var filasAfectadas = db.DeletePGF(id);
 
-                    if (filasAfectadas != 0)
+                    if (filasAfectadas != null)
                     { 
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Registro eliminado exitosamente.";

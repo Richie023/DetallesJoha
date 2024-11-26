@@ -21,11 +21,8 @@ namespace Web.Models
                 }
                 else
                 {
-                    return new FaqRespuesta
-                    {
-                        Codigo = -1,
-                        Detalle = "Error al consumir la API para consultar preguntas frecuentes."
-                    };
+                    return null;
+                    
                 }
             }
         }

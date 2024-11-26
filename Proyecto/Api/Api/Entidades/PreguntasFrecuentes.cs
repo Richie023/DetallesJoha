@@ -18,7 +18,7 @@ namespace Api.Entidades
     {
         public int Codigo { get; set; }
         public string Detalle { get; set; }
-        public List<PreguntasFrecuentes> Datos { get; set; }
+        public Object  Datos { get; set; }
         public PreguntasFrecuentes Dato { get; set; }
 
     }

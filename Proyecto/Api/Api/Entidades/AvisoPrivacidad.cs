@@ -18,8 +18,8 @@ namespace Api.Entidades
     public class AvisoPrivacidadRespuesta
     {
         public int Codigo { get; set; } 
-        public string Detalle { get; set; } 
-        public List<AvisoPrivacidad> Datos { get; set; } 
+        public string Detalle { get; set; }
+        public Object Datos { get; set; } 
         public AvisoPrivacidad Dato { get; set; }
 
     }
