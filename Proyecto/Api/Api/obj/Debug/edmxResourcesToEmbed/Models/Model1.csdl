@@ -38,6 +38,11 @@
       <Parameter Name="ConsecutivoProducto" Mode="In" Type="Int64" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="ColsultarAvisoPrivacidad" />
+    <FunctionImport Name="ColsultarAyuda" />
+    <FunctionImport Name="ColsultarBlogs" />
+    <FunctionImport Name="ColsultarPoliticaDevolucion" />
+    <FunctionImport Name="ColsutarPGF" />
     <FunctionImport Name="ConsultarCarrito" ReturnType="Collection(DetallesJohaModel.ConsultarCarrito_Result)">
       <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
     </FunctionImport>
@@ -54,6 +59,10 @@
     <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
       <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="ConsultarProductosPorRangoPrecio" ReturnType="Collection(DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result)">
+      <Parameter Name="PrecioMinimo" Mode="In" Type="Decimal" />
+      <Parameter Name="PrecioMaximo" Mode="In" Type="Decimal" />
+    </FunctionImport>
     <FunctionImport Name="ConsultarResennas" ReturnType="Collection(DetallesJohaModel.ConsultarResennas_Result)" />
     <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
     <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
@@ -62,15 +71,71 @@
     <FunctionImport Name="ConsultarVentas" ReturnType="Collection(DetallesJohaModel.ConsultarVentas_Result)" />
     <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
     <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
+    <FunctionImport Name="DeleteAvisoPrivacidad">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteAyuda">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteBlog">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePGF">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="DeletePoliticaDevolucion">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EliminarAyuda">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="EliminarCarrito">
       <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
     </FunctionImport>
     <FunctionImport Name="EliminarProducto">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
     </FunctionImport>
+    <FunctionImport Name="FiltrarProductosPorCaracteristicas" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result)">
+      <Parameter Name="Material" Mode="In" Type="String" />
+      <Parameter Name="ColorBase" Mode="In" Type="String" />
+      <Parameter Name="Tamanio" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="FiltrarProductosPorCategoria" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCategoria_Result)">
+      <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="IniciarSesionUsuario" ReturnType="Collection(DetallesJohaModel.IniciarSesionUsuario_Result)">
       <Parameter Name="Identificacion" Mode="In" Type="String" />
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertAvisoPrivacidad">
+      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="SubtituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="Orden" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertAyuda">
+      <Parameter Name="categoria" Mode="In" Type="String" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
+      <Parameter Name="imagen_url" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertBlog">
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+      <Parameter Name="Titulo" Mode="In" Type="String" />
+      <Parameter Name="Resumen" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="ImagenUrl" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertPGF">
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+      <Parameter Name="Pregunta" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InsertPoliticaDevolucion">
+      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="SubtituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="Orden" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="PagarCarrito">
       <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
@@ -78,6 +143,9 @@
     <FunctionImport Name="RecuperarAccesoUsuario" ReturnType="Collection(DetallesJohaModel.RecuperarAccesoUsuario_Result)">
       <Parameter Name="Identificacion" Mode="In" Type="String" />
       <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RefacturaFactura" ReturnType="Collection(DetallesJohaModel.RefacturaFactura_Result)">
+      <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
     </FunctionImport>
     <FunctionImport Name="RegistrarInformacionEmpresa">
       <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
@@ -90,7 +158,7 @@
       <Parameter Name="OrdenesDevoluciones" Mode="In" Type="String" />
       <Parameter Name="TerminosCondiciones" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="RegistrarProducto" ReturnType="Collection(Int64)">
+    <FunctionImport Name="RegistrarProducto" ReturnType="Collection(DetallesJohaModel.RegistrarProducto_Result)">
       <Parameter Name="NombreProducto" Mode="In" Type="String" />
       <Parameter Name="Precio" Mode="In" Type="Decimal" />
       <Parameter Name="Inventario" Mode="In" Type="Int32" />
@@ -98,6 +166,9 @@
       <Parameter Name="Material" Mode="In" Type="String" />
       <Parameter Name="Tamanio" Mode="In" Type="String" />
       <Parameter Name="ColorBase" Mode="In" Type="String" />
+      <Parameter Name="Porcentaje_Descuento" Mode="In" Type="Int32" />
+      <Parameter Name="FechaInicioPromocion" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinPromocion" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="RegistrarResenna">
       <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
@@ -109,6 +180,41 @@
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateAvisoPrivacidad">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="SubtituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="Orden" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateAyuda">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="categoria" Mode="In" Type="String" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
+      <Parameter Name="imagen_url" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateBlog">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+      <Parameter Name="Titulo" Mode="In" Type="String" />
+      <Parameter Name="Resumen" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="Imagen_url" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdatePGF">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+      <Parameter Name="Pregunta" Mode="In" Type="String" />
+      <Parameter Name="Respuesta" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdatePoliticaDevolucion">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="SubtituloSeccion" Mode="In" Type="String" />
+      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="Orden" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ConsultarCarrito_Result">
@@ -129,6 +235,7 @@
   <ComplexType Name="ConsultarDetalleFacturas_Result">
     <Property Type="Int64" Name="ConsecutivoDetalle" Nullable="false" />
     <Property Type="Int64" Name="ConsecutivoMaestro" Nullable="false" />
+    <Property Type="Int64" Name="ConsecutivoProducto" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
     <Property Type="Int32" Name="Cantidad" Nullable="false" />
     <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
@@ -137,7 +244,6 @@
     <Property Type="Decimal" Name="Total" Nullable="false" Precision="18" Scale="2" />
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="ConsultarFacturas_Result">
     <Property Type="Int64" Name="ConsecutivoMaestro" Nullable="false" />
@@ -150,6 +256,7 @@
   <ComplexType Name="ConsultarPedidos_Result">
     <Property Type="Int64" Name="ConsecutivoDetalle" Nullable="false" />
     <Property Type="Int64" Name="ConsecutivoMaestro" Nullable="false" />
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
     <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="200" />
     <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
@@ -174,6 +281,11 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="25" Scale="6" />
   </ComplexType>
   <ComplexType Name="ConsultarProductos_Result">
     <Property Type="Int64" Name="Consecutivo" Nullable="false" />
@@ -187,6 +299,31 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ConsultarProductosPorRangoPrecio_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
   </ComplexType>
   <ComplexType Name="ConsultarResennas_Result">
     <Property Type="Int64" Name="IdResenna" Nullable="false" />
@@ -223,6 +360,44 @@
     <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="223" />
     <Property Type="Decimal" Name="TotalUsuario" Nullable="true" Precision="38" Scale="2" />
   </ComplexType>
+  <ComplexType Name="FiltrarProductosPorCaracteristicas_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="FiltrarProductosPorCategoria_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="IniciarSesionUsuario_Result">
     <Property Type="Int64" Name="Consecutivo" Nullable="false" />
     <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="20" />
@@ -243,5 +418,14 @@
     <Property Type="Boolean" Name="Estado" Nullable="false" />
     <Property Type="Boolean" Name="Temporal" Nullable="false" />
     <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="RefacturaFactura_Result">
+    <Property Type="Int64" Name="ConsecutivoProducto" Nullable="false" />
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="RegistrarProducto_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="true" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="10" Scale="2" />
   </ComplexType>
 </Schema>

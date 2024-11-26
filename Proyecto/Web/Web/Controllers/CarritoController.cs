@@ -14,6 +14,8 @@ namespace Web.Controllers
     {
         CarritoModel modelo = new CarritoModel();
 
+       
+
         [HttpPost]
         public ActionResult AgregarCarrito(long idProducto, int cantProducto)
         {
@@ -126,7 +128,21 @@ namespace Web.Controllers
                 return View(new List<Carrito>());
             }
         }
+        [HttpGet]
+        public ActionResult RefacturaFactura(long id)
+        {
+            var respuesta = modelo.RefacturaFactura(id);
 
+            if (respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new List<Carrito>());
+            }
+        }
         private void ActualizarVariablesCarrito()
         {
             var datos = modelo.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));

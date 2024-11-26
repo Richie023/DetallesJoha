@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Mis Compras</h6>
+        <h6 class="m-0 font-weight-bold text-primary text-center">Mis Compras</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -45,7 +45,7 @@
                                         <td>@item.Total.ToString("N2")</td>
                                         <td style="text-align:center" title="Revisar">
                                             <a href="@Url.Action("ConsultarDetalleFacturas", "Carrito", new { id = @item.ConsecutivoMaestro })"><i class="fa fa-file-text-o fa-2x"></i></a>
-                                            <a href="@Url.Action("Agreagr", "Carrito", new { id = @item.ConsecutivoMaestro })"><i class="fa fa-file-text-o fa-2x"></i></a>
+                                          
                                            
                                         </td>
 

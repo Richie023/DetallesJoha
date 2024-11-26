@@ -1,133 +1,124 @@
-﻿@model List<Web.Entidades.Carrito>
+﻿
+@model List<Web.Entidades.Carrito>
+
 @{
     ViewBag.Title = "ConsultarPedidos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Pedidos</h6>
+
+@if (ViewBag.MsjPantalla != null)
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center">
+        @ViewBag.MsjPantalla
+    </div>
+}
+
+
+
+@foreach (var item in Model)
+{
+<div class="row">
+    <div class="col-md-3">
     </div>
 
-
-    <div class="card-body ">
-        <div class="table-responsive">
-            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                <div class="col-sm-12">
-                    <div class="col-sm-12">
+    <div class="col-md-6">
+        <div class="card  border-info  ">
 
 
-                        @if (ViewBag.MsjPantalla != null)
-                        {
-                            <div class="alert alert-warning" role="alert" style="text-align:center">
-                                @ViewBag.MsjPantalla
-                            </div>
-                        }
+            <div class="card-header" id="heading_@item.ConsecutivoMaestro">
 
-
-
-                        @foreach (var item in Model)
-
-
-                        {
-
-                            <button class="accordion col-12 d-sm-inline-flex">
-                                <div class="col 4">
-
-                                    Fecha Del Pedido
-                                    <div>
-                                        @item.Fecha.ToString("dd/MM/yyyy hh:mm tt")
-                                    </div>
-
-                                </div>
-                                <div class=" col 4">
-
-                                    Total<br> @item.Total.ToString("N2")
-
-                                </div>
-                                <div class="col 4">
-                                    <div>
-                                        Numero:
-                                    </div>
-                                    <div>
-                                        @item.ConsecutivoMaestro
-                                    </div>
-
-                                </div>
-
-                            </button>
-                            <div class=" panel ">
-                                <h5 class="card-title">Detalles de pedidos</h5>
-                                <div class="card-text flex-fill">
-                                    Nombre @item.Nombre <br>
-                                    Cantidad @item.Cantidad<br>
-                                    Precio @item.Precio.ToString("N2")<br>
-                                    SubTotal    @item.SubTotal.ToString("N2")<br>
-                                    Impuestos @item.Impuesto.ToString("N2")<br>
-                                    Total  @item.Total.ToString("N2")<br>
-
-                                </div>
-                                <a href="#" class="btn btn-primary">Pedir de Nuevo</a>
-                            </div>
-
-                        }
-
-                        <div class="row d-flex align-content-center pt-5 pb-5">
-                            <div class="col-12">
-                                <div class="container">
-                                    <ul class="progressbar-tracking">
-                                        <li class=" step1
-                                    active">Orden en proceso<br>11/11/2024<br>15:27:00<br><img class="icon" src="/Images/img/procesada.png" alt=""><br></li>
-                                        <li class=" step1
-                                    active-finish"><a class="azulB" target="_blank" href="https://www.cargoexpreso.com/cr/tracking/?guia=1W240118907"> Haz clic aquí para rastrear el envío con <br> Cargo Expreso <br> 1W240118907</a><br>11/11/2024<br>16:27:00<br><img class="icon" src="/Images/img/enRuta.png" alt=""><br></li>
-                                        <li class=" step2
-                                    active">Entregado por: <br> Cargo Expreso <br> Recibe: leonen azofeifa.<br>14/11/2024<br>11:01:00<br><img class="icon" src="/Images/img/entregado.png" alt=""><br></li>
-                                    </ul>
-                                </div>
+                <h5 class="mb-0">
+                    <button class="btn btn-info collapsed btn-block " data-toggle="collapse" data-target="#collapse_@item.ConsecutivoMaestro" aria-expanded="false" aria-controls="collapse">
+                        <div class="col-lg-4">
+                            Fecha Del Pedido
+                            <div>
+                                @item.Fecha.ToString("dd/MM/yyyy hh:mm tt")
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            Total<br> @item.Total.ToString("N2")
+                        </div>
+                        <div class="col-lg-4">
+                            Numero:
+                            <div>
+                                @item.ConsecutivoMaestro
+                            </div>
 
-                        @*<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
-            <thead>
-                <tr role="row">
-                    <th># Factura</th>
-                    <th>Fecha</th>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>SubTotal</th>
-                    <th>Impuestos</th>
-                    <th>Total</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+                        </div>
+                    </button>
+                </h5>
+            </div>
 
-                @foreach (var item in Model)
-                {
-                    <tr class="odd">
-                        <td>@item.ConsecutivoMaestro</td>
-                        <td>@item.Fecha.ToString("dd/MM/yyyy hh:mm tt")</td>
-                        <td>@item.Nombre</td>
+            <div id="collapse_@item.ConsecutivoMaestro" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                <div class="">
+                    <h5>Detalles del pedido</h5>
+                    <div class="">
+                        Nombre Cliente:   @item.NombreUsuario &nbsp&nbsp <br />
+                        Id Producto : @item.Consecutivo<br />
+                        Producto :   @item.Nombre &nbsp&nbsp <br />
+                        Cantidad : @item.Cantidad&nbsp&nbsp<br />
+                        Precio : @item.Precio.ToString("N2")&nbsp&nbsp<br />
+                        SubTotal :   @item.SubTotal.ToString("N2")&nbsp&nbsp<br />
+                        Impuestos : @item.Impuesto.ToString("N2")&nbsp&nbsp<br />
+                        Total :  @item.Total.ToString("N2")&nbsp&nbsp<br />
 
 
-                        <td>@item.Cantidad</td>
-                        <td>@item.SubTotal.ToString("N2")</td>
-                        <td>@item.Impuesto.ToString("N2")</td>
-                        <td>@item.Total.ToString("N2")</td>
-                        <td style="text-align:center" title="Revisar">
-                            <a href="@Url.Action("ConsultarPedidos","Carrito")"><i class="fa fa-file-text-o fa-2x"></i></a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>*@
+                        @if (Session["RolUsuario"].ToString() != "1")
+                        {
 
+                            <a href="@Url.Action("AgregarCarrito","Carrito", new {idProducto = item.ConsecutivoProducto,idCantidad=item.Cantidad})" class="btn btn-primary">Pedir de Nuevo</a>
+
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+}
+
+
+
+
+<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+    <thead>
+        <tr role="row">
+            <th># Factura</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+            <th>Impuestos</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr class="odd">
+                <td>@item.ConsecutivoMaestro</td>
+                <td>@item.Fecha.ToString("dd/MM/yyyy hh:mm tt")</td>
+                <td>@item.Nombre</td>
+                <td>@item.Cantidad</td>
+                <td>@item.SubTotal.ToString("N2")</td>
+                <td>@item.Impuesto.ToString("N2")</td>
+                <td>@item.Total.ToString("N2")</td>
+                <td style="text-align:center" title="Revisar">
+                    <a href="@Url.Action("ConsultarPedidos","Carrito")"><i class="fa fa-file-text-o fa-2x"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 <script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
 <script>

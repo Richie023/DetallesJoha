@@ -177,17 +177,27 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AvisoPrivacidadController.cs" />
+    <Compile Include="Controllers\AyudaController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\PoliticaDevolucionController.cs" />
+    <Compile Include="Controllers\PreguntasFrecuentesController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\InfoEController.cs" />
     <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
+    <Compile Include="Entidades\AvisoPrivacidad.cs" />
+    <Compile Include="Entidades\Ayuda.cs" />
+    <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Carrito.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
     <Compile Include="Entidades\Consulta.cs" />
+    <Compile Include="Entidades\PoliticaDevolucion.cs" />
+    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\InfoE.cs" />
     <Compile Include="Entidades\Resena.cs" />
@@ -207,6 +217,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarPedidos_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarProductosPorRangoPrecio_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarProductos_Result.cs">
@@ -233,6 +246,12 @@
     <Compile Include="Models\ConsultarVentas_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FiltrarProductosPorCaracteristicas_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FiltrarProductosPorCategoria_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IniciarSesionUsuario_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -252,6 +271,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\RecuperarAccesoUsuario_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefacturaFactura_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegistrarProducto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UtilitariosModel.cs" />

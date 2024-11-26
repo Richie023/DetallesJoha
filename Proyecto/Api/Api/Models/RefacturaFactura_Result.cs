@@ -11,16 +11,10 @@ namespace Api.Models
 {
     using System;
     
-    public partial class ConsultarUsuario_Result
+    public partial class RefacturaFactura_Result
     {
+        public long ConsecutivoProducto { get; set; }
         public long Consecutivo { get; set; }
-        public string Identificacion { get; set; }
-        public string Nombre { get; set; }
-        public string CorreoElectronico { get; set; }
-        public bool Estado { get; set; }
-        public bool Temporal { get; set; }
-        public System.DateTime Vencimiento { get; set; }
-        public long ConsecutivoRol { get; set; }
-        public string NombreRol { get; set; }
+        public int Cantidad { get; set; }
     }
 }

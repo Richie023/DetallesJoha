@@ -26,7 +26,7 @@ namespace Api.Controllers
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
-                        respuesta.Datos = datos.Cast<PreguntasFrecuentes>().ToList();
+                        respuesta.Datos = datos;
                     }
                     else
                     {
@@ -125,7 +125,7 @@ namespace Api.Controllers
                 {
                     var filasAfectadas = db.DeletePGF(id);
 
-                    if (filasAfectadas != null)
+                    if (filasAfectadas != 0)
                     { 
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Registro eliminado exitosamente.";

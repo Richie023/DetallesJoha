@@ -146,17 +146,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AvisoPrivacidadController.cs" />
+    <Compile Include="Controllers\AyudaController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\InfoEController.cs" />
+    <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\PoliticaDevolucionController.cs" />
+    <Compile Include="Controllers\PreguntasFrecuentesController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
+    <Compile Include="Entidades\AvisoPrivacidad.cs" />
+    <Compile Include="Entidades\Ayuda.cs" />
+    <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Carrito.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
     <Compile Include="Entidades\Consulta.cs" />
     <Compile Include="Entidades\InforE.cs" />
+    <Compile Include="Entidades\PoliticaDevolucion.cs" />
+    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\Resena.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
@@ -165,11 +176,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AvisoPrivacidadModel.cs" />
+    <Compile Include="Models\AyudaModel.cs" />
+    <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
     <Compile Include="Models\ConsultaModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />
     <Compile Include="Models\FiltroSeguridad.cs" />
     <Compile Include="Models\InforEModel.cs" />
+    <Compile Include="Models\PoliticaDevolucionModel.cs" />
+    <Compile Include="Models\PreguntasFrecuentesModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Models\ResenaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -261,14 +277,21 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Estilos\css\AvisoPrivacidad.css" />
+    <Content Include="Estilos\css\Ayuda.css" />
+    <Content Include="Estilos\css\Blog.css" />
     <Content Include="Estilos\css\bootstrap.min.css" />
     <Content Include="Estilos\css\font-awesome.min.css" />
+    <Content Include="Estilos\css\Footer.css" />
     <Content Include="Estilos\css\nouislider.min.css" />
+    <Content Include="Estilos\css\PoliticaDevolucion.css" />
+    <Content Include="Estilos\css\PreguntasFrecuentes.css" />
     <Content Include="Estilos\css\sb-admin-2.css" />
     <Content Include="Estilos\css\sb-admin-2.min.css" />
     <Content Include="Estilos\css\slick-theme.css" />
     <Content Include="Estilos\css\slick.css" />
     <Content Include="Estilos\css\style.css" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
     <Content Include="Imagenes\1.jpg" />
@@ -277,7 +300,12 @@
     <Content Include="Imagenes\25.jpg" />
     <Content Include="Imagenes\26.jpg" />
     <Content Include="Imagenes\3.jpg" />
+    <Content Include="Imagenes\4.jpg" />
     <Content Include="Imagenes\4.png" />
+    <Content Include="Imagenes\5.jpg" />
+    <Content Include="Imagenes\6.jpg" />
+    <Content Include="Imagenes\7.jpg" />
+    <Content Include="Imagenes\8.jpg" />
     <Content Include="img\hotdeal.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\product01.png" />
@@ -435,7 +463,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.ttf" />
     <Content Include="Estilos\fonts\fontawesome-webfont.woff" />
     <Content Include="Estilos\fonts\fontawesome-webfont.woff2" />
@@ -460,6 +487,11 @@
     <Content Include="obj\Debug\Web.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\Web.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\Web.csproj.Up2Date" />
+    <Content Include="Estilos\fonts\.vs\fonts\FileContentIndex\280fdccc-6493-4764-9dfd-69a5de080f29.vsidx" />
+    <Content Include="Estilos\fonts\.vs\fonts\v17\.wsuo" />
+    <Content Include="Estilos\fonts\.vs\ProjectSettings.json" />
+    <Content Include="Estilos\fonts\.vs\slnx.sqlite" />
+    <Content Include="Estilos\fonts\.vs\VSWorkspaceState.json" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -500,6 +532,14 @@
     <Content Include="Views\Resena\ConsultarResenas.cshtml" />
     <Content Include="Views\Resena\RegistrarResena.cshtml" />
     <Content Include="Views\InfoE\RegistraInforE.cshtml" />
+    <Content Include="Views\Informacion\AvisoPrivacidad.cshtml" />
+    <Content Include="Views\Informacion\Ayuda.cshtml" />
+    <Content Include="Views\Informacion\blog.cshtml" />
+    <Content Include="Views\Informacion\BlogInsertar.cshtml" />
+    <Content Include="Views\Informacion\PoliticaDevolucion.cshtml" />
+    <Content Include="Views\Informacion\PreguntasFrecuentes.cshtml" />
+    <Content Include="Views\Producto\FiltrarPorCategoria.cshtml" />
+    <Content Include="Views\Producto\VerProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

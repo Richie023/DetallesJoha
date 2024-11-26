@@ -11,7 +11,7 @@ namespace Api.Models
 {
     using System;
     
-    public partial class ConsultarProductos_Result
+    public partial class FiltrarProductosPorCaracteristicas_Result
     {
         public long Consecutivo { get; set; }
         public string NombreProducto { get; set; }

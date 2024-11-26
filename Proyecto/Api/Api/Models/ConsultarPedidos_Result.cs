@@ -15,6 +15,7 @@ namespace Api.Models
     {
         public long ConsecutivoDetalle { get; set; }
         public long ConsecutivoMaestro { get; set; }
+        public long Consecutivo { get; set; }
         public string NombreUsuario { get; set; }
         public System.DateTime Fecha { get; set; }
         public string Nombre { get; set; }

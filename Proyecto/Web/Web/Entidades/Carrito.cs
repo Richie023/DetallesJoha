@@ -10,6 +10,7 @@ namespace Web.Entidades
         public long ConsecutivoCarrito { get; set; }
         public long ConsecutivoUsuario { get; set; }
         public long ConsecutivoProducto { get; set; }
+
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }
         public decimal SubTotal { get; set; }
@@ -24,7 +25,7 @@ namespace Web.Entidades
 
         public string Tamanio { get; set; }
 
-        public string ColorBase { get; set; }
+       
 
     }
 
