@@ -159,6 +159,29 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarProductosPorRangoPrecio" FunctionName="DetallesJohaModel.Store.ConsultarProductosPorRangoPrecio">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result">
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Inventario" ColumnName="Inventario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+          <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+          <ScalarProperty Name="En_promocion" ColumnName="En_promocion" />
+          <ScalarProperty Name="porcentaje_descuento" ColumnName="porcentaje_descuento" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="PrecioConDescuento" ColumnName="PrecioConDescuento" />
+          <ScalarProperty Name="PromocionActiva" ColumnName="PromocionActiva" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ConsultarTiposCategoria" FunctionName="DetallesJohaModel.Store.ConsultarTiposCategoria">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarTiposCategoria_Result">
@@ -214,6 +237,29 @@
     <FunctionImportMapping FunctionImportName="EliminarAyuda" FunctionName="DetallesJohaModel.Store.EliminarAyuda" />
     <FunctionImportMapping FunctionImportName="EliminarCarrito" FunctionName="DetallesJohaModel.Store.EliminarCarrito" />
     <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="DetallesJohaModel.Store.EliminarProducto" />
+    <FunctionImportMapping FunctionImportName="FiltrarProductosPorCaracteristicas" FunctionName="DetallesJohaModel.Store.FiltrarProductosPorCaracteristicas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result">
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Inventario" ColumnName="Inventario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+          <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+          <ScalarProperty Name="En_promocion" ColumnName="En_promocion" />
+          <ScalarProperty Name="porcentaje_descuento" ColumnName="porcentaje_descuento" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="PrecioConDescuento" ColumnName="PrecioConDescuento" />
+          <ScalarProperty Name="PromocionActiva" ColumnName="PromocionActiva" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="FiltrarProductosPorCategoria" FunctionName="DetallesJohaModel.Store.FiltrarProductosPorCategoria">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.FiltrarProductosPorCategoria_Result">

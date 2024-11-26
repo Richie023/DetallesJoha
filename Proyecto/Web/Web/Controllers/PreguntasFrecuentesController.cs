@@ -16,7 +16,7 @@ namespace Web.Controllers
 
         
         [HttpGet]
-        public ActionResult VerPreguntasFrecuentes()
+        public ActionResult PreguntasFrecuentes()
         {
             var respuesta = modelo.ConsultarTodos();
 
@@ -71,24 +71,7 @@ namespace Web.Controllers
         }
 
         // Mostrar la vista para editar una pregunta frecuente existente
-        [HttpGet]
-        public ActionResult Editar(int id)
-        {
-            var respuesta = modelo.ConsultarTodos();
-
-            if (respuesta != null && respuesta.Codigo == 0)
-            {
-                var pregunta = respuesta.Datos.FirstOrDefault(p => p.Id == id);
-                if (pregunta != null)
-                {
-                    ViewBag.Title = "Editar Pregunta Frecuente";
-                    return View(pregunta);
-                }
-            }
-
-            ViewBag.MsjPantalla = "No se encontró la pregunta frecuente solicitada.";
-            return RedirectToAction("VerPreguntasFrecuentes");
-        }
+        
 
         // Procesar la actualización de una pregunta frecuente existente
         [HttpPost]

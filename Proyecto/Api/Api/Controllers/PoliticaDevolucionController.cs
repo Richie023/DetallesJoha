@@ -3,14 +3,15 @@ using Api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Api.Controllers
 {
-    public class PoliticaDevolucionController : Controller
+    public class PoliticaDevolucionController : ApiController
     {
-        // Consultar todas las secciones de la política de devolución
+
         [HttpGet]
         [Route("PoliticaDevolucion/ConsultarTodos")]
         public PoliticaDevolucionRespuesta ConsultarTodos()
@@ -27,7 +28,7 @@ namespace Api.Controllers
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
-                        respuesta.Datos = datos.Cast<PoliticaDevolucion>().ToList();
+                        respuesta.Datos = datos;
                     }
                     else
                     {
@@ -149,5 +150,6 @@ namespace Api.Controllers
 
             return respuesta;
         }
+
     }
 }

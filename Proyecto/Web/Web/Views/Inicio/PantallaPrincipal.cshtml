@@ -166,94 +166,93 @@
         }
 </style>
 
-<!-- HTML para la sección de productos -->
-<div class="section">
-    <div class="container">
-        <div class="row">
-            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
-            {
-                <div class="col-12 mb-4 text-center">
-                    <a href="@Url.Action("RegistrarProducto", "Producto")" class="btn-add-product">
-                        <i class="fa fa-plus"></i> Agregar Nuevo Producto
-                    </a>
-                </div>
-            }
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                {
+                    <div class="col-12 mb-4 text-center">
+                        <a href="@Url.Action("RegistrarProducto", "Producto")" class="btn-add-product">
+                            <i class="fa fa-plus"></i> Agregar Nuevo Producto
+                        </a>
+                    </div>
+                }
 
-            <div id="store" class="col-md-12">
-                <div class="row">
-                    @foreach (var producto in Model)
-                    {
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
-                            <div class="product-card">
-                                <!-- Header con rebaja y corazón -->
-                                <div class="card-header">
-                                    @if (producto.PromocionActiva == 1)
-                                    {
-                                        <div class="discount-badge">⬇️ REBAJA</div>
-                                    }
-                                    else
-                                    {
-                                        <div style="visibility: hidden;">⬇️ REBAJA</div> <!-- Espacio reservado -->
-                                    }
-                                    <i class="fa-solid fa-heart product-heart"></i>
-                                </div>
-
-                                <!-- Imagen del producto -->
-                                <div class="product-img-container">
-                                    <img src="@producto.RutaImagen" class="product-img" alt="@producto.NombreProducto">
-                                </div>
-
-                                <!-- Contenido de la tarjeta -->
-                                <div class="product-body">
-                                    <h5 class="product-name">
-                                        <a href="@Url.Action("DetalleProducto", "Productos", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
-                                            @producto.NombreProducto
-                                        </a>
-                                    </h5>
-
-                                    <!-- Etiqueta de porcentaje de descuento (entre nombre y precio) -->
-                                    <p class="rebaja-label">
+                <div id="store" class="col-md-12">
+                    <div class="row">
+                        @foreach (var producto in Model)
+                        {
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
+                                <div class="product-card">
+                                    <!-- Header con rebaja y corazón -->
+                                    <div class="card-header">
                                         @if (producto.PromocionActiva == 1)
                                         {
-                                            @: -@producto.Porcentaje_descuento%
-                                        }
-                                    </p>
-
-                                    <!-- Precio -->
-                                    <div class="product-price">
-                                        @if (producto.PromocionActiva == 1)
-                                        {
-                                            <span class="current-price text-danger">₡@producto.PrecioConDescuento.ToString("N0")</span>
-                                            <span class="product-old-price">₡@producto.Precio.ToString("N0")</span>
+                                            <div class="discount-badge">⬇️ REBAJA</div>
                                         }
                                         else
                                         {
-                                            <span class="current-price">₡@producto.Precio.ToString("N0")</span>
+                                            <div style="visibility: hidden;">⬇️ REBAJA</div> <!-- Espacio reservado -->
                                         }
+                                        <i class="fa-solid fa-heart product-heart"></i>
                                     </div>
 
-                                    <!-- Estrellas -->
-                                    <div class="stars" data-product-id="@producto.Consecutivo">
-                                        @for (int i = 1; i <= 5; i++)
-                                        {
-                                            <i class="fa fa-star star" data-star="@i"></i>
-                                        }
+                                    <!-- Imagen del producto -->
+                                    <div class="product-img-container">
+                                        <img src="@producto.RutaImagen" class="product-img" alt="@producto.NombreProducto">
                                     </div>
 
-                                    <!-- Botón de agregar al carrito -->
-                                    <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="btn-add">
-                                        <i class="fa fa-eye"></i> Ver
-                                    </a>
+                                    <!-- Contenido de la tarjeta -->
+                                    <div class="product-body">
+                                        <h5 class="product-name">
+                                            <a href="@Url.Action("DetalleProducto", "Productos", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
+                                                @producto.NombreProducto
+                                            </a>
+                                        </h5>
+
+                                        <!-- Etiqueta de porcentaje de descuento (entre nombre y precio) -->
+                                        <p class="rebaja-label">
+                                            @if (producto.PromocionActiva == 1)
+                                            {
+                                                @: -@producto.Porcentaje_descuento%
+                                            }
+                                        </p>
+
+                                        <!-- Precio -->
+                                        <div class="product-price">
+                                            @if (producto.PromocionActiva == 1)
+                                            {
+                                                <span class="current-price text-danger">₡@producto.PrecioConDescuento.ToString("N0")</span>
+                                                <span class="product-old-price">₡@producto.Precio.ToString("N0")</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="current-price">₡@producto.Precio.ToString("N0")</span>
+                                            }
+                                        </div>
+
+                                        <!-- Estrellas -->
+                                        <div class="stars" data-product-id="@producto.Consecutivo">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="fa fa-star star" data-star="@i"></i>
+                                            }
+                                        </div>
+
+                                        <!-- Botón de agregar al carrito -->
+                                        <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="btn-add">
+                                            <i class="fa fa-eye"></i> Ver
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

@@ -1,0 +1,150 @@
+﻿/* Main container */
+.main-container {
+    display: flex;
+    margin-top: 30px;
+    padding: 0 30px; /* Increase padding for a more spacious layout */
+    margin-left: 30px; /* Add more space to the left side */
+    gap: 30px; /* Increased gap for better spacing between sidebar and main content */
+    flex-wrap: wrap; /* Make the layout responsive */
+}
+
+/* Filters Sidebar */
+.aside {
+    width: 280px; /* Slightly larger sidebar */
+    padding: 20px;
+    background: #f4f4f4; /* Light grey background for the filter sidebar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for a modern feel */
+    border-radius: 12px; /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+    .aside:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+    }
+
+.filters-sidebar {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+/* Filter section */
+.filter-section {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+    .filter-title:hover {
+        color: #2196F3; /* Highlight title when hovered */
+    }
+
+    .filter-title::after {
+        content: '▼';
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
+
+    .filter-title.active::after {
+        transform: rotate(180deg); /* Flip the arrow when active */
+    }
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card-like effect */
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid layout */
+    gap: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Product card styling */
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .product-card:hover {
+        transform: scale(1.05); /* Slight scale effect on hover */
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 4px solid #f4f4f4; /* Soft divider line between image and content */
+    }
+
+    .product-card .product-info {
+        padding: 20px;
+    }
+
+    .product-card .product-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .product-card .product-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2196F3; /* Blue price to draw attention */
+        margin-bottom: 15px;
+    }
+
+    .product-card .view-button {
+        background: #2196F3;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        .product-card .view-button:hover {
+            background: #1976D2; /* Slightly darker blue on hover */
+        }
+
+/* Filter item hover effect */
+.filter-list a {
+    color: #666;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .filter-list a:hover {
+        background-color: #2196F3; /* Blue background on hover */
+        color: white; /* Change text color to white */
+        border-radius: 4px;
+        padding-left: 10px; /* Add slight padding on hover */
+    }
+
+/* Optional: Add a nice divider between the filters */
+.filter-section:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}

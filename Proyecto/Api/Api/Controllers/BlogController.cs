@@ -3,12 +3,13 @@ using Api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace Api.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : ApiController
     {
         [HttpGet]
         [Route("Blog/ConsultarTodos")]
@@ -26,7 +27,7 @@ namespace Api.Controllers
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
-                        respuesta.Datos = datos.Cast<BlogArticulo>().ToList();
+                        respuesta.Datos = datos;
                     }
                     else
                     {
@@ -44,7 +45,7 @@ namespace Api.Controllers
             return respuesta;
         }
 
-       
+
 
         // Insertar un nuevo artículo
         [HttpPost]
@@ -79,7 +80,7 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        
+
         [HttpPut]
         [Route("Blog/Actualizar")]
         public Confirmacion Actualizar(BlogArticulo entidad)
@@ -154,5 +155,6 @@ namespace Api.Controllers
 
             return respuesta;
         }
+
     }
 }

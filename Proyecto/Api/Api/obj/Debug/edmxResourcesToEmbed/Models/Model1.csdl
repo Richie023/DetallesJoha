@@ -46,6 +46,10 @@
     <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
       <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <FunctionImport Name="ConsultarProductosPorRangoPrecio" ReturnType="Collection(DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result)">
+      <Parameter Name="PrecioMinimo" Mode="In" Type="Decimal" />
+      <Parameter Name="PrecioMaximo" Mode="In" Type="Decimal" />
+    </FunctionImport>
     <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
     <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -76,6 +80,11 @@
     </FunctionImport>
     <FunctionImport Name="EliminarProducto">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="FiltrarProductosPorCaracteristicas" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result)">
+      <Parameter Name="Material" Mode="In" Type="String" />
+      <Parameter Name="ColorBase" Mode="In" Type="String" />
+      <Parameter Name="Tamanio" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="FiltrarProductosPorCategoria" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCategoria_Result)">
       <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
@@ -289,6 +298,25 @@
     <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
     <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="ConsultarProductosPorRangoPrecio_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
+  </ComplexType>
   <ComplexType Name="ConsultarTiposCategoria_Result">
     <Property Type="Int32" Name="IdCategoria" Nullable="false" />
     <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
@@ -315,6 +343,25 @@
   <ComplexType Name="ConsultarVentasUsuario_Result">
     <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="223" />
     <Property Type="Decimal" Name="TotalUsuario" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="FiltrarProductosPorCaracteristicas_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="NombreProducto" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
+    <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="23" Scale="9" />
+    <Property Type="Int32" Name="PromocionActiva" Nullable="false" />
   </ComplexType>
   <ComplexType Name="FiltrarProductosPorCategoria_Result">
     <Property Type="Int64" Name="Consecutivo" Nullable="false" />

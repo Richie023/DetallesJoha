@@ -26,7 +26,7 @@ namespace Api.Controllers
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
-                        respuesta.Datos = datos.Cast<Ayuda>().ToList();
+                        respuesta.Datos = datos;
                     }
                     else
                     {

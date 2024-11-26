@@ -141,23 +141,5 @@ namespace Web.Controllers
             ViewBag.TiposCategoria = tiposCategoria;
         }
 
-
-        // Método de acción para filtrar productos por categoría
-        public ActionResult FiltrarPorCategoria(int IdCategoria)
-        {
-            var respuesta = modelo.FiltrarProductosPorCategoria(IdCategoria);
-
-            if (respuesta != null && respuesta.Codigo == 0)
-            {
-                return View("FiltrarPorCategoria", respuesta.Datos); 
-            }
-            else
-            {
-                ViewBag.Error = respuesta?.Detalle ?? "Error al obtener los productos";
-                return View("Error");
-            }
-        }
-
-
     }
 }

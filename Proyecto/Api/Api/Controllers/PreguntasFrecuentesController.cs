@@ -22,11 +22,11 @@ namespace Api.Controllers
                 {
                     var datos = db.ColsutarPGF().ToList();
 
-                    if (datos.Any())
+                    if (datos.Count > 0)
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
-                        respuesta.Datos = datos.Cast<PreguntasFrecuentes>().ToList();
+                        respuesta.Datos = datos;
                     }
                     else
                     {

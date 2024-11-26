@@ -186,6 +186,19 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarProductos_Result>("ConsultarProductos", mostrarTodosParameter);
         }
     
+        public virtual ObjectResult<ConsultarProductosPorRangoPrecio_Result> ConsultarProductosPorRangoPrecio(Nullable<decimal> precioMinimo, Nullable<decimal> precioMaximo)
+        {
+            var precioMinimoParameter = precioMinimo.HasValue ?
+                new ObjectParameter("PrecioMinimo", precioMinimo) :
+                new ObjectParameter("PrecioMinimo", typeof(decimal));
+    
+            var precioMaximoParameter = precioMaximo.HasValue ?
+                new ObjectParameter("PrecioMaximo", precioMaximo) :
+                new ObjectParameter("PrecioMaximo", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarProductosPorRangoPrecio_Result>("ConsultarProductosPorRangoPrecio", precioMinimoParameter, precioMaximoParameter);
+        }
+    
         public virtual ObjectResult<ConsultarTiposCategoria_Result> ConsultarTiposCategoria()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarTiposCategoria_Result>("ConsultarTiposCategoria");
@@ -285,6 +298,23 @@ namespace Api.Models
                 new ObjectParameter("Consecutivo", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProducto", consecutivoParameter);
+        }
+    
+        public virtual ObjectResult<FiltrarProductosPorCaracteristicas_Result> FiltrarProductosPorCaracteristicas(string material, string colorBase, string tamanio)
+        {
+            var materialParameter = material != null ?
+                new ObjectParameter("Material", material) :
+                new ObjectParameter("Material", typeof(string));
+    
+            var colorBaseParameter = colorBase != null ?
+                new ObjectParameter("ColorBase", colorBase) :
+                new ObjectParameter("ColorBase", typeof(string));
+    
+            var tamanioParameter = tamanio != null ?
+                new ObjectParameter("Tamanio", tamanio) :
+                new ObjectParameter("Tamanio", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltrarProductosPorCaracteristicas_Result>("FiltrarProductosPorCaracteristicas", materialParameter, colorBaseParameter, tamanioParameter);
         }
     
         public virtual ObjectResult<FiltrarProductosPorCategoria_Result> FiltrarProductosPorCategoria(Nullable<int> idCategoria)

@@ -11,6 +11,8 @@ namespace Web.Controllers
     public class InicioController : Controller
     {
         UsuarioModel modelo = new UsuarioModel();
+        ProductoModel Modelo = new ProductoModel();
+
         ProductoModel productoModel = new ProductoModel();
         CarritoModel carritoModel = new CarritoModel();
 
@@ -112,6 +114,78 @@ namespace Web.Controllers
                 return View(new List<Producto>());
             }
         }
+
+        // Método de acción para filtrar productos por categoría
+        [FiltroSeguridad]
+        [HttpGet]
+        public ActionResult FiltrarPorCategoria(int? IdCategoria)
+        {
+            var productos = new List<Web.Entidades.Producto>();
+
+            if (IdCategoria.HasValue && IdCategoria > 0)
+            {
+                // Filtra productos por categoría
+                var respuesta = Modelo.FiltrarProductosPorCategoria(IdCategoria.Value);
+                productos = respuesta?.Datos as List<Web.Entidades.Producto> ?? new List<Web.Entidades.Producto>();
+            }
+            else
+            {
+                // Obtiene todos los productos
+                var respuesta = Modelo.ConsultarProductos(true);
+                productos = respuesta?.Datos as List<Web.Entidades.Producto> ?? new List<Web.Entidades.Producto>();
+            }
+
+            if (productos == null || !productos.Any())
+            {
+                ViewBag.Mensaje = "No se encontraron productos disponibles.";
+            }
+
+            return View(productos);
+        }
+
+        public ActionResult FiltrarPorPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
+        {
+            var productos = new List<Web.Entidades.Producto>();
+
+            if (PrecioMinimo.HasValue || PrecioMaximo.HasValue)
+            {
+                // Llama al modelo para filtrar productos por rango de precios
+                var respuesta = Modelo.FiltrarProductosPorRangoPrecio(PrecioMinimo, PrecioMaximo);
+                productos = respuesta?.Datos as List<Web.Entidades.Producto> ?? new List<Web.Entidades.Producto>();
+            }
+            else
+            {
+                // Llama al modelo para obtener todos los productos
+                var respuesta = Modelo.ConsultarProductos(true);
+                productos = respuesta?.Datos as List<Web.Entidades.Producto> ?? new List<Web.Entidades.Producto>();
+            }
+
+            if (productos == null || !productos.Any())
+            {
+                ViewBag.Mensaje = "No se encontraron productos disponibles para el rango seleccionado.";
+            }
+
+            return RedirectToAction("FiltrarPorCategoria", "Inicio");
+        }
+
+
+        public ActionResult PantallaPorMCT(string Material, string Color, string Tamanio)
+        {
+            var productos = new List<Web.Entidades.Producto>();
+
+            // Llama al modelo para filtrar productos por las características enviadas
+            var respuesta = Modelo.FiltrarProductosPorCaracteristicas(Material, Color, Tamanio);
+            productos = respuesta?.Datos as List<Web.Entidades.Producto> ?? new List<Web.Entidades.Producto>();
+
+            if (productos == null || !productos.Any())
+            {
+                ViewBag.Mensaje = "No se encontraron productos con las características seleccionadas.";
+            }
+
+            return RedirectToAction("FiltrarPorCategoria", "Inicio");
+        }
+
+
 
 
         [FiltroSeguridad]

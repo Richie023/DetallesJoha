@@ -10,6 +10,8 @@ namespace Api.Entidades
         public long Consecutivo { get; set; }
         public string NombreProducto { get; set; }
         public decimal Precio { get; set; }
+        public decimal PrecioMinimo { get; set; }
+        public decimal PrecioMaximo { get; set; }
         public int Inventario { get; set; }
         public bool Estado { get; set; }
         public string RutaImagen { get; set; }

@@ -1,110 +1,145 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Net.Http;
-using System.Web;
 using System.Web.Mvc;
 using Web.Entidades;
+using Web.Models;
 
 namespace Web.Controllers
 {
+    [FiltroSeguridad] 
+    [FiltroAdmin]     
+    [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class BlogController : Controller
     {
-        
-        public BlogRespuesta ConsultarTodos()
-        {
-            using (var client = new HttpClient())
-            {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/ConsultarTodos";
-                var respuesta = client.GetAsync(url).Result;
+        BlogModel modelo = new BlogModel();
 
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    return respuesta.Content.ReadFromJsonAsync<BlogRespuesta>().Result;
-                }
-                else
-                {
-                    return null;
-                }
+        // Acción para mostrar la lista de artículos del blog
+        [HttpGet]
+        public ActionResult Blog()
+        {
+            var respuesta = modelo.ConsultarTodos();
+
+            if (respuesta != null && respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos); 
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al cargar los artículos del blog.";
+                return View(new List<BlogArticulo>());
             }
         }
 
         
-        public BlogRespuesta ConsultarPorId(int id)
+        [HttpGet]
+        public ActionResult Insertar()
         {
-            using (var client = new HttpClient())
-            {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + $"Blog/ConsultarPorId?id={id}";
-                var respuesta = client.GetAsync(url).Result;
-
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    return respuesta.Content.ReadFromJsonAsync<BlogRespuesta>().Result;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            ViewBag.Title = "Agregar Nuevo Artículo";
+            return View();
         }
 
-        public Confirmacion Insertar(BlogArticulo entidad)
+        [HttpPost]
+        public ActionResult Insertar(BlogArticulo entidad)
         {
-            using (var client = new HttpClient())
+            if (entidad == null)
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/Insertar";
-                JsonContent jsonEntidad = JsonContent.Create(entidad);
-                var respuesta = client.PostAsync(url, jsonEntidad).Result;
+                ViewBag.MsjPantalla = "Datos inválidos.";
+                return View();
+            }
 
-                if (respuesta.IsSuccessStatusCode)
+            try
+            {
+                var respuesta = modelo.Insertar(entidad);
+
+                if (respuesta.Codigo == 0)
                 {
-                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
+                    return RedirectToAction("Blog");
                 }
                 else
                 {
-                    return null;
+                    ViewBag.MsjPantalla = respuesta.Detalle;
                 }
             }
-        }
-
-        public Confirmacion Actualizar(BlogArticulo entidad)
-        {
-            using (var client = new HttpClient())
+            catch (Exception ex)
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/Actualizar";
-                JsonContent jsonEntidad = JsonContent.Create(entidad);
-                var respuesta = client.PutAsync(url, jsonEntidad).Result;
-
-                if (respuesta.IsSuccessStatusCode)
-                {
-                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
-                }
-                else
-                {
-                    return null;
-                }
+                ViewBag.MsjPantalla = $"Error al insertar el artículo: {ex.Message}";
             }
+
+            return View(entidad);
         }
 
         
-        public Confirmacion Eliminar(int id)
+        [HttpGet]
+        public ActionResult Editar(int id)
         {
-            using (var client = new HttpClient())
-            {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + $"Blog/Eliminar?id={id}";
-                var respuesta = client.DeleteAsync(url).Result;
+            var respuesta = modelo.ConsultarTodos(); 
+            var articulo = respuesta?.Datos?.Find(a => a.Id == id);
 
-                if (respuesta.IsSuccessStatusCode)
+            if (articulo != null)
+            {
+                return View(articulo);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = "Artículo no encontrado.";
+                return RedirectToAction("Blog");
+            }
+        }
+
+       
+        [HttpPost]
+        public ActionResult Editar(BlogArticulo entidad)
+        {
+            if (entidad == null)
+            {
+                ViewBag.MsjPantalla = "Datos inválidos.";
+                return View(entidad);
+            }
+
+            try
+            {
+                var respuesta = modelo.Actualizar(entidad);
+
+                if (respuesta.Codigo == 0)
                 {
-                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
+                    return RedirectToAction("Blog");
                 }
                 else
                 {
-                    return null;
+                    ViewBag.MsjPantalla = respuesta.Detalle;
                 }
             }
+            catch (Exception ex)
+            {
+                ViewBag.MsjPantalla = $"Error al actualizar el artículo: {ex.Message}";
+            }
+
+            return View(entidad);
+        }
+
+  
+        [HttpGet]
+        public ActionResult Eliminar(int id)
+        {
+            try
+            {
+                var respuesta = modelo.Eliminar(id);
+
+                if (respuesta.Codigo == 0)
+                {
+                    return RedirectToAction("Blog");
+                }
+                else
+                {
+                    ViewBag.MsjPantalla = respuesta.Detalle;
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MsjPantalla = $"Error al eliminar el artículo: {ex.Message}";
+            }
+
+            return RedirectToAction("Blog");
         }
     }
 }

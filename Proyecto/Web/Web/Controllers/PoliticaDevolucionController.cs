@@ -18,7 +18,7 @@ namespace Web.Controllers
         PoliticaDevolucionModel modelo = new PoliticaDevolucionModel();
 
         [HttpGet]
-        public ActionResult VerPoliticaDevolucion()
+        public ActionResult PoliticaDevolucion()
         {
             var respuesta = modelo.ConsultarTodos();
 
