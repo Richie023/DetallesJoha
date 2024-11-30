@@ -85,5 +85,35 @@ namespace Web.Models
                     return null;
             }
         }
+
+
+
+        public ConfirmacionUsuario ConsultaUsuarios()
+        {
+            using (var client = new HttpClient())
+            {
+              
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/ConsultarUsuarios";
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionUsuario>().Result;
+                else
+                    return null;
+            }
+        }
+        public ConfirmacionUsuario InactivaUsuario(long Consecutivo)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/InactivaUsuario?Consecutivo=" + Consecutivo;
+                var respuesta = client.DeleteAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionUsuario>().Result;
+                else
+                    return null;
+            }
+        }
     }
 }

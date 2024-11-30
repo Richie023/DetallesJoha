@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="ActualizarImagenProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
           <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
@@ -72,6 +72,7 @@
         <Function Name="ConsultarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
         </Function>
+        <Function Name="ConsultarUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarVentasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarVentasUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -106,6 +107,9 @@
         </Function>
         <Function Name="FiltrarProductosPorCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdCategoria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InactivaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
         </Function>
         <Function Name="IniciarSesionUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Identificacion" Type="varchar" Mode="In" />
@@ -221,8 +225,7 @@
           <Parameter Name="Orden" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DetallesJohaModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetallesJohaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -264,26 +267,26 @@
             <Parameter Name="ConsecutivoProducto" Mode="In" Type="Int64" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="ColsultarAvisoPrivacidad" />
-          <FunctionImport Name="ColsultarAyuda" />
-          <FunctionImport Name="ColsultarBlogs" />
-          <FunctionImport Name="ColsultarPoliticaDevolucion" />
-          <FunctionImport Name="ColsutarPGF" />
+          <FunctionImport Name="ColsultarAvisoPrivacidad" ReturnType="Collection(DetallesJohaModel.ColsultarAvisoPrivacidad_Result)" />
+          <FunctionImport Name="ColsultarAyuda" ReturnType="Collection(DetallesJohaModel.ColsultarAyuda_Result)" />
+          <FunctionImport Name="ColsultarBlogs" ReturnType="Collection(DetallesJohaModel.ColsultarBlogs_Result)" />
+          <FunctionImport Name="ColsultarPoliticaDevolucion" ReturnType="Collection(DetallesJohaModel.ColsultarPoliticaDevolucion_Result)" />
+          <FunctionImport Name="ColsutarPGF" ReturnType="Collection(DetallesJohaModel.ColsutarPGF_Result)" />
           <FunctionImport Name="ConsultarCarrito" ReturnType="Collection(DetallesJohaModel.ConsultarCarrito_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarDetalleFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarDetalleFacturas_Result)">
-            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarFacturas_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarPedidos" ReturnType="Collection(DetallesJohaModel.ConsultarPedidos_Result)" />
           <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
-            <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
+          <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductosPorRangoPrecio" ReturnType="Collection(DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result)">
             <Parameter Name="PrecioMinimo" Mode="In" Type="Decimal" />
@@ -292,34 +295,34 @@
           <FunctionImport Name="ConsultarResennas" ReturnType="Collection(DetallesJohaModel.ConsultarResennas_Result)" />
           <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
           <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarVentas" ReturnType="Collection(DetallesJohaModel.ConsultarVentas_Result)" />
           <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
           <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
           <FunctionImport Name="DeleteAvisoPrivacidad">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="DeleteAyuda">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <FunctionImport Name="DeleteAyuda" ReturnType="Collection(Int32)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteBlog">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="DeletePGF">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <FunctionImport Name="DeletePGF" ReturnType="Collection(String)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePoliticaDevolucion">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarAyuda">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarCarrito">
-            <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCaracteristicas" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result)">
             <Parameter Name="Material" Mode="In" Type="String" />
@@ -327,7 +330,7 @@
             <Parameter Name="Tamanio" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCategoria" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCategoria_Result)">
-            <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+          <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesionUsuario" ReturnType="Collection(DetallesJohaModel.IniciarSesionUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
@@ -352,7 +355,7 @@
             <Parameter Name="Contenido" Mode="In" Type="String" />
             <Parameter Name="ImagenUrl" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="InsertPGF">
+          <FunctionImport Name="InsertPGF" ReturnType="Collection(Decimal)">
             <Parameter Name="Categoria" Mode="In" Type="String" />
             <Parameter Name="Pregunta" Mode="In" Type="String" />
             <Parameter Name="Respuesta" Mode="In" Type="String" />
@@ -364,14 +367,14 @@
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PagarCarrito">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RecuperarAccesoUsuario" ReturnType="Collection(DetallesJohaModel.RecuperarAccesoUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RefacturaFactura" ReturnType="Collection(DetallesJohaModel.RefacturaFactura_Result)">
-            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RegistrarInformacionEmpresa">
             <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
@@ -414,7 +417,7 @@
             <Parameter Name="Contenido" Mode="In" Type="String" />
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="UpdateAyuda">
+          <FunctionImport Name="UpdateAyuda" ReturnType="Collection(DetallesJohaModel.UpdateAyuda_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="categoria" Mode="In" Type="String" />
             <Parameter Name="titulo" Mode="In" Type="String" />
@@ -429,7 +432,7 @@
             <Parameter Name="Contenido" Mode="In" Type="String" />
             <Parameter Name="Imagen_url" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="UpdatePGF">
+          <FunctionImport Name="UpdatePGF" ReturnType="Collection(DetallesJohaModel.UpdatePGF_Result)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
             <Parameter Name="Categoria" Mode="In" Type="String" />
             <Parameter Name="Pregunta" Mode="In" Type="String" />
@@ -442,7 +445,52 @@
             <Parameter Name="Contenido" Mode="In" Type="String" />
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ConsultarUsuarios" ReturnType="Collection(DetallesJohaModel.ConsultarUsuarios_Result)" />
+          <FunctionImport Name="InactivaUsuario">
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ColsultarAvisoPrivacidad_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="subtitulo_seccion" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="contenido" Nullable="false" />
+          <Property Type="Int32" Name="orden" Nullable="false" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ColsultarAyuda_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="contenido" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="imagen_url" Nullable="true" MaxLength="5000" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ColsultarBlogs_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="resumen" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="contenido" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="imagen_url" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="fecha_publicacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ColsultarPoliticaDevolucion_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="subtitulo_seccion" Nullable="true" MaxLength="5000" />
+          <Property Type="String" Name="contenido" Nullable="false" />
+          <Property Type="Int32" Name="orden" Nullable="false" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ColsutarPGF_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="pregunta" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="respuesta" Nullable="false" MaxLength="5000" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
         <ComplexType Name="ConsultarCarrito_Result">
           <Property Type="Int64" Name="ConsecutivoCarrito" Nullable="false" />
           <Property Type="Int64" Name="ConsecutivoUsuario" Nullable="false" />
@@ -654,6 +702,32 @@
           <Property Type="Int64" Name="Consecutivo" Nullable="true" />
           <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="10" Scale="2" />
         </ComplexType>
+        <ComplexType Name="UpdateAyuda_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="titulo" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="contenido" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="imagen_url" Nullable="true" MaxLength="5000" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="UpdatePGF_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="categoria" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="pregunta" Nullable="false" MaxLength="5000" />
+          <Property Type="String" Name="respuesta" Nullable="false" MaxLength="5000" />
+          <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ConsultarUsuarios_Result">
+          <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Boolean" Name="Temporal" Nullable="false" />
+          <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
+          <Property Type="Int64" Name="ConsecutivoRol" Nullable="false" />
+          <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -665,11 +739,67 @@
           <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="DetallesJohaModel.Store.ActualizarProducto" />
           <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="DetallesJohaModel.Store.ActualizarUsuario" />
           <FunctionImportMapping FunctionImportName="AgregarCarrito" FunctionName="DetallesJohaModel.Store.AgregarCarrito" />
-          <FunctionImportMapping FunctionImportName="ColsultarAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.ColsultarAvisoPrivacidad" />
-          <FunctionImportMapping FunctionImportName="ColsultarAyuda" FunctionName="DetallesJohaModel.Store.ColsultarAyuda" />
-          <FunctionImportMapping FunctionImportName="ColsultarBlogs" FunctionName="DetallesJohaModel.Store.ColsultarBlogs" />
-          <FunctionImportMapping FunctionImportName="ColsultarPoliticaDevolucion" FunctionName="DetallesJohaModel.Store.ColsultarPoliticaDevolucion" />
-          <FunctionImportMapping FunctionImportName="ColsutarPGF" FunctionName="DetallesJohaModel.Store.ColsutarPGF" />
+          <FunctionImportMapping FunctionImportName="ColsultarAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.ColsultarAvisoPrivacidad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarAvisoPrivacidad_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo_seccion" ColumnName="titulo_seccion" />
+                <ScalarProperty Name="subtitulo_seccion" ColumnName="subtitulo_seccion" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ColsultarAyuda" FunctionName="DetallesJohaModel.Store.ColsultarAyuda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarAyuda_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="imagen_url" ColumnName="imagen_url" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ColsultarBlogs" FunctionName="DetallesJohaModel.Store.ColsultarBlogs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarBlogs_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="resumen" ColumnName="resumen" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="imagen_url" ColumnName="imagen_url" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ColsultarPoliticaDevolucion" FunctionName="DetallesJohaModel.Store.ColsultarPoliticaDevolucion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarPoliticaDevolucion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo_seccion" ColumnName="titulo_seccion" />
+                <ScalarProperty Name="subtitulo_seccion" ColumnName="subtitulo_seccion" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="orden" ColumnName="orden" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ColsutarPGF" FunctionName="DetallesJohaModel.Store.ColsutarPGF">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ColsutarPGF_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="pregunta" ColumnName="pregunta" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ConsultarCarrito" FunctionName="DetallesJohaModel.Store.ConsultarCarrito">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarCarrito_Result">
@@ -975,10 +1105,47 @@
           <FunctionImportMapping FunctionImportName="RegistrarResenna" FunctionName="DetallesJohaModel.Store.RegistrarResenna" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="DetallesJohaModel.Store.RegistrarUsuario" />
           <FunctionImportMapping FunctionImportName="UpdateAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.UpdateAvisoPrivacidad" />
-          <FunctionImportMapping FunctionImportName="UpdateAyuda" FunctionName="DetallesJohaModel.Store.UpdateAyuda" />
+          <FunctionImportMapping FunctionImportName="UpdateAyuda" FunctionName="DetallesJohaModel.Store.UpdateAyuda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.UpdateAyuda_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="contenido" ColumnName="contenido" />
+                <ScalarProperty Name="imagen_url" ColumnName="imagen_url" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdateBlog" FunctionName="DetallesJohaModel.Store.UpdateBlog" />
-          <FunctionImportMapping FunctionImportName="UpdatePGF" FunctionName="DetallesJohaModel.Store.UpdatePGF" />
+          <FunctionImportMapping FunctionImportName="UpdatePGF" FunctionName="DetallesJohaModel.Store.UpdatePGF">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.UpdatePGF_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="pregunta" ColumnName="pregunta" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+                <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdatePoliticaDevolucion" FunctionName="DetallesJohaModel.Store.UpdatePoliticaDevolucion" />
+          <FunctionImportMapping FunctionImportName="ConsultarUsuarios" FunctionName="DetallesJohaModel.Store.ConsultarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuarios_Result">
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Temporal" ColumnName="Temporal" />
+                <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
+                <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InactivaUsuario" FunctionName="DetallesJohaModel.Store.InactivaUsuario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -161,10 +161,50 @@
         </div>
         <!-- /MAIN HEADER -->
     </header>
-
+    
 
 
     <!-- NAVIGATION -->
+    <nav id="navigation">
+        <!-- container -->
+        <div class="container">
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
+
+
+                    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                    {
+                        <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
+                        <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
+                        <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
+                        <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
+                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Info E</a></li>
+                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Resenas </a></li>
+
+                    }
+                    else if ((Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "2"))
+                    {
+
+                        <li>
+                            <a href="@Url.Action("ConsultaCarrito", "Carrito")">Mi Carrito</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ConsultarFacturas", "Carrito")">Mis Compras</a>
+                        </li>
+
+                    }
+
+                </ul>
+                <!-- /NAV -->
+
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
     <div class="main-container">
         <div class="aside">
             <h3>Filtrar Productos</h3>
@@ -174,10 +214,12 @@
                     <h3 class="filter-title">Tipo de Ropa</h3>
                     <div class="filter-content">
                         <ul class="filter-list">
+
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 4 })">Ropa de mujer</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -267,39 +309,101 @@
             </div>
         </div>
         <!-- /NAVIGATION -->
+        @RenderBody()
+      
 
-        <div class="main-content">
-            @RenderBody()
+    <!-- NEWSLETTER -->
+    <div id="newsletter" class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="newsletter">
+                        <p>Regístrate al <strong>Bolitín</strong></p>
+                        <form>
+                            <input class="input" type="email" placeholder="Ingrese su correo electrónico">
+                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
+                        </form>
+                        <ul class="newsletter-follow">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
         </div>
+        <!-- /container -->
     </div>
 
-
-        <!-- NEWSLETTER -->
-        <div id="newsletter" class="section">
+    <!-- FOOTER -->
+    <footer id="footer">
+        <!-- top footer -->
+        <div class="section">
             <!-- container -->
             <div class="container">
                 <!-- row -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="newsletter">
-                            <p>Regístrate al <strong>Bolitín</strong></p>
-                            <form>
-                                <input class="input" type="email" placeholder="Ingrese su correo electrónico">
-                                <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
-                            </form>
-                            <ul class="newsletter-follow">
-                                <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </li>
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Acercas de Nosotros</h3>
+                            <p>Somos una Pyme de didicada a la Sublimación</p>
+                            <ul class="footer-links">
+                                <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Categorías</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Descuentos</a></li>
+                                <li><a href="#">Caminisas</a></li>
+                                <li><a href="#">Tazas</a></li>
+                                <li><a href="#">Gorras</a></li>
+                                <li><a href="#">Accesorios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clearfix visible-xs"></div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Información</h3>
+                            <ul class="footer-links">
+                                <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
+                                <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
+                                <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
+                                <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
+                                <li><a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")">Avisos & Privacidad</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Servicios</h3>
+                            <ul class="footer-links">
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
+                                <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
+                                <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
                     </div>
@@ -309,111 +413,45 @@
             <!-- /container -->
         </div>
 
-        <!-- FOOTER -->
-        <footer id="footer">
-            <!-- top footer -->
-            <div class="section">
-                <!-- container -->
-                <div class="container">
-                    <!-- row -->
-                    <div class="row">
-                        <div class="col-md-3 col-xs-6">
-                            <div class="footer">
-                                <h3 class="footer-title">Acercas de Nosotros</h3>
-                                <p>Somos una Pyme de didicada a la Sublimación</p>
-                                <ul class="footer-links">
-                                    <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
-                                    <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
-                        <div class="col-md-3 col-xs-6">
-                            <div class="footer">
-                                <h3 class="footer-title">Categorías</h3>
-                                <ul class="footer-links">
-                                    <li><a href="#">Descuentos</a></li>
-                                    <li><a href="#">Caminisas</a></li>
-                                    <li><a href="#">Tazas</a></li>
-                                    <li><a href="#">Gorras</a></li>
-                                    <li><a href="#">Accesorios</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="clearfix visible-xs"></div>
-
-                        <div class="col-md-3 col-xs-6">
-                            <div class="footer">
-                                <h3 class="footer-title">Información</h3>
-                                <ul class="footer-links">
-                                    <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
-                                    <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
-                                    <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
-                                    <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
-                                    <li><a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")">Avisos & Privacidad</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-xs-6">
-                            <div class="footer">
-                                <h3 class="footer-title">Servicios</h3>
-                                <ul class="footer-links">
-                                    <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
-                                    <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
-                                    <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
-                                    <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
-                                    <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
-                                </ul>
-                            </div>
-                        </div>
+        <!-- /top footer -->
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="footer-payments">
+                            <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                            <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                        </ul>
+                        <span class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
                     </div>
-                    <!-- /row -->
                 </div>
-                <!-- /container -->
+                <!-- /row -->
             </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </footer>
 
-
-            <!-- /top footer -->
-            <!-- bottom footer -->
-            <div id="bottom-footer" class="section">
-                <div class="container">
-                    <!-- row -->
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <ul class="footer-payments">
-                                <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                                <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                            </ul>
-                            <span class="copyright">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </span>
-                        </div>
-                    </div>
-                    <!-- /row -->
-                </div>
-                <!-- /container -->
-            </div>
-            <!-- /bottom footer -->
-        </footer>
-
-        <!-- jQuery Plugins -->
-        <script src="~/Estilos/js/jquery.min.js"></script>
-        <script src="~/Estilos/js/bootstrap.min.js"></script>
-        <script src="~/Estilos/js/slick.min.js"></script>
-        <script src="~/Estilos/js/nouislider.min.js"></script>
-        <script src="~/Estilos/js/jquery.zoom.min.js"></script>
-        <script src="~/Estilos/js/main.js"></script>
-        <script src="~/Estilos/js/Filtros.js"></script>
+    <!-- jQuery Plugins -->
+    <script src="~/Estilos/js/jquery.min.js"></script>
+    <script src="~/Estilos/js/bootstrap.min.js"></script>
+    <script src="~/Estilos/js/slick.min.js"></script>
+    <script src="~/Estilos/js/nouislider.min.js"></script>
+    <script src="~/Estilos/js/jquery.zoom.min.js"></script>
+    <script src="~/Estilos/js/main.js"></script>
+    <script src="~/Estilos/js/Filtros.js"></script>
 
 </body>
 </html>

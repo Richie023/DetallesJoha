@@ -77,5 +77,72 @@ namespace Api.Controllers
 
             return respuesta;
         }
+    
+     [HttpGet]
+        [Route("Usuario/ConsultarUsuarios")]
+        public ConfirmacionUsuario ConsultarUsuarios()
+        {
+            var respuesta = new ConfirmacionUsuario();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarUsuarios().ToList();
+
+                    if (datos != null)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Datos = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron resultados";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+        [HttpDelete]
+        [Route("Usuario/InactivaUsuario")]
+        public ConfirmacionUsuario InactivaUsuario(long Consecutivo)
+        {
+            var respuesta = new ConfirmacionUsuario();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.InactivaUsuario(Consecutivo);
+
+                    if (datos > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "El producto no se pudo eliminar";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
     }
 }

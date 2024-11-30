@@ -37,5 +37,29 @@ namespace Web.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult ConsultarUsuarios()
+        {
+            var resp = modelo.ConsultaUsuarios();
+            return View(resp.Datos);
+        }
+
+        [HttpGet]
+        public ActionResult InactivaUsuario(long id)
+        {
+            var respuesta = modelo.InactivaUsuario(id);
+
+            if (respuesta.Codigo == 0)
+            {
+                return RedirectToAction("ConsultarUsuarios", "Usuario");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View();
+            }
+        }
+
     }
 }

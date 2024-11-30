@@ -8,7 +8,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [FiltroSeguridad] 
-    [FiltroAdmin]     
+    
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class PreguntasFrecuentesController : Controller
     {

@@ -161,29 +161,29 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarCarrito", consecutivoUsuarioParameter, consecutivoProductoParameter, cantidadParameter);
         }
     
-        public virtual int ColsultarAvisoPrivacidad()
+        public virtual ObjectResult<ColsultarAvisoPrivacidad_Result> ColsultarAvisoPrivacidad()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ColsultarAvisoPrivacidad");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsultarAvisoPrivacidad_Result>("ColsultarAvisoPrivacidad");
         }
     
-        public virtual int ColsultarAyuda()
+        public virtual ObjectResult<ColsultarAyuda_Result> ColsultarAyuda()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ColsultarAyuda");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsultarAyuda_Result>("ColsultarAyuda");
         }
     
-        public virtual int ColsultarBlogs()
+        public virtual ObjectResult<ColsultarBlogs_Result> ColsultarBlogs()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ColsultarBlogs");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsultarBlogs_Result>("ColsultarBlogs");
         }
     
-        public virtual int ColsultarPoliticaDevolucion()
+        public virtual ObjectResult<ColsultarPoliticaDevolucion_Result> ColsultarPoliticaDevolucion()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ColsultarPoliticaDevolucion");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsultarPoliticaDevolucion_Result>("ColsultarPoliticaDevolucion");
         }
     
-        public virtual int ColsutarPGF()
+        public virtual ObjectResult<ColsutarPGF_Result> ColsutarPGF()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ColsutarPGF");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsutarPGF_Result>("ColsutarPGF");
         }
     
         public virtual ObjectResult<ConsultarCarrito_Result> ConsultarCarrito(Nullable<long> consecutivoUsuario)
@@ -292,13 +292,13 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAvisoPrivacidad", idParameter);
         }
     
-        public virtual int DeleteAyuda(Nullable<int> id)
+        public virtual ObjectResult<Nullable<int>> DeleteAyuda(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAyuda", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DeleteAyuda", idParameter);
         }
     
         public virtual int DeleteBlog(Nullable<int> id)
@@ -310,13 +310,13 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteBlog", idParameter);
         }
     
-        public virtual int DeletePGF(Nullable<int> id)
+        public virtual ObjectResult<string> DeletePGF(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
                 new ObjectParameter("Id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeletePGF", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DeletePGF", idParameter);
         }
     
         public virtual int DeletePoliticaDevolucion(Nullable<int> id)
@@ -461,7 +461,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertBlog", categoriaParameter, tituloParameter, resumenParameter, contenidoParameter, imagenUrlParameter);
         }
     
-        public virtual int InsertPGF(string categoria, string pregunta, string respuesta)
+        public virtual ObjectResult<Nullable<decimal>> InsertPGF(string categoria, string pregunta, string respuesta)
         {
             var categoriaParameter = categoria != null ?
                 new ObjectParameter("Categoria", categoria) :
@@ -475,7 +475,7 @@ namespace Api.Models
                 new ObjectParameter("Respuesta", respuesta) :
                 new ObjectParameter("Respuesta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPGF", categoriaParameter, preguntaParameter, respuestaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("InsertPGF", categoriaParameter, preguntaParameter, respuestaParameter);
         }
     
         public virtual int InsertPoliticaDevolucion(string tituloSeccion, string subtituloSeccion, string contenido, Nullable<int> orden)
@@ -679,7 +679,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAvisoPrivacidad", idParameter, tituloSeccionParameter, subtituloSeccionParameter, contenidoParameter, ordenParameter);
         }
     
-        public virtual int UpdateAyuda(Nullable<int> id, string categoria, string titulo, string contenido, string imagen_url)
+        public virtual ObjectResult<UpdateAyuda_Result> UpdateAyuda(Nullable<int> id, string categoria, string titulo, string contenido, string imagen_url)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -701,7 +701,7 @@ namespace Api.Models
                 new ObjectParameter("imagen_url", imagen_url) :
                 new ObjectParameter("imagen_url", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAyuda", idParameter, categoriaParameter, tituloParameter, contenidoParameter, imagen_urlParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdateAyuda_Result>("UpdateAyuda", idParameter, categoriaParameter, tituloParameter, contenidoParameter, imagen_urlParameter);
         }
     
         public virtual int UpdateBlog(Nullable<int> id, string categoria, string titulo, string resumen, string contenido, string imagen_url)
@@ -733,7 +733,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateBlog", idParameter, categoriaParameter, tituloParameter, resumenParameter, contenidoParameter, imagen_urlParameter);
         }
     
-        public virtual int UpdatePGF(Nullable<int> id, string categoria, string pregunta, string respuesta)
+        public virtual ObjectResult<UpdatePGF_Result> UpdatePGF(Nullable<int> id, string categoria, string pregunta, string respuesta)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("Id", id) :
@@ -751,7 +751,7 @@ namespace Api.Models
                 new ObjectParameter("Respuesta", respuesta) :
                 new ObjectParameter("Respuesta", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePGF", idParameter, categoriaParameter, preguntaParameter, respuestaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdatePGF_Result>("UpdatePGF", idParameter, categoriaParameter, preguntaParameter, respuestaParameter);
         }
     
         public virtual int UpdatePoliticaDevolucion(Nullable<int> id, string tituloSeccion, string subtituloSeccion, string contenido, Nullable<int> orden)
@@ -777,6 +777,20 @@ namespace Api.Models
                 new ObjectParameter("Orden", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePoliticaDevolucion", idParameter, tituloSeccionParameter, subtituloSeccionParameter, contenidoParameter, ordenParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarUsuarios_Result> ConsultarUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarUsuarios_Result>("ConsultarUsuarios");
+        }
+    
+        public virtual int InactivaUsuario(Nullable<long> consecutivo)
+        {
+            var consecutivoParameter = consecutivo.HasValue ?
+                new ObjectParameter("Consecutivo", consecutivo) :
+                new ObjectParameter("Consecutivo", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InactivaUsuario", consecutivoParameter);
         }
     }
 }
