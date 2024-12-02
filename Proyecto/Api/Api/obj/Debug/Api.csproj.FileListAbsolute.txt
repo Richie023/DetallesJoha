@@ -85,8 +85,6 @@ D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Api\Api\bin\M
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Api\Api\obj\Debug\Api.dll
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Api\Api\obj\Debug\Api.pdb
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Api\Api\obj\Debug\Api.csproj.Up2Date
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.csproj.AssemblyReference.cache
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.csproj.CoreCompileInputs.cache
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Api.dll.config
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Api.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Api.pdb
@@ -168,6 +166,8 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\System.Web.WebPages.Razor.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\System.Web.Optimization.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\bin\Antlr3.Runtime.pdb
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.csproj.AssemblyReference.cache
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.csproj.CoreCompileInputs.cache
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.csproj.Up2Date
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\obj\Debug\Api.pdb

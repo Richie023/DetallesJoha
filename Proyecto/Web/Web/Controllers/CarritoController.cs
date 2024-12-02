@@ -129,7 +129,7 @@ namespace Web.Controllers
             }
         }
         [HttpGet]
-        public ActionResult RefacturaFactura(long id)
+        public ActionResult RefacturaFactura(long id, long Cant)
         {
             var respuesta = modelo.RefacturaFactura(id);
 

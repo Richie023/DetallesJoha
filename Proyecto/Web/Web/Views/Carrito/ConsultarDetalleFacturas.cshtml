@@ -46,9 +46,9 @@
                                         <td>@item.Total.ToString("N2")</td>
                                         <td style="text-align:center">
                                             @item.ConsecutivoProducto
-                                        
 
-                                            @using (Html.BeginForm(" RefacturaFactura", "Carrito", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                                            @using (Html.BeginForm(" AgregarCarrito", "Carrito", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                                             {
 
                                                 @Html.HiddenFor(m => item.ConsecutivoProducto)
@@ -60,13 +60,13 @@
 
                                         </td>
 
-                                      
+
                                     </tr>
                                 }
                             </tbody>
 
                         </table>
-                        
+
                     </div>
                 </div>
             </div>
@@ -83,5 +83,61 @@
             }
         });
     });
+
+
+</script>
+
+<script>
+    function ValidarNumeros(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode >= 48 && charCode <= 57) {
+            return true;
+        }
+        return false;
+    }
+
+    function AgregarCarrito(id, inventario) {
+        let cantProducto = $("#prd-" + id).val();
+
+        if (cantProducto > inventario) {
+            MostrarAlert("info", "Debes ingresar una cantidad inferior");
+            return;
+        }
+
+        if (cantProducto <= 0) {
+            MostrarAlert("info", "Debe ingresar una cantidad válida");
+            return;
+        }
+
+        $.ajax({
+            url: '/Carrito/AgregarCarrito',
+            type: "POST",
+            data: {
+                "idProducto": id,
+                "cantProducto": cantProducto
+            },
+            success: function (data) {
+                if (data == "OK") {
+                    window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
+                } else {
+                    alert('Debes iniciar Sesión o registrarte para comprar este producto');
+                }
+            }
+        });
+    }
+
+        function AgregarAFavoritos(productoId) {
+            // Aquí agregas tu lógica para agregar a favoritos
+        }
+
+        function MostrarAlert(icono, mensaje) {
+            Swal.fire({
+                position: "center",
+                icon: icono,
+                title: mensaje,
+                showConfirmButton: false,
+                timer: 2500
+            });
+        }
 
 </script>

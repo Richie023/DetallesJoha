@@ -201,6 +201,7 @@
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\InfoE.cs" />
     <Compile Include="Entidades\Resena.cs" />
+    <Compile Include="Entidades\Roles.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Ventas.cs" />
@@ -244,6 +245,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarResennas_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarRoles_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarTiposCategoria_Result.cs">

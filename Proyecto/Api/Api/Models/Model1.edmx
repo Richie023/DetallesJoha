@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="ActualizarImagenProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
           <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
@@ -30,12 +30,14 @@
           <Parameter Name="Material" Type="varchar" Mode="In" />
           <Parameter Name="Tamanio" Type="varchar" Mode="In" />
           <Parameter Name="ColorBase" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Promocion" Type="int" Mode="In" />
         </Function>
         <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
+          <Parameter Name="ConsecutivoRol" Type="int" Mode="In" />
         </Function>
         <Function Name="AgregarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
@@ -68,6 +70,7 @@
           <Parameter Name="PrecioMaximo" Type="decimal" Mode="In" />
         </Function>
         <Function Name="ConsultarResennas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ConsultarRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarTiposCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
@@ -225,7 +228,8 @@
           <Parameter Name="Orden" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DetallesJohaModelStoreContainer" />
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetallesJohaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -255,12 +259,14 @@
             <Parameter Name="Material" Mode="In" Type="String" />
             <Parameter Name="Tamanio" Mode="In" Type="String" />
             <Parameter Name="ColorBase" Mode="In" Type="String" />
+            <Parameter Name="Id_Promocion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ActualizarUsuario">
             <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
+            <Parameter Name="ConsecutivoRol" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AgregarCarrito">
             <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
@@ -273,56 +279,58 @@
           <FunctionImport Name="ColsultarPoliticaDevolucion" ReturnType="Collection(DetallesJohaModel.ColsultarPoliticaDevolucion_Result)" />
           <FunctionImport Name="ColsutarPGF" ReturnType="Collection(DetallesJohaModel.ColsutarPGF_Result)" />
           <FunctionImport Name="ConsultarCarrito" ReturnType="Collection(DetallesJohaModel.ConsultarCarrito_Result)">
-          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarDetalleFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarDetalleFacturas_Result)">
-          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarFacturas_Result)">
-          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarPedidos" ReturnType="Collection(DetallesJohaModel.ConsultarPedidos_Result)" />
           <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
-          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
-          <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
+            <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductosPorRangoPrecio" ReturnType="Collection(DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result)">
             <Parameter Name="PrecioMinimo" Mode="In" Type="Decimal" />
             <Parameter Name="PrecioMaximo" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ConsultarResennas" ReturnType="Collection(DetallesJohaModel.ConsultarResennas_Result)" />
+          <FunctionImport Name="ConsultarRoles" ReturnType="Collection(DetallesJohaModel.ConsultarRoles_Result)" />
           <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
           <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
-          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
+          <FunctionImport Name="ConsultarUsuarios" ReturnType="Collection(DetallesJohaModel.ConsultarUsuarios_Result)" />
           <FunctionImport Name="ConsultarVentas" ReturnType="Collection(DetallesJohaModel.ConsultarVentas_Result)" />
           <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
           <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
           <FunctionImport Name="DeleteAvisoPrivacidad">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteAyuda" ReturnType="Collection(Int32)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteBlog">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePGF" ReturnType="Collection(String)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePoliticaDevolucion">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarAyuda">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarCarrito">
-          <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCaracteristicas" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result)">
             <Parameter Name="Material" Mode="In" Type="String" />
@@ -330,7 +338,10 @@
             <Parameter Name="Tamanio" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCategoria" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCategoria_Result)">
-          <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InactivaUsuario">
+            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesionUsuario" ReturnType="Collection(DetallesJohaModel.IniciarSesionUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
@@ -367,14 +378,14 @@
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PagarCarrito">
-          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RecuperarAccesoUsuario" ReturnType="Collection(DetallesJohaModel.RecuperarAccesoUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RefacturaFactura" ReturnType="Collection(DetallesJohaModel.RefacturaFactura_Result)">
-          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RegistrarInformacionEmpresa">
             <Parameter Name="NombreEmpresa" Mode="In" Type="String" />
@@ -444,10 +455,6 @@
             <Parameter Name="SubtituloSeccion" Mode="In" Type="String" />
             <Parameter Name="Contenido" Mode="In" Type="String" />
             <Parameter Name="Orden" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="ConsultarUsuarios" ReturnType="Collection(DetallesJohaModel.ConsultarUsuarios_Result)" />
-          <FunctionImport Name="InactivaUsuario">
-          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ColsultarAvisoPrivacidad_Result">
@@ -555,7 +562,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -607,6 +614,10 @@
           <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
           <Property Type="DateTime" Name="FechaResenna" Nullable="false" Precision="23" />
         </ComplexType>
+        <ComplexType Name="ConsultarRoles_Result">
+          <Property Type="Int32" Name="ConsecutivoRol" Nullable="false" />
+          <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="ConsultarTiposCategoria_Result">
           <Property Type="Int32" Name="IdCategoria" Nullable="false" />
           <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
@@ -619,7 +630,18 @@
           <Property Type="Boolean" Name="Estado" Nullable="false" />
           <Property Type="Boolean" Name="Temporal" Nullable="false" />
           <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
-          <Property Type="Int64" Name="ConsecutivoRol" Nullable="false" />
+          <Property Type="Int32" Name="ConsecutivoRol" Nullable="false" />
+          <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="ConsultarUsuarios_Result">
+          <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Boolean" Name="Temporal" Nullable="false" />
+          <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="ConsecutivoRol" Nullable="false" />
           <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="ConsultarVentas_Result">
@@ -646,7 +668,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -665,7 +687,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -680,7 +702,7 @@
           <Property Type="Boolean" Name="Estado" Nullable="false" />
           <Property Type="Boolean" Name="Temporal" Nullable="false" />
           <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
-          <Property Type="Int64" Name="ConsecutivoRol" Nullable="false" />
+          <Property Type="Int32" Name="ConsecutivoRol" Nullable="false" />
           <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="RecuperarAccesoUsuario_Result">
@@ -716,17 +738,6 @@
           <Property Type="String" Name="pregunta" Nullable="false" MaxLength="5000" />
           <Property Type="String" Name="respuesta" Nullable="false" MaxLength="5000" />
           <Property Type="DateTime" Name="ultima_actualizacion" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="ConsultarUsuarios_Result">
-          <Property Type="Int64" Name="Consecutivo" Nullable="false" />
-          <Property Type="String" Name="Identificacion" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="200" />
-          <Property Type="Boolean" Name="Estado" Nullable="false" />
-          <Property Type="Boolean" Name="Temporal" Nullable="false" />
-          <Property Type="DateTime" Name="Vencimiento" Nullable="false" Precision="23" />
-          <Property Type="Int64" Name="ConsecutivoRol" Nullable="false" />
-          <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -948,6 +959,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarRoles" FunctionName="DetallesJohaModel.Store.ConsultarRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarRoles_Result">
+                <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ConsultarTiposCategoria" FunctionName="DetallesJohaModel.Store.ConsultarTiposCategoria">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarTiposCategoria_Result">
@@ -959,6 +978,21 @@
           <FunctionImportMapping FunctionImportName="ConsultarUsuario" FunctionName="DetallesJohaModel.Store.ConsultarUsuario">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuario_Result">
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Temporal" ColumnName="Temporal" />
+                <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
+                <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultarUsuarios" FunctionName="DetallesJohaModel.Store.ConsultarUsuarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuarios_Result">
                 <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
                 <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1049,6 +1083,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InactivaUsuario" FunctionName="DetallesJohaModel.Store.InactivaUsuario" />
           <FunctionImportMapping FunctionImportName="IniciarSesionUsuario" FunctionName="DetallesJohaModel.Store.IniciarSesionUsuario">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.IniciarSesionUsuario_Result">
@@ -1130,22 +1165,6 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UpdatePoliticaDevolucion" FunctionName="DetallesJohaModel.Store.UpdatePoliticaDevolucion" />
-          <FunctionImportMapping FunctionImportName="ConsultarUsuarios" FunctionName="DetallesJohaModel.Store.ConsultarUsuarios">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuarios_Result">
-                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
-                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Temporal" ColumnName="Temporal" />
-                <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
-                <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
-                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="InactivaUsuario" FunctionName="DetallesJohaModel.Store.InactivaUsuario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

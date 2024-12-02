@@ -215,6 +215,14 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarRoles" FunctionName="DetallesJohaModel.Store.ConsultarRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarRoles_Result">
+          <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ConsultarTiposCategoria" FunctionName="DetallesJohaModel.Store.ConsultarTiposCategoria">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarTiposCategoria_Result">
@@ -226,6 +234,21 @@
     <FunctionImportMapping FunctionImportName="ConsultarUsuario" FunctionName="DetallesJohaModel.Store.ConsultarUsuario">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuario_Result">
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Temporal" ColumnName="Temporal" />
+          <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
+          <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarUsuarios" FunctionName="DetallesJohaModel.Store.ConsultarUsuarios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuarios_Result">
           <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
           <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -316,6 +339,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InactivaUsuario" FunctionName="DetallesJohaModel.Store.InactivaUsuario" />
     <FunctionImportMapping FunctionImportName="IniciarSesionUsuario" FunctionName="DetallesJohaModel.Store.IniciarSesionUsuario">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.IniciarSesionUsuario_Result">
@@ -397,21 +421,5 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UpdatePoliticaDevolucion" FunctionName="DetallesJohaModel.Store.UpdatePoliticaDevolucion" />
-    <FunctionImportMapping FunctionImportName="ConsultarUsuarios" FunctionName="DetallesJohaModel.Store.ConsultarUsuarios">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarUsuarios_Result">
-          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
-          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="Temporal" ColumnName="Temporal" />
-          <ScalarProperty Name="Vencimiento" ColumnName="Vencimiento" />
-          <ScalarProperty Name="ConsecutivoRol" ColumnName="ConsecutivoRol" />
-          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="InactivaUsuario" FunctionName="DetallesJohaModel.Store.InactivaUsuario" />
   </EntityContainerMapping>
 </Mapping>

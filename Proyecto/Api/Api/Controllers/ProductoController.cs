@@ -322,7 +322,7 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase);
+                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase,entidad.Id_Promocion);
 
                     if (resp > 0)
                     {

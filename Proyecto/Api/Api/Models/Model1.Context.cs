@@ -86,7 +86,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarInfo", consecutivoInformacionParameter, nombreEmpresaParameter, telefonoParameter, correoElectronicoParameter, direccionParameter, acercaDeNosotrosParameter, contactanosParameter, politicasParameter, ordenesDevolucionesParameter, terminosCondicionesParameter);
         }
     
-        public virtual int ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase)
+        public virtual int ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> id_Promocion)
         {
             var consecutivoParameter = consecutivo.HasValue ?
                 new ObjectParameter("Consecutivo", consecutivo) :
@@ -120,10 +120,14 @@ namespace Api.Models
                 new ObjectParameter("ColorBase", colorBase) :
                 new ObjectParameter("ColorBase", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter);
+            var id_PromocionParameter = id_Promocion.HasValue ?
+                new ObjectParameter("Id_Promocion", id_Promocion) :
+                new ObjectParameter("Id_Promocion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, id_PromocionParameter);
         }
     
-        public virtual int ActualizarUsuario(Nullable<long> consecutivo, string contrasenna, string nombre, string correoElectronico)
+        public virtual int ActualizarUsuario(Nullable<long> consecutivo, string contrasenna, string nombre, string correoElectronico, Nullable<int> consecutivoRol)
         {
             var consecutivoParameter = consecutivo.HasValue ?
                 new ObjectParameter("Consecutivo", consecutivo) :
@@ -141,7 +145,11 @@ namespace Api.Models
                 new ObjectParameter("CorreoElectronico", correoElectronico) :
                 new ObjectParameter("CorreoElectronico", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarUsuario", consecutivoParameter, contrasennaParameter, nombreParameter, correoElectronicoParameter);
+            var consecutivoRolParameter = consecutivoRol.HasValue ?
+                new ObjectParameter("ConsecutivoRol", consecutivoRol) :
+                new ObjectParameter("ConsecutivoRol", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarUsuario", consecutivoParameter, contrasennaParameter, nombreParameter, correoElectronicoParameter, consecutivoRolParameter);
         }
     
         public virtual int AgregarCarrito(Nullable<long> consecutivoUsuario, Nullable<long> consecutivoProducto, Nullable<int> cantidad)
@@ -254,6 +262,11 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarResennas_Result>("ConsultarResennas");
         }
     
+        public virtual ObjectResult<ConsultarRoles_Result> ConsultarRoles()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarRoles_Result>("ConsultarRoles");
+        }
+    
         public virtual ObjectResult<ConsultarTiposCategoria_Result> ConsultarTiposCategoria()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarTiposCategoria_Result>("ConsultarTiposCategoria");
@@ -266,6 +279,11 @@ namespace Api.Models
                 new ObjectParameter("Consecutivo", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarUsuario_Result>("ConsultarUsuario", consecutivoParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarUsuarios_Result> ConsultarUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarUsuarios_Result>("ConsultarUsuarios");
         }
     
         public virtual ObjectResult<ConsultarVentas_Result> ConsultarVentas()
@@ -379,6 +397,15 @@ namespace Api.Models
                 new ObjectParameter("IdCategoria", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FiltrarProductosPorCategoria_Result>("FiltrarProductosPorCategoria", idCategoriaParameter);
+        }
+    
+        public virtual int InactivaUsuario(Nullable<long> consecutivo)
+        {
+            var consecutivoParameter = consecutivo.HasValue ?
+                new ObjectParameter("Consecutivo", consecutivo) :
+                new ObjectParameter("Consecutivo", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InactivaUsuario", consecutivoParameter);
         }
     
         public virtual ObjectResult<IniciarSesionUsuario_Result> IniciarSesionUsuario(string identificacion, string contrasenna)
@@ -777,20 +804,6 @@ namespace Api.Models
                 new ObjectParameter("Orden", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePoliticaDevolucion", idParameter, tituloSeccionParameter, subtituloSeccionParameter, contenidoParameter, ordenParameter);
-        }
-    
-        public virtual ObjectResult<ConsultarUsuarios_Result> ConsultarUsuarios()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarUsuarios_Result>("ConsultarUsuarios");
-        }
-    
-        public virtual int InactivaUsuario(Nullable<long> consecutivo)
-        {
-            var consecutivoParameter = consecutivo.HasValue ?
-                new ObjectParameter("Consecutivo", consecutivo) :
-                new ObjectParameter("Consecutivo", typeof(long));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InactivaUsuario", consecutivoParameter);
         }
     }
 }

@@ -18,17 +18,17 @@
 
 @foreach (var item in Model)
 {
-<div class="row">
-    <div class="col-md-3">
+<div class="collapsed">
+    <div class="">
     </div>
 
-    <div class="col-md-6">
-        <div class="card  border-info  ">
+    <div class="">
+        <div class="  "  >
 
 
-            <div class="card-header" id="heading_@item.ConsecutivoMaestro">
+            <div class="" id="heading_@item.ConsecutivoMaestro">
 
-                <h5 class="mb-0">
+                <h5 class="">
                     <button class="btn btn-info collapsed btn-block " data-toggle="collapse" data-target="#collapse_@item.ConsecutivoMaestro" aria-expanded="false" aria-controls="collapse">
                         <div class="col-lg-4">
                             Fecha Del Pedido
@@ -37,7 +37,10 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            Total<br> @item.Total.ToString("N2")
+                            Total
+                            <div>
+                                @item.Total.ToString("N2")
+                            </div>
                         </div>
                         <div class="col-lg-4">
                             Numero:
@@ -55,7 +58,7 @@
                     <h5>Detalles del pedido</h5>
                     <div class="">
                         Nombre Cliente:   @item.NombreUsuario &nbsp&nbsp <br />
-                        Id Producto : @item.Consecutivo<br />
+                        Id Producto : @item.ConsecutivoProducto<br />
                         Producto :   @item.Nombre &nbsp&nbsp <br />
                         Cantidad : @item.Cantidad&nbsp&nbsp<br />
                         Precio : @item.Precio.ToString("N2")&nbsp&nbsp<br />
@@ -87,7 +90,7 @@
 
 
 
-<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+@*<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
     <thead>
         <tr role="row">
             <th># Factura</th>
@@ -118,7 +121,7 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
 
 <script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
 <script>

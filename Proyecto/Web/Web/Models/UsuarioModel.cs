@@ -59,8 +59,25 @@ namespace Web.Models
         {
             using (var client = new HttpClient())
             {
-                long Consecutivo = long.Parse(HttpContext.Current.Session["Consecutivo"].ToString());
+                if(HttpContext.Current.Session["RolUsuario"].ToString() == "2"){
+
+                }
+              long Consecutivo = long.Parse(HttpContext.Current.Session["Consecutivo"].ToString());   
                 string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/ConsultarUsuario?Consecutivo=" + Consecutivo;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionUsuario>().Result;
+                else
+                    return null;
+            }
+        }    public ConfirmacionUsuario ConsultaUsuario(long id)
+        {
+            using (var client = new HttpClient())
+            {
+                
+         
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/ConsultarUsuario?Consecutivo=" + id;
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
@@ -85,7 +102,21 @@ namespace Web.Models
                     return null;
             }
         }
+        public Confirmacion ActualizaUsuario(Usuario entidad)
+        {
+            using (var client = new HttpClient())
+            {
+               
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/ActualizarUsuario";
+                JsonContent jsonEntidad = JsonContent.Create(entidad);
+                var respuesta = client.PutAsync(url, jsonEntidad).Result;
 
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<Confirmacion>().Result;
+                else
+                    return null;
+            }
+        }
 
 
         public ConfirmacionUsuario ConsultaUsuarios()
@@ -115,5 +146,21 @@ namespace Web.Models
                     return null;
             }
         }
+
+
+        public ConfirmacionRoles ConsultarRoles()
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Usuario/ConsultarRoles";
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<ConfirmacionRoles>().Result;
+                else
+                    return null;
+            }
+        }
+
     }
 }

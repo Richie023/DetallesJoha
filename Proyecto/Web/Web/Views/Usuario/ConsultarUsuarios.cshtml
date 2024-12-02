@@ -29,6 +29,7 @@
                         <table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
                             <thead>
                                 <tr role="row">
+                                    <th>ID</th>
                                     <th>Identificación</th>
                                     <th>Nombre</th>
                                     <th>CorreoElectronico</th>
@@ -42,6 +43,7 @@
                                 @foreach (var item in Model)
                                 {
                                 <tr class="odd">
+                                    <td>@item.Consecutivo</td>
                                     <td>@item.Identificacion</td>
                                     <td>@item.Nombre</td>
                                     <td>@item.CorreoElectronico</td>
@@ -54,10 +56,11 @@
                                     {
                                         <td>Inactivo</td>
                                     }
-                                    <td style="text-align:center">
-                                        @*<a href="@Url.Action("","Usuario", new { id = @item.Consecutivo })"><i class="fa fa-pencil-square-o fa-2x"></i></a>*@
-                                        <a href="@Url.Action("InactivaUsuario","Usuario", new { id = @item.Consecutivo })"><i class="fa fa-trash-o fa-2x"></i></a>
-                                    </td>
+                                <td style="text-align:center">
+                                
+                                    <a href="@Url.Action("ActualizaUsuario","Usuario", new { id = @item.Consecutivo})"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                                    <a href="@Url.Action("InactivaUsuario","Usuario", new { id = @item.Consecutivo })"><i class="fa fa-trash-o fa-2x"></i></a>
+                                </td>
                                 </tr>
                                 }
                             </tbody>

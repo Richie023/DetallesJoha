@@ -2198,3 +2198,220 @@ textarea.input {
     content: '\f107';
     font-family: 'Font Awesome 5 Free';
 }
+
+/* Estilos base de la tarjeta */
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+/* Espacio fijo para el descuento y corazón */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+.discount-badge {
+    background-color: #ff0000;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.product-heart {
+    color: #666;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .product-heart:hover {
+        color: #e74c3c;
+    }
+
+/* Espacio para imagen */
+.product-img-container {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.product-card:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* Contenido del producto */
+.product-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+/* Nombre del producto con margen inferior reducido */
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: -1.5rem; /* Reducido para menos espacio debajo */
+    line-height: 1.2;
+    height: 2.4em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Etiqueta de porcentaje de descuento con altura fija y sin margen extra */
+.rebaja-label {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 1; /* Asegura que el texto no ocupe demasiado espacio */
+    margin: 0; /* Sin margen adicional */
+    height: 15px; /* Altura fija ajustada */
+    visibility: visible;
+}
+
+
+/* Precio con espacio fijo */
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.current-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.product-old-price {
+    font-size: 1.5rem;
+    color: #95a5a6;
+    text-decoration: line-through;
+}
+
+/* Estrellas */
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin: 0.5rem 0;
+}
+
+.star {
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+    .star.selected {
+        color: #f39c12;
+    }
+
+/* Botón de agregar al carrito */
+.btn-add {
+    width: 110%;
+    background-color: #D10024;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    margin-top: auto;
+}
+
+    .btn-add:hover {
+        background-color: #B9BABC;
+    }
+.product-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.input-number {
+    position: relative;
+    width: 100px;
+    margin-right: 10px;
+}
+
+    .input-number input {
+        width: 100%;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+.qty-up, .qty-down {
+    position: absolute;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.qty-up {
+    top: 2px;
+}
+
+.qty-down {
+    bottom: 2px;
+}
+
+.product-available {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #28a745;
+    background-color: rgba(40, 167, 69, 0.1);
+    margin-left: 15px;
+}
+.collapsed {
+    background-color: #E4E7ED;
+    color: #1E1F29;
+    cursor: pointer;
+    padding: 4px;
+    width: 100%;
+    border: groove;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px gray;
+}

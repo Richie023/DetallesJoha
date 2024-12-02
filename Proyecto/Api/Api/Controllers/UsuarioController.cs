@@ -55,7 +55,7 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarUsuario(entidad.Consecutivo, entidad.Contrasenna, entidad.Nombre, entidad.CorreoElectronico);
+                    var resp = db.ActualizarUsuario(entidad.Consecutivo, entidad.Contrasenna, entidad.Nombre, entidad.CorreoElectronico,entidad.ConsecutivoRol);
 
                     if (resp > 0)
                     {
@@ -132,6 +132,41 @@ namespace Api.Controllers
                     {
                         respuesta.Codigo = -1;
                         respuesta.Detalle = "El producto no se pudo eliminar";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+        [HttpGet]
+        [Route("Usuario/ConsultarRoles")]
+        public ConfirmacionRoles ConsultarRoles()
+        {
+            var respuesta = new ConfirmacionRoles();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarRoles().ToList();
+
+                    if (datos.Count > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Datos = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron Roles";
                     }
                 }
             }

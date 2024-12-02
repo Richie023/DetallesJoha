@@ -8,8 +8,8 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+    //[FiltroSeguridad]
+   // [FiltroAdmin]
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class ProductoController : Controller
     {
@@ -29,6 +29,7 @@ namespace Web.Controllers
             }
         }
 
+
         [HttpGet]
         public ActionResult VerProducto(long id)
         {
@@ -43,13 +44,14 @@ namespace Web.Controllers
         }
 
 
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult RegistrarProducto()
         {
             CargarViewBagCategorias();
             return View();
         }
-
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult RegistrarProducto(HttpPostedFileBase Imagenes, Producto entidad)
         {
@@ -74,7 +76,7 @@ namespace Web.Controllers
                 return View();
             }
         }
-
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult ActualizarProducto(long id)
         {
@@ -83,7 +85,7 @@ namespace Web.Controllers
             ViewBag.urlImagen = resp.Dato.RutaImagen;
             return View(resp.Dato);
         }
-
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult ActualizarProducto(HttpPostedFileBase ImagenProducto, Producto entidad)
         {
@@ -146,7 +148,7 @@ namespace Web.Controllers
         public ActionResult FiltrarPorCategoria(int IdCategoria)
         {
             var respuesta = modelo.FiltrarProductosPorCategoria(IdCategoria);
-
+      
             if (respuesta != null && respuesta.Codigo == 0)
             {
                 return View("FiltrarPorCategoria", respuesta.Datos); 
