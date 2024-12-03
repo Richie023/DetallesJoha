@@ -1,41 +1,71 @@
 ﻿
 @model Web.Entidades.Resena
 
-@*@{
+@{
         ViewBag.Title = "ConsultaProductos";
-        Layout = "~/Views/Shared/_LayoutExterno.cshtml";
-    }*@
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+
+        .rate:not(:checked) > input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked) > label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ccc;
+        }
+
+            .rate:not(:checked) > label:before {
+                content: '★ ';
+            }
+
+        .rate > input:checked ~ label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked) > label:hover,
+        .rate:not(:checked) > label:hover ~ label {
+            color: #deb217;
+        }
+
+        .rate > input:checked + label:hover,
+        .rate > input:checked + label:hover ~ label,
+        .rate > input:checked ~ label:hover,
+        .rate > input:checked ~ label:hover ~ label,
+        .rate > label:hover ~ input:checked ~ label {
+            color: #c59b08;
+        }
+
+</style>
+
 
 <!-- Product tab -->
 <div class="col-md-12">
     <div id="product-tab">
         <!-- product tab nav -->
         <ul class="tab-nav">
-            <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-            <li><a data-toggle="tab" href="#tab2">Details</a></li>
-            <li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+            
+            <li><a data-toggle="tab" href="#tab3">Reviews</a></li>
         </ul>
-        <!-- /product tab nav -->
-        <!-- product tab content -->
-        <div class="tab-content">
-            <!-- tab1 -->
-            <div id="tab1" class="tab-pane fade in active">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /tab1 -->
-            <!-- tab2 -->
-            <div id="tab2" class="tab-pane fade in">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
-                    </div>
-                </div>
-            </div>
-            <!-- /tab2 -->
+       
             <!-- tab3 -->
             <div id="tab3" class="tab-pane fade in">
                 <div class="row">
@@ -66,58 +96,7 @@
                                     </div>
                                     <span class="sum">3</span>
                                 </li>
-                                <li>
-                                    <div class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <div class="rating-progress">
-                                        <div style="width: 60%;"></div>
-                                    </div>
-                                    <span class="sum">2</span>
-                                </li>
-                                <li>
-                                    <div class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <div class="rating-progress">
-                                        <div></div>
-                                    </div>
-                                    <span class="sum">0</span>
-                                </li>
-                                <li>
-                                    <div class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <div class="rating-progress">
-                                        <div></div>
-                                    </div>
-                                    <span class="sum">0</span>
-                                </li>
-                                <li>
-                                    <div class="rating-stars">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <div class="rating-progress">
-                                        <div></div>
-                                    </div>
-                                    <span class="sum">0</span>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -184,6 +163,7 @@
                             </ul>
                         </div>
                     </div>
+                    
                     <!-- /Reviews -->
                     <!-- Review Form -->
                     <div class="col-md-3">
@@ -201,13 +181,19 @@
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Calificacion, "Calificación")
                                     <div class="stars">
-                                        <input id="star5" name="Calificacion" value="5" type="radio"><label for="star5"></label>
-                                        <input id="star4" name="Calificacion" value="4" type="radio"><label for="star4"></label>
-                                        <input id="star3" name="Calificacion" value="3" type="radio"><label for="star3"></label>
-                                        <input id="star2" name="Calificacion" value="2" type="radio"><label for="star2"></label>
-                                        <input id="star1" name="Calificacion" value="1" type="radio"><label for="star1"></label>
+                                        <div class="rate">
+                                           
+                                            
+                                            <input id="star5" name="Calificacion" value="5" type="radio"><label for="star5"></label>    
+                                            <input id="star4" name="Calificacion" value="4" type="radio"><label for="star4"></label>        
+                                            <input id="star3" name="Calificacion" value="3" type="radio"><label for="star3"></label>        
+                                            <input id="star2" name="Calificacion" value="2" type="radio"><label for="star2"></label>        
+                                            <input id="star1" name="Calificacion" value="1" type="radio"><label for="star1"></label>
+                                        </div>
                                     </div>
                                 </div>
+                                     
+                             
 
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Comentario, "Comentario")
@@ -230,3 +216,36 @@
         <!-- /product tab content -->
     </div>
 </div>
+
+<script>
+    let stars =
+        document.getElementsByClassName("star");
+    let output =
+        document.getElementById("output");
+    let cal = document.getElementById("cal");
+    // Funtion to update rating
+    function gfg(n) {
+        remove();
+        for (let i = 0; i < n; i++) {
+            if (n == 1) cls = "one";
+            else if (n == 2) cls = "two";
+            else if (n == 3) cls = "three";
+            else if (n == 4) cls = "four";
+            else if (n == 5) cls = "five";
+            stars[i].className = "star " + cls;
+        }
+        cal.innerText = n;
+        output.innerText = "Rating is: " + n + "/5" ;
+    }
+
+    // To remove the pre-applied styling
+    function remove() {
+        let i = 0;
+        while (i < 5) {
+            stars[i].className = "star";
+            i++;
+        }
+    }
+
+
+</script>

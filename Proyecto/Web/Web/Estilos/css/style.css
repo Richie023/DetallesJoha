@@ -2355,7 +2355,7 @@ textarea.input {
 }
 
     .btn-add:hover {
-        background-color: #B9BABC;
+        background-color: #B9BABc;
     }
 .product-preview img {
     width: 100%;
@@ -2415,3 +2415,6 @@ textarea.input {
     border-radius: 5px;
     box-shadow: 10px 5px 5px gray;
 }
+
+
+

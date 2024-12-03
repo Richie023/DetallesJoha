@@ -11,8 +11,6 @@
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-    <!-- DataTable -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/bootstrap.min.css" />
@@ -31,6 +29,8 @@
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/style.css" />
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/Footer.css" />
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/Filtros.css" />
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -292,8 +292,8 @@
                     <h3 class="filter-title">Tipo de Ropa</h3>
                     <div class="filter-content">
                         <ul class="filter-list">
-
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño</a></li>
+                       
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño  </a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 4 })">Ropa de mujer</a></li>

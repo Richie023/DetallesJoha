@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "RegistrarInforE";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
 <!-- SECTION -->
@@ -70,7 +70,7 @@
                                 @Html.LabelFor(m => m.TerminosCondiciones, "Términos y Condiciones")
                                 @Html.TextAreaFor(m => m.TerminosCondiciones, new { @class = "form-control", @placeholder = "Términos y Condiciones", @rows = "4", @required = "true" })
                             </div>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="primary-btn">
                                 Guardar
                             </button>
 

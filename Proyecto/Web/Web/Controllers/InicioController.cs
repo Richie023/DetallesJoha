@@ -122,7 +122,7 @@ namespace Web.Controllers
         }
 
         // Método de acción para filtrar productos por categoría
-        [FiltroSeguridad]
+     
         [HttpGet]
         public ActionResult FiltrarPorCategoria(int? IdCategoria)
         {

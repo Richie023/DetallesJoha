@@ -27,6 +27,11 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="~/Estilos/css/Footer.css" />
+    <link type="text/css" rel="stylesheet" href="~/Estilos/css/Filtros.css" />
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,252 +41,387 @@
     <![endif]-->
 
 </head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <!-- TOP HEADER -->
+        <div id="top-header">
+            <div class="container">
+                <ul class="header-links pull-left">
+                    <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
+                </ul>
+                <ul class="header-links pull-right">
+                    <li><a href="#"><i class="fa fa-dollar"></i> CRC</a></li>
+
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                @if (Session["NombreRol"] != null)
+                                {
+                                    @Session["NombreRol"].ToString().ToUpper();
+                                }
+
+                            </span>
+                        </a>
+                    </li>
 
 
 
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                @if (Session["NombreUsuario"] != null)
+                                {
+                                    @Session["NombreUsuario"].ToString();
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("IniciarSesion","Inicio")"><i class="fa fa-user-o"></i> Mi Cuenta</a>
+                                }
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="@Url.Action("ActualizarUsuario","Usuario")">
+                                <i class="fa fa-user fa-sm fa-fw mr-2 "></i>
+                                Perfil
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("CerrarSesion", "Inicio")">
+                                <i class="fa fa-sign-out fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Salir
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("ConsultaCarrito", "Carrito")">
+                                <i class="fa fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Mi Carrito
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("ConsultarFacturas", "Carrito")">
+                                <i class="fa fa-shopping-basket fa-fw mr-2 text-gray-400"></i>
+                                Mis Compras
+                            </a>
 
-<!-- HEADER -->
-<header>
-    <!-- TOP HEADER -->
-    <div id="top-header">
-        <div class="container">
-            <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
-            </ul>
-            <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> CRC</a></li>
-                <li><a href="@Url.Action("IniciarSesion","Inicio")"><i class="fa fa-user-o"></i> Mi Cuenta</a></li>
-            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <!-- /TOP HEADER -->
-    <!-- MAIN HEADER -->
-    <div id="header">
+        <!-- /TOP HEADER -->
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="@Url.Action("PantallaPrincipal","Inicio")" class="logo">
+                                <img src="/img/logo.png" height="125" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /LOGO -->
+                    <!-- SEARCH BAR -->
+                    <div class="col-md-6">
+                        <div class="header-search">
+                            <form>
+                                <select class="input-select">
+                                    <option value="0">Categorías</option>
+                                    <option value="1">Ropa de niño</option>
+                                    <option value="1">Gorras</option>
+                                </select>
+                                <input class="input" placeholder="Busque Aquí">
+                                <button class="search-btn">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /SEARCH BAR -->
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- Wishlist -->
+                            <div>
+                                <a href="#">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Deseados</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div>
+                            <!-- /Wishlist -->
+                            <!-- Cart -->
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Carrito</span>
+                                    <div class="qty">
+                                        @if (Session["NombreRol"] != null)
+                                        {
+                                            @Session["Cantidad"].ToString()
+                                        }
+                                        else
+                                        { <div class="qty">0</div>}
+                                    </div>
+                                </a>
+                                <div class="cart-dropdown">
+                                    <div class="cart-list">
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="/img/product01.png" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a href="#">product</a></h3>
+                                                <h4 class="product-price"><span class="qty">0x</span>0.00</h4>
+                                            </div>
+                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </div>
+
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="/img/product02.png" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a href="#">product</a></h3>
+                                                <h4 class="product-price"><span class="qty">0x</span>000</h4>
+                                            </div>
+                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-summary">
+                                        <small>
+                                            @if (Session["Consecutivo"] != null)
+                                            {
+                                                @Session["Cantidad"].ToString()
+                                            }
+                                            else
+                                            { <i class="qty"> 0 </i>}
+                                            Productos selesccionados
+                                        </small>
+
+                                        @if (Session["NombreRol"] != null)
+                                        {
+                                            <h5>
+                                                &nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva
+                                            </h5>
+                                        }
+                                        else
+                                        {<div class="qty"><h5>0</h5></div>}
+
+                                    </div>
+                                    <div class="cart-btns">
+                                        <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
+                                        <a href="#">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Cart -->
+                            <!-- Menu Toogle -->
+                            <div class="menu-toggle">
+                                <a href="#">
+                                    <i class="fa fa-bars"></i>
+                                    <span>Menu</span>
+                                </a>
+                            </div>
+                            <!-- /Menu Toogle -->
+                        </div>
+
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+
+
+
+    <!-- NAVIGATION -->
+    <nav id="navigation">
         <!-- container -->
         <div class="container">
-            <!-- row -->
-            <div class="row">
-                <!-- LOGO -->
-                <div class="col-md-3">
-                    <div class="header-logo">
-                        <a href="@Url.Action("PantallaPrincipal","Inicio")" class="logo">
-                            <img src="/img/logo.png" height="125" alt="">
-                        </a>
+            <!-- responsive-nav -->
+            <div id="responsive-nav">
+                <!-- NAV -->
+                <ul class="main-nav nav navbar-nav">
+                    <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
+
+
+                    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                    {
+                        <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
+                        <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
+                        <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
+                        <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
+                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Info E</a></li>
+                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Resenas </a></li>
+
+                    }
+                    else if ((Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "2"))
+                    {
+
+                        <li>
+                            <a href="@Url.Action("ConsultaCarrito", "Carrito")">Mi Carrito</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ConsultarFacturas", "Carrito")">Mis Compras</a>
+                        </li>
+
+                    }
+
+                </ul>
+                <!-- /NAV -->
+
+            </div>
+            <!-- /responsive-nav -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!--<div class="main-container">
+        <div class="aside">
+            <h3>Filtrar Productos</h3>
+            <div class="filters-sidebar">-->
+                <!-- Categorías -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Tipo de Ropa</h3>
+                    <div class="filter-content">
+                        <ul class="filter-list">
+
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño  </a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 4 })">Ropa de mujer</a></li>
+
+                        </ul>
                     </div>
-                </div>
-                <!-- /LOGO -->
-                <!-- SEARCH BAR -->
-                <div class="col-md-6">
-                    <div class="header-search">
-                        <form>
-                            <select class="input-select">
-                                <option value="0">Categorías</option>
-                                <option value="1">Camisas</option>
-                                <option value="1">Gorras</option>
-                            </select>
-                            <input class="input" placeholder="Busque Aquí">
-                            <button class="search-btn">Buscar</button>
+                </div>-->
+
+                <!-- Artículos de Oficina -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Artículos de Oficina</h3>
+                    <div class="filter-content">
+                        <ul class="filter-list">
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 15 })">Cuadernos personalizados</a></li>
+                        </ul>
+                    </div>
+                </div>-->
+
+                <!-- Artículos Decorativos -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Artículos Decorativos</h3>
+                    <div class="filter-content">
+                        <ul class="filter-list">
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 9 })">Cojines</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 13 })">Platos decorativos</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 14 })">Almohadas</a></li>
+                        </ul>
+                    </div>
+                </div>-->
+
+                <!-- Accesorios Personales -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Accesorios Personales</h3>
+                    <div class="filter-content">
+                        <ul class="filter-list">
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 11 })">Botellas térmicas</a></li>
+                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 12 })">Fundas de teléfono</a></li>
+                        </ul>
+                    </div>
+                </div>-->
+
+                <!-- Precio -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Rango de Precio</h3>
+                    <div class="filter-content">
+                        <ul class="filter-list">
+                            <li class="price-range">
+                                <a href="@Url.Action("FiltrarPorPrecio", "Inicio", new { PrecioMinimo = 2500, PrecioMaximo = 3000 })">
+                                    ₡2.500 - ₡3.000
+                                </a>
+                            </li>
+                            <li class="price-range">
+                                <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 4000, PrecioMaximo = 4500 })">
+                                    ₡4.000 - ₡4.500
+                                </a>
+                            </li>
+                            <li class="price-range">
+                                <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 5000, PrecioMaximo = (decimal?)null })">
+                                    ₡5.000 y superior
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>-->
+
+                <!-- Color -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Color</h3>
+                    <div class="filter-content">
+                        <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
+                            <input type="text" id="Color" name="Color" placeholder="Buscar por color..." />
+                            <button type="submit">Aplicar</button>
+                        </form>
+                    </div>
+                </div>-->
+
+                <!-- Tamaño -->
+                <!--<div class="filter-section">
+                    <h3 class="filter-title">Tamaño</h3>
+                    <div class="filter-content">
+                        <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
+                            <input type="text" id="Tamanio" name="Tamanio" placeholder="Buscar por tamaño..." />
+                            <button type="submit">Aplicar</button>
                         </form>
                     </div>
                 </div>
-                <!-- /SEARCH BAR -->
-                <!-- ACCOUNT -->
-                <div class="col-md-3 clearfix">
-                    <div class="header-ctn">
-                        <!-- Wishlist -->
-                        <div>
-                            <a href="#">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Deseados</span>
-                                <div class="qty">2</div>
-                            </a>
-                        </div>
-                        <!-- /Wishlist -->
-                        <!-- Cart -->
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>Carrito</span>
-                                <div class="qty">4</div>
-                            </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="/img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
 
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="/img/product02.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                </div>
-                                <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
-                                </div>
-                                <div class="cart-btns">
-                                    <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
-                                    <a href="#">Pagar <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /Cart -->
-                        <!-- Menu Toogle -->
-                        <div class="menu-toggle">
-                            <a href="#">
-                                <i class="fa fa-bars"></i>
-                                <span>Menu</span>
-                            </a>
-                        </div>
-                        <!-- /Menu Toogle -->
-                    </div>
-
-                </div>
-                <!-- /ACCOUNT -->
             </div>
-            <!-- row -->
-        </div>
-        <!-- container -->
-    </div>
-    <!-- /MAIN HEADER -->
-</header>
-<!-- NAVIGATION -->
-<nav id="navigation">
-    <!-- container -->
-    <div class="container">
-        <!-- responsive-nav -->
-        <div id="responsive-nav">
-            <!-- NAV -->
-            <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
-                <li><a href="#">Descuentos</a></li>
-                <li><a href="#">Caminisas</a></li>
-                <li><a href="#">Tazas</a></li>
-                <li><a href="#">Gorras</a></li>
-                <li><a href="#">Accesorios</a></li>
-                <!-- /NAV -->
-        </div>
-        <!-- /responsive-nav -->
-    </div>
-    <!-- /container -->
-</nav>
-<!-- /NAVIGATION -->
+        </div>-->
 
+        <!-- /NAVIGATION -->
 
-
-
-@RenderBody()
-<!-- /HEADER -->
-<!-- /SECTION -->
-<!-- NEWSLETTER -->
-<div id="newsletter" class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="newsletter">
-                    <p>Regístrate al <strong>Bolitín</strong></p>
-                    <form>
-                        <input class="input" type="email" placeholder="Ingrese su correo electrónico">
-                        <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
-                    </form>
-                    <ul class="newsletter-follow">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </li>
-                    </ul>
-                </div>
+        
+            <div class="container align-items-center">
+                @RenderBody()
             </div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
+     
+   
 
-
-<!-- /NEWSLETTER -->
-<!-- FOOTER -->
-<footer id="footer">
-    <!-- top footer -->
-    <div class="section">
+    <!-- NEWSLETTER -->
+    <div id="newsletter" class="section">
         <!-- container -->
         <div class="container">
             <!-- row -->
             <div class="row">
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Acercas de Nosotros</h3>
-                        <p>Somos una Pyme de didicada a la Sublimación</p>
-                        <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
-                            <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Categorías</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Descuentos</a></li>
-                            <li><a href="#">Caminisas</a></li>
-                            <li><a href="#">Tazas</a></li>
-                            <li><a href="#">Gorras</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="clearfix visible-xs"></div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Información</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Acerca de nosotros</a></li>
-                            <li><a href="#">Contáctanos</a></li>
-                            <li><a href="#">Politicas</a></li>
-                            <li><a href="#">Ordenes and Devoluciones</a></li>
-                            <li><a href="#">Términos & Condiciones</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Servicios</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Mi Cuenta</a></li>
-                            <li><a href="#">Carrito</a></li>
-                            <li><a href="#">Lista de deseos</a></li>
-                            <li><a href="#">Seguimientos de Envios</a></li>
-                            <li><a href="#">Ayuda</a></li>
+                <div class="col-md-12">
+                    <div class="newsletter">
+                        <p>Regístrate al <strong>Bolitín</strong></p>
+                        <form>
+                            <input class="input" type="email" placeholder="Ingrese su correo electrónico">
+                            <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
+                        </form>
+                        <ul class="newsletter-follow">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -291,44 +431,112 @@
         <!-- /container -->
     </div>
 
+    <!-- FOOTER -->
+    <footer id="footer">
+        <!-- top footer -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Acercas de Nosotros</h3>
+                            <p>Somos una Pyme de didicada a la Sublimación</p>
+                            <ul class="footer-links">
+                                <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-    <!-- /top footer -->
-    <!-- bottom footer -->
-    <div id="bottom-footer" class="section">
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul class="footer-payments">
-                        <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-                        <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-                        <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                    </ul>
-                    <span class="copyright">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </span>
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Categorías</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Descuentos</a></li>
+                                <li><a href="#">Caminisas</a></li>
+                                <li><a href="#">Tazas</a></li>
+                                <li><a href="#">Gorras</a></li>
+                                <li><a href="#">Accesorios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clearfix visible-xs"></div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Información</h3>
+                            <ul class="footer-links">
+                                <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
+                                <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
+                                <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
+                                <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
+                                <li><a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")">Avisos & Privacidad</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Servicios</h3>
+                            <ul class="footer-links">
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
+                                <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
+                                <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <!-- /row -->
             </div>
-            <!-- /row -->
+            <!-- /container -->
         </div>
-        <!-- /container -->
-    </div>
-    <!-- /bottom footer -->
-</footer>
-<!-- /FOOTER -->
-<!-- jQuery Plugins -->
-<script src="~/Estilos/js/jquery.min.js"></script>
-<script src="~/Estilos/js/bootstrap.min.js"></script>
-<script src="~/Estilos/js/slick.min.js"></script>
-<script src="~/Estilos/js/nouislider.min.js"></script>
-<script src="~/Estilos/js/jquery.zoom.min.js"></script>
-<script src="~/Estilos/js/main.js"></script>
 
 
+        <!-- /top footer -->
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="footer-payments">
+                            <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+                            <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+                            <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+                        </ul>
+                        <span class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </footer>
+
+    <!-- jQuery Plugins -->
+    <script src="~/Estilos/js/jquery.min.js"></script>
+    <script src="~/Estilos/js/bootstrap.min.js"></script>
+    <script src="~/Estilos/js/slick.min.js"></script>
+    <script src="~/Estilos/js/nouislider.min.js"></script>
+    <script src="~/Estilos/js/jquery.zoom.min.js"></script>
+    <script src="~/Estilos/js/main.js"></script>
+    <script src="~/Estilos/js/Filtros.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+</body>
 </html>

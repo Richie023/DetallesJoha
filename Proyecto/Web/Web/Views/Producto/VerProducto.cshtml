@@ -90,14 +90,43 @@
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Descripción</a></li>
                         <li><a data-toggle="tab" href="#tab2">Detalles</a></li>
-                        <li><a data-toggle="tab" href="@Url.Action("RegistrarResena", "Inicio")>Reseñas</a></li>
+                        <li><a  href="@Url.Action("RegistrarResena","Resena")">Reseñas</a></li>
                     </ul>
 
                     <div class="tab-content">
-                        <div id="tab1" class="tab-pane fade in active">
+                        <div id="tab1" class="tab-pane fade in active" style="text-align:center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>@Model.Material</p>
+                                    <table id="myDataTable" class="table table-bordered dataTable " style="width: 75%; " >
+                                        <thead >
+                                            <tr role="row">
+                                                <th>COLOR</th>
+                                                <th>TAMAÑO</th>
+                                                <th>MATERIAL</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd" >
+                                                <td>
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                         width="50" height="50" viewBox="0 0 50 50">
+                                                        <circle cx="30" cy="30" r="20"
+                                                                fill="@Model.ColorBase" />
+                                                    </svg>
+                                                </td>
+                                                <td> @Model.Tamanio</td>
+                                                <td>@Model.Material</td>
+                                                
+                                                                                           
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+
+
+                                 
+                                  
                                 </div>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ConsultarDetalleFacturas";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
 <div class="card shadow mb-4">
@@ -48,16 +48,19 @@
                                             @item.ConsecutivoProducto
 
 
-                                            @using (Html.BeginForm(" AgregarCarrito", "Carrito", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                                            @*@using (Html.BeginForm("VerProducto", "Producto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                                             {
 
                                                 @Html.HiddenFor(m => item.ConsecutivoProducto)
                                                 @Html.HiddenFor(m => item.Cantidad)
 
                                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
-                                            }
+                                            }*@
 
-
+                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.ConsecutivoProducto})" class="btn-add">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                            </a>
                                         </td>
 
 
