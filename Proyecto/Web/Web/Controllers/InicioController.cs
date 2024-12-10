@@ -33,6 +33,7 @@ namespace Web.Controllers
                 Session["NombreUsuario"] = respuesta.Dato.Nombre;
                 Session["RolUsuario"] = respuesta.Dato.ConsecutivoRol;
                 Session["NombreRol"] = respuesta.Dato.NombreRol;
+                Session["CorreoElectronico"] = respuesta.Dato.CorreoElectronico;
                 return RedirectToAction("PantallaPrincipal", "Inicio");
             }
             else

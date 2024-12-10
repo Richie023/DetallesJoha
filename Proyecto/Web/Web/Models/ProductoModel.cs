@@ -7,6 +7,12 @@ using System.Net.Http.Json;
 
 namespace Web.Models
 {
+
+    
+
+
+
+
     public class ProductoModel
     {
         public ConfirmacionProducto ConsultarProductos(bool MostrarTodos)

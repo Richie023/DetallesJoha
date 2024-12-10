@@ -1668,56 +1668,55 @@ textarea.input {
 
 /*-- Rating --*/
 
-.rating-avg {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 15px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.rating-avg .rating-stars {
-  margin-left: 10px;
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
 }
 
-.rating-avg .rating-stars, .rating .rating-stars {
-  display: inline-block;
-}
+    .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+    }
 
-.rating-avg .rating-stars>i, .rating .rating-stars>i {
-  color: #E4E7ED;
-}
+    .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
 
-.rating-avg .rating-stars>i.fa-star, .rating .rating-stars>i.fa-star {
-  color: #D10024;
-}
+        .rate:not(:checked) > label:before {
+            content: '★ ';
+        }
 
-.rating li {
-  margin: 5px 0px;
-}
+    .rate > input:checked ~ label {
+        color: #ffc700;
+    }
 
-.rating .rating-progress {
-  position: relative;
-  display: inline-block;
-  height: 9px;
-  background-color: #E4E7ED;
-  width: 120px;
-  margin: 0px 10px;
-  border-radius: 5px;
-}
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
 
-.rating .rating-progress>div {
-  background-color: #D10024;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 5px;
-}
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
 
-.rating .sum {
-  display: inline-block;
-  font-size: 12px;
-  color: #8D99AE;
-}
+
+
 
 /*-- Reviews --*/
 
@@ -1796,46 +1795,6 @@ textarea.input {
 
 /*-- Review Form --*/
 
-.review-form .input {
-  margin-bottom: 15px;
-}
-
-.review-form .input-rating {
-  margin-bottom: 15px;
-}
-
-.review-form .input-rating .stars {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.review-form .input-rating .stars input[type="radio"] {
-  display: none;
-}
-
-.review-form .input-rating .stars>label {
-  float: right;
-  cursor: pointer;
-  padding: 0px 3px;
-  margin: 0px;
-}
-
-.review-form .input-rating .stars>label:before {
-  content: "\f006";
-  font-family: FontAwesome;
-  color: #E4E7ED;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.review-form .input-rating .stars>label:hover:before, .review-form .input-rating .stars>label:hover~label:before {
-  color: #D10024;
-}
-
-.review-form .input-rating .stars>input:checked label:before, .review-form .input-rating .stars>input:checked~label:before {
-  content: "\f005";
-  color: #D10024;
-}
 
 /*=========================================================
 	09 -> CHECKOUT PAGE
@@ -2321,24 +2280,7 @@ textarea.input {
     text-decoration: line-through;
 }
 
-/* Estrellas */
-.stars {
-    display: flex;
-    justify-content: center;
-    gap: 0.25rem;
-    margin: 0.5rem 0;
-}
 
-.star {
-    color: #e0e0e0;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: color 0.2s;
-}
-
-    .star.selected {
-        color: #f39c12;
-    }
 
 /* Botón de agregar al carrito */
 .btn-add {
@@ -2414,6 +2356,156 @@ textarea.input {
     font-size: 15px;
     border-radius: 5px;
     box-shadow: 10px 5px 5px gray;
+}
+/* Main container */
+.main-container {
+    display: flex;
+    margin-top: 30px;
+    padding: 0 30px; /* Increase padding for a more spacious layout */
+    margin-left: 30px; /* Add more space to the left side */
+    gap: 30px; /* Increased gap for better spacing between sidebar and main content */
+    flex-wrap: wrap; /* Make the layout responsive */
+}
+
+/* Filters Sidebar */
+.aside {
+    width: 280px; /* Slightly larger sidebar */
+    padding: 20px;
+    background: #f4f4f4; /* Light grey background for the filter sidebar */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for a modern feel */
+    border-radius: 12px; /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+    .aside:hover {
+        transform: translateY(-5px); /* Slight lift effect on hover */
+    }
+
+.filters-sidebar {
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+/* Filter section */
+.filter-section {
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+    .filter-title:hover {
+        color: #2196F3; /* Highlight title when hovered */
+    }
+
+    .filter-title::after {
+        content: '▼';
+        font-size: 14px;
+        transition: transform 0.3s ease;
+    }
+
+    .filter-title.active::after {
+        transform: rotate(180deg); /* Flip the arrow when active */
+    }
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card-like effect */
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid layout */
+    gap: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Product card styling */
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .product-card:hover {
+        transform: scale(1.05); /* Slight scale effect on hover */
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 4px solid #f4f4f4; /* Soft divider line between image and content */
+    }
+
+    .product-card .product-info {
+        padding: 20px;
+    }
+
+    .product-card .product-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .product-card .product-price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2196F3; /* Blue price to draw attention */
+        margin-bottom: 15px;
+    }
+
+    .product-card .view-button {
+        background: #2196F3;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        .product-card .view-button:hover {
+            background: #1976D2; /* Slightly darker blue on hover */
+        }
+
+/* Filter item hover effect */
+.filter-list a {
+    color: #666;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .filter-list a:hover {
+        background-color: #2196F3; /* Blue background on hover */
+        color: white; /* Change text color to white */
+        border-radius: 4px;
+        padding-left: 10px; /* Add slight padding on hover */
+    }
+
+/* Optional: Add a nice divider between the filters */
+.filter-section:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
 }
 
 

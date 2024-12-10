@@ -11,6 +11,7 @@ namespace Web.Models
 {
     public class ResenaModel
     {
+
         public string url = ConfigurationManager.AppSettings["urlWebApi"];
 
         public Confirmacion AgregarResena(Resena entidad)

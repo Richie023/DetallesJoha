@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -18,9 +19,14 @@ namespace Web.Controllers
 
 
 
+
+
+
         [HttpGet]
         public ActionResult RegistrarResena()
         {
+
+
             return View();
 
         }
@@ -51,6 +57,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult ConsultarResenas()
         {
+
             var respuesta = consulta.ConsultarConsultas();
 
             if (respuesta.Codigo == 0)

@@ -97,9 +97,6 @@ D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\bin\M
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.csproj.Up2Date
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.dll
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.pdb
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.dll.config
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.pdb
@@ -114,8 +111,10 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.CSharp.Core.targets
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.Managed.Core.targets
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
@@ -125,6 +124,7 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Numerics.Vectors.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Reflection.Metadata.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\System.Threading.Tasks.Extensions.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\vbc.exe
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\vbc.exe.config

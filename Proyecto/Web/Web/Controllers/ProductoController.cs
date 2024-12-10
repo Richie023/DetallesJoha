@@ -15,6 +15,9 @@ namespace Web.Controllers
     {
         ProductoModel modelo = new ProductoModel();
 
+
+     
+
         [HttpGet]
         public ActionResult ConsultaProductos()
         {

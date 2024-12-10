@@ -17,7 +17,8 @@ namespace Web.Entidades
         public decimal Impuesto { get; set; }
         public decimal Total { get; set; }
         public decimal Precio { get; set; }
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } 
+        public string Correo { get; set; }
         public string NombreUsuario { get; set; }
         public long ConsecutivoMaestro { get; set; }
         public long ConsecutivoDetalle { get; set; }

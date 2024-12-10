@@ -74,6 +74,8 @@ namespace Web.Controllers
         public ActionResult PagarCarrito(Carrito entidad)
         {
             entidad.ConsecutivoUsuario = long.Parse(Session["Consecutivo"].ToString());
+
+            entidad.Correo = Session["CorreoElectronico"].ToString();
             var respuesta = modelo.PagarCarrito(entidad);
 
             if (respuesta.Codigo == 0)

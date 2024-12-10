@@ -1,7 +1,9 @@
 ﻿using Api.Entidades;
 using Api.Models;
 using System;
+using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web.Http;
 
 
@@ -10,6 +12,9 @@ namespace Api.Controllers
 
     public class CarritoController : ApiController
     {
+        UtilitariosModel model = new UtilitariosModel();
+        private string contenido;
+        private string ruta = AppDomain.CurrentDomain.BaseDirectory + "Notificacion.html";
         [HttpPost]
         [Route("Carrito/AgregarCarrito")]
         public Confirmacion AgregarCarrito(Carrito entidad)
@@ -24,6 +29,7 @@ namespace Api.Controllers
 
                     if (resp > 0)
                     {
+                       
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
                     }
@@ -120,12 +126,15 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.PagarCarrito(entidad.ConsecutivoUsuario);
 
+                    var resp = db.PagarCarrito(entidad.ConsecutivoUsuario);
+                    envioPedido(entidad.ConsecutivoMaestro);
                     if (resp > 0)
                     {
+
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
+
                     }
                     else
                     {
@@ -191,6 +200,7 @@ namespace Api.Controllers
 
                     if (datos.Count > 0)
                     {
+
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
                         respuesta.Datos = datos;
@@ -225,6 +235,8 @@ namespace Api.Controllers
 
                     if (datos.Count > 0)
                     {
+
+
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
                         respuesta.Datos = datos;
@@ -243,6 +255,27 @@ namespace Api.Controllers
             }
 
             return respuesta;
+        }
+
+        private void envioPedido(long consecutivo) {
+
+            var data =ConsultarDetalleFacturas(consecutivo);
+
+            Context.GetData();
+
+            contenido = File.ReadAllText(ruta);
+            contenido = contenido.Replace("@@Nombre", data.DatosConsultarDetalleFacturas.);
+            contenido = contenido.Replace("@@Pedido", entidad.ConsecutivoMaestro.ToString());
+            contenido = contenido.Replace("@@Producto", entidad.Nombre);
+            contenido = contenido.Replace("@@Cantidad", entidad.Cantidad.ToString());
+            contenido = contenido.Replace("@@Material", entidad.Material);
+            contenido = contenido.Replace("@@Tamanio", entidad.Tamanio);
+            contenido = contenido.Replace("@@Total", entidad.Total.ToString());
+            contenido = contenido.Replace("@@Fecha", entidad.Fecha.ToString("dd/MM/yyyy hh:mm:ss tt"));
+
+            model.EnviarCorreo(entidad.Correo, "Pedido" + entidad.ConsecutivoMaestro, contenido);
+
+
         }
     }
 }

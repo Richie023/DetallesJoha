@@ -160,7 +160,7 @@
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Carrito</span>
                                     <div class="qty">
-                                        @if (Session["NombreRol"] != null)
+                                        @if (Session["Cantidad"].ToString() != null )
                                         {
                                             @Session["Cantidad"].ToString()
                                         }
@@ -445,7 +445,7 @@
                             <h3 class="footer-title">Acercas de Nosotros</h3>
                             <p>Somos una Pyme de didicada a la Sublimación</p>
                             <ul class="footer-links">
-                                <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                                <li><a href="https://wa.me/50683039384"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
                                 <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
                                 <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
                             </ul>
@@ -458,9 +458,9 @@
                             <ul class="footer-links">
                                 <li><a href="#">Descuentos</a></li>
                                 <li><a href="#">Caminisas</a></li>
-                                <li><a href="#">Tazas</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
                                 <li><a href="#">Gorras</a></li>
-                                <li><a href="#">Accesorios</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
                             </ul>
                         </div>
                     </div>
