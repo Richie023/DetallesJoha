@@ -1,0 +1,40 @@
+﻿
+@model Web.Entidades.PreguntasFrecuentes
+
+@{
+    ViewBag.Title = "Editar Pregunta Frecuente";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Editar Pregunta Frecuente</h1>
+
+    <form asp-action="Editar" asp-controller="PreguntasFrecuentes" method="post">
+        <div class="form-group">
+            <label for="Categoria">Categoría</label>
+            <input type="text" class="form-control" id="Categoria" name="Categoria" value="@Model.Categoria" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Pregunta">Pregunta</label>
+            <input type="text" class="form-control" id="Pregunta" name="Pregunta" value="@Model.Pregunta" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Respuesta">Respuesta</label>
+            <textarea class="form-control" id="Respuesta" name="Respuesta" rows="5" required>@Model.Respuesta</textarea>
+        </div>
+
+        <div class="form-group text-right">
+            <a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes" )" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+<link href="~/Estilos/css/form.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -5,7 +5,7 @@
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
       <Parameter Name="RutaImagen" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="ActualizarProducto">
+    <FunctionImport Name="ActualizarProducto" ReturnType="Collection(DetallesJohaModel.ActualizarProducto_Result)">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
       <Parameter Name="NombreProducto" Mode="In" Type="String" />
       <Parameter Name="Precio" Mode="In" Type="Decimal" />
@@ -14,6 +14,9 @@
       <Parameter Name="Material" Mode="In" Type="String" />
       <Parameter Name="Tamanio" Mode="In" Type="String" />
       <Parameter Name="ColorBase" Mode="In" Type="String" />
+      <Parameter Name="Porcentaje_Descuento" Mode="In" Type="Int32" />
+      <Parameter Name="FechaInicioPromocion" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinPromocion" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="ActualizarUsuario">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -184,6 +187,10 @@
       <Parameter Name="Orden" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="ActualizarProducto_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="true" />
+    <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
   <ComplexType Name="ColsultarAvisoPrivacidad_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />
@@ -273,7 +280,7 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="false" />
     <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
     <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -356,7 +363,7 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="false" />
     <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
     <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -375,7 +382,7 @@
     <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-    <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+    <Property Type="Boolean" Name="En_promocion" Nullable="false" />
     <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
     <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
     <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />

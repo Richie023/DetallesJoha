@@ -4,51 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>.product-preview img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-.input-number {
-    position: relative;
-    width: 100px;
-    margin-right: 10px;
-}
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 
-.input-number input {
-    width: 100%;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+<!-- Slick -->
+<link type="text/css" rel="stylesheet" href="css/slick.css" />
+<link type="text/css" rel="stylesheet" href="css/slick-theme.css" />
 
-.qty-up, .qty-down {
-    position: absolute;
-    right: 5px;
-    width: 15px;
-    height: 15px;
-    line-height: 15px;
-    text-align: center;
-    cursor: pointer;
-}
+<!-- nouislider -->
+<link type="text/css" rel="stylesheet" href="css/nouislider.min.css" />
 
-.qty-up {
-    top: 2px;
-}
+<!-- Font Awesome Icon -->
+<link rel="stylesheet" href="css/font-awesome.min.css">
 
-.qty-down {
-    bottom: 2px;
-}
-
-.product-available {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 4px;
-    color: #28a745;
-    background-color: rgba(40, 167, 69, 0.1);
-    margin-left: 15px;
-}</style>
+<!-- Custom stlylesheet -->
+<link type="text/css" rel="stylesheet" href="css/style.css" />
 
 <div class="section">
     <div class="container">
@@ -57,7 +30,7 @@
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
-                        <img src="@Model.RutaImagen" alt="@Model.NombreProducto">
+                        <img id="main-product-img" src="@Model.RutaImagen" alt="@Model.NombreProducto">
                     </div>
                 </div>
             </div>
@@ -71,99 +44,150 @@
                 </div>
             </div>
 
-           
-    <div class="col-md-5">
-        <div class="product-details">
-            <h2 class="product-name">@Model.NombreProducto</h2>
-            
-            <div>
-                @if (Model.En_promocion)
-                {
-                    <h3 class="product-price">
-                        ₡@Model.PrecioConDescuento.ToString("N0")
-                        <del class="product-old-price">₡@Model.Precio.ToString("N0")</del>
-                    </h3>
-                    <span class="product-available text-danger">-@Model.Porcentaje_descuento% OFF</span>
-                }
-                else
-                {
-                    <h3 class="product-price">₡@Model.Precio.ToString("N0")</h3>
-                }
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">@Model.NombreProducto</h2>
 
-                <span class="product-available">@(Model.Inventario) en inventario</span>
-            </div>
+                    <div>
+                        @if (Model.En_promocion)
+                        {
+                            <h3 class="product-price">
+                                ₡@Model.PrecioConDescuento.ToString("N0")
+                                <del class="product-old-price">₡@Model.Precio.ToString("N0")</del>
+                            </h3>
+                            <span class="product-available text-danger">-@Model.Porcentaje_descuento% OFF</span>
+                        }
+                        else
+                        {
+                            <h3 class="product-price">₡@Model.Precio.ToString("N0")</h3>
+                        }
 
-            <p>@Model.NombreProducto</p>
+                        <span class="product-available">@(Model.Inventario) en inventario</span>
+                    </div>
 
-            @if (Model.Inventario > 0)
-            {
-                <div class="add-to-cart">
-                    <div class="qty-label">
-                        Cantidad
-                        <div class="input-number">
-                            <input type="number" class="cantidad-producto"
-                                   value="1" min="1" max="@Model.Inventario">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
+                    <p>@Model.NombreProducto</p>
+
+                    <!-- Color Selection -->
+                    <div class="color-selection">
+                        <label for="color">Color:</label>
+                        <div class="color-options">
+                            <!-- Add color options below -->
+                            <div class="color-option" style="background-color: black;" data-color="black"></div>
+                            <div class="color-option" style="background-color: darkblue;" data-color="darkblue"></div>
+                            <div class="color-option" style="background-color: darkgreen;" data-color="darkgreen"></div>
+                            <div class="color-option" style="background-color: darkgray;" data-color="darkgray"></div>
+                            <div class="color-option" style="background-color: red;" data-color="red"></div>
+                            <div class="color-option" style="background-color: blue;" data-color="blue"></div>
+                            <div class="color-option" style="background-color: green;" data-color="green"></div>
+                            <div class="color-option" style="background-color: purple;" data-color="purple"></div>
+                            <div class="color-option" style="background-color: yellow;" data-color="yellow"></div>
+                            <div class="color-option" style="background-color: orange;" data-color="orange"></div>
+                            <div class="color-option" style="background-color: pink;" data-color="pink"></div>
+                            <div class="color-option" style="background-color: gray;" data-color="gray"></div>
+                            <div class="color-option" style="background-color: lightblue;" data-color="lightblue"></div>
+                            <div class="color-option" style="background-color: brown;" data-color="brown"></div>
+                            <div class="color-option" style="background-color: beige;" data-color="beige"></div>
+                            <!-- Add more colors as needed -->
                         </div>
                     </div>
-                    <button class="add-to-cart-btn" onclick="AgregarAlCarrito(@Model.Consecutivo)">
-                        <i class="fa fa-shopping-cart"></i> Agregar al carrito
-                    </button>
-                </div>
-            }
 
-            <ul class="product-btns">
-                <li>
-                    <a href="#" onclick="AgregarAFavoritos(@Model.Consecutivo)">
-                        <i class="fa fa-heart-o"></i> Agregar a favoritos
-                    </a>
-                </li>
-            </ul>
+                    <!-- Print Process Selection -->
+                    <div class="print-selection">
+                        <label for="print-process">Impresión:</label>
+                        <select id="print-process" name="print-process">
+                            <option value="black">Impresión Intensa: con base blanca</option>
+                            <option value="colored">Impresión a color</option>
+                        </select>
+                    </div>
 
-            <ul class="product-links">
-                <li>Categoría:</li>
-                <li><a href="#">@Model.NombreCategoria</a></li>
-            </ul>
-        </div>
-            </div>
+                    <!-- Size Selection -->
+                    <div class="size-selection">
+                        <label for="size">Talla:</label>
+                        <select id="size" name="size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                    </div>
 
-            <!-- Product tab -->
-            <div class="col-md-12">
-                <div id="product-tab">
-                    <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab1">Descripción</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Detalles</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Reseñas</a></li>
+                    <!-- Category -->
+                    <div class="product-category">
+                        <label>Categoría:</label>
+                        <span>@Model.NombreCategoria</span>
+                    </div>
+
+                    <!-- Edit Design Button -->
+                    <div class="edit-design">
+                        <a href="@Url.Action("DiseñoProducto", "Producto", new { id = Model.Consecutivo })" class="btn btn-primary">
+                            Editar este diseño
+                        </a>
+                    </div>
+
+                    @if (Model.Inventario > 0)
+                    {
+                        <div class="add-to-cart">
+                            <div class="qty-label">
+                                Cantidad
+                                <div class="input-number">
+                                    <input type="number" class="cantidad-producto"
+                                           value="1" min="1" max="@Model.Inventario">
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" onclick="AgregarAlCarrito(@Model.Consecutivo)">
+                                <i class="fa fa-shopping-cart"></i> Agregar al carrito
+                            </button>
+                        </div>
+                    }
+
+                    <ul class="product-btns">
+                        <li>
+                            <a href="#" onclick="AgregarAFavoritos(@Model.Consecutivo)">
+                                <i class="fa fa-heart-o"></i> Agregar a favoritos
+                            </a>
+                        </li>
                     </ul>
 
-                    <div class="tab-content">
-                        <div id="tab1" class="tab-pane fade in active">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>@Model.Material</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="tab2" class="tab-pane fade in">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>Detalles adicionales del producto...</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- El tab3 se mantiene igual para las reseñas -->
-                    </div>
+                    <ul class="product-links">
+                        <li>Categoría:</li>
+                        <li><a href="#">@Model.NombreCategoria</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slick.min.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/jquery.zoom.min.js"></script>
+<script src="js/main.js"></script>
 
-    <script>
+<script>
+    // Function to change the product image when a color is selected
+    $(document).ready(function() {
+        $('.color-option').on('click', function() {
+            var selectedColor = $(this).data('color');
+            var imagePath = '@Url.Content("~/Images/Products/")' + selectedColor + '.jpg'; // Adjust the path and file type
+            $('#main-product-img').attr('src', imagePath);
+        });
+    });
+
+    function EditarDiseno() {
+        alert('Empezar a diseñar');
+    }
+</script>
+
+
+
+
+<script>
         $(document).ready(function() {
             // Manejo de cantidad
             $('.qty-up').on('click', function() {
@@ -229,4 +253,4 @@
                 timer: 2500
             });
         }
-    </script>
+</script>

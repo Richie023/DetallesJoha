@@ -13,6 +13,9 @@
     <Parameter Name="Material" Type="varchar" Mode="In" />
     <Parameter Name="Tamanio" Type="varchar" Mode="In" />
     <Parameter Name="ColorBase" Type="varchar" Mode="In" />
+    <Parameter Name="Porcentaje_Descuento" Type="int" Mode="In" />
+    <Parameter Name="FechaInicioPromocion" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFinPromocion" Type="datetime" Mode="In" />
   </Function>
   <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />

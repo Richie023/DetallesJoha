@@ -41,7 +41,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarImagenProducto", consecutivoParameter, rutaImagenParameter);
         }
     
-        public virtual int ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase)
+        public virtual ObjectResult<ActualizarProducto_Result> ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> porcentaje_Descuento, Nullable<System.DateTime> fechaInicioPromocion, Nullable<System.DateTime> fechaFinPromocion)
         {
             var consecutivoParameter = consecutivo.HasValue ?
                 new ObjectParameter("Consecutivo", consecutivo) :
@@ -75,7 +75,19 @@ namespace Api.Models
                 new ObjectParameter("ColorBase", colorBase) :
                 new ObjectParameter("ColorBase", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter);
+            var porcentaje_DescuentoParameter = porcentaje_Descuento.HasValue ?
+                new ObjectParameter("Porcentaje_Descuento", porcentaje_Descuento) :
+                new ObjectParameter("Porcentaje_Descuento", typeof(int));
+    
+            var fechaInicioPromocionParameter = fechaInicioPromocion.HasValue ?
+                new ObjectParameter("FechaInicioPromocion", fechaInicioPromocion) :
+                new ObjectParameter("FechaInicioPromocion", typeof(System.DateTime));
+    
+            var fechaFinPromocionParameter = fechaFinPromocion.HasValue ?
+                new ObjectParameter("FechaFinPromocion", fechaFinPromocion) :
+                new ObjectParameter("FechaFinPromocion", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ActualizarProducto_Result>("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, porcentaje_DescuentoParameter, fechaInicioPromocionParameter, fechaFinPromocionParameter);
         }
     
         public virtual int ActualizarUsuario(Nullable<long> consecutivo, string contrasenna, string nombre, string correoElectronico)

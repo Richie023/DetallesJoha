@@ -117,7 +117,7 @@ namespace Web.Controllers
 
         // Método de acción para filtrar productos por categoría
         [FiltroSeguridad]
-        [HttpGet]
+        [HttpPost]
         public ActionResult FiltrarPorCategoria(int? IdCategoria)
         {
             var productos = new List<Web.Entidades.Producto>();
@@ -143,6 +143,8 @@ namespace Web.Controllers
             return View(productos);
         }
 
+        [FiltroSeguridad]
+        [HttpPost]
         public ActionResult FiltrarPorPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
         {
             var productos = new List<Web.Entidades.Producto>();
@@ -169,7 +171,9 @@ namespace Web.Controllers
         }
 
 
-        public ActionResult PantallaPorMCT(string Material, string Color, string Tamanio)
+        [FiltroSeguridad]
+        [HttpPost]
+        public ActionResult FiltrarPorMCT(string Material, string Color, string Tamanio)
         {
             var productos = new List<Web.Entidades.Producto>();
 

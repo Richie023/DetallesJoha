@@ -55,7 +55,7 @@ namespace Web.Controllers
 
                 if (respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerPreguntasFrecuentes");
+                    return RedirectToAction("PreguntasFrecuentes");
                 }
                 else
                 {
@@ -71,10 +71,14 @@ namespace Web.Controllers
         }
 
         // Mostrar la vista para editar una pregunta frecuente existente
-        
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            return View();
+        }
 
-        // Procesar la actualización de una pregunta frecuente existente
-        [HttpPost]
+            // Procesar la actualización de una pregunta frecuente existente
+            [HttpPost]
         public ActionResult Editar(PreguntasFrecuentes entidad)
         {
             if (entidad == null)
@@ -89,7 +93,7 @@ namespace Web.Controllers
 
                 if (respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerPreguntasFrecuentes");
+                    return RedirectToAction("PreguntasFrecuentes");
                 }
                 else
                 {

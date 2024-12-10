@@ -18,6 +18,9 @@
           <Parameter Name="Material" Type="varchar" Mode="In" />
           <Parameter Name="Tamanio" Type="varchar" Mode="In" />
           <Parameter Name="ColorBase" Type="varchar" Mode="In" />
+          <Parameter Name="Porcentaje_Descuento" Type="int" Mode="In" />
+          <Parameter Name="FechaInicioPromocion" Type="datetime" Mode="In" />
+          <Parameter Name="FechaFinPromocion" Type="datetime" Mode="In" />
         </Function>
         <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
@@ -198,7 +201,7 @@
             <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
             <Parameter Name="RutaImagen" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="ActualizarProducto">
+          <FunctionImport Name="ActualizarProducto" ReturnType="Collection(DetallesJohaModel.ActualizarProducto_Result)">
             <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
             <Parameter Name="NombreProducto" Mode="In" Type="String" />
             <Parameter Name="Precio" Mode="In" Type="Decimal" />
@@ -207,6 +210,9 @@
             <Parameter Name="Material" Mode="In" Type="String" />
             <Parameter Name="Tamanio" Mode="In" Type="String" />
             <Parameter Name="ColorBase" Mode="In" Type="String" />
+            <Parameter Name="Porcentaje_Descuento" Mode="In" Type="Int32" />
+            <Parameter Name="FechaInicioPromocion" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinPromocion" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ActualizarUsuario">
             <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -377,6 +383,10 @@
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ActualizarProducto_Result">
+          <Property Type="Int64" Name="Consecutivo" Nullable="true" />
+          <Property Type="Decimal" Name="PrecioConDescuento" Nullable="true" Precision="10" Scale="2" />
+        </ComplexType>
         <ComplexType Name="ColsultarAvisoPrivacidad_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />
@@ -466,7 +476,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -549,7 +559,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -568,7 +578,7 @@
           <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="En_promocion" Nullable="true" />
+          <Property Type="Boolean" Name="En_promocion" Nullable="false" />
           <Property Type="Int32" Name="porcentaje_descuento" Nullable="true" />
           <Property Type="DateTime" Name="fecha_inicio" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="fecha_fin" Nullable="true" Precision="23" />
@@ -622,7 +632,14 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DetallesJohaModelStoreContainer" CdmEntityContainer="DetallesJohaEntities" >
           <FunctionImportMapping FunctionImportName="ActualizarImagenProducto" FunctionName="DetallesJohaModel.Store.ActualizarImagenProducto" />
-          <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="DetallesJohaModel.Store.ActualizarProducto" />
+          <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="DetallesJohaModel.Store.ActualizarProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.ActualizarProducto_Result">
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="PrecioConDescuento" ColumnName="PrecioConDescuento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="DetallesJohaModel.Store.ActualizarUsuario" />
           <FunctionImportMapping FunctionImportName="AgregarCarrito" FunctionName="DetallesJohaModel.Store.AgregarCarrito" />
           <FunctionImportMapping FunctionImportName="ColsultarAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.ColsultarAvisoPrivacidad">

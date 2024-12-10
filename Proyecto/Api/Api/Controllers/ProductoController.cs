@@ -322,9 +322,22 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase);
+                    var resp = db.ActualizarProducto(
+                        entidad.Consecutivo, 
+                        entidad.NombreProducto, 
+                        entidad.Precio, 
+                        entidad.Inventario, 
+                        entidad.IdCategoria,
+                        entidad.Material,
+                        entidad.Tamanio,
+                        entidad.ColorBase,
+                        entidad.Porcentaje_descuento,
+                        entidad.Fecha_inicio,
+                        entidad.Fecha_fin);
 
-                    if (resp > 0)
+                    var resultado = resp.FirstOrDefault(); // Obtener el primer resultado
+
+                    if (resultado != null)
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;

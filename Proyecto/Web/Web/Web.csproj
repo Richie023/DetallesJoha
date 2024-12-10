@@ -202,6 +202,13 @@
     <Content Include="Estilos\css\Ayuda.css" />
     <Content Include="Estilos\css\Blog.css" />
     <Content Include="Estilos\css\bootstrap.min.css" />
+    <Content Include="Estilos\css\cssfooter.css" />
+    <Content Include="Estilos\css\cssfooteravisoprivacidad.css" />
+    <Content Include="Estilos\css\cssfooterayuda.css" />
+    <Content Include="Estilos\css\cssfooterblog.css" />
+    <Content Include="Estilos\css\cssfootercliente.css" />
+    <Content Include="Estilos\css\cssfooterpoliticadevolucion.css" />
+    <Content Include="Estilos\css\cssfooterpreguntasfrecuentes.css" />
     <Content Include="Estilos\css\Filtros.css" />
     <Content Include="Estilos\css\font-awesome.min.css" />
     <Content Include="Estilos\css\Footer.css" />
@@ -215,6 +222,11 @@
     <Content Include="Estilos\css\style.css" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
+    <Content Include="Estilos\img\hotdeal.png" />
+    <Content Include="Estilos\img\logo.jpg" />
+    <Content Include="Estilos\img\logo.png" />
+    <Content Include="Estilos\img\product01.png" />
+    <Content Include="Estilos\img\product02.png" />
     <Content Include="Estilos\img\undraw_posting_photo.svg" />
     <Content Include="Estilos\img\undraw_profile.svg" />
     <Content Include="Estilos\img\undraw_profile_1.svg" />
@@ -425,6 +437,9 @@
     <Content Include="Views\AvisoPrivacidad\Editar.cshtml" />
     <Content Include="Views\AvisoPrivacidad\Borrar.cshtml" />
     <Content Include="Views\Inicio\FiltrarPorCategoria.cshtml" />
+    <Content Include="Views\Producto\DiseñoProducto.cshtml" />
+    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

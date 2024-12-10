@@ -44,6 +44,22 @@ namespace Web.Controllers
 
 
         [HttpGet]
+        public ActionResult DiseñoProducto(long id)
+        {
+            var resultado = modelo.ConsultarProducto(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);  
+        }
+
+
+
+
+        [HttpGet]
         public ActionResult RegistrarProducto()
         {
             CargarViewBagCategorias();
@@ -81,6 +97,7 @@ namespace Web.Controllers
             var resp = modelo.ConsultarProducto(id);
             CargarViewBagCategorias();
             ViewBag.urlImagen = resp.Dato.RutaImagen;
+           
             return View(resp.Dato);
         }
 
