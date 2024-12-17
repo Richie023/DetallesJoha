@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+        <h2 class="m-0 font-weight-bold text-primary">Productos</h2>
     </div>
 
     <div class="row">
@@ -37,7 +37,15 @@
                             @Html.Label("Nombre")
                             @Html.TextBoxFor(m => m.NombreProducto, new { @class = "form-control form-control-user", @placeholder = "Nombre", @required = "true" })
                         </div>
-                       
+                        <div class="form-group">
+                            @Html.Label("Categoría")
+                            @Html.DropDownListFor(m => m.IdCategoria, ViewBag.TiposCategoria as List<SelectListItem>, new { @class = "form-control form-control-user", @required = "true" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Descripcion")
+                            @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control form-control-user", @placeholder = "Descripcion", @required = "true" })
+                        </div>
 
                         <div class="form-group">
                             @Html.Label("Precio")
@@ -47,11 +55,8 @@
                             @Html.Label("Inventario")
                             @Html.TextBoxFor(m => m.Inventario, new { @class = "form-control form-control-user", @placeholder = "Inventario", @type = "Number", @required = "true" })
                         </div>
-                        <div class="form-group">
-                            @Html.Label("Categoría")
-                            @Html.DropDownListFor(m => m.IdCategoria, ViewBag.TiposCategoria as List<SelectListItem>, new { @class = "form-control form-control-user", @required = "true" })
-                        </div>
-                                            
+
+
                         <div class="form-group">
                             @Html.Label("Material")
                             @Html.TextBoxFor(m => m.Material, new { @class = "form-control form-control-user", @placeholder = "Material del Producto", @required = "true" })

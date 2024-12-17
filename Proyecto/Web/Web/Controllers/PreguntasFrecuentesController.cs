@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web.Mvc;
 using Web.Entidades;
 using Web.Models;
@@ -104,7 +105,7 @@ namespace Web.Controllers
             return View(entidad);
         }
 
-        
+     
 
         [HttpGet]
         public ActionResult Eliminar(int id)
@@ -129,5 +130,31 @@ namespace Web.Controllers
 
             return RedirectToAction("VerPreguntasFrecuentes");
         }
+
+
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                var resultado = modelo.ConsultarPreguntaFrecuente(id);
+
+                if (resultado == null)
+                {
+                    return HttpNotFound("No se encontró la pregunta frecuente solicitada.");
+                }
+
+
+                return View("Editar", resultado);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"Ocurrió un error al consultar la pregunta frecuente: {ex.Message}";
+                return RedirectToAction("PreguntasFrecuentes");
+            }
+        }
+
+
+
     }
-}
+            }    

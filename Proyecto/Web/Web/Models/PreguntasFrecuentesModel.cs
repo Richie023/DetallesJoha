@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Json;
 using Web.Entidades;
@@ -97,5 +98,36 @@ namespace Web.Models
                 }
             }
         }
+
+        public PreguntasFrecuentes ConsultarPreguntaFrecuente(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    // Obtener la URL base desde el archivo de configuración
+                    string url = ConfigurationManager.AppSettings["urlWebApi"] + $"PreguntasFrecuentes/Consultar/{id}";
+                    var respuesta = client.GetAsync(url).Result;
+
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        // Deserialización directa a PreguntasFrecuentes
+                        return respuesta.Content.ReadFromJsonAsync<PreguntasFrecuentes>().Result;
+                    }
+                    else
+                    {
+                        // Manejo del caso donde no se obtiene un 200 OK
+                        throw new Exception($"Error al consultar la pregunta frecuente: {respuesta.ReasonPhrase}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Manejo de errores
+                    throw new Exception($"Se produjo un error al llamar a la API: {ex.Message}");
+                }
+            }
+        }
+
+
     }
 }

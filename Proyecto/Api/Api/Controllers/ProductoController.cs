@@ -109,7 +109,8 @@ namespace Api.Controllers
                         entidad.ColorBase,
                         entidad.Porcentaje_descuento,  // Asegúrate de que `Porcentaje_descuento` esté presente en el modelo y se envíe
                         entidad.Fecha_inicio,          // Fecha de inicio de la promoción
-                        entidad.Fecha_fin              // Fecha de fin de la promoción
+                        entidad.Fecha_fin   ,           // Fecha de fin de la promoción
+                        entidad.Descripcion
                     ).FirstOrDefault(); 
 
                     if (resp.Consecutivo > 0)
@@ -322,7 +323,7 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase,entidad.Id_Promocion);
+                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase,entidad.Id_Promocion,entidad.Descripcion);
 
                     if (resp > 0)
                     {

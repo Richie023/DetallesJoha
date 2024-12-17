@@ -81,6 +81,7 @@
                                 else
                                 {
                                     <a href="@Url.Action("IniciarSesion","Inicio")"><i class="fa fa-user-o"></i> Mi Cuenta</a>
+
                                 }
                             </span>
                         </a>
@@ -255,7 +256,8 @@
 
                     @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
                     {
-                        <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
+                        <li><a href="@Url.Action("RegistrarCategoria", "Categoria")">Registra Categoria</a></li>
+                         <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
                         <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
                         <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
                         <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>

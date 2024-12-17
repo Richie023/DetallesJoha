@@ -155,6 +155,7 @@
     <Compile Include="Controllers\AyudaController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\InfoEController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Models\AyudaModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\CategoriaModel.cs" />
     <Compile Include="Models\ConsultaModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />
     <Compile Include="Models\FiltroSeguridad.cs" />
@@ -561,6 +563,8 @@
     <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
     <Content Include="Views\Inicio\FiltrarPorCategoria.cshtml" />
     <Content Include="Views\Usuario\ActualizaUsuario.cshtml" />
+    <Content Include="Views\Categoria\RegistrarCategoria.cshtml" />
+    <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

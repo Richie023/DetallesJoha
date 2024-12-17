@@ -115,6 +115,26 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarPedido" FunctionName="DetallesJohaModel.Store.ConsultarPedido">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarPedido_Result">
+          <ScalarProperty Name="ConsecutivoDetalle" ColumnName="ConsecutivoDetalle" />
+          <ScalarProperty Name="ConsecutivoMaestro" ColumnName="ConsecutivoMaestro" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+          <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ConsultarPedidos" FunctionName="DetallesJohaModel.Store.ConsultarPedidos">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarPedidos_Result">
@@ -132,6 +152,17 @@
           <ScalarProperty Name="Material" ColumnName="Material" />
           <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
           <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarPreguntaFrecuente" FunctionName="DetallesJohaModel.Store.ConsultarPreguntaFrecuente">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.ConsultarPreguntaFrecuente_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="pregunta" ColumnName="pregunta" />
+          <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+          <ScalarProperty Name="ultima_actualizacion" ColumnName="ultima_actualizacion" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -384,6 +415,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RegistrarCategoria" FunctionName="DetallesJohaModel.Store.RegistrarCategoria" />
     <FunctionImportMapping FunctionImportName="RegistrarInformacionEmpresa" FunctionName="DetallesJohaModel.Store.RegistrarInformacionEmpresa" />
     <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="DetallesJohaModel.Store.RegistrarProducto">
       <ResultMapping>

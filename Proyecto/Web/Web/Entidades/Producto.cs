@@ -24,6 +24,7 @@ namespace Web.Entidades
 
         public string ColorBase { get; set; }
         public int? Id_promocion { get; set; }
+        public string Descripcion { get; set; }
 
         // Propiedades adicionales para manejar promociones
 

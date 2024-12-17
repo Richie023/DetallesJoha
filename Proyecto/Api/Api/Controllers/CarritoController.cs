@@ -1,10 +1,18 @@
 ﻿using Api.Entidades;
 using Api.Models;
 using System;
+using System.Collections.Generic;
+using System.Data.Linq;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Threading;
 using System.Web.Http;
+using System.Web.SessionState;
+using System.Web.UI.WebControls;
+using System.Windows.Documents;
+using System.Xml.Schema;
 
 
 namespace Api.Controllers
@@ -25,7 +33,7 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.AgregarCarrito(entidad.ConsecutivoUsuario, entidad.ConsecutivoProducto, entidad.Cantidad);
+                    var resp = db.AgregarCarrito(entidad.ConsecutivoUsuario, entidad.Consecutivo, entidad.Cantidad);
 
                     if (resp > 0)
                     {
@@ -128,10 +136,15 @@ namespace Api.Controllers
                 {
 
                     var resp = db.PagarCarrito(entidad.ConsecutivoUsuario);
-                    envioPedido(entidad.ConsecutivoMaestro);
+                   
                     if (resp > 0)
                     {
+                    
 
+
+
+
+ envioPedido(entidad.ConsecutivoUsuario,entidad.Correo,entidad.NombreUsuario,entidad.Fecha);
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;
 
@@ -257,24 +270,68 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        private void envioPedido(long consecutivo) {
+        private void envioPedido(long consecutivo, String correo, String nombreUsuario,DateTime fecha) {
 
-            var data =ConsultarDetalleFacturas(consecutivo);
 
-            Context.GetData();
 
-            contenido = File.ReadAllText(ruta);
-            contenido = contenido.Replace("@@Nombre", data.DatosConsultarDetalleFacturas.);
-            contenido = contenido.Replace("@@Pedido", entidad.ConsecutivoMaestro.ToString());
-            contenido = contenido.Replace("@@Producto", entidad.Nombre);
-            contenido = contenido.Replace("@@Cantidad", entidad.Cantidad.ToString());
-            contenido = contenido.Replace("@@Material", entidad.Material);
-            contenido = contenido.Replace("@@Tamanio", entidad.Tamanio);
-            contenido = contenido.Replace("@@Total", entidad.Total.ToString());
-            contenido = contenido.Replace("@@Fecha", entidad.Fecha.ToString("dd/MM/yyyy hh:mm:ss tt"));
 
-            model.EnviarCorreo(entidad.Correo, "Pedido" + entidad.ConsecutivoMaestro, contenido);
+            using (var db = new DetallesJohaEntities())
+            {
 
+        var datos = db.ConsultarPedido().ToList();
+
+  decimal Total = 0;
+                string producto = null;
+                string des = null;
+                String cant = null;
+                string precio = null;
+                string total = null;
+                if (datos.Count > 0)
+                {
+                     
+
+                    foreach (var dato in datos)
+                    {
+                                              
+                        contenido = File.ReadAllText(ruta);
+                                             
+                            contenido = contenido.Replace("@@Pedido", dato.ConsecutivoMaestro.ToString());
+
+                            contenido = contenido.Replace("@@Nombre", dato.NombreUsuario);
+                         
+                          
+                            contenido = contenido.Replace("@@Fecha", dato.Fecha.ToString("dd/MM/yyyy hh:mm:ss tt"));
+
+                            producto +=   dato.Nombre.ToString() + "<br><br>";
+                        des += "Tamaño: " + dato.Tamanio.ToString() + "<br> Material:" + dato.Material.ToString() + "<br>";
+                        cant += dato.Cantidad.ToString() + "<br><br>";
+                        precio += dato.Precio.ToString("N0") + "<br><br>";
+                        total += dato.Total.ToString("N0") + "<br><br>";
+                        Total += dato.Total;
+
+
+                        
+                    
+
+
+                    }
+contenido = contenido.Replace("@@Producto", producto); 
+                    contenido = contenido.Replace("@@Cantidad", cant.ToString());
+                    contenido = contenido.Replace("@@Descripion", des.ToString());
+                    contenido = contenido.Replace("@@Precio", precio);
+                    contenido = contenido.Replace("@@total", total.ToString());
+                    contenido = contenido.Replace("@@Total",Total.ToString("N0"));
+                    model.EnviarCorreo(correo, "Tu Pedido" + "en Detalles JOHA", contenido);
+
+                }
+
+
+            }
+              
+
+            
+
+         
 
         }
     }

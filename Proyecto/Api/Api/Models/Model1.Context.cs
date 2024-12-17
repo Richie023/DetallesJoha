@@ -86,7 +86,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarInfo", consecutivoInformacionParameter, nombreEmpresaParameter, telefonoParameter, correoElectronicoParameter, direccionParameter, acercaDeNosotrosParameter, contactanosParameter, politicasParameter, ordenesDevolucionesParameter, terminosCondicionesParameter);
         }
     
-        public virtual int ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> id_Promocion)
+        public virtual int ActualizarProducto(Nullable<long> consecutivo, string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> id_Promocion, string descripcion)
         {
             var consecutivoParameter = consecutivo.HasValue ?
                 new ObjectParameter("Consecutivo", consecutivo) :
@@ -124,7 +124,11 @@ namespace Api.Models
                 new ObjectParameter("Id_Promocion", id_Promocion) :
                 new ObjectParameter("Id_Promocion", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, id_PromocionParameter);
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarProducto", consecutivoParameter, nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, id_PromocionParameter, descripcionParameter);
         }
     
         public virtual int ActualizarUsuario(Nullable<long> consecutivo, string contrasenna, string nombre, string correoElectronico, Nullable<int> consecutivoRol)
@@ -221,9 +225,23 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarFacturas_Result>("ConsultarFacturas", consecutivoUsuarioParameter);
         }
     
+        public virtual ObjectResult<ConsultarPedido_Result> ConsultarPedido()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPedido_Result>("ConsultarPedido");
+        }
+    
         public virtual ObjectResult<ConsultarPedidos_Result> ConsultarPedidos()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPedidos_Result>("ConsultarPedidos");
+        }
+    
+        public virtual ObjectResult<ConsultarPreguntaFrecuente_Result> ConsultarPreguntaFrecuente(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPreguntaFrecuente_Result>("ConsultarPreguntaFrecuente", idParameter);
         }
     
         public virtual ObjectResult<ConsultarProducto_Result> ConsultarProducto(Nullable<long> consecutivo)
@@ -557,6 +575,15 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RefacturaFactura_Result>("RefacturaFactura", consecutivoMaestroParameter);
         }
     
+        public virtual int RegistrarCategoria(string nombreCategoria)
+        {
+            var nombreCategoriaParameter = nombreCategoria != null ?
+                new ObjectParameter("NombreCategoria", nombreCategoria) :
+                new ObjectParameter("NombreCategoria", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarCategoria", nombreCategoriaParameter);
+        }
+    
         public virtual int RegistrarInformacionEmpresa(string nombreEmpresa, string telefono, string correoElectronico, string direccion, string acercaDeNosotros, string contactanos, string politicas, string ordenesDevoluciones, string terminosCondiciones)
         {
             var nombreEmpresaParameter = nombreEmpresa != null ?
@@ -598,7 +625,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarInformacionEmpresa", nombreEmpresaParameter, telefonoParameter, correoElectronicoParameter, direccionParameter, acercaDeNosotrosParameter, contactanosParameter, politicasParameter, ordenesDevolucionesParameter, terminosCondicionesParameter);
         }
     
-        public virtual ObjectResult<RegistrarProducto_Result> RegistrarProducto(string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> porcentaje_Descuento, Nullable<System.DateTime> fechaInicioPromocion, Nullable<System.DateTime> fechaFinPromocion)
+        public virtual ObjectResult<RegistrarProducto_Result> RegistrarProducto(string nombreProducto, Nullable<decimal> precio, Nullable<int> inventario, Nullable<int> idCategoria, string material, string tamanio, string colorBase, Nullable<int> porcentaje_Descuento, Nullable<System.DateTime> fechaInicioPromocion, Nullable<System.DateTime> fechaFinPromocion, string descripcion)
         {
             var nombreProductoParameter = nombreProducto != null ?
                 new ObjectParameter("NombreProducto", nombreProducto) :
@@ -640,7 +667,11 @@ namespace Api.Models
                 new ObjectParameter("FechaFinPromocion", fechaFinPromocion) :
                 new ObjectParameter("FechaFinPromocion", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RegistrarProducto_Result>("RegistrarProducto", nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, porcentaje_DescuentoParameter, fechaInicioPromocionParameter, fechaFinPromocionParameter);
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RegistrarProducto_Result>("RegistrarProducto", nombreProductoParameter, precioParameter, inventarioParameter, idCategoriaParameter, materialParameter, tamanioParameter, colorBaseParameter, porcentaje_DescuentoParameter, fechaInicioPromocionParameter, fechaFinPromocionParameter, descripcionParameter);
         }
     
         public virtual int RegistrarResenna(Nullable<long> consecutivoUsuario, Nullable<int> calificacion, string comentario)

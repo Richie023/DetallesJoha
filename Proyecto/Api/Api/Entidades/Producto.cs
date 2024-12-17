@@ -20,6 +20,7 @@ namespace Api.Entidades
         public string Material { get; set; }
         public string Tamanio { get; set; }
         public string ColorBase { get; set; }
+        public string Descripcion { get; set; }
         public int? Id_Promocion { get; set; }    
 
         // Propiedades adicionales para manejar promociones

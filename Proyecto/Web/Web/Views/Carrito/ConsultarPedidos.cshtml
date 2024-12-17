@@ -58,7 +58,7 @@
                     <h5>Detalles del pedido</h5>
                     <div class="">
                         Nombre Cliente:   @item.NombreUsuario &nbsp&nbsp <br />
-                        Id Producto : @item.ConsecutivoProducto<br />
+                        Id Producto : @item.Consecutivo<br />
                         Producto :   @item.Nombre &nbsp&nbsp <br />
                         Cantidad : @item.Cantidad&nbsp&nbsp<br />
                         Precio : @item.Precio.ToString("N2")&nbsp&nbsp<br />
@@ -70,7 +70,7 @@
                         @if (Session["RolUsuario"].ToString() != "1")
                         {
 
-                            <a href="@Url.Action("AgregarCarrito","Carrito", new {idProducto = item.ConsecutivoProducto,idCantidad=item.Cantidad})" class="btn btn-primary">Pedir de Nuevo</a>
+                            <a href="@Url.Action("AgregarCarrito","Carrito", new {idProducto = item.Consecutivo,idCantidad=item.Cantidad})" class="btn btn-primary">Pedir de Nuevo</a>
 
                         }
                     </div>

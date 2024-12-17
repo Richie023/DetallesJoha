@@ -26,6 +26,7 @@
     <Parameter Name="Tamanio" Type="varchar" Mode="In" />
     <Parameter Name="ColorBase" Type="varchar" Mode="In" />
     <Parameter Name="Id_Promocion" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
   </Function>
   <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
@@ -53,7 +54,11 @@
   <Function Name="ConsultarFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
   </Function>
+  <Function Name="ConsultarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="ConsultarPedidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ConsultarPreguntaFrecuente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+  </Function>
   <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
   </Function>
@@ -153,6 +158,9 @@
   <Function Name="RefacturaFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ConsecutivoMaestro" Type="bigint" Mode="In" />
   </Function>
+  <Function Name="RegistrarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NombreCategoria" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="RegistrarInformacionEmpresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NombreEmpresa" Type="varchar" Mode="In" />
     <Parameter Name="Telefono" Type="varchar" Mode="In" />
@@ -175,6 +183,7 @@
     <Parameter Name="Porcentaje_Descuento" Type="int" Mode="In" />
     <Parameter Name="FechaInicioPromocion" Type="datetime" Mode="In" />
     <Parameter Name="FechaFinPromocion" Type="datetime" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
   </Function>
   <Function Name="RegistrarResenna" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />

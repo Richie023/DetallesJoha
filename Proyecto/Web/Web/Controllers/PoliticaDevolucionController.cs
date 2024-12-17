@@ -9,8 +9,8 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+    //[FiltroSeguridad]
+   // [FiltroAdmin]
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class PoliticaDevolucionController : Controller
     {

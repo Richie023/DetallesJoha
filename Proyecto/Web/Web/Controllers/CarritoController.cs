@@ -21,7 +21,7 @@ namespace Web.Controllers
         {
             Carrito entidad = new Carrito();
             entidad.ConsecutivoUsuario = long.Parse(Session["Consecutivo"].ToString());
-            entidad.ConsecutivoProducto = idProducto;
+            entidad.Consecutivo = idProducto;
             entidad.Cantidad = cantProducto;
 
             var respuesta = modelo.AgregarCarrito(entidad);

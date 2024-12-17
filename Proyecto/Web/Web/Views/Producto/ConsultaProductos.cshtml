@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="odd">
+                                    <tr class="odd " style="text-align:center" >
                                         <td>@item.Consecutivo</td>
                                         <td>@item.NombreProducto</td>
                                         <td>@item.Precio</td>
@@ -58,7 +58,17 @@
                                         {
                                             <td>Inactivo</td>
                                         }
-                                        <td>@item.En_promocion</td>
+                                        
+                                        @if (item.En_promocion)
+                                        {
+                                            <td>Si</td>
+                                        }
+                                        else
+                                        {
+                                            <td>NO</td>
+                                        }
+
+
                                         <td style="text-align:center">
                                             <a href="@Url.Action("ActualizarProducto","Producto", new { id = @item.Consecutivo })"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                             <a href="@Url.Action("EliminarProducto","Producto", new { id = @item.Consecutivo })"><i class="fa fa-trash-o fa-2x"></i></a>

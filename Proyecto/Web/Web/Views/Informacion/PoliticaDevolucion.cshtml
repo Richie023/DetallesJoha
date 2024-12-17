@@ -4,12 +4,22 @@
 @{
     ViewBag.Title = "Política de Devolución";
     Layout = "~/Views/Shared/_Layout.cshtml";
- }
+}
 
 
+@if (ViewBag.MsjPantalla != null)
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center">
+        @ViewBag.MsjPantalla
+    </div>
+}
+<button class=" btn-add">
+
+    <a href="@Url.Action("Insertar", "PoliticaDevolucion", new { })" class="btn btn-primary">Agregar</a>
+</button>
 
 <div class="container">
-    @if (Model != null && Model.Any()) 
+    @if (Model != null && Model.Any())
     {
         foreach (var seccion in Model.OrderBy(s => s.Orden))
         {
@@ -39,4 +49,3 @@
 
 
 
-<link href="~/Estilos/css/cssfooterpoliticadevolucion.css" rel="stylesheet">

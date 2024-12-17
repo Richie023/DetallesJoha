@@ -9,7 +9,7 @@ namespace Api.Controllers
 {
     public class PreguntasFrecuentesController : ApiController
     {
-        
+
         [HttpGet]
         [Route("PreguntasFrecuentes/ConsultarTodos")]
         public FaqRespuesta ConsultarTodos()
@@ -44,6 +44,33 @@ namespace Api.Controllers
             return respuesta;
         }
 
+        [HttpGet]
+        [Route("PreguntasFrecuentes/Consultar/{id}")]
+        public IHttpActionResult Consultar(int id)
+        {
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    // Buscar la pregunta frecuente en la base de datos por ID
+                    var pregunta = db.ConsultarPreguntaFrecuente(id);
+
+                    // Validar si se encontró la pregunta
+                    if (pregunta == null)
+                    {
+                        return NotFound(); // Devuelve 404 si no existe
+                    }
+
+                    // Devuelve la pregunta encontrada
+                    return Ok(pregunta);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores inesperados
+                return InternalServerError(new Exception($"Error al consultar la pregunta frecuente: {ex.Message}"));
+            }
+        }
 
 
         [HttpPost]
@@ -90,7 +117,8 @@ namespace Api.Controllers
                 using (var db = new DetallesJohaEntities())
                 {
                     // Llamada al procedimiento almacenado para actualizar
-                    var filasAfectadas = db.InsertPGF(
+                    var filasAfectadas = db.UpdatePGF(
+                        entidad.Id,
                         entidad.Categoria,
                         entidad.Pregunta,
                         entidad.Respuesta

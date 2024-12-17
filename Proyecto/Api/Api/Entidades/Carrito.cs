@@ -9,7 +9,7 @@ namespace Api.Entidades
     {
         public long ConsecutivoCarrito { get; set; }
         public long ConsecutivoUsuario { get; set; }
-        public long ConsecutivoProducto { get; set; }
+        public long Consecutivo { get; set; }
  
         public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }

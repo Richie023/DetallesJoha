@@ -45,7 +45,7 @@
                                         <td>@item.Impuesto.ToString("N2")</td>
                                         <td>@item.Total.ToString("N2")</td>
                                         <td style="text-align:center">
-                                            @item.ConsecutivoProducto
+                                            @item.Consecutivo
 
 
 
@@ -58,7 +58,7 @@
                                                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
                                             }*@
 
-                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.ConsecutivoProducto})" class="btn-add">
+                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.Consecutivo})" class="btn-add">
                                                 <i class="fa fa-shopping-cart"></i> 
                                             </a>
                                         </td>

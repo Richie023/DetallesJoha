@@ -254,16 +254,63 @@ table, td { color: #000000; } #u_body a { color: #161a39; text-decoration: under
               <br />
               <p style="font-size: 14px; line-height: 140%;">
                   <span style="font-size: 18px; line-height: 25.2px; color: #666666;">
-                      * Artículo(s) Solicitado(s):   @@Producto
+                      Fecha : @@Fecha
                       <br />
-                      * Material: @@Material
-                      <br />
-                      * Tamaño: @@Material
-                      <br />
-                      * Cantidad: @@Cantidad
-                      <br />
-                      * Precio Total: @@Total
+                      <table>
+                          <thead style="text-align:center">
+                              <tr>
+                                  <th>
+                                      Artículo(s)
+                                  </th>
+                                  <th>
+                                      Detalles
 
+                                  </th>
+
+                                  <th>
+
+                                      Cantidad 
+                                  </th>
+                                  <th>
+                                      Precio
+                                  </th>
+                                  <th>
+                                      Total
+                                  </th>
+                              </tr>
+                          </thead>
+                          <tbody style="text-align:center">
+                              <tr>
+                                  <td>
+
+                                      @@Producto
+
+
+                                  </td>
+                                  <td>
+                                      @@Descripion
+                                  </td>
+                                  <td style="text-align:center">
+
+                                      @@Cantidad
+
+                                  </td>
+                                  <td>
+                                      @@Precio
+                                  </td>
+                                  <td style="text-align:end">
+                                      @@total
+                                  </td>
+                              </tr>
+
+                          </tbody>
+
+
+
+                      </table>
+                      <br />
+
+                     Total De pedido: ¢ @@Total
 
 
                   </span>

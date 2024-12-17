@@ -3,80 +3,39 @@
 
 @{
     ViewBag.Title = "Política de Devolución";
-    Layout = "~/Views/Shared/_Layout.cshtml";
- }
-
-<style>
-    .policy-header {
-    text-align: center;
-    margin: 20px 0;
-    }
-
-    .policy-header h1 {
-    font-size: 2.5rem;
-    color: #333;
-    }
-
-    .policy-header p {
-    font-size: 1.2rem;
-    color: #777;
-    }
-
-    .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .policy-section {
-    margin-bottom: 30px;
-    }
-
-    .policy-section h2 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 10px;
-    }
-
-    .policy-section h3 {
-    font-size: 1.4rem;
-    color: #666;
-    margin-bottom: 5px;
-    }
-
-    .policy-section p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    }
-
-    .important-note, .exclusions, .contact-info {
-    background-color: #fff9c4;
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #6b4c10;
-    }
-
-</style>
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
 
 
-<div class="container">
-    @if (Model != null && Model.Any()) 
+
+@if (ViewBag.MsjPantalla != null)
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center">
+        @ViewBag.MsjPantalla
+    </div>
+}
+<div style="text-align:right">
+
+    <a href="@Url.Action("Insertar", "PoliticaDevolucion", new { })" class=" btn-add" > + Agregar</a>
+</div>
+
+  
+
+
+<div style="text-align:center">
+    @if (Model != null && Model.Any())
     {
-        foreach (var seccion in Model.OrderBy(s => s.Orden))
+        foreach (var seccion in Model)
         {
-            <div class="policy-section">
+            <div>
                 <h2>@seccion.TituloSeccion</h2>
                 @if (!string.IsNullOrEmpty(seccion.SubtituloSeccion))
                 {
                     <h3>@seccion.SubtituloSeccion</h3>
                 }
-                <p>@seccion.Contenido</p>
+
+                <h3>@seccion.SubtituloSeccion</h3>
+                <p>@seccion.Contenido </p>
 
                 @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1") // Administrador
                 {
@@ -96,4 +55,3 @@
 
 
 
-<link href="~/Estilos/css/cssfooterpoliticadevolucion.css" rel="stylesheet">
