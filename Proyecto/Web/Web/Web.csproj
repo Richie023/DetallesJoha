@@ -303,9 +303,12 @@
     <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
+    <Content Include="Estilos\js\canvas.js" />
+    <Content Include="Estilos\js\disenno.js" />
     <Content Include="Estilos\js\Filtros.js" />
     <Content Include="Estilos\js\newFile.js" />
     <Content Include="Imagenes\1.jpg" />
+    <Content Include="Imagenes\10002.png" />
     <Content Include="Imagenes\19.jpg" />
     <Content Include="Imagenes\2.jpg" />
     <Content Include="Imagenes\25.jpg" />
@@ -314,8 +317,9 @@
     <Content Include="Imagenes\4.jpg" />
     <Content Include="Imagenes\4.png" />
     <Content Include="Imagenes\5.jpg" />
-    <Content Include="Imagenes\6.jpg" />
+    <Content Include="Imagenes\6.png" />
     <Content Include="Imagenes\7.jpg" />
+    <Content Include="Imagenes\7.png" />
     <Content Include="Imagenes\8.jpg" />
     <Content Include="img\hotdeal.png" />
     <Content Include="img\logo.png" />
@@ -565,6 +569,7 @@
     <Content Include="Views\Usuario\ActualizaUsuario.cshtml" />
     <Content Include="Views\Categoria\RegistrarCategoria.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
+    <Content Include="Views\Producto\Disenno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

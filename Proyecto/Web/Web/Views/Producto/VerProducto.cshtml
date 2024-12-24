@@ -31,7 +31,7 @@
     <div class="col-md-5">
         <div class="product-details">
             <h2 class="product-name">@Model.NombreProducto</h2>
-            
+
             <div>
                 @if (Model.En_promocion)
                 {
@@ -51,23 +51,23 @@
 
             <p>@Model.NombreProducto</p>
 
-          
-                            <div class="add-to-cart">
-                    <div class="qty-label">
-                        Cantidad
-                        <div class="input-number">
+
+            <div class="add-to-cart">
+                <div class="qty-label">
+                    Cantidad
+                    <div class="input-number">
                         <input type="number" id="prd-@Model.Consecutivo" onkeypress="return ValidarNumeros(this.id)" class="form-control" value="1" min="1" max="@Model.Inventario">
 
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
-                        </div>
+                        <span class="qty-up">+</span>
+                        <span class="qty-down">-</span>
                     </div>
-                   
-                    <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
-                        <i class="fa fa-shopping-cart"></i> Agregar al carrito
-                    </button>
                 </div>
-            
+
+                <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
+                    <i class="fa fa-shopping-cart"></i> Agregar al carrito
+                </button>
+            </div>
+
 
             <ul class="product-btns">
                 <li>
@@ -80,6 +80,10 @@
             <ul class="product-links">
                 <li>Categoría:</li>
                 <li><a href="#">@Model.NombreCategoria</a></li>
+            </ul>
+            <ul class="product-links">
+                <li>Diseneo: </li>
+                <li><a href="@Url.Action("Disenno", "Producto",new { id =Model.Consecutivo })">Agregar diseño</a></li>
             </ul>
         </div>
             </div>

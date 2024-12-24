@@ -9,14 +9,14 @@ using Web.Models;
 namespace Web.Controllers
 {
     //[FiltroSeguridad]
-   // [FiltroAdmin]
+    // [FiltroAdmin]
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class ProductoController : Controller
     {
         ProductoModel modelo = new ProductoModel();
 
 
-     
+
 
         [HttpGet]
         public ActionResult ConsultaProductos()
@@ -160,6 +160,17 @@ namespace Web.Controllers
 
             ViewBag.TiposCategoria = tiposCategoria;
         }
+
+        [HttpGet]
+        public ActionResult Disenno(long id) {
+
+            var resp = modelo.ConsultarProducto(id);
+          
+            ViewBag.urlImagen = resp.Dato.RutaImagen;
+
+            return View(resp.Dato);
+        }
+
 
 
 

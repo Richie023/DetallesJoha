@@ -84,9 +84,9 @@ namespace Api.Controllers
                 using (var db = new DetallesJohaEntities())
                 {
                     db.InsertPGF(
-                       entidad.Categoria,
-                       entidad.Pregunta,
-                       entidad.Respuesta
+                       entidad.categoria,
+                       entidad.pregunta,
+                       entidad.respuesta
                        );
 
                     db.SaveChanges();
@@ -118,10 +118,10 @@ namespace Api.Controllers
                 {
                     // Llamada al procedimiento almacenado para actualizar
                     var filasAfectadas = db.UpdatePGF(
-                        entidad.Id,
-                        entidad.Categoria,
-                        entidad.Pregunta,
-                        entidad.Respuesta
+                        entidad.id,
+                        entidad.categoria,
+                        entidad.pregunta,
+                        entidad.respuesta
                     );
 
                         respuesta.Codigo = 0;

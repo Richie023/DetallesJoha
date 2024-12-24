@@ -161,7 +161,7 @@
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Carrito</span>
                                     <div class="qty">
-                                        @if (Session["Cantidad"].ToString() != null )
+                                        @if (Session["Cantidad"].ToString() != null)
                                         {
                                             @Session["Cantidad"].ToString()
                                         }
@@ -257,7 +257,7 @@
                     @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
                     {
                         <li><a href="@Url.Action("RegistrarCategoria", "Categoria")">Registra Categoria</a></li>
-                         <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
+                        <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
                         <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
                         <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
                         <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
@@ -294,7 +294,7 @@
                     <h3 class="filter-title">Tipo de Ropa</h3>
                     <div class="filter-content">
                         <ul class="filter-list">
-                       
+
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño  </a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
                             <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
@@ -459,9 +459,9 @@
                             <h3 class="footer-title">Categorías</h3>
                             <ul class="footer-links">
                                 <li><a href="#">Descuentos</a></li>
-                                <li><a href="#">Caminisas</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads"</a></li>
                                 <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
-                                <li><a href="#">Gorras</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1007})">Gorras</a></li>
                                 <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
                             </ul>
                         </div>
@@ -541,5 +541,8 @@
     <script src="~/Estilos/js/Filtros.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
+    <script src="https://unpkg.com/fabric@5.3.0/dist/fabric.min.js"></script>
+    <script src="//code.tidio.co/ev5k2qby77nmug8a4ys49isxfacwux5j.js" async></script>
 </body>
+
 </html>

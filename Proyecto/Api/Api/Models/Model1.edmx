@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DetallesJohaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="ActualizarImagenProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
           <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
@@ -237,8 +237,7 @@
           <Parameter Name="Orden" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="DetallesJohaModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DetallesJohaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -289,24 +288,24 @@
           <FunctionImport Name="ColsultarPoliticaDevolucion" ReturnType="Collection(DetallesJohaModel.ColsultarPoliticaDevolucion_Result)" />
           <FunctionImport Name="ColsutarPGF" ReturnType="Collection(DetallesJohaModel.ColsutarPGF_Result)" />
           <FunctionImport Name="ConsultarCarrito" ReturnType="Collection(DetallesJohaModel.ConsultarCarrito_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarDetalleFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarDetalleFacturas_Result)">
-            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarFacturas" ReturnType="Collection(DetallesJohaModel.ConsultarFacturas_Result)">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarPedido" ReturnType="Collection(DetallesJohaModel.ConsultarPedido_Result)" />
           <FunctionImport Name="ConsultarPedidos" ReturnType="Collection(DetallesJohaModel.ConsultarPedidos_Result)" />
           <FunctionImport Name="ConsultarPreguntaFrecuente" ReturnType="Collection(DetallesJohaModel.ConsultarPreguntaFrecuente_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductos" ReturnType="Collection(DetallesJohaModel.ConsultarProductos_Result)">
-            <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
+          <Parameter Name="MostrarTodos" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProductosPorRangoPrecio" ReturnType="Collection(DetallesJohaModel.ConsultarProductosPorRangoPrecio_Result)">
             <Parameter Name="PrecioMinimo" Mode="In" Type="Decimal" />
@@ -316,35 +315,35 @@
           <FunctionImport Name="ConsultarRoles" ReturnType="Collection(DetallesJohaModel.ConsultarRoles_Result)" />
           <FunctionImport Name="ConsultarTiposCategoria" ReturnType="Collection(DetallesJohaModel.ConsultarTiposCategoria_Result)" />
           <FunctionImport Name="ConsultarUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarUsuario_Result)">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="ConsultarUsuarios" ReturnType="Collection(DetallesJohaModel.ConsultarUsuarios_Result)" />
           <FunctionImport Name="ConsultarVentas" ReturnType="Collection(DetallesJohaModel.ConsultarVentas_Result)" />
           <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
           <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
           <FunctionImport Name="DeleteAvisoPrivacidad">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteAyuda" ReturnType="Collection(Int32)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteBlog">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePGF" ReturnType="Collection(String)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePoliticaDevolucion">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarAyuda">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarCarrito">
-            <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoCarrito" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCaracteristicas" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCaracteristicas_Result)">
             <Parameter Name="Material" Mode="In" Type="String" />
@@ -352,10 +351,10 @@
             <Parameter Name="Tamanio" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FiltrarProductosPorCategoria" ReturnType="Collection(DetallesJohaModel.FiltrarProductosPorCategoria_Result)">
-            <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
+          <Parameter Name="IdCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="InactivaUsuario">
-            <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
+          <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesionUsuario" ReturnType="Collection(DetallesJohaModel.IniciarSesionUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
@@ -392,17 +391,17 @@
             <Parameter Name="Orden" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="PagarCarrito">
-            <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RecuperarAccesoUsuario" ReturnType="Collection(DetallesJohaModel.RecuperarAccesoUsuario_Result)">
             <Parameter Name="Identificacion" Mode="In" Type="String" />
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RefacturaFactura" ReturnType="Collection(DetallesJohaModel.RefacturaFactura_Result)">
-            <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
+          <Parameter Name="ConsecutivoMaestro" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="RegistrarCategoria">
-            <Parameter Name="NombreCategoria" Mode="In" Type="String" />
+          <Parameter Name="NombreCategoria" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RegistrarInformacionEmpresa">
             <Parameter Name="NombreEmpresa" Mode="In" Type="String" />

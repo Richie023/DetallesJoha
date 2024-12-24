@@ -1,0 +1,165 @@
+﻿@model Web.Entidades.Producto
+@{
+    ViewBag.Title = "Disenno";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js">
+
+</script>
+
+<style>
+    canvas {
+        border: 4px solid #323232;
+
+        background-repeat: no-repeat;
+    }
+
+    #canvas {
+      //  background-image: url(' @ViewBag.urlImagen');
+  
+        background-color: transparent;
+        background-size:contain;
+    }
+
+    input {
+        margin: 8px 0;
+    }
+
+
+
+
+
+</style>
+
+
+
+<h2>Diseno personalidado</h2>
+<input accept="image/*" type="file" name="image" id="input" />
+
+
+<div>
+
+    <label for="text-input">Texto Personalizado:</label>
+    <input type="text" id="text-input" />
+    <button onclick="addText()">Agregar Texto</button>
+</div>
+
+
+
+
+<div>
+  
+    <canvas id="canvas">
+    </canvas>
+    <a id="lnkDownload" href="">Guardar Imagen</a>
+</div>
+
+
+
+
+<p><img id="mi_imagen" type="input" src="@ViewBag.urlImagen" width="50" height="50"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
+
+<script src="~/Estilos/js/disenno.js"></script>
+
+<script>
+    function addText() {
+        const text = document.getElementById('text-input').value;
+        const textObject = new fabric.Text(text, { left: 50, top: 50, fontSize: 30 });
+        canvas.add(textObject);
+    }
+</script>
+
+<script>
+ var fondo = document.getElementById('canvas')
+    fondo.style.backgroundImage= " url(' @ViewBag.urlImagen')";
+
+
+    window.onload= function () {
+        // Obtener el elementos de dibujo Canvas
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        // Obtenemos la imágen y la dibujamos 10 veces en puntos aleatoreos del Canvas
+        let imagen = document.getElementById("mi_imagen");
+
+        for (let i = 0; i < 1; i++) {
+            let x =0;
+            let y = 0;
+            let width = 500;
+            let height = 500;
+            ctx.drawImage(imagen, x, y, width, height);
+        }
+    }
+
+</script>
+
+
+
+<script>
+
+    input.onchange = (evnt) => {
+        const file = evnt.target.files[0];
+
+        const url = URL.createObjectURL(file);
+        const imgNode = new Image();
+        imgNode.src = url;
+        imgNode.onload = () => {
+            const img = new fabric.Image(imgNode, {
+
+                top:0,
+
+            });
+
+            canvas.add(img); // esta es la mágia
+        };
+    };
+
+
+
+
+</script>
+
+<script>
+
+
+    function handleImage(e) {
+        var objects = canvas.getObjects();
+        for (var i in objects) {
+            objects[i].remove();
+        }
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var img = new Image();
+            img.onload = function () {
+                var imgInstance = new fabric.Image(img, {
+                    selectable: 1
+
+                })
+                canvas.add(imgInstance);
+                canvas.deactivateAll().renderAll();
+            }
+            img.src = event.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+
+</script>
+
+<script>
+
+    var imageSaver = document.getElementById('lnkDownload');
+    imageSaver.addEventListener('click', saveImage, false);
+
+    function saveImage(e) {
+        this.href = canvas.toDataURL({
+            SVGUseElement,
+            format: 'png',
+            quality: 0.8
+        });
+        this.download = 'canvas.png'
+    }
+
+</script>
