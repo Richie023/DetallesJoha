@@ -306,6 +306,7 @@
     <Content Include="Estilos\js\canvas.js" />
     <Content Include="Estilos\js\disenno.js" />
     <Content Include="Estilos\js\Filtros.js" />
+    <Content Include="Estilos\js\HelloWorld.jsx" />
     <Content Include="Estilos\js\newFile.js" />
     <Content Include="Imagenes\1.jpg" />
     <Content Include="Imagenes\10002.png" />
