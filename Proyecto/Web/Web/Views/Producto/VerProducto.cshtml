@@ -49,7 +49,7 @@
                 <span class="product-available">@(Model.Inventario) en inventario</span>
             </div>
 
-            <p>@Model.NombreProducto</p>
+         
 
 
             <div class="add-to-cart">
@@ -83,7 +83,8 @@
             </ul>
             <ul class="product-links">
                 <li>Diseneo: </li>
-                <li><a href="@Url.Action("Disenno", "Producto",new { id =Model.Consecutivo })">Agregar diseño</a></li>
+                <li><a href="@Url.Action("Disenno", "Producto",new { id =Model.Consecutivo })">Agregar diseño</a></li> 
+                <li><a href="@Url.Action("DisenoProducto", "Producto",new { id =Model.Consecutivo })">Personalizar</a></li>
             </ul>
         </div>
             </div>

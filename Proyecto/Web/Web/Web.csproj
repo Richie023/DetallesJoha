@@ -571,6 +571,7 @@
     <Content Include="Views\Categoria\RegistrarCategoria.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
     <Content Include="Views\Producto\Disenno.cshtml" />
+    <Content Include="Views\Producto\DisenoProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

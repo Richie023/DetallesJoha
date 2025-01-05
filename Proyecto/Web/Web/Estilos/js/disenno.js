@@ -5,8 +5,8 @@
 
 const initCanvas = (id) => {
     return new fabric.Canvas(id, {
-        width:800,
-        height:800,
+        width:450,
+        height:450,
        
        
     });

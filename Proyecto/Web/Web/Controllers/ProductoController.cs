@@ -171,7 +171,18 @@ namespace Web.Controllers
             return View(resp.Dato);
         }
 
+        [HttpGet]
+        public ActionResult DisenoProducto(long id)
+        {
+            var resultado = modelo.ConsultarProducto(id);
 
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
 
 
 
