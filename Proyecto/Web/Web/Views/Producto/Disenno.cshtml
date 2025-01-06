@@ -11,26 +11,18 @@
 <style>
     canvas {
         border: 4px solid #323232;
-       block-size: contain;
+        block-size: contain;
         background-repeat: no-repeat;
-
     }
 
     #canvas {
-    
-
         background-color: transparent;
-        background-size:contain;
+        background-size: contain;
     }
 
     input {
         margin: 5px 0;
     }
-    
-
-
-
-
 </style>
 
 
@@ -46,6 +38,20 @@
                     <div class="product-preview">
                         <canvas id="canvas" class="container-">
                         </canvas>
+                        <!-- Herramientas de Elementos -->
+                        <div class="tool-section">
+
+                            <h5>Herramientas de Elementos</h5>
+
+                            <div style="text-align:center">
+                                @*<button id="bringToFront" class="btn btn-secondary btn-block">Traer al Frente</button>
+                                    <button id="sendToBack" class="btn btn-secondary btn-block">Enviar al Fondo</button>*@
+                                <button id="deleteObject" class="btn btn-danger ">Eliminar selecion</button>
+
+                                <button class="btn fa fa-trash-o fa-2x" title="Borrar Todo" onclick="clearAll()"> </button>
+                                <a class="btn fa fa-save fa-2x" id="lnkDownload" title="Guardar Imagen" href=""></a>.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,7 +60,7 @@
             <div class="col-md-2 col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
-                        <img src="@Model.RutaImagen" alt="@Model.NombreProducto">
+                        <img id="my-image" src="@Model.RutaImagen" alt="@Model.NombreProducto">
                     </div>
                 </div>
             </div>
@@ -75,114 +81,243 @@
 
                 </div>
             </div>
-
-                <div>
+            <!-- Agregar Texto -->
+            <div>
+                <div class="col-md-5 " style="text-align:center">
 
                     <label for="text-input">Texto Personalizado:</label>
-                    <input type="text" id="text-input" />
-                    <button onclick="addText()" class="primary-btn">Agregar Texto</button>
+                    <div>
+                        <input class="form-control" type="text" id="text-input" style="border-radius:20px" />
+
+                    </div>
+
+
+                    <div class="tool-section">
+
+                        <label for="fontSelect">Fuente:</label>
+                        <select id="fontSelect" class="form-control " style="border-radius:20px">
+                            <option value="Arial">Arial</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+
+                        <label for="textColor">Color:</label>
+                        <input type="color" id="textColor" value="#000000" class="form-control" style="border-radius:20px" />
+                    </div>
+                    <div>
+                        <button onclick="addText()" class="primary-btn btn-block  ">Agregar Texto</button>
+
+                    </div>
+                  
+
+
+
+
+
+
+
+
+                    <!-- Agregar Arte -->
+                    <div class="tool-section">
+                        <h5>Agregar Arte</h5>
+                        <select id="clipartCategory" class="form-control">
+                            <option value="emojis">Emojis</option>
+                            <option value="shapes">Formas y Símbolos</option>
+                            <option value="animals">Animales</option>
+                            <option value="sports">Deportes</option>
+                            <option value="nature">Naturaleza</option>
+                        </select>
+
+                        <button id="addClipart" class="primary-btn btn-block  ">Agregar Arte</button>
+                    </div>
+
+
+
+
                 </div>
-                <button class="fa fa-trash fa-3x" title="Limpiar" onclick="clearAll()"> 
-                </button>
-
-
-
-                <div>
-
-                    <a id="lnkDownload" href="">Guardar Imagen</a>
-                </div>
-
-
-
-
-
-
-                <p><img id="my-image" type="input" src="@ViewBag.urlImagen" width="50" height="50"></p>
-
             </div>
         </div>
+
+    </div>
 </div>
-           
+<!-- Contenedor de Emojis -->
+<div id="emoji-categories" class="emoji-categories" style="display: none;">
+    <button class="category-button" onclick="showEmojiList('Emoticonos')">Emoticonos</button>
+    <button class="category-button" onclick="showEmojiList('Gente')">Gente</button>
+    <button class="category-button" onclick="showEmojiList('Manos')">Manos</button>
+    <button class="category-button" onclick="showEmojiList('animal')">Animales</button>
+    <button class="category-button" onclick="showEmojiList('Naturaleza y clima')">Naturaleza y clima</button>
+    <button class="category-button" onclick="showEmojiList('Comida y bebida')">Comida y bebida</button>
+    <button class="category-button" onclick="showEmojiList('Vacaciones')">Vacaciones</button>
+    <button class="category-button" onclick="showEmojiList('Objetos y símbolos')">Objetos y símbolos</button>
+    <button class="category-button" onclick="showEmojiList('Ver Todos')">VER TODO</button>
+</div>
+<!-- Contenedor de emojis -->
+<div id="emoji-container" class="emoji-container"></div>
 
 
-      
-            <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
 
-            <script src="~/Estilos/js/disenno.js"></script>
+<script src="~/Estilos/js/disenno.js"></script>
 
-            <script>
-                function addText() {
-                    const text = document.getElementById('text-input').value;
-                    const textObject = new fabric.IText(text, { left: 50, top: 50, fontSize: 30 });
-                    canvas.add(textObject);
-                }
-            </script>
+<script>
+    function addText() {
+        const text = document.getElementById('text-input').value;
+        const textObject = new fabric.IText(text, {
+            fontFamily: document.getElementById('fontSelect').value,
+            fill: document.getElementById('textColor').value,
+            left: 50,
+            top: 50,
+            fontSize: 30
+        });
+        canvas.add(textObject);
+    }
+    // Eliminar elemento
+    document.getElementById('deleteObject').addEventListener('click', function () {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject) canvas.remove(activeObject);
+    });
 
-            <script>
+</script>
+
+<script>
+   
+
+
+    // Mostrar animales de una categoría específica
+    function addIcono() {
+        const animalContainer = document.getElementById('animals-container-items');
+        animalContainer.innerHTML = ''; // Limpiar animales actuales
+
+        const animals = {
+            'Perros': ['🐶', '🐕', '🐩', '🦮', '🐕‍🦺'],
+            'Osos': ['🐻', '🐻‍❄️', '🦭', '🐨', '🐻‍🐯'],
+            'Leones': ['🦁', '🦁🐾', '👑', '🦁🦷', '🐾'],
+            'Tigres': ['🐯', '🐅', '🐅👑', '🐯🦁', '🐯🐾'],
+            'Toros': ['🐂', '🐃', '🐂🐄', '🐄', '🦙'],
+            'Ovejas': ['🐑', '🐏', '🐐', '🐑🐐', '🐐🐏'],
+            'Mariposas': ['🦋', '🐛', '🐜', '🐦', '🐝'],
+            'Gatos': ['🐱', '🐈', '🐾', '😺', '😻'],
+            'Delfines': ['🐬', '🐋', '🐟', '🐠', '🦈'],
+            'Ballenas': ['🐋', '🐳', '🐬', '🦈', '🐠'],
+            'Aguilas': ['🦅', '🐦', '🦅💨', '🐦🦋', '🦅🐦'],
+            'Elefantes': ['🐘', '🐘👑', '🐘🐾', '🦏', '🐘🐅'],
+            'Caballos': ['🐴', '🐎', '🐴🐄', '🦄', '🐴🐾'],
+            'Ver Todos': ['🐶', '🐕', '🐩', '🦮', '🐕‍🦺', '🐻', '🐻‍❄️', '🦭', '🐨', '🐻‍🐯', '🦁', '🦁🐾', '👑', '🦁🦷', '🐾', '🐂', '🐃', '🐂🐄', '🐄', '🦙',
+                '🐑', '🐏', '🐐', '🐑🐐', '🐐🐏', '🦋', '🐛', '🐜', '🐦', '🐝', '🐱', '🐈', '🐾', '😺', '😻', '🐬', '🐋', '🐟', '🐠', '🦈',
+                '🐋', '🐳', '🐬', '🦈', '🐠', '🦅', '🐦', '🦅💨', '🐦🦋', '🦅🐦', '🐘', '🐘👑', '🐘🐾', '🦏', '🐘🐅', '🐴', '🐎', '🐴🐄', '🦄', '🐴🐾']
+
+        };
+
+        // Agregar los animales correspondientes a la categoría seleccionada
+        animals[animal].forEach(animalSymbol => {
+            const animalButton = document.createElement('button');
+            animalButton.innerHTML = animalSymbol;
+            animalButton.onclick = function () {
+                placeShape(animalSymbol);
+            };
+            animalContainer.appendChild(animalButton);
+        });
+
+        // Mostrar el contenedor de animales
+        animalContainer.style.display = 'grid';
+    }
+
+    // Función para colocar el animal sobre la imagen del producto
+    function placeShape(shape) {
+        const productImage = document.getElementById('product-image');
+        const shapeElement = document.createElement('span');
+        shapeElement.classList.add('product-shape');
+        shapeElement.textContent = shape;
+
+        // Añadir el animal a la imagen del producto
+        productImage.parentElement.appendChild(shapeElement);
+
+        // Hacer que el animal sea arrastrable
+        shapeElement.onmousedown = function (e) {
+            let offsetX = e.clientX - shapeElement.getBoundingClientRect().left;
+            let offsetY = e.clientY - shapeElement.getBoundingClientRect().top;
+
+            function moveAt(e) {
+                shapeElement.style.left = e.clientX - offsetX + 'px';
+                shapeElement.style.top = e.clientY - offsetY + 'px';
+            }
+
+            document.addEventListener('mousemove', moveAt);
+
+            shapeElement.onmouseup = function () {
+                document.removeEventListener('mousemove', moveAt);
+            };
+        };
+    }
+</script>
+
+<script>
     function clearAll() {
         if (window.confirm('¿Estás seguro de que deseas limpiar el lienzo? Esta acción no se puede deshacer.')) {
-           canvas.remove(...canvas.getObjects());
-           canvas.add(image);
+            canvas.remove(...canvas.getObjects());
+            canvas.add(image);
         }
     }
-              </script>
-            <script>
-                input.onchange = (evnt) => {
-                    const file = evnt.target.files[0];
-                   const url = URL.createObjectURL(file);
-                    const imgNode = new Image();
-                    imgNode.src = url;
-                    imgNode.onload = () => {
-                        const img = new fabric.Image(imgNode, {
-                            top: 0,
-                             });
-                        img.scaleToWidth(100, false);
-                        canvas.add(img); // esta es la mágia
-                    };
-                };
-            </script>
-            <script>
-                function handleImage(e) {
-                    var objects = canvas.getObjects();
-                    for (var i in objects) {
-                        objects[i].remove();
-                    }
-                    var reader = new FileReader();
-                    reader.onload = function (event) {
-                        var img = new Image();
-                        img.onload = function () {
-                            var imgInstance = new fabric.Image(img, {
-                                selectable: 1
-                            })
-                            canvas.add(imgInstance);
-                            canvas.deactivateAll().renderAll();
-                        }
-                        img.src = event.target.result;
-                    }
-                    reader.readAsDataURL(e.target.files[0]);
-                }
-            </script>
-            <script>
-                var imageSaver = document.getElementById('lnkDownload');
-                imageSaver.addEventListener('click', saveImage, false);
-                function saveImage(e) {
-                    this.href = canvas.toDataURL({
-                        SVGUseElement,
-                        format: 'png',
-                        quality: 0.8
-                    });
-                    this.download = 'canvas.png'
-                }
-            </script>
-            <script>
-                var Imagen = document.getElementById('my-image');
-                var image = new fabric.Image(Imagen, {
-                    x: 0,
-                    y: 0,
-                    selectable: false,                
-                });
-                image.scaleToWidth(canvas.width, false);
-                canvas.add(image);
+</script>
+<script>
+    input.onchange = (evnt) => {
+        const file = evnt.target.files[0];
+        const url = URL.createObjectURL(file);
+        const imgNode = new Image();
+        imgNode.src = url;
+        imgNode.onload = () => {
+            const img = new fabric.Image(imgNode, {
+                top: 0,
+            });
+            img.scaleToWidth(100, false);
+            canvas.add(img); // esta es la mágia
+        };
+    };
+</script>
+<script>
+    function handleImage(e) {
+        var objects = canvas.getObjects();
+        for (var i in objects) {
+            objects[i].remove();
+        }
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var img = new Image();
+            img.onload = function () {
+                var imgInstance = new fabric.Image(img, {
+                    selectable: 1
+                })
+                canvas.add(imgInstance);
+                canvas.deactivateAll().renderAll();
+            }
+            img.src = event.target.result;
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+</script>
+<script>
+    var imageSaver = document.getElementById('lnkDownload');
+    imageSaver.addEventListener('click', saveImage, false);
+    function saveImage(e) {
+        this.href = canvas.toDataURL({
+            SVGUseElement,
+            format: 'png',
+            quality: 0.8
+        });
+        this.download = 'canvas.png'
+    }
+</script>
+<script>
+    var Imagen = document.getElementById('my-image');
+    var image = new fabric.Image(Imagen, {
+        x: 0,
+        y: 0,
+        selectable: false,
+    });
+    image.scaleToWidth(canvas.width, false);
+    canvas.add(image);
 
 
-            </script>
+</script>

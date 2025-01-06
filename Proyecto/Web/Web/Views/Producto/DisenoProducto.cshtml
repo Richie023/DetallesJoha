@@ -295,7 +295,7 @@ function loadProductImage(imageUrl) {
 }
 
 // Llamar a la función para cargar la imagen
-const productImageUrl = '@Model.RutaImagen'; // Ruta de la imagen desde el modelo
+const productImageUrl = ''; // Ruta de la imagen desde el modelo
 loadProductImage(productImageUrl);
 
 
@@ -401,13 +401,13 @@ loadProductImage(productImageUrl);
         document.getElementById('categories-container').style.display = 'none';
     }
 
-    // Mostrar animales de una categoría específica
+    //// Mostrar animales de una categoría específica
     function showAnimalList(animal) {
         const animalContainer = document.getElementById('animals-container-items');
         animalContainer.innerHTML = ''; // Limpiar animales actuales
 
         const animals = {
-            'Perros': ['🐶', '🐕', '🐩', '🦮', '🐕‍🦺'],
+            'Perros': ['🐶', '🐕', '🐩', '🦮', 'X'],
             'Osos': ['🐻', '🐻‍❄️', '🦭', '🐨', '🐻‍🐯'],
             'Leones': ['🦁', '🦁🐾', '👑', '🦁🦷', '🐾'],
             'Tigres': ['🐯', '🐅', '🐅👑', '🐯🦁', '🐯🐾'],
@@ -437,12 +437,12 @@ loadProductImage(productImageUrl);
         });
 
         // Mostrar el contenedor de animales
-        animalContainer.style.display = 'grid';
+        animalContainer.style.display = 'list';
     }
 
     // Función para colocar el animal sobre la imagen del producto
     function placeShape(shape) {
-        const productImage = document.getElementById('product-image');
+        const productImage = document.getElementById('productCanvas');
         const shapeElement = document.createElement('span');
         shapeElement.classList.add('product-shape');
         shapeElement.textContent = shape;
