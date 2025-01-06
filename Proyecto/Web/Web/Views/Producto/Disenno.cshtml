@@ -1,29 +1,18 @@
 ﻿@model Web.Entidades.Producto
-@{
-    ViewBag.Title = "Disenno";
-    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
-}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
+@{
+    ViewBag.Title = "Personalización de Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <style>
     canvas {
         border: 4px solid #323232;
-       -size: contain;
+        background-color: transparent;
+        background-size: contain;
         background-repeat: no-repeat;
     }
 
-    #canvas {
-      //  background-image: url(' @ViewBag.urlImagen');
-
-        background-color: transparent;
-        background-size:contain;
-    }
-
-    input {
-        margin: 8px 0;
-    }
-    /**********File Inputs**********/
     .container-input {
         text-align: center;
         background: #D10024;
@@ -48,20 +37,13 @@
             max-width: 40%;
             font-size: 1.25rem;
             font-weight: 700;
-            text-overflow: ellipsis;
-            white-space: nowrap;
             cursor: pointer;
-            display: inline-block;
-            overflow: hidden;
             padding: 0.625rem 1.25rem;
         }
 
             .inputfile + label svg {
                 width: 1em;
                 height: 1em;
-                vertical-align: middle;
-                fill: currentColor;
-                margin-top: -0.25em;
                 margin-right: 0.25em;
             }
 
@@ -70,282 +52,348 @@
         font-weight: normal;
         font-family: 'Lato';
     }
-    .inputfile-5 + label {
-        color: #fff;
-    }
-
-
-
-
 </style>
-<div class="container-input">
-    <input type="file" name="file-5" id="file-5" class="inputfile inputfile-5" data-multiple-caption="{count} archivos seleccionados" multiple />
-    <label for="file-5">
-        <figure>
-            <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-        </figure>
-        <span class="iborrainputfile">Seleccionar archivo</span>
-    </label>
+
+<div class="section">
+    <div class="container">
+        <h2 class="text-center">Personaliza tu Producto</h2>
+        <div class="row">
+            <!-- Editor de diseño -->
+            <div class="col-md-8">
+                <div id="design-canvas-container">
+                    <!-- Canvas para la edición del producto -->
+                    <canvas id="designCanvas" width="600" height="600"></canvas>
+                </div>
+            </div>
+
+            <!-- Herramientas de personalización -->
+            <div class="col-md-4">
+                <div class="design-tools">
+                    <h4>Herramientas de Diseño</h4>
+
+                    <!-- Subir archivos -->
+                    <div class="tool-section">
+                        <h5>Subir Archivos</h5>
+                        <input type="file" id="uploadFile" accept="image/*" class="form-control" />
+                    </div>
+
+                    <!-- Agregar Texto -->
+                    <div class="tool-section">
+                        <h5>Agregar Texto</h5>
+                        <input type="text" id="textInput" placeholder="Escribe tu texto" class="form-control" />
+                        <button id="addText" class="btn btn-primary btn-block mt-2">Agregar Texto</button>
+
+                        <label for="fontSelect">Fuente:</label>
+                        <select id="fontSelect" class="form-control">
+                            <option value="Arial">Arial</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+
+                        <label for="textColor">Color:</label>
+                        <input type="color" id="textColor" value="#000000" class="form-control" />
+                    </div>
+
+                    <!-- Agregar Arte -->
+                    <div class="tool-section">
+                        <h5>Agregar Arte</h5>
+                        <button onclick="openArtCategories()" class="btn btn-primary btn-block">Seleccionar Arte</button>
+
+                        <!-- Contenedor de categorías -->
+                        <div id="categories-container" style="display: none; margin-top: 10px;">
+                            <h6>Categorías</h6>
+                            <button onclick="showCategory('emojis', 'emoji-container')" class="btn btn-secondary btn-sm">Emojis</button>
+                            <button onclick="showCategory('shapes', 'shape-container')" class="btn btn-secondary btn-sm">Formas</button>
+                            <button onclick="showCategory('sports', 'sports-container')" class="btn btn-secondary btn-sm">Deportes</button>
+                            <button onclick="showCategory('animals', 'animal-container')" class="btn btn-secondary btn-sm">Animales</button>
+                            <button onclick="showCategory('nature', 'nature-container')" class="btn btn-secondary btn-sm">Naturaleza</button>
+                            <button onclick="showCategory('letter', 'letter-container')" class="btn btn-secondary btn-sm">Letras</button>
+                        </div>
+
+                        <!-- Contenedor de elementos dentro de cada categoría -->
+                        <div id="emoji-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="shape-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="sports-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="animal-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="nature-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="letter-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                    </div>
+
+
+
+                    <!-- Cambiar Colores del Producto -->
+                    <div class="tool-section">
+                        <h5>Colores del Producto</h5>
+                        <input type="color" id="productColor" value="#ffffff" class="form-control" />
+                    </div>
+
+
+                    <!-- Botón para eliminar el objeto seleccionado -->
+                    <div class="tool-section">
+                        <button id="deleteObject" class="btn btn-danger btn-block">Eliminar Elemento</button>
+                    </div>
+
+
+                    <!-- Guardar y Compartir -->
+                    <div class="tool-section">
+                        <button id="saveDesign" class="btn btn-success btn-block">Guardar Diseño</button>
+                        <a id="lnkDownload" href="" class="btn btn-secondary btn-block">Descargar Diseño</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<img id="my-image" src="@Model.RutaImagen" alt="Producto" style="display: none;">
 
-<h2>Diseno personalidado</h2>
-<input accept="image/*" type="file" name="image" id="input" class="primary-btn" />
-
-
-<div>
-
-    <label for="text-input">Texto Personalizado:</label>
-    <input type="text" id="text-input" />
-    <button onclick="addText()" class="primary-btn">Agregar Texto</button>
-</div>
-
-
-<div>
-    <button class="primary-btn" onclick="openArtCategories()">Agregar Arte</button>
-</div>
-
-<!-- Contenedor de categorías principales -->
-<div id="categories-container" style="display: none;">
-    <button class="category-button" onclick="showEmojis()">Emojis</button>
-    <button class="category-button" onclick="showSubCategoryItems('Corazones', data.shapes)">Formas</button>
-</div>
-
-<!-- Contenedor de subcategorías -->
-<div id="emoji-container" style="display: none;"></div>
-
-<canvas id="canvas" width="800" height="600"></canvas>
-
-
-<button class="fa fa-trash fa-2x" title="Limpiar" onclick="clearAll()">
-</button>
-
-
-
-<div>
-
-    <canvas id="canvas" class="container-">
-    </canvas>
-    <a id="lnkDownload" href="">Guardar Imagen</a>
-</div>
-
-
-
-
-
-
-<p><img id="my-image" type="input" src="@ViewBag.urlImagen" width="50" height="50"></p>
-
-
-<h1>React</h1>
-
-<!-- Reference it from HTML -->
-<script src="@Url.Content("~/Scripts/HelloWorld.jsx")"></script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
-
-<script src="~/Estilos/js/disenno.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
 <script>
-    function addText() {
-        const text = document.getElementById('text-input').value;
-        const textObject = new fabric.IText(text, { left: 50, top: 50, fontSize: 30 });
-        canvas.add(textObject);
-    }
-</script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const canvas = new fabric.Canvas('designCanvas');
 
-<script>
-    function clearAll() {
-        if (window.confirm('Are you sure you want to clear all?')) {
-            canvas.remove(...canvas.getObjects(IText));
-        }
-    }
-    @*var fondo = document.getElementById('canvas')
-    fondo.style.backgroundImage= " url(' @ViewBag.urlImagen')";
+        // Establecer la imagen base del producto
+        const imgElement = document.getElementById('my-image');
+        const fabricImage = new fabric.Image(imgElement, {
+            left: 0,
+            top: 0,
+            selectable: false
+        });
 
+        // Escalar y centrar la imagen
+        fabricImage.scaleToWidth(canvas.width);
+        fabricImage.scaleToHeight(canvas.height);
+        canvas.add(fabricImage);
 
-    window.onload= function () {
-        // Obtener el elementos de dibujo Canvas
-        let canvas = document.getElementById("canvas");
-        let ctx = canvas.getContext("2d");
-        // Obtenemos la imágen y la dibujamos 10 veces en puntos aleatoreos del Canvas
-        let imagen = document.getElementById("mi_imagen");
+        // Cambiar color base del producto
+        document.getElementById('productColor').addEventListener('input', function (e) {
+            canvas.setBackgroundColor(e.target.value, canvas.renderAll.bind(canvas));
+        });
 
-        for (let i = 0; i < 1; i++) {
-            let x =0;
-            let y = 0;
-            let width = 500;
-            let height = 500;
-            ctx.drawImage(imagen, x, y, width, height);
-        }
-    }*@
-
-</script>
-
-
-
-<script>
-
-    input.onchange = (evnt) => {
-        const file = evnt.target.files[0];
-
-        const url = URL.createObjectURL(file);
-        const imgNode = new Image();
-        imgNode.src = url;
-        imgNode.onload = () => {
-            const img = new fabric.Image(imgNode, {
-
-                top: 0,
-
-
-            });
-
-            canvas.add(img); // esta es la mágia
-        };
-    };
-
-
-
-
-</script>
-
-<script>
-
-
-    function handleImage(e) {
-        var objects = canvas.getObjects();
-        for (var i in objects) {
-            objects[i].remove();
-        }
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            var img = new Image();
-            img.onload = function () {
-                var imgInstance = new fabric.Image(img, {
-                    selectable: 1
-
-                })
-                canvas.add(imgInstance);
-                canvas.deactivateAll().renderAll();
+        // Subir imagen
+        document.getElementById('uploadFile').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    fabric.Image.fromURL(event.target.result, function (img) {
+                        img.scaleToWidth(200);
+                        canvas.add(img);
+                    });
+                };
+                reader.readAsDataURL(file);
             }
-            img.src = event.target.result;
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    }
-
-
-</script>
-
-<script>
-
-    var imageSaver = document.getElementById('lnkDownload');
-    imageSaver.addEventListener('click', saveImage, false);
-
-    function saveImage(e) {
-        this.href = canvas.toDataURL({
-            SVGUseElement,
-            format: 'png',
-            quality: 0.8
-        });
-        this.download = 'canvas.png'
-    }
-
-</script>
-<script>
-
-    var Imagen = document.getElementById('my-image');
-
-    var image = new fabric.Image(Imagen, {
-        x: 0,
-        y: 0,
-        selectable: false,
-        innerWidth: 500,
-
-        innerHeight: 500,
-
-    });
-    canvas.add(image);
-
-
-</script>
-
-
-
-
-
-
-<script>
-    let canvas;
-
-    window.onload = function () {
-        // Inicializa el canvas
-        canvas = new fabric.Canvas('canvas');
-    };
-
-    // Mostrar las categorías de arte
-    function openArtCategories() {
-        document.getElementById('search-art').style.display = 'block';
-        document.getElementById('categories-container').style.display = 'grid';
-    }
-
-    // Mostrar subcategorías específicas
-    function showSubCategoryItems(category, items) {
-        const container = document.getElementById('emoji-container');
-        container.innerHTML = ''; // Limpiar elementos actuales
-
-        // Agregar los elementos correspondientes a la subcategoría seleccionada
-        items[category].forEach(item => {
-            const itemButton = document.createElement('button');
-            itemButton.innerHTML = item;
-            itemButton.classList.add('item-button');
-            itemButton.onclick = function () {
-                addElementToCanvas(item);
-            };
-            container.appendChild(itemButton);
         });
 
-        container.style.display = 'grid';
-    }
-
-    // Agregar elementos al canvas
-    function addElementToCanvas(element) {
-        if (typeof element === 'string') {
-            // Agregar texto o emojis
-            const text = new fabric.IText(element, {
+        // Agregar texto
+        document.getElementById('addText').addEventListener('click', function () {
+            const text = new fabric.IText(document.getElementById('textInput').value, {
                 left: 50,
                 top: 50,
-                fontSize: 30,
-                fill: '#000',
+                fontFamily: document.getElementById('fontSelect').value,
+                fill: document.getElementById('textColor').value,
+                fontSize: 20,
             });
             canvas.add(text);
-        } else if (element instanceof Image) {
-            // Agregar imágenes
-            const img = new fabric.Image(element, {
-                left: 50,
-                top: 50,
-            });
-            canvas.add(img);
-        }
-    }
+        });
 
-    // Ejemplo de datos para subcategorías
-    const data = {
-        emojis: {
-            'Emoticonos': ['😊', '😂', '😍', '😎', '😭'],
-            'Animales': ['🐶', '🐱', '🐰', '🐯', '🐸'],
-            'Ver Todos': ['😊', '😂', '😍', '😎', '😭', '🐶', '🐱', '🐰', '🐯', '🐸']
-        },
-        shapes: {
-            'Corazones': ['❤️', '💔', '💖'],
-            'Estrellas': ['⭐', '🌟', '✨'],
-            'Ver Todos': ['❤️', '💔', '💖', '⭐', '🌟', '✨']
-        }
-    };
 
-    // Ejemplo de cómo mostrar los emojis
-    function showEmojis() {
-        showSubCategoryItems('Emoticonos', data.emojis);
-    }
+        // Función para eliminar el objeto seleccionado
+        document.getElementById('deleteObject').addEventListener('click', function () {
+            const activeObject = canvas.getActiveObject();
+            if (activeObject) {
+                canvas.remove(activeObject);
+                canvas.renderAll();
+            } else {
+                alert('Por favor selecciona un objeto para eliminar.');
+            }
+        });
+
+
+        // Guardar diseño
+        document.getElementById('saveDesign').addEventListener('click', function () {
+            const link = document.createElement('a');
+            link.download = 'diseño-personalizado.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        // Descargar diseño
+        document.getElementById('lnkDownload').addEventListener('click', function (e) {
+            e.target.href = canvas.toDataURL({ format: 'png', quality: 0.8 });
+            e.target.download = 'canvas.png';
+        });
+
+        // Función para limpiar canvas
+        window.clearAll = function () {
+            if (window.confirm('¿Seguro que quieres limpiar el canvas?')) {
+                canvas.clear();
+            }
+        };
+
+        // Función para agregar texto desde otro input
+        window.addText = function () {
+            const text = document.getElementById('text-input').value;
+            const textObject = new fabric.IText(text, { left: 50, top: 50, fontSize: 30 });
+            canvas.add(textObject);
+        };
+    });
 </script>
 
+
+
+<script>
+
+   
+        // Mostrar las categorías de arte
+        function openArtCategories() {
+            document.getElementById('categories-container').style.display = 'block';
+        }
+
+        // Mostrar una categoría específica
+        function showCategory(categoryId, containerId) {
+            document.querySelectorAll('.category-container').forEach(container => {
+                container.style.display = 'none';
+            });
+
+            document.getElementById(containerId).style.display = 'grid';
+
+            // Cargar elementos de la categoría seleccionada
+            const dataCategory = data[categoryId];
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Limpiar el contenedor
+
+            for (const subCategory in dataCategory) {
+                const button = document.createElement('button');
+                button.innerHTML = subCategory;
+                button.classList.add('btn', 'btn-outline-primary', 'btn-sm', 'm-1');
+                button.onclick = function () {
+                    showSubCategoryItems(subCategory, dataCategory, container);
+                };
+                container.appendChild(button);
+            }
+        }
+
+        // Mostrar los elementos de una subcategoría
+        function showSubCategoryItems(category, items, container) {
+            container.innerHTML = ''; // Limpiar los elementos actuales
+
+            items[category].forEach(item => {
+                const button = document.createElement('button');
+                button.innerHTML = item;
+                button.classList.add('btn', 'btn-outline-secondary', 'btn-sm', 'm-1');
+                button.onclick = function () {
+                    placeShape(item); // Agregar el elemento al canvas
+                };
+                container.appendChild(button);
+            });
+        }
+
+        // Función para colocar emojis o formas en el canvas
+        function placeShape(art) {
+            console.log('Emoji seleccionado:', art);
+
+
+            const textObject = new fabric.Text(art, {
+                left: 0,
+                top: 0,
+                fontSize: 40,
+                fill: '#000',
+                fontFamily: 'Arial',
+                selectable: true,
+            });
+
+            canvas.add(textObject);
+            canvas.setActiveObject(textObject);
+            canvas.renderAll();
+        }
+
+        // Datos de las categorías
+        const data = {
+            emojis: {
+                'Emoticonos': ['😊', '😂', '😍', '😎', '😭'],
+                'Gente': ['👩‍🦰', '👨‍🦱', '👵', '🧑‍🦯', '🧑‍🦳'],
+                'Manos': ['✋', '🖐', '👌', '👍', '👎'],
+                'Animales': ['🐶', '🐱', '🐰', '🐯', '🐸'],
+                'Naturaleza y clima': ['🌞', '🌧️', '⛅', '🌈', '🌻'],
+                'Comida y bebida': ['🍎', '🍔', '🍕', '🍻', '🍰'],
+                'Vacaciones': ['🌴', '🏖️', '🌍', '⛷️', '🎄'],
+                'Objetos y símbolos': ['⚙️', '💎', '📱', '🔑', '🔒'],
+                'Ver Todos': ['😊', '😂', '😍', '😎', '😭', '👩‍🦰', '👨‍🦱', '👵', '🧑‍🦯', '🧑‍🦳', '✋', '🖐', '👌', '👍', '👎', '🐶', '🐱', '🐰', '🐯', '🐸',
+                    '🌞', '🌧️', '⛅', '🌈', '🌻', '🍎', '🍔', '🍕', '🍻', '🍰', '🌴', '🏖️', '🌍', '⛷️', '🎄', '⚙️', '💎', '📱', '🔑', '🔒']
+            },
+            shapes: {
+                'Anclas': ['⚓', '⚓️'],
+                'Flechas': ['➡️', '⏩', '↗️', '↘️'],
+                'Cruces': ['✝️', '❌'],
+                'Coronas': ['👑'],
+                'Diamantes': ['💎'],
+                'Flores': ['🌸', '🌻', '🌺'],
+                'Corazones': ['❤️', '💔', '💖'],
+                'Signos Musicales': ['🎵', '🎶', '🎼'],
+                'Tréboles': ['🍀'],
+                'Estrellas': ['⭐', '🌟', '✨'],
+                'Ver Todos': ['⚓', '⚓️', '➡️', '⏩', '↗️', '↘️', '✝️', '❌', '👑', '💎', '🌸', '🌻', '🌺', '❤️', '💔', '💖', '🎵', '🎶', '🎼', '🍀', '⭐', '🌟', '✨']
+            },
+            sports: {
+                'Futbol': ['⚽️', '🥅', '🎯'],
+                'Beisbol': ['⚾️', '🥎', '🏅'],
+                'Baloncesto': ['🏀', '🏀🏅', '⛹️‍♂️'],
+                'Billar y pool': ['🎱', '🎱🎱', '🎱🛑'],
+                'Boxeo': ['🥊', '💥', '🥋'],
+                'Ajedrez': ['♟️', '♞', '♜'],
+                'Bailar': ['💃', '🕺', '🎶'],
+                'Golf': ['⛳️', '🏌️‍♂️', '⛳️🏌️‍♂️'],
+                'Painball': ['🎯', '💣', '🎽'],
+                'Natacion': ['🏊‍♂️', '🏊‍♀️', '🏖️'],
+                'Esquiar': ['🎿', '🏂', '❄️'],
+                'Atletismo': ['🏃‍♂️', '🏃‍♀️', '🏅'],
+                'Ver Todos': ['⚽️', '🥅', '🎯', '⚾️', '🥎', '🏅', '🏀', '🏀🏅', '⛹️‍♂️', '🎱', '🎱🎱', '🎱🛑', '🥊', '💥', '🥋', '♟️', '♞', '♜',
+                    '💃', '🕺', '🎶', '⛳️', '🏌️‍♂️', '⛳️🏌️‍♂️', '🎯', '💣', '🎽', '🏊‍♂️', '🏊‍♀️', '🏖️', '🎿', '🏂', '❄️', '🏃‍♂️', '🏃‍♀️', '🏅']
+
+            },
+            animals: {
+                'Perros': ['🐶', '🐕', '🐩', '🦮', '🐕‍🦺'],
+                'Osos': ['🐻', '🐻‍❄️', '🦭', '🐨', '🐻‍🐯'],
+                'Leones': ['🦁', '🦁🐾', '👑', '🦁🦷', '🐾'],
+                'Tigres': ['🐯', '🐅', '🐅👑', '🐯🦁', '🐯🐾'],
+                'Toros': ['🐂', '🐃', '🐂🐄', '🐄', '🦙'],
+                'Ovejas': ['🐑', '🐏', '🐐', '🐑🐐', '🐐🐏'],
+                'Mariposas': ['🦋', '🐛', '🐜', '🐦', '🐝'],
+                'Gatos': ['🐱', '🐈', '🐾', '😺', '😻'],
+                'Delfines': ['🐬', '🐋', '🐟', '🐠', '🦈'],
+                'Ballenas': ['🐋', '🐳', '🐬', '🦈', '🐠'],
+                'Aguilas': ['🦅', '🐦', '🦅💨', '🐦🦋', '🦅🐦'],
+                'Elefantes': ['🐘', '🐘👑', '🐘🐾', '🦏', '🐘🐅'],
+                'Caballos': ['🐴', '🐎', '🐴🐄', '🦄', '🐴🐾'],
+                'Ver Todos': ['🐶', '🐕', '🐩', '🦮', '🐕‍🦺', '🐻', '🐻‍❄️', '🦭', '🐨', '🐻‍🐯', '🦁', '🦁🐾', '👑', '🦁🦷', '🐾', '🐂', '🐃', '🐂🐄', '🐄', '🦙',
+                    '🐑', '🐏', '🐐', '🐑🐐', '🐐🐏', '🦋', '🐛', '🐜', '🐦', '🐝', '🐱', '🐈', '🐾', '😺', '😻', '🐬', '🐋', '🐟', '🐠', '🦈',
+                    '🐋', '🐳', '🐬', '🦈', '🐠', '🦅', '🐦', '🦅💨', '🐦🦋', '🦅🐦', '🐘', '🐘👑', '🐘🐾', '🦏', '🐘🐅', '🐴', '🐎', '🐴🐄', '🦄', '🐴🐾']
+            },
+            nature: {
+                'Playas': ['🌴', '🏖️', '🌊'],
+                'Montañas': ['🏔️', '⛰️', '🌋'],
+                'Ver Todos': ['🌴', '🏖️', '🌊', '🏔️', '⛰️', '🌋']
+            },
+
+            letter: {
+                'Alfabetos': ['A', 'B', 'C', 'D', 'E'],
+                'Personajes': ['👩‍🦰', '👨‍🦱', '🧑‍🦯', '🧑‍🦳', '👵'],
+                'Letras griegas': ['α', 'β', 'γ', 'δ', 'ε'],
+                'Letras': ['G', 'H', 'Z', 'M', 'R'],
+                'Monogramas': ['AA', 'WW', 'FF', 'DD', 'SS'],
+                'Números': ['1', '2', '3', '4', '5'],
+                'Puntuación': ['.', ',', '!', '?', ';'],
+                'Símbolos': ['&', '#', '$', '%'],
+                'Ver Todos': ['A', 'B', 'C', 'D', 'E', '👩‍🦰', '👨‍🦱', '🧑‍🦯', '🧑‍🦳', '👵', 'α', 'β', 'γ', 'δ', 'ε', 'G', 'H', 'Z', 'M', 'R',
+                    'AA', 'WW', 'FF', 'DD', 'SS', '1', '2', '3', '4', '5', '.', ',', '!', '?', ';', '&', '#', '$', '%']
+
+            }
+        };
+
+
+        const canvas = new fabric.Canvas('designCanvas');
+  
+
+</script>

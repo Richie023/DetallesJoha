@@ -309,8 +309,8 @@ namespace Api.Models
         public virtual ObjectResult<ConsultarPreguntaFrecuente_Result> ConsultarPreguntaFrecuente(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarPreguntaFrecuente_Result>("ConsultarPreguntaFrecuente", idParameter);
         }
@@ -393,8 +393,8 @@ namespace Api.Models
         public virtual int DeleteAvisoPrivacidad(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteAvisoPrivacidad", idParameter);
         }
@@ -411,8 +411,8 @@ namespace Api.Models
         public virtual int DeleteBlog(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteBlog", idParameter);
         }
@@ -420,8 +420,8 @@ namespace Api.Models
         public virtual ObjectResult<string> DeletePGF(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("DeletePGF", idParameter);
         }
@@ -429,8 +429,8 @@ namespace Api.Models
         public virtual int DeletePoliticaDevolucion(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeletePoliticaDevolucion", idParameter);
         }
@@ -510,17 +510,17 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<IniciarSesionUsuario_Result>("IniciarSesionUsuario", identificacionParameter, contrasennaParameter);
         }
     
-        public virtual int InsertAvisoPrivacidad(string tituloSeccion, string contenido)
+        public virtual int InsertAvisoPrivacidad(string titulo_seccion, string contenido)
         {
-            var tituloSeccionParameter = tituloSeccion != null ?
-                new ObjectParameter("TituloSeccion", tituloSeccion) :
-                new ObjectParameter("TituloSeccion", typeof(string));
+            var titulo_seccionParameter = titulo_seccion != null ?
+                new ObjectParameter("titulo_seccion", titulo_seccion) :
+                new ObjectParameter("titulo_seccion", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAvisoPrivacidad", tituloSeccionParameter, contenidoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAvisoPrivacidad", titulo_seccionParameter, contenidoParameter);
         }
     
         public virtual int InsertAyuda(string categoria, string titulo, string contenido, string imagen_url)
@@ -544,59 +544,59 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertAyuda", categoriaParameter, tituloParameter, contenidoParameter, imagen_urlParameter);
         }
     
-        public virtual int InsertBlog(string categoria, string titulo, string resumen, string contenido, string imagenUrl)
+        public virtual int InsertBlog(string categoria, string titulo, string resumen, string contenido, string imagen_url)
         {
             var categoriaParameter = categoria != null ?
-                new ObjectParameter("Categoria", categoria) :
-                new ObjectParameter("Categoria", typeof(string));
+                new ObjectParameter("categoria", categoria) :
+                new ObjectParameter("categoria", typeof(string));
     
             var tituloParameter = titulo != null ?
-                new ObjectParameter("Titulo", titulo) :
-                new ObjectParameter("Titulo", typeof(string));
+                new ObjectParameter("titulo", titulo) :
+                new ObjectParameter("titulo", typeof(string));
     
             var resumenParameter = resumen != null ?
-                new ObjectParameter("Resumen", resumen) :
-                new ObjectParameter("Resumen", typeof(string));
+                new ObjectParameter("resumen", resumen) :
+                new ObjectParameter("resumen", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
-            var imagenUrlParameter = imagenUrl != null ?
-                new ObjectParameter("ImagenUrl", imagenUrl) :
-                new ObjectParameter("ImagenUrl", typeof(string));
+            var imagen_urlParameter = imagen_url != null ?
+                new ObjectParameter("imagen_url", imagen_url) :
+                new ObjectParameter("imagen_url", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertBlog", categoriaParameter, tituloParameter, resumenParameter, contenidoParameter, imagenUrlParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertBlog", categoriaParameter, tituloParameter, resumenParameter, contenidoParameter, imagen_urlParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> InsertPGF(string categoria, string pregunta, string respuesta)
         {
             var categoriaParameter = categoria != null ?
-                new ObjectParameter("Categoria", categoria) :
-                new ObjectParameter("Categoria", typeof(string));
+                new ObjectParameter("categoria", categoria) :
+                new ObjectParameter("categoria", typeof(string));
     
             var preguntaParameter = pregunta != null ?
-                new ObjectParameter("Pregunta", pregunta) :
-                new ObjectParameter("Pregunta", typeof(string));
+                new ObjectParameter("pregunta", pregunta) :
+                new ObjectParameter("pregunta", typeof(string));
     
             var respuestaParameter = respuesta != null ?
-                new ObjectParameter("Respuesta", respuesta) :
-                new ObjectParameter("Respuesta", typeof(string));
+                new ObjectParameter("respuesta", respuesta) :
+                new ObjectParameter("respuesta", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("InsertPGF", categoriaParameter, preguntaParameter, respuestaParameter);
         }
     
-        public virtual int InsertPoliticaDevolucion(string tituloSeccion, string contenido)
+        public virtual int InsertPoliticaDevolucion(string titulo_seccion, string contenido)
         {
-            var tituloSeccionParameter = tituloSeccion != null ?
-                new ObjectParameter("TituloSeccion", tituloSeccion) :
-                new ObjectParameter("TituloSeccion", typeof(string));
+            var titulo_seccionParameter = titulo_seccion != null ?
+                new ObjectParameter("titulo_seccion", titulo_seccion) :
+                new ObjectParameter("titulo_seccion", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPoliticaDevolucion", tituloSeccionParameter, contenidoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertPoliticaDevolucion", titulo_seccionParameter, contenidoParameter);
         }
     
         public virtual int PagarCarrito(Nullable<long> consecutivoUsuario)
@@ -767,21 +767,21 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarUsuario", identificacionParameter, contrasennaParameter, nombreParameter, correoElectronicoParameter);
         }
     
-        public virtual int UpdateAvisoPrivacidad(Nullable<int> id, string tituloSeccion, string contenido)
+        public virtual int UpdateAvisoPrivacidad(Nullable<int> id, string titulo_seccion, string contenido)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
-            var tituloSeccionParameter = tituloSeccion != null ?
-                new ObjectParameter("TituloSeccion", tituloSeccion) :
-                new ObjectParameter("TituloSeccion", typeof(string));
+            var titulo_seccionParameter = titulo_seccion != null ?
+                new ObjectParameter("titulo_seccion", titulo_seccion) :
+                new ObjectParameter("titulo_seccion", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAvisoPrivacidad", idParameter, tituloSeccionParameter, contenidoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAvisoPrivacidad", idParameter, titulo_seccionParameter, contenidoParameter);
         }
     
         public virtual ObjectResult<UpdateAyuda_Result> UpdateAyuda(Nullable<int> id, string categoria, string titulo, string contenido, string imagen_url)
@@ -812,28 +812,28 @@ namespace Api.Models
         public virtual int UpdateBlog(Nullable<int> id, string categoria, string titulo, string resumen, string contenido, string imagen_url)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
             var categoriaParameter = categoria != null ?
-                new ObjectParameter("Categoria", categoria) :
-                new ObjectParameter("Categoria", typeof(string));
+                new ObjectParameter("categoria", categoria) :
+                new ObjectParameter("categoria", typeof(string));
     
             var tituloParameter = titulo != null ?
-                new ObjectParameter("Titulo", titulo) :
-                new ObjectParameter("Titulo", typeof(string));
+                new ObjectParameter("titulo", titulo) :
+                new ObjectParameter("titulo", typeof(string));
     
             var resumenParameter = resumen != null ?
-                new ObjectParameter("Resumen", resumen) :
-                new ObjectParameter("Resumen", typeof(string));
+                new ObjectParameter("resumen", resumen) :
+                new ObjectParameter("resumen", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
             var imagen_urlParameter = imagen_url != null ?
-                new ObjectParameter("Imagen_url", imagen_url) :
-                new ObjectParameter("Imagen_url", typeof(string));
+                new ObjectParameter("imagen_url", imagen_url) :
+                new ObjectParameter("imagen_url", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateBlog", idParameter, categoriaParameter, tituloParameter, resumenParameter, contenidoParameter, imagen_urlParameter);
         }
@@ -859,21 +859,21 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdatePGF_Result>("UpdatePGF", idParameter, categoriaParameter, preguntaParameter, respuestaParameter);
         }
     
-        public virtual int UpdatePoliticaDevolucion(Nullable<int> id, string tituloSeccion, string contenido)
+        public virtual int UpdatePoliticaDevolucion(Nullable<int> id, string titulo_seccion, string contenido)
         {
             var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
     
-            var tituloSeccionParameter = tituloSeccion != null ?
-                new ObjectParameter("TituloSeccion", tituloSeccion) :
-                new ObjectParameter("TituloSeccion", typeof(string));
+            var titulo_seccionParameter = titulo_seccion != null ?
+                new ObjectParameter("titulo_seccion", titulo_seccion) :
+                new ObjectParameter("titulo_seccion", typeof(string));
     
             var contenidoParameter = contenido != null ?
-                new ObjectParameter("Contenido", contenido) :
-                new ObjectParameter("Contenido", typeof(string));
+                new ObjectParameter("contenido", contenido) :
+                new ObjectParameter("contenido", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePoliticaDevolucion", idParameter, tituloSeccionParameter, contenidoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdatePoliticaDevolucion", idParameter, titulo_seccionParameter, contenidoParameter);
         }
     }
 }

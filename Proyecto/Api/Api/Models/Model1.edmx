@@ -85,7 +85,7 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="ConsultarPreguntaFrecuente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="ConsultarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Consecutivo" Type="bigint" Mode="In" />
@@ -108,19 +108,19 @@
         <Function Name="ConsultarVentasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ConsultarVentasUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DeleteAvisoPrivacidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="DeleteAyuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="DeleteBlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="DeletePGF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="DeletePoliticaDevolucion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="EliminarAyuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -147,8 +147,8 @@
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
         </Function>
         <Function Name="InsertAvisoPrivacidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TituloSeccion" Type="varchar" Mode="In" />
-          <Parameter Name="Contenido" Type="varchar(max)" Mode="In" />
+          <Parameter Name="titulo_seccion" Type="varchar" Mode="In" />
+          <Parameter Name="contenido" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="InsertAyuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="categoria" Type="varchar" Mode="In" />
@@ -157,20 +157,20 @@
           <Parameter Name="imagen_url" Type="varchar" Mode="In" />
         </Function>
         <Function Name="InsertBlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
-          <Parameter Name="Titulo" Type="nvarchar" Mode="In" />
-          <Parameter Name="Resumen" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="Contenido" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="ImagenUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="categoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="titulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="resumen" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contenido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="imagen_url" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="InsertPGF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Categoria" Type="varchar" Mode="In" />
-          <Parameter Name="Pregunta" Type="varchar" Mode="In" />
-          <Parameter Name="Respuesta" Type="varchar" Mode="In" />
+          <Parameter Name="categoria" Type="varchar" Mode="In" />
+          <Parameter Name="pregunta" Type="varchar" Mode="In" />
+          <Parameter Name="respuesta" Type="varchar" Mode="In" />
         </Function>
         <Function Name="InsertPoliticaDevolucion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="TituloSeccion" Type="nvarchar" Mode="In" />
-          <Parameter Name="Contenido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="titulo_seccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="contenido" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="PagarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
@@ -221,9 +221,9 @@
           <Parameter Name="CorreoElectronico" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateAvisoPrivacidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
-          <Parameter Name="TituloSeccion" Type="varchar" Mode="In" />
-          <Parameter Name="Contenido" Type="varchar(max)" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="titulo_seccion" Type="varchar" Mode="In" />
+          <Parameter Name="contenido" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateAyuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -233,12 +233,12 @@
           <Parameter Name="imagen_url" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdateBlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
-          <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
-          <Parameter Name="Titulo" Type="nvarchar" Mode="In" />
-          <Parameter Name="Resumen" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="Contenido" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="Imagen_url" Type="nvarchar" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="categoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="titulo" Type="nvarchar" Mode="In" />
+          <Parameter Name="resumen" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="contenido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="imagen_url" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="UpdatePGF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -247,9 +247,9 @@
           <Parameter Name="respuesta" Type="varchar" Mode="In" />
         </Function>
         <Function Name="UpdatePoliticaDevolucion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id" Type="int" Mode="In" />
-          <Parameter Name="TituloSeccion" Type="nvarchar" Mode="In" />
-          <Parameter Name="Contenido" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="titulo_seccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="contenido" Type="nvarchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="DetallesJohaModelStoreContainer" />
       </Schema>
@@ -338,7 +338,7 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarPreguntaFrecuente" ReturnType="Collection(DetallesJohaModel.ConsultarPreguntaFrecuente_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
             <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -361,19 +361,19 @@
           <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
           <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
           <FunctionImport Name="DeleteAvisoPrivacidad">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteAyuda" ReturnType="Collection(Int32)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeleteBlog">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePGF" ReturnType="Collection(String)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DeletePoliticaDevolucion">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarAyuda">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -400,8 +400,8 @@
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertAvisoPrivacidad">
-            <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
+            <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertAyuda">
             <Parameter Name="categoria" Mode="In" Type="String" />
@@ -410,20 +410,20 @@
             <Parameter Name="imagen_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertBlog">
-            <Parameter Name="Categoria" Mode="In" Type="String" />
-            <Parameter Name="Titulo" Mode="In" Type="String" />
-            <Parameter Name="Resumen" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
-            <Parameter Name="ImagenUrl" Mode="In" Type="String" />
+            <Parameter Name="categoria" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="resumen" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+            <Parameter Name="imagen_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertPGF" ReturnType="Collection(Decimal)">
-            <Parameter Name="Categoria" Mode="In" Type="String" />
-            <Parameter Name="Pregunta" Mode="In" Type="String" />
-            <Parameter Name="Respuesta" Mode="In" Type="String" />
+            <Parameter Name="categoria" Mode="In" Type="String" />
+            <Parameter Name="pregunta" Mode="In" Type="String" />
+            <Parameter Name="respuesta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="InsertPoliticaDevolucion">
-            <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
+            <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PagarCarrito">
             <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
@@ -474,9 +474,9 @@
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateAvisoPrivacidad">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-            <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateAyuda" ReturnType="Collection(DetallesJohaModel.UpdateAyuda_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -486,12 +486,12 @@
             <Parameter Name="imagen_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateBlog">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-            <Parameter Name="Categoria" Mode="In" Type="String" />
-            <Parameter Name="Titulo" Mode="In" Type="String" />
-            <Parameter Name="Resumen" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
-            <Parameter Name="Imagen_url" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="categoria" Mode="In" Type="String" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="resumen" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
+            <Parameter Name="imagen_url" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdatePGF" ReturnType="Collection(DetallesJohaModel.UpdatePGF_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -500,9 +500,9 @@
             <Parameter Name="respuesta" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdatePoliticaDevolucion">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
-            <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-            <Parameter Name="Contenido" Mode="In" Type="String" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+            <Parameter Name="contenido" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ColsultarAvisoPrivacidad_Result">

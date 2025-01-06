@@ -81,7 +81,7 @@
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ConsultarPreguntaFrecuente" ReturnType="Collection(DetallesJohaModel.ConsultarPreguntaFrecuente_Result)">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ConsultarProducto" ReturnType="Collection(DetallesJohaModel.ConsultarProducto_Result)">
       <Parameter Name="Consecutivo" Mode="In" Type="Int64" />
@@ -104,19 +104,19 @@
     <FunctionImport Name="ConsultarVentasMensuales" ReturnType="Collection(DetallesJohaModel.ConsultarVentasMensuales_Result)" />
     <FunctionImport Name="ConsultarVentasUsuario" ReturnType="Collection(DetallesJohaModel.ConsultarVentasUsuario_Result)" />
     <FunctionImport Name="DeleteAvisoPrivacidad">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="DeleteAyuda" ReturnType="Collection(Int32)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="DeleteBlog">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="DeletePGF" ReturnType="Collection(String)">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="DeletePoliticaDevolucion">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="EliminarAyuda">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -143,8 +143,8 @@
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="InsertAvisoPrivacidad">
-      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="InsertAyuda">
       <Parameter Name="categoria" Mode="In" Type="String" />
@@ -153,20 +153,20 @@
       <Parameter Name="imagen_url" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="InsertBlog">
-      <Parameter Name="Categoria" Mode="In" Type="String" />
-      <Parameter Name="Titulo" Mode="In" Type="String" />
-      <Parameter Name="Resumen" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
-      <Parameter Name="ImagenUrl" Mode="In" Type="String" />
+      <Parameter Name="categoria" Mode="In" Type="String" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="resumen" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
+      <Parameter Name="imagen_url" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="InsertPGF" ReturnType="Collection(Decimal)">
-      <Parameter Name="Categoria" Mode="In" Type="String" />
-      <Parameter Name="Pregunta" Mode="In" Type="String" />
-      <Parameter Name="Respuesta" Mode="In" Type="String" />
+      <Parameter Name="categoria" Mode="In" Type="String" />
+      <Parameter Name="pregunta" Mode="In" Type="String" />
+      <Parameter Name="respuesta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="InsertPoliticaDevolucion">
-      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="PagarCarrito">
       <Parameter Name="ConsecutivoUsuario" Mode="In" Type="Int64" />
@@ -217,9 +217,9 @@
       <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="UpdateAvisoPrivacidad">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
-      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="UpdateAyuda" ReturnType="Collection(DetallesJohaModel.UpdateAyuda_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -229,12 +229,12 @@
       <Parameter Name="imagen_url" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="UpdateBlog">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
-      <Parameter Name="Categoria" Mode="In" Type="String" />
-      <Parameter Name="Titulo" Mode="In" Type="String" />
-      <Parameter Name="Resumen" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
-      <Parameter Name="Imagen_url" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="categoria" Mode="In" Type="String" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="resumen" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
+      <Parameter Name="imagen_url" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="UpdatePGF" ReturnType="Collection(DetallesJohaModel.UpdatePGF_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
@@ -243,9 +243,9 @@
       <Parameter Name="respuesta" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="UpdatePoliticaDevolucion">
-      <Parameter Name="Id" Mode="In" Type="Int32" />
-      <Parameter Name="TituloSeccion" Mode="In" Type="String" />
-      <Parameter Name="Contenido" Mode="In" Type="String" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="titulo_seccion" Mode="In" Type="String" />
+      <Parameter Name="contenido" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ColsultarAvisoPrivacidad_Result">
