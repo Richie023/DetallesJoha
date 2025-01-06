@@ -6,7 +6,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Mis Compras</h6>
+        <h6 class="m-0 font-weight-bold text-primary text-center">Mis Compras</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -44,8 +44,11 @@
                                         <td>@item.Impuesto.ToString("N2")</td>
                                         <td>@item.Total.ToString("N2")</td>
                                         <td style="text-align:center" title="Revisar">
-                                            <a href="@Url.Action("ConsultarDetalleFacturas","Carrito", new { id = @item.ConsecutivoMaestro })"><i class="fa fa-file-text-o fa-2x"></i></a>
+                                            <a href="@Url.Action("ConsultarDetalleFacturas", "Carrito", new { id = @item.ConsecutivoMaestro })"><i class="fa fa-file-text-o fa-2x"></i></a>
+                                          
+                                           
                                         </td>
+
                                     </tr>
                                 }
                             </tbody>
@@ -68,4 +71,43 @@
         });
     });
 
+
+    function AgregarCarrito(id, inventario) {
+    let cantProducto = $("#prd-" + id).val();
+
+    if (cantProducto > inventario) {
+        MostrarAlert("info", "Debes ingresar una cantidad inferior");
+        return;
+    }
+
+    if (cantProducto <= 0) {
+        MostrarAlert("info", "Debe ingresar una cantidad válida");
+        return;
+    }
+
+    $.ajax({
+        url: '/Carrito/AgregarCarrito',
+        type: "POST",
+        data: {
+            "idProducto": id,
+            "cantProducto": cantProducto
+        },
+        success: function (data) {
+            if (data == "OK") {
+                window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
+            } else {
+                alert(data);
+            }
+        }
+    });
+    }
+    function MostrarAlert(icono, mensaje) {
+        Swal.fire({
+            position: "center",
+            icon: icono,
+            title: mensaje,
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
 </script>

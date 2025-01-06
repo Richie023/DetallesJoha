@@ -33,6 +33,7 @@ namespace Web.Controllers
                 Session["NombreUsuario"] = respuesta.Dato.Nombre;
                 Session["RolUsuario"] = respuesta.Dato.ConsecutivoRol;
                 Session["NombreRol"] = respuesta.Dato.NombreRol;
+                Session["CorreoElectronico"] = respuesta.Dato.CorreoElectronico;
                 return RedirectToAction("PantallaPrincipal", "Inicio");
             }
             else
@@ -85,17 +86,23 @@ namespace Web.Controllers
         }
 
 
-        [FiltroSeguridad]
+  
         [HttpGet]
         public ActionResult PantallaPrincipal()
         {
-            var datos = carritoModel.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
 
-            if (datos.Codigo == 0)
+
+            if (HttpContext.Session["NombreUsuario"] != null)
             {
-                Session["Cantidad"] = datos.Datos.AsEnumerable().Sum(x => x.Cantidad);
-                Session["SubTotal"] = datos.Datos.AsEnumerable().Sum(x => x.SubTotal);
-                Session["Total"] = datos.Datos.AsEnumerable().Sum(x => x.Total);
+                var datos = carritoModel.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
+
+                ;
+                if (datos.Codigo == 0)
+                {
+                    Session["Cantidad"] = datos.Datos.AsEnumerable().Sum(x => x.Cantidad);
+                    Session["SubTotal"] = datos.Datos.AsEnumerable().Sum(x => x.SubTotal);
+                    Session["Total"] = datos.Datos.AsEnumerable().Sum(x => x.Total);
+                }
             }
             else
             {
@@ -116,8 +123,8 @@ namespace Web.Controllers
         }
 
         // Método de acción para filtrar productos por categoría
-        [FiltroSeguridad]
-        [HttpPost]
+     
+        [HttpGet]
         public ActionResult FiltrarPorCategoria(int? IdCategoria)
         {
             var productos = new List<Web.Entidades.Producto>();
@@ -143,8 +150,6 @@ namespace Web.Controllers
             return View(productos);
         }
 
-        [FiltroSeguridad]
-        [HttpPost]
         public ActionResult FiltrarPorPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
         {
             var productos = new List<Web.Entidades.Producto>();
@@ -171,9 +176,7 @@ namespace Web.Controllers
         }
 
 
-        [FiltroSeguridad]
-        [HttpPost]
-        public ActionResult FiltrarPorMCT(string Material, string Color, string Tamanio)
+        public ActionResult PantallaPorMCT(string Material, string Color, string Tamanio)
         {
             var productos = new List<Web.Entidades.Producto>();
 
@@ -197,7 +200,7 @@ namespace Web.Controllers
         public ActionResult CerrarSesion()
         {
             Session.Clear();
-            return RedirectToAction("IniciarSesion", "Inicio");
+            return RedirectToAction("PantallaPrincipal", "Inicio");
         }
     }
 }

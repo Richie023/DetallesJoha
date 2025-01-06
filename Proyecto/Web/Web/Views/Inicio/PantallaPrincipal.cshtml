@@ -2,264 +2,108 @@
 
 @{
     ViewBag.Title = "Productos";
-    Layout = "~/Views/Shared/_LayoutCliente.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-  
-<style>
-    /* Estilos base de la tarjeta */
-    .product-card {
-        transition: transform 0.3s, box-shadow 0.3s;
-        height: 380px;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        background-color: white;
-        overflow: hidden;
-        padding: 1rem;
-    }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
+@if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+{
+    <div class="col-12 mb-4 text-right">
+        <a href="@Url.Action("RegistrarProducto", "Producto")" class="btn-add">
+            <i class="fa fa-plus"></i> Agregar Nuevo Producto
+        </a>
+    </div>
+}
 
-    /* Espacio fijo para el descuento y corazón */
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 40px;
-        margin-bottom: 0.5rem;
-    }
+<div class="section">
 
-    .discount-badge {
-        background-color: #ff0000;
-        color: white;
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
-        font-weight: bold;
-        font-size: 1rem;
-    }
-
-    .product-heart {
-        color: #666;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-
-        .product-heart:hover {
-            color: #e74c3c;
-        }
-
-    /* Espacio para imagen */
-    .product-img-container {
-        height: 180px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .product-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        transition: transform 0.3s;
-    }
-
-    .product-card:hover .product-img {
-        transform: scale(1.05);
-    }
-
-    /* Contenido del producto */
-    .product-body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.5rem;
-        flex: 1;
-    }
-
-    /* Nombre del producto con margen inferior reducido */
-    .product-name {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: -1.5rem; /* Reducido para menos espacio debajo */
-        line-height: 1.2;
-        height: 2.4em;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    /* Etiqueta de porcentaje de descuento con altura fija y sin margen extra */
-    .rebaja-label {
-        color: #e74c3c;
-        font-weight: bold;
-        font-size: 1.5rem;
-        line-height: 1; /* Asegura que el texto no ocupe demasiado espacio */
-        margin: 0; /* Sin margen adicional */
-        height: 15px; /* Altura fija ajustada */
-        visibility: visible;
-    }
+    <div class="container">
 
 
-    /* Precio con espacio fijo */
-    .product-price {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        justify-content: center;
-    }
 
-    .current-price {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #2c3e50;
-    }
+        <div class="row">
 
-    .product-old-price {
-        font-size: 1.5rem;
-        color: #95a5a6;
-        text-decoration: line-through;
-    }
+            <div id="store" class="col-md-12">
+                <div class="row">
+                    @foreach (var producto in Model)
+                    {
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
+                            <div class="product-card">
+                                <!-- Header con rebaja y corazón -->
+                                <div class="card-header">
+                                    @if (producto.PromocionActiva == 1)
+                                    {
+                                        <div class="discount-badge">⬇️ REBAJA</div>
+                                    }
+                                    else
+                                    {
+                                        <div style="visibility: hidden;">⬇️ REBAJA</div> <!-- Espacio reservado -->
+                                    }
+                                    <i class="fa-solid fa-heart product-heart"></i>
+                                </div>
 
-    /* Estrellas */
-    .stars {
-        display: flex;
-        justify-content: center;
-        gap: 0.25rem;
-        margin: 0.5rem 0;
-    }
+                                <!-- Imagen del producto -->
+                                <div class="product-img-container">
+                                    <img src="@producto.RutaImagen" class="product-img" alt="@producto.NombreProducto">
+                                </div>
 
-    .star {
-        color: #e0e0e0;
-        cursor: pointer;
-        font-size: 1.5rem;
-        transition: color 0.2s;
-    }
+                                <!-- Contenido de la tarjeta -->
+                                <div class="product-body">
+                                    <h5 class="product-name">
+                                        <a href="@Url.Action("DetalleProducto", "Productos", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
+                                            @producto.NombreProducto
+                                        </a>
+                                    </h5>
 
-        .star.selected {
-            color: #f39c12;
-        }
-
-    /* Botón de agregar al carrito */
-    .btn-add {
-        width: 100%;
-        background-color: #3498db;
-        color: white;
-        border: none;
-        padding: 0.75rem;
-        border-radius: 4px;
-        text-align: center;
-        transition: background-color 0.3s;
-        text-decoration: none;
-        margin-top: auto;
-    }
-
-        .btn-add:hover {
-            background-color: #2980b9;
-        }
-</style>
-
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
-                {
-                    <div class="col-12 mb-4 text-center">
-                        <a href="@Url.Action("RegistrarProducto", "Producto")" class="btn-add-product">
-                            <i class="fa fa-plus"></i> Agregar Nuevo Producto
-                        </a>
-                    </div>
-                }
-
-                <div id="store" class="col-md-12">
-                    <div class="row">
-                        @foreach (var producto in Model)
-                        {
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4">
-                                <div class="product-card">
-                                    <!-- Header con rebaja y corazón -->
-                                    <div class="card-header">
+                                    <!-- Etiqueta de porcentaje de descuento (entre nombre y precio) -->
+                                    <p class="rebaja-label">
                                         @if (producto.PromocionActiva == 1)
                                         {
-                                            <div class="discount-badge">⬇️ REBAJA</div>
+                                            @: -@producto.Porcentaje_descuento%
+                                        }
+                                    </p>
+
+                                    <!-- Precio -->
+                                    <div class="product-price">
+                                        @if (producto.PromocionActiva == 1)
+                                        {
+                                            <span class="current-price text-danger">₡@producto.PrecioConDescuento.ToString("N0")</span>
+                                            <span class="product-old-price">₡@producto.Precio.ToString("N0")</span>
                                         }
                                         else
                                         {
-                                            <div style="visibility: hidden;">⬇️ REBAJA</div> <!-- Espacio reservado -->
+                                            <span class="current-price">₡@producto.Precio.ToString("N0")</span>
                                         }
-                                        <i class="fa fa-star star"></i>
                                     </div>
 
-                                    <!-- Imagen del producto -->
-                                    <div class="product-img-container">
-                                        <img src="@producto.RutaImagen" class="product-img" alt="@producto.NombreProducto">
+                                    <!-- Estrellas -->
+                                    <div class="stars" data-product-id="@producto.Consecutivo">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            <i class="fa fa-star star" data-star="@i"></i>
+                                        }
                                     </div>
 
-                                    <!-- Contenido de la tarjeta -->
-                                    <div class="product-body">
-                                        <h5 class="product-name">
-                                            <a href="@Url.Action("DetalleProducto", "Productos", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
-                                                @producto.NombreProducto
-                                            </a>
-                                        </h5>
-
-                                        <!-- Etiqueta de porcentaje de descuento (entre nombre y precio) -->
-                                        <p class="rebaja-label">
-                                            @if (producto.PromocionActiva == 1)
-                                            {
-                                                @: -@producto.Porcentaje_descuento%
-                                            }
-                                        </p>
-
-                                        <!-- Precio -->
-                                        <div class="product-price">
-                                            @if (producto.PromocionActiva == 1)
-                                            {
-                                                <span class="current-price text-danger">₡@producto.PrecioConDescuento.ToString("N0")</span>
-                                                <span class="product-old-price">₡@producto.Precio.ToString("N0")</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="current-price">₡@producto.Precio.ToString("N0")</span>
-                                            }
-                                        </div>
-
-                                        <!-- Estrellas -->
-                                        <div class="stars" data-product-id="@producto.Consecutivo">
-                                            @for (int i = 1; i <= 5; i++)
-                                            {
-                                                <i class="fa fa-star star" data-star="@i"></i>
-                                            }
-                                        </div>
-
-                                        <!-- Botón de agregar al carrito -->
-                                        <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="btn-add">
-                                            <i class="fa fa-eye"></i> Ver
-                                        </a>
-                                    </div>
+                                    <!-- Botón de agregar al carrito -->
+                                    <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="btn-add">
+                                        <i class="fa fa-eye"></i> Ver
+                                    </a>
                                 </div>
-
                             </div>
-                        }
-                    </div>
+
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 
 <script>
 
-    $(document).ready(function () {
+    $(document).ready('DOMContentLoaded', function () {
         // Manejar la selección de estrellas
         $('.star').on('click', function () {
             var productId = $(this).closest('.stars').data('product-id');

@@ -10,7 +10,7 @@ namespace Web.Models
     {
         private readonly string baseUrl = ConfigurationManager.AppSettings["urlWebApi"] + "Ayuda/";
 
-        // Consultar Ayuda (GET)
+      
         public AyudaCategoriaRespuesta ConsultarAyuda()
         {
             using (var client = new HttpClient())
@@ -25,7 +25,25 @@ namespace Web.Models
             }
         }
 
-        // Insertar Ayuda (POST)
+        public AyudaCategoriaRespuesta ConsultarAyudaPorId(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Ayuda/ConsultarAyudaPorId?id=" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<AyudaCategoriaRespuesta>().Result;
+                else
+                    return new AyudaCategoriaRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al consultar la ayuda"
+                    };
+            }
+        }
+
+
         public Confirmacion InsertarAyuda(Ayuda entidad)
         {
             using (var client = new HttpClient())
@@ -41,7 +59,7 @@ namespace Web.Models
             }
         }
 
-        // Actualizar Ayuda (PUT)
+        
         public Confirmacion ActualizarAyuda(Ayuda entidad)
         {
             using (var client = new HttpClient())
@@ -57,7 +75,25 @@ namespace Web.Models
             }
         }
 
-        // Eliminar Ayuda (DELETE)
+        public AyudaCategoriaRespuesta ActualizarImagenAyuda(Ayuda entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Ayuda/ActualizarImagenAyuda";
+                var respuesta = client.PutAsJsonAsync(url, entidad).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<AyudaCategoriaRespuesta>().Result;
+                else
+                    return new AyudaCategoriaRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al actualizar la imagen de la ayuda"
+                    };
+            }
+        }
+
+
         public Confirmacion EliminarAyuda(int id)
         {
             using (var client = new HttpClient())

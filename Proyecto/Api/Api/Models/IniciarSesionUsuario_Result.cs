@@ -20,7 +20,7 @@ namespace Api.Models
         public bool Estado { get; set; }
         public bool Temporal { get; set; }
         public System.DateTime Vencimiento { get; set; }
-        public long ConsecutivoRol { get; set; }
+        public int ConsecutivoRol { get; set; }
         public string NombreRol { get; set; }
     }
 }

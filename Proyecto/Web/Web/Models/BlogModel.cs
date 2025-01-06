@@ -7,7 +7,6 @@ namespace Web.Models
 {
     public class BlogModel
     {
-        // Consultar todos los artículos del blog
         public BlogRespuesta ConsultarTodos()
         {
             using (var client = new HttpClient())
@@ -30,7 +29,26 @@ namespace Web.Models
             }
         }
 
-        // Insertar un nuevo artículo
+        public BlogRespuesta ConsultarBlogPorId(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/ConsultarBlogPorId?id=" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<BlogRespuesta>().Result;
+                else
+                    return new BlogRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al consultar el blog"
+                    };
+            }
+        }
+
+
+
         public Confirmacion Insertar(BlogArticulo entidad)
         {
             using (var client = new HttpClient())
@@ -54,7 +72,7 @@ namespace Web.Models
             }
         }
 
-        // Actualizar un artículo existente
+       
         public Confirmacion Actualizar(BlogArticulo entidad)
         {
             using (var client = new HttpClient())
@@ -78,12 +96,31 @@ namespace Web.Models
             }
         }
 
-        // Eliminar un artículo por ID
+
+        public BlogRespuesta ActualizarImagenBlog(BlogArticulo entidad)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/ActualizarImagenBlog";
+                var respuesta = client.PutAsJsonAsync(url, entidad).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<BlogRespuesta>().Result;
+                else
+                    return new BlogRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al actualizar la imagen del blog"
+                    };
+            }
+        }
+
+
         public Confirmacion Eliminar(int id)
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + $"Blog/Eliminar?id={id}";
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Blog/Eliminar?id=" +id;
                 var respuesta = client.DeleteAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)

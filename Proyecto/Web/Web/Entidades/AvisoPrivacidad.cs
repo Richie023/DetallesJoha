@@ -7,12 +7,10 @@ namespace Web.Entidades
 {
     public class AvisoPrivacidad
     {
-        public int Id { get; set; }
-        public string TituloSeccion { get; set; }
-        public string SubtituloSeccion { get; set; }
-        public string Contenido { get; set; }
-        public int Orden { get; set; }
-        public DateTime UltimaActualizacion { get; set; }
+        public int id { get; set; }
+        public string titulo_seccion { get; set; }
+        public string contenido { get; set; }
+        public DateTime? ultima_actualizacion { get; set; }
 
     }
     public class AvisoPrivacidadRespuesta

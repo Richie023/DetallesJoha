@@ -5,99 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-  
-
-    h1 {
-        font-size: 3rem;
-        color: #2c3e50;
-        text-align: center;
-        margin-top: 15px;
-        font-weight: 600;
-    }
-
-    /* Estilos para párrafos */
-    p {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        text-align: justify;
-        color: #444;
-    }
-
-    /* Estilos para listas */
-    ul {
-        padding-left: 20px;
-        margin-bottom: 20px;
-    }
-
-    li {
-        margin-bottom: 10px;
-        position: relative;
-        padding-left: 15px;
-        list-style-type: none;
-    }
-
-        li::before {
-            content: "•";
-            color: #3498db;
-            font-weight: bold;
-            position: absolute;
-            left: -15px;
-        }
-
-    
-
-   
-
-
-    /* Estilos para subtítulos */
-    h2 {
-        font-size: 1.3rem;
-        color: #2c3e50;
-        margin: 25px 0 15px 0;
-        font-weight: 600;
-    }
-
-   
-
-    /* Estilos para el botón de administrador */
-    .btn-success {
-        background-color: #27ae60;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        color: white;
-        transition: background-color 0.3s ease;
-    }
-
-        .btn-success:hover {
-            background-color: #219a52;
-        }
-
-    /* Estilos para elementos destacados */
-    .highlight {
-        background-color: #fff8e1;
-        padding: 4px;
-    }
-</style>
-
 <div class="container mt-5">
-    <h1 class="text-center font-weight-bold">@ViewBag.Title</h1>
-    <p class="text-center text-muted">Revisa nuestras políticas para garantizar la transparencia y seguridad de nuestra plataforma.</p>
+    <h2 class="text-center font-weight-bold">Listado de Avisos de Privacidad</h2>
+    <p class="text-center text-muted">Consulta y administra los avisos de privacidad disponibles en nuestra plataforma.</p>
+
+    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+    {
+        <div class="text-right mt-4">
+            <a href="@Url.Action("Insertar", "AvisoPrivacidad")" class="primary-btn">Agregar Nuevo Aviso</a>
+        </div>
+    }
 
     @if (Model != null && Model.Any())
     {
         <div class="privacy-section">
-            @foreach (var aviso in Model.OrderBy(a => a.Orden))
+            @foreach (var aviso in Model)
             {
-                <div class="privacy-item">
-                    <h2 class="privacy-title">@aviso.TituloSeccion</h2>
-                    @if (!string.IsNullOrEmpty(aviso.SubtituloSeccion))
-                    {
-                        <h4 class="privacy-subtitle">@aviso.SubtituloSeccion</h4>
-                    }
-                    <div class="privacy-content">
-                        @Html.Raw(aviso.Contenido.Replace("<ul>", "<ul class='custom-list'>").Replace("<li>", "<li class='custom-list-item'>"))
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">@aviso.titulo_seccion</h3>
+                        <p class="card-text">@aviso.contenido</p>
+                        <small class="text-muted">Última actualización: @aviso.ultima_actualizacion.ToString()</small>
+                        <div class="text-right mt-3">
+                            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                            {
+                                <a href="@Url.Action("Editar", "AvisoPrivacidad", new { id = @aviso.id })"><i class="fa fa-pencil-square-o fa-2x" tittle="Editar Aviso de Privacidad"></i></a>
+                                <a href="@Url.Action("Eliminar", "AvisoPrivacidad", new { id = @aviso.id })"><i class="fa fa-trash-o fa-2x" tittle="Eliminar Aviso de Privacidad"></i></a>
+                            }
+                        </div>
                     </div>
                 </div>
             }
@@ -110,11 +45,5 @@
         </div>
     }
 
-    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
-    {
-        <div class="text-right mt-4">
-            <a href="@Url.Action("Insertar", "AvisoPrivacidad")" class="btn btn-success btn-lg">Agregar Nuevo Aviso</a>
-            <a href="@Url.Action("Editar", "AvisoPrivacidad")" class="btn btn-success btn-lg">Editar Aviso</a>
-        </div>
-    }
+
 </div>

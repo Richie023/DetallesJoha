@@ -12,8 +12,9 @@ namespace Api.Entidades
         public string Contrasenna { get; set; }
         public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
-        public long ConsecutivoRol { get; set; }
+        public int ConsecutivoRol { get; set; }
         public string NombreRol { get; set; }
+        public bool Estado { get; set; }
     }
 
     public class ConfirmacionUsuario

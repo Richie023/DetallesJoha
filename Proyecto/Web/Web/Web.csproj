@@ -46,7 +46,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0-rc.2.24473.5\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -56,32 +57,39 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Json.8.0.0\lib\net462\System.Net.Http.Json.dll</HintPath>
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Json.9.0.0\lib\net462\System.Net.Http.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
@@ -147,41 +155,120 @@
     <Compile Include="Controllers\AyudaController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\InfoEController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\PoliticaDevolucionController.cs" />
     <Compile Include="Controllers\PreguntasFrecuentesController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Entidades\AvisoPrivacidad.cs" />
-    <Compile Include="Entidades\Ayuda.cs" />
     <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Carrito.cs" />
+    <Compile Include="Entidades\Ayuda.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
-    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
+    <Compile Include="Entidades\Consulta.cs" />
+    <Compile Include="Entidades\InforE.cs" />
     <Compile Include="Entidades\PoliticaDevolucion.cs" />
+    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\Resena.cs" />
+    <Compile Include="Entidades\Roles.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Ventas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PreguntasFrecuentesModel.cs" />
-    <Compile Include="Models\BlogModel.cs" />
+    <Compile Include="Models\AvisoPrivacidadModel.cs" />
     <Compile Include="Models\AyudaModel.cs" />
+    <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\CategoriaModel.cs" />
+    <Compile Include="Models\ConsultaModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />
     <Compile Include="Models\FiltroSeguridad.cs" />
-    <Compile Include="Models\AvisoPrivacidadModel.cs" />
+    <Compile Include="Models\InforEModel.cs" />
     <Compile Include="Models\PoliticaDevolucionModel.cs" />
+    <Compile Include="Models\PreguntasFrecuentesModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
+    <Compile Include="Models\ResenaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VentasModel.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bd\detalles joha.txt" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Content Include="bin\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.Buffers.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Memory.dll" />
+    <Content Include="bin\roslyn\System.Numerics.Vectors.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Buffers.dll" />
+    <Content Include="bin\System.Buffers.xml" />
+    <Content Include="bin\System.IO.Pipelines.dll" />
+    <Content Include="bin\System.IO.Pipelines.xml" />
+    <Content Include="bin\System.Memory.dll" />
+    <Content Include="bin\System.Memory.xml" />
+    <Content Include="bin\System.Net.Http.Json.dll" />
+    <Content Include="bin\System.Net.Http.Json.xml" />
+    <Content Include="bin\System.Numerics.Vectors.dll" />
+    <Content Include="bin\System.Numerics.Vectors.xml" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="bin\System.Text.Encodings.Web.dll" />
+    <Content Include="bin\System.Text.Encodings.Web.xml" />
+    <Content Include="bin\System.Text.Json.dll" />
+    <Content Include="bin\System.Text.Json.xml" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="bin\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="bin\System.ValueTuple.dll" />
+    <Content Include="bin\System.ValueTuple.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\Web.dll" />
+    <Content Include="bin\Web.pdb" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -202,13 +289,6 @@
     <Content Include="Estilos\css\Ayuda.css" />
     <Content Include="Estilos\css\Blog.css" />
     <Content Include="Estilos\css\bootstrap.min.css" />
-    <Content Include="Estilos\css\cssfooter.css" />
-    <Content Include="Estilos\css\cssfooteravisoprivacidad.css" />
-    <Content Include="Estilos\css\cssfooterayuda.css" />
-    <Content Include="Estilos\css\cssfooterblog.css" />
-    <Content Include="Estilos\css\cssfootercliente.css" />
-    <Content Include="Estilos\css\cssfooterpoliticadevolucion.css" />
-    <Content Include="Estilos\css\cssfooterpreguntasfrecuentes.css" />
     <Content Include="Estilos\css\Filtros.css" />
     <Content Include="Estilos\css\font-awesome.min.css" />
     <Content Include="Estilos\css\Footer.css" />
@@ -220,19 +300,49 @@
     <Content Include="Estilos\css\slick-theme.css" />
     <Content Include="Estilos\css\slick.css" />
     <Content Include="Estilos\css\style.css" />
+    <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
-    <Content Include="Estilos\img\hotdeal.png" />
-    <Content Include="Estilos\img\logo.jpg" />
-    <Content Include="Estilos\img\logo.png" />
-    <Content Include="Estilos\img\product01.png" />
-    <Content Include="Estilos\img\product02.png" />
-    <Content Include="Estilos\img\undraw_posting_photo.svg" />
-    <Content Include="Estilos\img\undraw_profile.svg" />
-    <Content Include="Estilos\img\undraw_profile_1.svg" />
-    <Content Include="Estilos\img\undraw_profile_2.svg" />
-    <Content Include="Estilos\img\undraw_profile_3.svg" />
-    <Content Include="Estilos\img\undraw_rocket.svg" />
+    <Content Include="Estilos\js\canvas.js" />
+    <Content Include="Estilos\js\disenno.js" />
+    <Content Include="Estilos\js\Filtros.js" />
+    <Content Include="Estilos\js\HelloWorld.jsx" />
+    <Content Include="Estilos\js\newFile.js" />
+    <Content Include="Imagenes\1.jpg" />
+    <Content Include="Imagenes\10002.png" />
+    <Content Include="Imagenes\19.jpg" />
+    <Content Include="Imagenes\2.jpg" />
+    <Content Include="Imagenes\25.jpg" />
+    <Content Include="Imagenes\26.jpg" />
+    <Content Include="Imagenes\3.jpg" />
+    <Content Include="Imagenes\4.jpg" />
+    <Content Include="Imagenes\4.png" />
+    <Content Include="Imagenes\5.jpg" />
+    <Content Include="Imagenes\6.png" />
+    <Content Include="Imagenes\7.jpg" />
+    <Content Include="Imagenes\7.png" />
+    <Content Include="Imagenes\8.jpg" />
+    <Content Include="img\hotdeal.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\product01.png" />
+    <Content Include="img\product02.png" />
+    <Content Include="img\product03.png" />
+    <Content Include="img\product04.png" />
+    <Content Include="img\product05.png" />
+    <Content Include="img\product06.png" />
+    <Content Include="img\product07.png" />
+    <Content Include="img\product08.png" />
+    <Content Include="img\product09.png" />
+    <Content Include="img\shop01.png" />
+    <Content Include="img\shop02.png" />
+    <Content Include="img\shop03.png" />
+    <Content Include="img\undraw_posting_photo.svg" />
+    <Content Include="img\undraw_profile.svg" />
+    <Content Include="img\undraw_profile_1.svg" />
+    <Content Include="img\undraw_profile_2.svg" />
+    <Content Include="img\undraw_profile_3.svg" />
+    <Content Include="img\undraw_rocket.svg" />
+    <Content Include="Estilos\js\Accordion.js" />
     <Content Include="Estilos\js\bootstrap.min.js" />
     <Content Include="Estilos\js\chart-area-demo.js" />
     <Content Include="Estilos\js\chart-bar-demo.js" />
@@ -243,7 +353,6 @@
     <Content Include="Estilos\js\main.js" />
     <Content Include="Estilos\js\nouislider.min.js" />
     <Content Include="Estilos\js\RegistroUsuarios.js" />
-    <Content Include="Estilos\js\Filtros.js" />
     <Content Include="Estilos\js\sb-admin-2.js" />
     <Content Include="Estilos\js\sb-admin-2.min.js" />
     <Content Include="Estilos\js\slick.min.js" />
@@ -361,28 +470,15 @@
     <Content Include="Estilos\vendor\bootstrap\scss\_variables.scss" />
     <Content Include="Estilos\vendor\jquery\jquery.min.map" />
     <Content Include="Estilos\vendor\jquery\jquery.slim.min.map" />
-    <Content Include="Imagenes\1.jpg" />
-    <Content Include="Imagenes\19.jpg" />
-    <Content Include="Imagenes\2.jpg" />
-    <Content Include="Imagenes\25.jpg" />
-    <Content Include="Imagenes\26.jpg" />
-    <Content Include="Imagenes\3.jpg" />
-    <Content Include="Imagenes\4.jpg" />
-    <Content Include="Imagenes\5.jpg" />
-    <Content Include="Imagenes\6.jpg" />
-    <Content Include="Imagenes\7.jpg" />
-    <Content Include="Imagenes\8.jpg" />
+    <Content Include="obj\Debug\Web.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Web.dll" />
+    <Content Include="obj\Debug\Web.pdb" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Estilos\fonts\.vs\fonts\FileContentIndex\280fdccc-6493-4764-9dfd-69a5de080f29.vsidx" />
-    <Content Include="Estilos\fonts\.vs\ProjectSettings.json" />
-    <Content Include="Estilos\fonts\.vs\slnx.sqlite" />
-    <Content Include="Estilos\fonts\.vs\VSWorkspaceState.json" />
-    <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.ttf" />
     <Content Include="Estilos\fonts\fontawesome-webfont.woff" />
     <Content Include="Estilos\fonts\fontawesome-webfont.woff2" />
@@ -390,6 +486,28 @@
     <Content Include="Estilos\fonts\slick.eot" />
     <Content Include="Estilos\fonts\slick.ttf" />
     <Content Include="Estilos\fonts\slick.woff" />
+    <Content Include="bin\roslyn.rar" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="bin\Web.dll.config" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\Web.csproj.AssemblyReference.cache" />
+    <Content Include="obj\Debug\Web.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\Web.csproj.Up2Date" />
+    <Content Include="Estilos\fonts\.vs\fonts\FileContentIndex\280fdccc-6493-4764-9dfd-69a5de080f29.vsidx" />
+    <Content Include="Estilos\fonts\.vs\fonts\v17\.wsuo" />
+    <Content Include="Estilos\fonts\.vs\ProjectSettings.json" />
+    <Content Include="Estilos\fonts\.vs\slnx.sqlite" />
+    <Content Include="Estilos\fonts\.vs\VSWorkspaceState.json" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -425,26 +543,43 @@
     <Content Include="Views\Shared\_LayoutExterno.cshtml" />
     <Content Include="Views\Usuario\ActualizarUsuario.cshtml" />
     <Content Include="Views\Ventas\ConsultaVentas.cshtml" />
-    <Content Include="Views\Producto\VerProducto.cshtml" />
+    <Content Include="Views\Carrito\ConsultarPedidos.cshtml" />
+    <Content Include="Views\Shared\_LayoutBasico.cshtml" />
+    <Content Include="Views\Resena\ConsultarResenas.cshtml" />
+    <Content Include="Views\Resena\RegistrarResena.cshtml" />
+    <Content Include="Views\InfoE\RegistraInforE.cshtml" />
+    <Content Include="Views\Informacion\AvisoPrivacidad.cshtml" />
+    <Content Include="Views\Informacion\Ayuda.cshtml" />
+    <Content Include="Views\Informacion\blog.cshtml" />
+    <Content Include="Views\Informacion\BlogInsertar.cshtml" />
+    <Content Include="Views\Informacion\PoliticaDevolucion.cshtml" />
+    <Content Include="Views\Informacion\PreguntasFrecuentes.cshtml" />
     <Content Include="Views\Producto\FiltrarPorCategoria.cshtml" />
-    <Content Include="Views\AvisoPrivacidad\AvisoPrivacidad.cshtml" />
-    <Content Include="Views\Ayuda\Ayuda.cshtml" />
-    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\Producto\VerProducto.cshtml" />
     <Content Include="Views\PoliticaDevolucion\PoliticaDevolucion.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\PreguntasFrecuentes.cshtml" />
-    <Content Include="Views\Blog\BlogInsertar.cshtml" />
-    <Content Include="Views\Blog\BlogEditar.cshtml" />
+    <Content Include="Views\Blog\Blog.cshtml" />
+    <Content Include="Views\Blog\Editar.cshtml" />
+    <Content Include="Views\Blog\Insertar.cshtml" />
+    <Content Include="Views\Ayuda\Ayuda.cshtml" />
+    <Content Include="Views\AvisoPrivacidad\AvisoPrivacidad.cshtml" />
+    <Content Include="Views\AvisoPrivacidad\Insertar.cshtml" />
     <Content Include="Views\AvisoPrivacidad\Editar.cshtml" />
-    <Content Include="Views\AvisoPrivacidad\Borrar.cshtml" />
+    <Content Include="Views\Usuario\ConsultarUsuarios.cshtml" />
     <Content Include="Views\Inicio\FiltrarPorCategoria.cshtml" />
-    <Content Include="Views\Producto\DiseñoProducto.cshtml" />
-    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\Usuario\ActualizaUsuario.cshtml" />
+    <Content Include="Views\Categoria\RegistrarCategoria.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
+    <Content Include="Views\Producto\Disenno.cshtml" />
+    <Content Include="Views\Ayuda\Editar.cshtml" />
+    <Content Include="Views\Ayuda\Insertar.cshtml" />
+    <Content Include="Views\PoliticaDevolucion\Editar.cshtml" />
+    <Content Include="Views\PoliticaDevolucion\Insertar.cshtml" />
+    <Content Include="Views\PreguntasFrecuentes\Insertar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Estilos\fonts\.vs\fonts\v17\" />
-    <Folder Include="Views\Categoria\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

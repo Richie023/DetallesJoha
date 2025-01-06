@@ -1,245 +1,54 @@
-﻿
-@if (Session["RolUsuario"] != null)
-{
-    if (Session["RolUsuario"].ToString() == "2") // Cliente
-    {
-        ViewBag.Title = "PantallaPrincipal";
-        Layout = "~/Views/Shared/_LayoutCliente.cshtml"; // Layout para clientes
-    }
-    else if (Session["RolUsuario"].ToString() == "1") // Administrador
-    {
-        ViewBag.Title = "PantallaPrincipal";
-        Layout = "~/Views/Shared/_Layout.cshtml"; // Layout para administrador
-    }
-}
-else
-{
-    ViewBag.Title = "PantallaPrincipal";
-    Layout = "~/Views/Shared/_LayoutCliente.cshtml"; // Layout predeterminado para no autenticados (cliente)
-}
+﻿@model List<Web.Entidades.PreguntasFrecuentes>
 
-
-<link href="~/Estilos/css/cssfooterpreguntasfrecuentes.css" rel="stylesheet">
-
-
-
-<div class="faq-header">
-    <h1>Preguntas Frecuentes</h1>
-    <p>Encuentra respuestas a las preguntas más comunes sobre nuestros servicios de sublimación personalizada</p>
-</div>
+@{
+    ViewBag.Title = "Gestión de Preguntas Frecuentes";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+ }
 
 <div class="container">
-    <div class="search-container">
-        <input type="text" class="search-box" placeholder="Buscar preguntas frecuentes...">
-    </div>
+    <h1 class="text-center">@ViewBag.Title</h1>
 
-    <div class="faq-categories">
-        <button class="category-button" data-target="#pedidos-envios">Pedidos y Envíos</button>
-        <button class="category-button" data-target="#disenos-personalizacion">Diseños y Personalización</button>
-        <button class="category-button" data-target="#pagos">Pagos</button>
-        <button class="category-button" data-target="#productos">Productos</button>
-    </div>
+    @if (Model != null && Model.Any()) 
+    {
+        <div class="accordion" id="faqAccordion">
+            @foreach (var pregunta in Model.OrderBy(p => p.Categoria))
+            {
+                <div class="card">
+                    <div class="card-header" id="heading@pregunta.Id">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse@pregunta.Id" aria-expanded="false" aria-controls="collapse@pregunta.Id">
+                                @pregunta.Categoria - @pregunta.Pregunta
+                            </button>
+                        </h2>
+                    </div>
 
-    <div id="pedidos-envios" class="faq-section">
-        <h2>Pedidos y Envíos</h2>
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Cuál es el tiempo de entrega estándar?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>El tiempo de entrega estándar es de 5-7 días hábiles, que incluyen:</p>
-                <ul>
-                    <li>2-3 días para producción y personalización</li>
-                    <li>3-4 días para envío nacional</li>
-                </ul>
-                <p>Para pedidos urgentes, contamos con opciones de envío express con costo adicional.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Cómo puedo rastrear mi pedido?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Una vez que tu pedido sea enviado, recibirás un correo electrónico con:</p>
-                <ul>
-                    <li>Número de seguimiento</li>
-                    <li>Enlace para rastreo en tiempo real</li>
-                    <li>Información de la paquetería</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="disenos-personalizacion" class="faq-section">
-        <h2>Diseños y Personalización</h2>
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Qué formato de archivo debo usar para mis diseños?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Aceptamos los siguientes formatos:</p>
-                <ul>
-                    <li>JPG/JPEG (alta resolución)</li>
-                    <li>PNG (preferentemente con fondo transparente)</li>
-                    <li>PDF vectorial</li>
-                    <li>AI (Adobe Illustrator)</li>
-                </ul>
-                <p>Recomendamos una resolución mínima de 300 MB para mejores resultados.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Pueden ayudarme a diseñar mi producto?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>¡Sí! Ofrecemos servicios de diseño profesional:</p>
-                <ul>
-                    <li>Diseño desde cero</li>
-                    <li>Mejora de diseños existentes</li>
-                    <li>Adaptación de logos</li>
-                    <li>Asesoría en diseño</li>
-                </ul>
-                <p>Contacta a nuestro equipo de diseño para más detalles y costos.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="pagos" class="faq-section">
-        <h2>Pagos</h2>
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Qué métodos de pago aceptan?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Aceptamos diversos métodos de pago:</p>
-                <ul>
-                    <li>Tarjetas de crédito/débito</li>
-                    <li>PayPal</li>
-                    <li>Transferencia bancaria</li>
-                    <li>Depósito en efectivo</li>
-                </ul>
-                <div class="highlight">
-                    <p>Todos nuestros métodos de pago son seguros y están respaldados por certificados SSL.</p>
+                    <div id="collapse@pregunta.Id" class="collapse" aria-labelledby="heading@pregunta.Id" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            @pregunta.Respuesta
+                            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1") // Acciones para administradores
+                            {
+                                <div class="text-right mt-3">
+                                    <a href="@Url.Action("Editar", "PreguntasFrecuentes", new { id = pregunta.Id })" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="@Url.Action("Eliminar", "PreguntasFrecuentes", new { id = pregunta.Id })" class="btn btn-danger btn-sm" onclick="return confirm('¿Está seguro de eliminar esta pregunta frecuente?');">Eliminar</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
+    }
+    else
+    {
+        <p class="alert alert-warning text-center">No se encontraron preguntas frecuentes en este momento.</p>
+    }
 
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Ofrecen facturación?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Sí, emitimos facturas para todas las compras:</p>
-                <ul>
-                    <li>Solicítala al momento de tu compra</li>
-                    <li>Proporciona tus datos fiscales</li>
-                    <li>Recibirás tu factura por correo electrónico</li>
-                    <li>Plazo máximo para solicitar factura: 5 días después de la compra</li>
-                </ul>
-            </div>
+    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1") // Botón para agregar nuevas preguntas frecuentes (solo administrador)
+    {
+        <div class="text-right">
+            <a href="@Url.Action("Insertar", "PreguntasFrecuentes")" class="btn btn-success mt-3">Agregar Nueva Pregunta</a>
         </div>
-    </div>
-
-    <div id="productos" class="faq-section">
-        <h2>Productos</h2>
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Qué productos pueden personalizarse?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Ofrecemos personalización en diversos productos:</p>
-                <ul>
-                    <li>Camisetas y ropa deportiva</li>
-                    <li>Tazas y termos</li>
-                    <li>Mousepads y artículos de oficina</li>
-                    <li>Almohadas y productos textiles</li>
-                    <li>Artículos promocionales</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">
-                ¿Cuál es la durabilidad de la sublimación?
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>La sublimación es un proceso de alta durabilidad:</p>
-                <ul>
-                    <li>Resistente a lavados</li>
-                    <li>No se despega ni se agrieta</li>
-                    <li>Mantiene los colores vivos</li>
-                    <li>Dura tanto como la prenda o producto</li>
-                </ul>
-                <div class="highlight">
-                    <p>Recomendamos seguir las instrucciones de cuidado para maximizar la durabilidad.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="contact-section">
-        <h2>¿No encontraste lo que buscabas?</h2>
-        <p>Nuestro equipo está listo para ayudarte</p>
-        <div class="highlight">
-            <p>Contáctanos:</p>
-            <p>Email: soporte@detallesjoha.com</p>
-            <p>Teléfono: (+506) 2234-5790</p>
-            <p>Horario: Lunes a Viernes 9:00 - 18:00</p>
-        </div>
-    </div>
+    }
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-<script>
-    // Funcionalidad para mostrar/ocultar respuestas
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const icon = question.querySelector('i');
 
-            answer.classList.toggle('active');
-            icon.classList.toggle('fa-chevron-up');
-            icon.classList.toggle('fa-chevron-down');
-        });
-    });
-
-    // Funcionalidad de búsqueda
-    const searchBox = document.querySelector('.search-box');
-    searchBox.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-
-        document.querySelectorAll('.faq-item').forEach(item => {
-            const question = item.querySelector('.faq-question').textContent.toLowerCase();
-            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-
-            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-
-    // Funcionalidad para redirigir a secciones de FAQ
-    document.querySelectorAll('.category-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const targetSection = document.querySelector(button.getAttribute('data-target'));
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 50,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-</script>
-
+<link href="~/Estilos/css/faq.css" rel="stylesheet">

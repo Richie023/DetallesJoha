@@ -6,39 +6,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div class="container mt-5">
-    <h1 class="text-center font-weight-bold">@ViewBag.Title</h1>
-    <p class="text-center text-muted">Edita los detalles de este aviso de privacidad.</p>
+    <h2 class="text-center font-weight-bold">Editar Aviso de Privacidad</h2>
 
-    <form asp-action="Actualizar" method="post" class="mt-4">
-        <input type="hidden" name="Id" value="@Model.Id" />
-
+    @using (Html.BeginForm("Editar", "AvisoPrivacidad", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.id)
         <div class="form-group">
-            <label for="TituloSeccion">Título</label>
-            <input type="text" class="form-control" id="TituloSeccion" name="TituloSeccion" value="@Model.TituloSeccion" required />
+            <label for="titulo_seccion">Título</label>
+            @Html.TextBoxFor(model => model.titulo_seccion, new { @class = "form-control", @placeholder = "Título" })
         </div>
-
         <div class="form-group">
-            <label for="SubtituloSeccion">Subtítulo</label>
-            <input type="text" class="form-control" id="SubtituloSeccion" name="SubtituloSeccion" value="@Model.SubtituloSeccion" />
+            <label for="contenido">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new { @class = "form-control", @placeholder = "Contenido" })
         </div>
-
-        <div class="form-group">
-            <label for="Contenido">Contenido</label>
-            <textarea class="form-control" id="Contenido" name="Contenido" rows="5" required>@Model.Contenido</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="Orden">Orden</label>
-            <input type="number" class="form-control" id="Orden" name="Orden" value="@Model.Orden" required />
-        </div>
-
         <div class="text-right">
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="primary-btn">Actualizar</button>
+            <a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")" class="primary-btn">Cancelar</a>
         </div>
-    </form>
+    }
 </div>
-

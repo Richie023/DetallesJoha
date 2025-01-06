@@ -4,10 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+        <h2 class="m-0 font-weight-bold text-primary">Productos</h2>
     </div>
 
     <div class="row">
@@ -18,11 +17,15 @@
                 <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
 
                     @if (ViewBag.MsjPantalla != null)
+
+
+
                     {
                         <div class="alert alert-warning" role="alert" style="text-align:center">
                             @ViewBag.MsjPantalla
                         </div>
                     }
+
 
                     @using (Html.BeginForm("ActualizarProducto", "Producto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                     {
@@ -35,6 +38,16 @@
                             @Html.TextBoxFor(m => m.NombreProducto, new { @class = "form-control form-control-user", @placeholder = "Nombre", @required = "true" })
                         </div>
                         <div class="form-group">
+                            @Html.Label("Categoría")
+                            @Html.DropDownListFor(m => m.IdCategoria, ViewBag.TiposCategoria as List<SelectListItem>, new { @class = "form-control form-control-user", @required = "true" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Descripcion")
+                            @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control form-control-user", @placeholder = "Descripcion", @required = "true" })
+                        </div>
+
+                        <div class="form-group">
                             @Html.Label("Precio")
                             @Html.TextBoxFor(m => m.Precio, new { @class = "form-control form-control-user", @placeholder = "Precio", @required = "true" })
                         </div>
@@ -42,9 +55,29 @@
                             @Html.Label("Inventario")
                             @Html.TextBoxFor(m => m.Inventario, new { @class = "form-control form-control-user", @placeholder = "Inventario", @type = "Number", @required = "true" })
                         </div>
+
+
                         <div class="form-group">
-                            @Html.Label("Categoría")
-                            @Html.DropDownListFor(m => m.IdCategoria, ViewBag.TiposCategoria as List<SelectListItem>, new { @class = "form-control form-control-user", @required = "true" })
+                            @Html.Label("Material")
+                            @Html.TextBoxFor(m => m.Material, new { @class = "form-control form-control-user", @placeholder = "Material del Producto", @required = "true" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Tamaño")
+                            @Html.DropDownListFor(m => m.Tamanio, new List<SelectListItem> {
+                                new SelectListItem { Text = "S", Value = "S" },
+                                new SelectListItem { Text = "M", Value = "M" },
+                                new SelectListItem { Text = "L", Value = "L" },
+                                new SelectListItem { Text = "XL", Value = "XL" },
+                                new SelectListItem { Text = "XXL", Value = "XXL" },
+                                new SelectListItem { Text = "Grande", Value = "Grande" },
+                                new SelectListItem { Text = "Mediano", Value = "Mediano" },
+                                new SelectListItem { Text = "Pequeño", Value = "¨Pequeño" }
+                            }, "Seleccione un Tamaño", new { @class = "form-control form-control-user", @required = "true" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Color Base")
+                            <input type="color" id="ColorBase" name="ColorBase" class="form-control form-control-user" required />
+                            <small class="form-text text-muted">Seleccione el color base del producto.</small>
                         </div>
                         <div class="form-group">
                             @Html.Label("Imagen")
@@ -57,6 +90,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Campo de "En Promoción" -->
                         <div class="form-group">
                             @Html.Label("En Promoción")
@@ -65,7 +99,7 @@
                         </div>
 
                         <!-- Campos solo visibles si el producto está en promoción -->
-                        <div id="promocionFields" style="display: @(Model.En_promocion ? "block" : "none")">
+                        <div id="promocionFields" style="display: none;">
                             <div class="form-group">
                                 @Html.Label("Porcentaje de Descuento (%)")
                                 @Html.TextBoxFor(m => m.Porcentaje_descuento, new { @class = "form-control form-control-user", @placeholder = "Porcentaje de Descuento", @type = "number", min = "1", max = "100", step = "1", @id = "porcentajeDescuento" })
@@ -81,17 +115,37 @@
                                 @Html.TextBoxFor(m => m.Fecha_fin, new { @class = "form-control form-control-user", @type = "date", @id = "fechaFinPromocion" })
                             </div>
                         </div>
-
-                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Actualizar Producto">
+                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
                     }
+
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-</div>
+<Script>
+    // Pickr.js - Color picker setup (Alternative to the simple color input above)
+    const pickr = Pickr.create({
+        el: '#color-picker',
+        theme: 'classic', // or 'monolith', 'nano'
+        swatches: [
+            '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A1FF33',
+            '#33A1FF', '#FF9333', '#5733FF', '#57FF33', '#5733A1'
+        ],
+        components: {
+            preview: true,
+            opacity: true,
+            hue: true,
+            interaction: {
+                hex: true,
+                rgba: true,
+                hsla: true,
+                input: true
+            }
+        }
+    });
 
-<script>
     // Función para establecer la fecha mínima de inicio y fin como la fecha actual
     function setMinDateForPromocionFields() {
         const today = new Date();
@@ -133,3 +187,4 @@
     // Llamamos a la función cuando la página se carga para establecer la fecha mínima
     document.addEventListener("DOMContentLoaded", setMinDateForPromocionFields);
 </script>
+

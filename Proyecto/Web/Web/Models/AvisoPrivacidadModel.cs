@@ -29,6 +29,25 @@ namespace Web.Models
             }
         }
 
+        public AvisoPrivacidadRespuesta ConsultarAviso(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "AvisoPrivacidad/ConsultarAviso?id=" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<AvisoPrivacidadRespuesta>().Result;
+                else
+                    return new AvisoPrivacidadRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al consultar el aviso de privacidad"
+                    };
+            }
+        }
+
+
 
 
         public Confirmacion InsertarAvisoPrivacidad(AvisoPrivacidad entidad)

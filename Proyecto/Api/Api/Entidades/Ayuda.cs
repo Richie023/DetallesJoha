@@ -20,7 +20,7 @@ namespace Api.Entidades
         public int Codigo { get; set; }
         public string Detalle { get; set; } 
         public Object Datos { get; set; } 
-        public Ayuda Dato { get; set; }
+        public Object Dato { get; set; }
 
     }
 

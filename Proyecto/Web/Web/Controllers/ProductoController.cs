@@ -8,12 +8,15 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+    //[FiltroSeguridad]
+    // [FiltroAdmin]
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class ProductoController : Controller
     {
         ProductoModel modelo = new ProductoModel();
+
+
+
 
         [HttpGet]
         public ActionResult ConsultaProductos()
@@ -29,6 +32,7 @@ namespace Web.Controllers
             }
         }
 
+
         [HttpGet]
         public ActionResult VerProducto(long id)
         {
@@ -43,29 +47,31 @@ namespace Web.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult DiseñoProducto(long id)
+        // Método de acción para filtrar productos por categoría
+        public ActionResult FiltrarPorCategoria(int IdCategoria)
         {
-            var resultado = modelo.ConsultarProducto(id);
+            var respuesta = modelo.FiltrarProductosPorCategoria(IdCategoria);
 
-            if (resultado == null || resultado.Dato == null)
+            if (respuesta != null && respuesta.Codigo == 0)
             {
-                return HttpNotFound();
+                return View("FiltrarPorCategoria", respuesta.Datos);
             }
-
-            return View(resultado.Dato);  
+            else
+            {
+                ViewBag.Error = respuesta?.Detalle ?? "Error al obtener los productos";
+                return View("Error");
+            }
         }
 
 
-
-
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult RegistrarProducto()
         {
             CargarViewBagCategorias();
             return View();
         }
-
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult RegistrarProducto(HttpPostedFileBase Imagenes, Producto entidad)
         {
@@ -91,16 +97,19 @@ namespace Web.Controllers
             }
         }
 
+
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult ActualizarProducto(long id)
         {
             var resp = modelo.ConsultarProducto(id);
             CargarViewBagCategorias();
             ViewBag.urlImagen = resp.Dato.RutaImagen;
-           
             return View(resp.Dato);
         }
 
+
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult ActualizarProducto(HttpPostedFileBase ImagenProducto, Producto entidad)
         {
@@ -157,6 +166,20 @@ namespace Web.Controllers
 
             ViewBag.TiposCategoria = tiposCategoria;
         }
+
+        [HttpGet]
+        public ActionResult Disenno(long id) {
+
+            var resp = modelo.ConsultarProducto(id);
+          
+            ViewBag.urlImagen = resp.Dato.RutaImagen;
+
+            return View(resp.Dato);
+        }
+
+
+
+
 
     }
 }

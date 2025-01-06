@@ -15,6 +15,7 @@ namespace Api.Models
     {
         public long ConsecutivoDetalle { get; set; }
         public long ConsecutivoMaestro { get; set; }
+        public long ConsecutivoProducto { get; set; }
         public string Nombre { get; set; }
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
@@ -23,6 +24,5 @@ namespace Api.Models
         public decimal Total { get; set; }
         public string Material { get; set; }
         public string Tamanio { get; set; }
-        public string ColorBase { get; set; }
     }
 }

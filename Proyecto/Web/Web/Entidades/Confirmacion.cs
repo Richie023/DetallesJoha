@@ -5,5 +5,6 @@
         public int Codigo { get; set; }
         public string Detalle { get; set; }
         public long ConsecutivoGenerado { get; set; }
+        public int ConsecutivoGeneradoAB { get; set; }
     }
 }

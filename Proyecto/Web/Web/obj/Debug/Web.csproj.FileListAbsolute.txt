@@ -97,56 +97,9 @@ D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\bin\M
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.csproj.Up2Date
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.dll
 D:\Documents\Ufide\SC-601 Programación avanzada\2 cuatri\Proyecto\Web\Web\obj\Debug\Web.pdb
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.pdb
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.dll.config
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Web.pdb
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Antlr3.Runtime.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Web.Infrastructure.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Newtonsoft.Json.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Buffers.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Memory.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Net.Http.Json.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Numerics.Vectors.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Encodings.Web.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Json.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Threading.Tasks.Extensions.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.ValueTuple.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Helpers.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Mvc.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Optimization.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Razor.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Deployment.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Razor.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\WebGrease.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Newtonsoft.Json.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Buffers.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Memory.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Net.Http.Json.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Numerics.Vectors.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Encodings.Web.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Json.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Threading.Tasks.Extensions.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.ValueTuple.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Helpers.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Mvc.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Razor.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Deployment.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Razor.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Optimization.xml
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Antlr3.Runtime.pdb
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.Up2Date
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\csc.exe
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\csc.exe.config
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\csc.rsp
@@ -178,6 +131,11 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\vbc.rsp
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\VBCSCompiler.exe
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.Up2Date
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.dll
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.pdb
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Web.dll.config
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Web.dll
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Web.pdb
@@ -212,48 +170,6 @@ C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\roslyn\vbc.exe.con
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\roslyn\vbc.rsp
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Antlr3.Runtime.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Newtonsoft.Json.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Buffers.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Memory.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Net.Http.Json.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Numerics.Vectors.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Encodings.Web.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Json.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Threading.Tasks.Extensions.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.ValueTuple.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Helpers.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Mvc.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Optimization.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Razor.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Deployment.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Razor.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\WebGrease.dll
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Newtonsoft.Json.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Buffers.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Memory.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Net.Http.Json.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Numerics.Vectors.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Encodings.Web.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Text.Json.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Threading.Tasks.Extensions.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.ValueTuple.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Helpers.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Mvc.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Razor.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Deployment.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.WebPages.Razor.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\System.Web.Optimization.xml
-C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\bin\Antlr3.Runtime.pdb
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.AssemblyReference.cache
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 C:\Users\edwin\source\repos\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.CopyComplete

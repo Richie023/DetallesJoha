@@ -1,99 +1,51 @@
 ﻿@model List<Web.Entidades.PoliticaDevolucion>
 
-
 @{
     ViewBag.Title = "Política de Devolución";
-    Layout = "~/Views/Shared/_Layout.cshtml";
- }
-
-<style>
-    .policy-header {
-    text-align: center;
-    margin: 20px 0;
-    }
-
-    .policy-header h1 {
-    font-size: 2.5rem;
-    color: #333;
-    }
-
-    .policy-header p {
-    font-size: 1.2rem;
-    color: #777;
-    }
-
-    .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .policy-section {
-    margin-bottom: 30px;
-    }
-
-    .policy-section h2 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 10px;
-    }
-
-    .policy-section h3 {
-    font-size: 1.4rem;
-    color: #666;
-    margin-bottom: 5px;
-    }
-
-    .policy-section p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    }
-
-    .important-note, .exclusions, .contact-info {
-    background-color: #fff9c4;
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #6b4c10;
-    }
-
-</style>
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
 
 
-<div class="container">
-    @if (Model != null && Model.Any()) 
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Políticas de Devolución</h2>
+    <h3 class="text-center text-muted">Consulta las políticas de devolución vigentes y administra las existentes.</h3>
+
+    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
     {
-        foreach (var seccion in Model.OrderBy(s => s.Orden))
-        {
-            <div class="policy-section">
-                <h2>@seccion.TituloSeccion</h2>
-                @if (!string.IsNullOrEmpty(seccion.SubtituloSeccion))
-                {
-                    <h3>@seccion.SubtituloSeccion</h3>
-                }
-                <p>@seccion.Contenido</p>
+        <div class="text-right mt-4">
+            <a href="@Url.Action("Insertar", "PoliticaDevolucion")" class="primary-btn">Agregar Nueva Política</a>
+        </div>
+    }
 
-                @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1") // Administrador
-                {
-                    <div class="edit-options">
-                        <a href="@Url.Action("Editar", "PoliticaDevolucion", new { id = seccion.Id })" class="btn btn-primary">Editar</a>
-                        <a href="@Url.Action("Eliminar", "PoliticaDevolucion", new { id = seccion.Id })" class="btn btn-danger">Eliminar</a>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="policy-section">
+            @foreach (var politica in Model)
+            {
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">@politica.titulo_seccion</h3>
+                        <p class="card-text">@politica.contenido</p>
+                        <div class="text-muted mb-3">Última actualización: @politica.ultima_actualizacion.ToString()</div>
+                        <div class="text-right">
+                            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                            {
+                                <a href="@Url.Action("Editar", "PoliticaDevolucion", new { id = @politica.id })" ><i class="fa fa-pencil-square-o fa-2x" tittle="Editar Politica Devolucion"></i></a>
+                                <a href="@Url.Action("Eliminar", "PoliticaDevolucion", new { id = @politica.id })" ><i class="fa fa-trash-o fa-2x" tittle="Eliminar Politica Devolucion"></i></a>
+                            }
+                        </div>
                     </div>
-                }
-            </div>
-        }
+                </div>
+            }
+        </div>
     }
     else
     {
-        <p>No se encontraron secciones de la política de devolución en este momento.</p>
+        <div class="alert alert-warning text-center">
+            No se encontraron políticas de devolución en este momento.
+        </div>
     }
+
+
 </div>
-
-
-
-<link href="~/Estilos/css/cssfooterpoliticadevolucion.css" rel="stylesheet">

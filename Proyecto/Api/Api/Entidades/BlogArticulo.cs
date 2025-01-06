@@ -7,14 +7,14 @@ namespace Api.Entidades
 {
     public class BlogArticulo
     {
-        public int Id { get; set; }
-        public string Categoria { get; set; }
-        public string Titulo { get; set; }
-        public string Resumen { get; set; }
-        public string Contenido { get; set; }
-        public string Imagen_url { get; set; }
-        public DateTime FechaPublicacion { get; set; }
-        public DateTime UltimaActualizacion { get; set; }
+        public int id { get; set; }
+        public string categoria { get; set; }
+        public string titulo { get; set; }
+        public string resumen { get; set; }
+        public string contenido { get; set; }
+        public string imagen_url { get; set; }
+        public DateTime fecha_publicacion { get; set; }
+        public DateTime ultima_actualizacion { get; set; }
 
     }
 
@@ -23,7 +23,7 @@ namespace Api.Entidades
         public int Codigo { get; set; } 
         public string Detalle { get; set; } 
         public Object Datos { get; set; } 
-        public BlogArticulo Dato { get; set; }
+        public Object Dato { get; set; }
     }
 
 }

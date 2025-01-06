@@ -85,6 +85,8 @@ namespace Api.Controllers
             return respuesta;
         }
 
+
+
         [HttpPost]
         [Route("Producto/RegistrarProducto")]
         public Confirmacion RegistrarProducto(Producto entidad)
@@ -95,10 +97,8 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Convertimos el valor booleano a int: 1 para true y 0 para false
                     int enPromocion = entidad.En_promocion ? 1 : 0;
 
-                    // Llama al procedimiento almacenado, pasando el valor convertido a int (1 o 0)
                     var resp = db.RegistrarProducto(
                         entidad.NombreProducto,
                         entidad.Precio,
@@ -107,9 +107,10 @@ namespace Api.Controllers
                         entidad.Material,
                         entidad.Tamanio,
                         entidad.ColorBase,
-                        entidad.Porcentaje_descuento,  // Asegúrate de que `Porcentaje_descuento` esté presente en el modelo y se envíe
-                        entidad.Fecha_inicio,          // Fecha de inicio de la promoción
-                        entidad.Fecha_fin              // Fecha de fin de la promoción
+                        entidad.Porcentaje_descuento, 
+                        entidad.Fecha_inicio,         
+                        entidad.Fecha_fin   ,        
+                        entidad.Descripcion
                     ).FirstOrDefault(); 
 
                     if (resp.Consecutivo > 0)
@@ -239,6 +240,8 @@ namespace Api.Controllers
             return respuesta;
         }
 
+
+
         [HttpGet]
         [Route("Producto/FiltrarProductosPorRangoPrecio")]
         public ConfirmacionProductoPorCategorias FiltrarProductosPorRangoPrecio(decimal? PrecioMinimo, decimal? PrecioMaximo)
@@ -322,22 +325,9 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    var resp = db.ActualizarProducto(
-                        entidad.Consecutivo, 
-                        entidad.NombreProducto, 
-                        entidad.Precio, 
-                        entidad.Inventario, 
-                        entidad.IdCategoria,
-                        entidad.Material,
-                        entidad.Tamanio,
-                        entidad.ColorBase,
-                        entidad.Porcentaje_descuento,
-                        entidad.Fecha_inicio,
-                        entidad.Fecha_fin);
+                    var resp = db.ActualizarProducto(entidad.Consecutivo, entidad.NombreProducto, entidad.Precio, entidad.Inventario, entidad.IdCategoria,entidad.Material,entidad.Tamanio,entidad.ColorBase,entidad.Id_Promocion,entidad.Descripcion);
 
-                    var resultado = resp.FirstOrDefault(); // Obtener el primer resultado
-
-                    if (resultado != null)
+                    if (resp > 0)
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = string.Empty;

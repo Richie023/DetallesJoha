@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "ConsultaProductos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Productos</h6>
+        <h2 class="m-0 font-weight-bold text-primary center-block">Productos</h2>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -23,7 +23,7 @@
                         }
 
                         <div style="margin-bottom:1%; text-align:right">
-                            <a class="btn btn-primary" href="@Url.Action("RegistrarProducto","Producto")"> + Agregar</a>
+                            <a class="primary-btn" href="@Url.Action("RegistrarProducto","Producto")"> + Agregar</a>
                         </div>
 
                         <table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
@@ -36,13 +36,14 @@
                                     <th>Imagen</th>
                                     <th>Categoría</th>
                                     <th>Estado</th>
+                                    <th>En promo</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="odd">
+                                    <tr class="odd " style="text-align:center" >
                                         <td>@item.Consecutivo</td>
                                         <td>@item.NombreProducto</td>
                                         <td>@item.Precio</td>
@@ -57,6 +58,17 @@
                                         {
                                             <td>Inactivo</td>
                                         }
+                                        
+                                        @if (item.En_promocion)
+                                        {
+                                            <td>Si</td>
+                                        }
+                                        else
+                                        {
+                                            <td>NO</td>
+                                        }
+
+
                                         <td style="text-align:center">
                                             <a href="@Url.Action("ActualizarProducto","Producto", new { id = @item.Consecutivo })"><i class="fa fa-pencil-square-o fa-2x"></i></a>
                                             <a href="@Url.Action("EliminarProducto","Producto", new { id = @item.Consecutivo })"><i class="fa fa-trash-o fa-2x"></i></a>

@@ -1,5 +1,7 @@
 ﻿
 
+using System.IO;
+
 namespace Api.Entidades
 {
     public class Confirmacion
@@ -7,5 +9,6 @@ namespace Api.Entidades
         public int Codigo { get; set; }
         public string Detalle { get; set; }
         public long ConsecutivoGenerado { get; set; }
+  
     }
 }

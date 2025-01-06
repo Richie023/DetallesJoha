@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using Web.Entidades;
@@ -8,40 +10,147 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class AyudaController : Controller
     {
 
-        AyudaModel ayudaModel = new AyudaModel();
+        AyudaModel modelo = new AyudaModel();
 
-        public ActionResult ConsultarAyuda()
+
+        [HttpGet]
+        public ActionResult Ayuda()
         {
-            var respuesta = ayudaModel.ConsultarAyuda();
-            return View(respuesta);
+            var respuesta = modelo.ConsultarAyuda();
+
+            if (respuesta != null && respuesta.Codigo == 0)
+                return View(respuesta.Datos);
+            else
+            {
+                ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al obtener las ayudas.";
+                return View(new List<Ayuda>());
+            }
         }
+
+        [HttpGet]
+        public ActionResult AyudaPorId(int id)
+        {
+            var resultado = modelo.ConsultarAyudaPorId(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
+
+
+
+       
+        [HttpGet]
+        public ActionResult Insertar()
+        {
+            return View();
+        }
+
+       
+        [HttpPost]
+        public ActionResult Insertar(HttpPostedFileBase ImagenAyuda, Ayuda entidad)
+        {
+            var respuesta = modelo.InsertarAyuda(entidad);
+
+            if (respuesta != null && respuesta.Codigo == 0)
+
+            {
+
+                if (ImagenAyuda != null && !string.IsNullOrEmpty(ImagenAyuda.FileName))
+                {
+                    string extension = Path.GetExtension(Path.GetFileName(ImagenAyuda.FileName));
+                    string ruta = AppDomain.CurrentDomain.BaseDirectory + "Imagenes\\" + respuesta.ConsecutivoGeneradoAB + extension;
+                    ImagenAyuda.SaveAs(ruta);
+
+
+                    entidad.id = respuesta.ConsecutivoGeneradoAB;
+                    entidad.imagen_url = "/Imagenes/" + respuesta.ConsecutivoGeneradoAB + extension;
+                    modelo.ActualizarImagenAyuda(entidad);
+                }
+
+                return RedirectToAction("Ayuda", "Ayuda");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al registrar la ayuda.";
+                return View();
+            }
+        }
+
+       
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var resp = modelo.ConsultarAyudaPorId(id);
+
+            ViewBag.imagen_url = resp?.Dato.imagen_url;
+            return View(resp?.Dato);
+        }
+
 
         [HttpPost]
-        public ActionResult InsertarAyuda(Ayuda ayuda)
+        public ActionResult Editar(HttpPostedFileBase ImagenAyuda, Ayuda entidad)
         {
-            var respuesta = ayudaModel.InsertarAyuda(ayuda);
-            return Json(respuesta);
+            var respuesta = modelo.ActualizarAyuda(entidad);
+
+            if (respuesta != null && respuesta.Codigo == 0)
+            {
+                if (ImagenAyuda != null)
+                {
+                    // Eliminar la imagen anterior si existe
+                    if (!string.IsNullOrEmpty(entidad.imagen_url))
+                    {
+                        string rutaAnterior = AppDomain.CurrentDomain.BaseDirectory + entidad.imagen_url.Replace("/", "\\");
+                        if (System.IO.File.Exists(rutaAnterior))
+                        {
+                            System.IO.File.Delete(rutaAnterior);
+                        }
+                    }
+
+
+                    string extension = Path.GetExtension(Path.GetFileName(ImagenAyuda.FileName));
+                    string ruta = AppDomain.CurrentDomain.BaseDirectory + "Imagenes\\" + entidad.id + extension;
+                    ImagenAyuda.SaveAs(ruta);
+
+                    entidad.imagen_url = "/Imagenes/" + entidad.id + extension;
+                    modelo.ActualizarImagenAyuda(entidad);
+                }
+
+                return RedirectToAction("Ayuda", "Ayuda");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al actualizar la ayuda.";
+                return View(entidad);
+            }
         }
 
-        [HttpPost]
-        public ActionResult ActualizarAyuda(Ayuda ayuda)
+
+
+        [HttpGet]
+        public ActionResult Eliminar(int id)
         {
-            var respuesta = ayudaModel.ActualizarAyuda(ayuda);
-            return Json(respuesta);
+            var respuesta = modelo.EliminarAyuda(id);
+
+            if (respuesta != null && respuesta.Codigo == 0)
+            {
+                return RedirectToAction("Ayuda", "Ayuda");
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al eliminar la ayuda.";
+                return View();
+            }
         }
 
-        [HttpPost]
-        public ActionResult EliminarAyuda(int id)
-        {
-            var respuesta = ayudaModel.EliminarAyuda(id);
-            return Json(respuesta);
-        }
 
     }
 }

@@ -14,12 +14,14 @@ namespace Web.Controllers
     {
         CarritoModel modelo = new CarritoModel();
 
+       
+
         [HttpPost]
         public ActionResult AgregarCarrito(long idProducto, int cantProducto)
         {
             Carrito entidad = new Carrito();
             entidad.ConsecutivoUsuario = long.Parse(Session["Consecutivo"].ToString());
-            entidad.ConsecutivoProducto = idProducto;
+            entidad.Consecutivo = idProducto;
             entidad.Cantidad = cantProducto;
 
             var respuesta = modelo.AgregarCarrito(entidad);
@@ -72,6 +74,8 @@ namespace Web.Controllers
         public ActionResult PagarCarrito(Carrito entidad)
         {
             entidad.ConsecutivoUsuario = long.Parse(Session["Consecutivo"].ToString());
+
+            entidad.Correo = Session["CorreoElectronico"].ToString();
             var respuesta = modelo.PagarCarrito(entidad);
 
             if (respuesta.Codigo == 0)
@@ -92,6 +96,13 @@ namespace Web.Controllers
         public ActionResult ConsultarFacturas()
         {
             var respuesta = modelo.ConsultarFacturas(long.Parse(Session["Consecutivo"].ToString()));
+
+            if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+            {
+
+                respuesta = modelo.ConsultarFacturas(0);
+            }
+          
 
             if (respuesta.Codigo == 0)
             {
@@ -119,7 +130,21 @@ namespace Web.Controllers
                 return View(new List<Carrito>());
             }
         }
+        [HttpGet]
+        public ActionResult RefacturaFactura(long id, long Cant)
+        {
+            var respuesta = modelo.RefacturaFactura(id);
 
+            if (respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new List<Carrito>());
+            }
+        }
         private void ActualizarVariablesCarrito()
         {
             var datos = modelo.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
@@ -135,6 +160,21 @@ namespace Web.Controllers
                 Session["Cantidad"] = 0;
                 Session["SubTotal"] = 0;
                 Session["Total"] = 0;
+            }
+        }
+        [HttpGet]
+        public ActionResult ConsultarPedidos()
+        {
+            var respuesta = modelo.ConsultarPedidos();
+
+            if (respuesta.Codigo == 0)
+            {
+                return View(respuesta.Datos);
+            }
+            else
+            {
+                ViewBag.MsjPantalla = respuesta.Detalle;
+                return View(new List<Carrito>());
             }
         }
 

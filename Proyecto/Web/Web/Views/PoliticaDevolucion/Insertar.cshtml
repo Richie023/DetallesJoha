@@ -1,0 +1,24 @@
+﻿@model  Web.Entidades.PoliticaDevolucion
+    ViewBag.Title = "Insertar";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Registrar Política de Devolución</h2>
+
+    @using (Html.BeginForm("Insertar", "PoliticaDevolucion", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="titulo_seccion">Título</label>
+            @Html.TextBoxFor(model => model.titulo_seccion, new { @class = "form-control", @placeholder = "Título" })
+        </div>
+        <div class="form-group">
+            <label for="contenido">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new { @class = "form-control", @placeholder = "Contenido" })
+        </div>
+        <div class="text-right">
+            <button type="submit" class="primary-btn">Guardar</button>
+            <a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")" class="primary-btn">Cancelar</a>
+        </div>
+    }
+</div>

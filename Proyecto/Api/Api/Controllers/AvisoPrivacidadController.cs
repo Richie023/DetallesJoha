@@ -22,12 +22,9 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Llamamos al procedimiento almacenado para insertar
                     db.InsertAvisoPrivacidad(
-                        entidad.TituloSeccion,
-                        entidad.SubtituloSeccion,
-                        entidad.Contenido,
-                        entidad.Orden
+                        entidad.titulo_seccion,
+                        entidad.contenido
                     );
 
                     respuesta.Codigo = 0;
@@ -53,13 +50,10 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Llamada al procedimiento almacenado para actualizar
                     var filasAfectadas = db.UpdateAvisoPrivacidad(
-                        entidad.Id,
-                        entidad.TituloSeccion,
-                        entidad.SubtituloSeccion,
-                        entidad.Contenido,
-                        entidad.Orden
+                        entidad.id,
+                        entidad.titulo_seccion,
+                        entidad.contenido
                     );
 
                     if (filasAfectadas > 0)
@@ -82,6 +76,8 @@ namespace Api.Controllers
 
             return respuesta;
         }
+
+
 
         [HttpDelete]
         [Route("AvisoPrivacidad/EliminarAvisoPrivacidad")]
@@ -117,6 +113,7 @@ namespace Api.Controllers
         }
 
 
+
         [HttpGet]
         [Route("AvisoPrivacidad/ColsultarAvisoPrivacidad")]
         public AvisoPrivacidadRespuesta ColsultarAvisoPrivacidad()
@@ -129,7 +126,7 @@ namespace Api.Controllers
                 {
                     var datos = db.ColsultarAvisoPrivacidad().ToList();
 
-                    if (datos.Count > 0)
+                    if (datos.Any())
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Colsulta exitosa";
@@ -143,6 +140,42 @@ namespace Api.Controllers
                     }
                 }
             }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+
+        [HttpGet]
+        [Route("AvisoPrivacidad/ConsultarAviso")]
+        public AvisoPrivacidadRespuesta ConsultarAviso(int id)
+        {
+            var respuesta = new AvisoPrivacidadRespuesta();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarAvisoPrivacidadPorID(id).FirstOrDefault();
+
+                    if (datos != null)
+                        {
+                            respuesta.Codigo = 0;
+                            respuesta.Detalle = string.Empty;
+                            respuesta.Dato = datos;
+                        }
+                        else
+                        {
+                            respuesta.Codigo = -1;
+                            respuesta.Detalle = "No se encontraron resultados";
+                        }
+                    }
+                }
             catch (Exception)
             {
                 respuesta.Codigo = -1;

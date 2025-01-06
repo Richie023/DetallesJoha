@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Json;
 using Web.Entidades;
@@ -7,7 +8,7 @@ namespace Web.Models
 {
     public class PreguntasFrecuentesModel
     {
-        // Consultar todas las preguntas frecuentes
+        
         public FaqRespuesta ConsultarTodos()
         {
             using (var client = new HttpClient())
@@ -27,7 +28,27 @@ namespace Web.Models
             }
         }
 
-        // Insertar una nueva pregunta frecuente
+
+        public FaqRespuesta ConsultarPorId(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "PreguntasFrecuentes/ConsultarPorId?id=" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                     return respuesta.Content.ReadFromJsonAsync<FaqRespuesta>().Result;
+                else
+                    return new FaqRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al consultar las preguntas frecuentes"
+                    };
+            }
+        }
+
+
+
         public Confirmacion Insertar(PreguntasFrecuentes entidad)
         {
             using (var client = new HttpClient())
@@ -51,7 +72,8 @@ namespace Web.Models
             }
         }
 
-        // Actualizar una pregunta frecuente existente
+        
+
         public Confirmacion Actualizar(PreguntasFrecuentes entidad)
         {
             using (var client = new HttpClient())
@@ -75,12 +97,13 @@ namespace Web.Models
             }
         }
 
-        // Eliminar una pregunta frecuente por ID
+      
+
         public Confirmacion Eliminar(int id)
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + $"PreguntasFrecuentes/Eliminar?id={id}";
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "PreguntasFrecuentes/Eliminar?id=" + id;
                 var respuesta = client.DeleteAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)
@@ -97,5 +120,7 @@ namespace Web.Models
                 }
             }
         }
+
+
     }
 }

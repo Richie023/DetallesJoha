@@ -9,8 +9,8 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+    
+    
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class PoliticaDevolucionController : Controller
     {
@@ -32,6 +32,19 @@ namespace Web.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult PoliticaDevolucionPorId(int id)
+        {
+            var resultado = modelo.ConsultarPorId(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
+
 
         [HttpGet]
         public ActionResult Insertar()
@@ -52,9 +65,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.Insertar(entidad);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("PoliticaDevolucion", "Informacion");
+                    return RedirectToAction("PoliticaDevolucion", "PoliticaDevolucion");
                 }
                 else
                 {
@@ -69,8 +82,17 @@ namespace Web.Controllers
             return View();
         }
 
+        
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var resp = modelo.ConsultarPorId(id);
+            return View(resp.Dato);
+        }
+
+
         [HttpPost]
-        public ActionResult Actualizar(PoliticaDevolucion entidad)
+        public ActionResult Editar(PoliticaDevolucion entidad)
         {
             if (entidad == null)
             {
@@ -82,13 +104,14 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.Actualizar(entidad);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("ConsultaPoliticas", "PoliticaDevolucion");
+                    return RedirectToAction("PoliticaDevolucion", "PoliticaDevolucion");
                 }
                 else
                 {
                     ViewBag.MsjPantalla = respuesta.Detalle;
+                    return View(entidad);
                 }
             }
             catch (Exception ex)
@@ -107,9 +130,9 @@ namespace Web.Controllers
         {
             var respuesta = modelo.Eliminar(id);
 
-            if (respuesta.Codigo == 0)
+            if (respuesta != null && respuesta.Codigo == 0)
             {
-                return RedirectToAction("PoliticaDevolucin", "Informacion");
+                return RedirectToAction("PoliticaDevolucin", "PoliticaDevolucin");
             }
             else
             {

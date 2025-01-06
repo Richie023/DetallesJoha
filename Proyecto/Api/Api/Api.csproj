@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -61,12 +64,14 @@
     <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
@@ -178,11 +183,14 @@
     <Compile Include="Controllers\AyudaController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
     <Compile Include="Controllers\PoliticaDevolucionController.cs" />
     <Compile Include="Controllers\PreguntasFrecuentesController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\InfoEController.cs" />
+    <Compile Include="Controllers\ResenaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Entidades\AvisoPrivacidad.cs" />
@@ -190,17 +198,18 @@
     <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Carrito.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
-    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
+    <Compile Include="Entidades\Consulta.cs" />
     <Compile Include="Entidades\PoliticaDevolucion.cs" />
+    <Compile Include="Entidades\PreguntasFrecuentes.cs" />
     <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\InfoE.cs" />
+    <Compile Include="Entidades\Resena.cs" />
+    <Compile Include="Entidades\Roles.cs" />
     <Compile Include="Entidades\TiposCategoria.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Entidades\Ventas.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ActualizarProducto_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ColsultarAvisoPrivacidad_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -211,10 +220,22 @@
     <Compile Include="Models\ColsultarBlogs_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ColsultarPoliticaDevolucionPorId_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ColsultarPoliticaDevolucion_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ColsutarPGF_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarAvisoPrivacidadPorID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarAyudaPorID_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarBlogPorID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarCarrito_Result.cs">
@@ -226,6 +247,18 @@
     <Compile Include="Models\ConsultarFacturas_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConsultarPedidos_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarPedido_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarPGFPorId_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarPreguntaFrecuente_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ConsultarProductosPorRangoPrecio_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -235,7 +268,16 @@
     <Compile Include="Models\ConsultarProducto_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConsultarResennas_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarRoles_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ConsultarTiposCategoria_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConsultarUsuarios_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsultarUsuario_Result.cs">
@@ -275,6 +317,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\RecuperarAccesoUsuario_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefacturaFactura_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RegistrarProducto_Result.cs">
@@ -325,6 +370,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Notificacion.html" />
     <Content Include="Password.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -350,12 +396,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AvisoPrivacidad\" />
-    <Folder Include="Views\Ayuda\" />
-    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Categoria\" />
-    <Folder Include="Views\PoliticaDevolucion\" />
-    <Folder Include="Views\PreguntasFrecuentes\" />
+    <Folder Include="Views\Resena\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
