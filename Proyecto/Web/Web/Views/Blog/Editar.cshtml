@@ -1,0 +1,50 @@
+﻿@model Web.Entidades.BlogArticulo
+
+@{
+    ViewBag.Title = "Editar Artículo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Editar Artículo</h2>
+
+    @using (Html.BeginForm("Editar", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.id)
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control", @placeholder = "Título" })
+        </div>
+        <div class="form-group">
+            <label for="resumen">Resumen</label>
+            @Html.TextAreaFor(model => model.resumen, new { @class = "form-control", @placeholder = "Resumen" })
+        </div>
+        <div class="form-group">
+            <label for="contenido">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new { @class = "form-control", @placeholder = "Contenido" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Imagen")
+            <div class="row">
+                <div class="col-8">
+                    <input type="file" id="ImagenBlog" name="ImagenBlog" class="form-control form-control-user">
+                </div>
+                <div class="col-2 text-center" style="margin-right:10%;">
+                    @if (!string.IsNullOrEmpty(ViewBag.imagen_url))
+                    {
+                        <img src="@ViewBag.imagen_url" alt="Imagen actual" class="img-thumbnail" style="width:80px; height:80px;">
+                    }
+                    else
+                    {
+                        <span>No hay imagen disponible</span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="primary-btn">Actualizar</button>
+            <a href="@Url.Action("Blog", "Blog")" class="primary-btn">Cancelar</a>
+        </div>
+    }
+</div>

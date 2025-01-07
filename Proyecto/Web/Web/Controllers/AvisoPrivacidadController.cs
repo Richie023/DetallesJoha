@@ -8,8 +8,8 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad]
-    [FiltroAdmin]
+  
+  
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class AvisoPrivacidadController : Controller
     {
@@ -32,7 +32,23 @@ namespace Web.Controllers
             }
         }
 
-        
+
+        [HttpGet]
+        public ActionResult AvisoPrivacidadPorId(int id)
+        {
+            var resultado = modelo.ConsultarAviso(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
+
+
+
+
         [HttpGet]
         public ActionResult Insertar()
         {
@@ -54,7 +70,7 @@ namespace Web.Controllers
 
                 if (respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerAvisoPrivacidad");
+                    return RedirectToAction("AvisoPrivacidad", "AvisoPrivacidad");
                 }
                 else
                 {
@@ -69,6 +85,7 @@ namespace Web.Controllers
             return View(entidad);
         }
 
+
      
         [HttpGet]
         public ActionResult Editar(int id)
@@ -77,10 +94,10 @@ namespace Web.Controllers
 
             if (respuesta != null && respuesta.Codigo == 0)
             {
-                var aviso = respuesta.Datos.FirstOrDefault(x => x.Id == id);
-                if (aviso != null)
+                var resp = modelo.ConsultarAviso(id);
+                if (resp != null)
                 {
-                    return View(aviso);
+                    return View(resp.Dato);
                 }
             }
 
@@ -102,9 +119,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.ActualizarAvisoPrivacidad(entidad);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta.Codigo == 0 && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("AvisoPrivacidad");
+                    return RedirectToAction("AvisoPrivacidad", "AvisoPrivacidad");
                 }
                 else
                 {
@@ -119,6 +136,7 @@ namespace Web.Controllers
             return View(entidad);
         }
 
+
         
         [HttpGet]
         public ActionResult Eliminar(int id)
@@ -127,9 +145,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.EliminarAvisoPrivacidad(id);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("AvisoPrivacidad");
+                    return RedirectToAction("AvisoPrivacidad", "AvisoPrivacidad");
                 }
                 else
                 {

@@ -45,7 +45,44 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        // Insertar una nueva ayuda
+
+        [HttpGet]
+        [Route("Ayuda/ConsultarAyudaPorId")]
+        public AyudaCategoriaRespuesta ConsultarAyudaPorId(int id)
+        {
+            var respuesta = new AyudaCategoriaRespuesta();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarAyudaPorID(id).FirstOrDefault();
+
+                    if (datos != null)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Dato = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron resultados";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+
+
         [HttpPost]
         [Route("Ayuda/InsertarAyuda")]
         public Confirmacion InsertarAyuda(Ayuda entidad)
@@ -76,6 +113,8 @@ namespace Api.Controllers
 
             return respuesta;
         }
+
+
 
 
         [HttpPut]
@@ -110,7 +149,42 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        
+
+
+        [HttpPut]
+        [Route("Ayuda/ActualizarImagenAyuda")]
+        public AyudaCategoriaRespuesta ActualizarImagenAyuda(Ayuda entidad)
+        {
+            var respuesta = new AyudaCategoriaRespuesta();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var resp = db.ActualizarImagenAyuda(entidad.id, entidad.imagen_url);
+
+                    if (resp != null)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se pudo actualizar la imagen. Verifique que la ayuda exista.";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
 
         [HttpDelete]
         [Route("Ayuda/EliminarAyuda")]

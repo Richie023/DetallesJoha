@@ -8,7 +8,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    [FiltroSeguridad] 
+  
     
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class PreguntasFrecuentesController : Controller
@@ -32,11 +32,25 @@ namespace Web.Controllers
             }
         }
 
-        
+
+        [HttpGet]
+        public ActionResult PreguntaFrecuente(int id)
+        {
+            var resultado = modelo.ConsultarPorId(id);
+
+            if (resultado == null || resultado.Dato == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(resultado.Dato);
+        }
+
+
+
         [HttpGet]
         public ActionResult Insertar()
         {
-            ViewBag.Title = "Agregar Nueva Pregunta Frecuente";
             return View();
         }
 
@@ -54,9 +68,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.Insertar(entidad);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerPreguntasFrecuentes");
+                    return RedirectToAction("PreguntasFrecuentes", "PreguntasFrecuentes");
                 }
                 else
                 {
@@ -71,10 +85,16 @@ namespace Web.Controllers
             return View(entidad);
         }
 
-        // Mostrar la vista para editar una pregunta frecuente existente
-        
 
-        // Procesar la actualización de una pregunta frecuente existente
+      
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var resp = modelo.ConsultarPorId(id);
+            return View(resp?.Dato);
+        }
+
+       
         [HttpPost]
         public ActionResult Editar(PreguntasFrecuentes entidad)
         {
@@ -88,9 +108,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.Actualizar(entidad);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerPreguntasFrecuentes");
+                    return RedirectToAction("PreguntasFrecuentes", "PreguntasFrecuentes");
                 }
                 else
                 {
@@ -114,9 +134,9 @@ namespace Web.Controllers
             {
                 var respuesta = modelo.Eliminar(id);
 
-                if (respuesta.Codigo == 0)
+                if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    return RedirectToAction("VerPreguntasFrecuentes");
+                    return RedirectToAction("PreguntasFrecuentes", "PreguntasFrecuentes");
                 }
                 else
                 {
@@ -128,33 +148,13 @@ namespace Web.Controllers
                 ViewBag.MsjPantalla = $"Error al eliminar la pregunta frecuente: {ex.Message}";
             }
 
-            return RedirectToAction("VerPreguntasFrecuentes");
+            return RedirectToAction("PreguntasFrecuentes", "PreguntasFrecuentes");
         }
 
 
-        [HttpGet]
-        public ActionResult Editar(int id)
-        {
-            try
-            {
-                var resultado = modelo.ConsultarPreguntaFrecuente(id);
-
-                if (resultado == null)
-                {
-                    return HttpNotFound("No se encontró la pregunta frecuente solicitada.");
-                }
-
-
-                return View("Editar", resultado);
-            }
-            catch (Exception ex)
-            {
-                TempData["Error"] = $"Ocurrió un error al consultar la pregunta frecuente: {ex.Message}";
-                return RedirectToAction("PreguntasFrecuentes");
-            }
-        }
+       
 
 
 
     }
-            }    
+}    

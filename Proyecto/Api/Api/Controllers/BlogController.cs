@@ -46,8 +46,42 @@ namespace Api.Controllers
         }
 
 
+        [HttpGet]
+        [Route("Blog/ConsultarBlogPorId")]
+        public BlogRespuesta ConsultarBlogPorId(int id)
+        {
+            var respuesta = new BlogRespuesta();
 
-        // Insertar un nuevo artículo
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ConsultarBlogPorID(id).FirstOrDefault();
+
+                    if (datos != null)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Dato = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron resultados";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+
         [HttpPost]
         [Route("Blog/Insertar")]
         public Confirmacion Insertar(BlogArticulo entidad)
@@ -59,11 +93,11 @@ namespace Api.Controllers
                 using (var db = new DetallesJohaEntities())
                 {
                     db.InsertBlog(
-                        entidad.Categoria,
-                        entidad.Titulo,
-                        entidad.Resumen,
-                        entidad.Contenido,
-                        entidad.Imagen_url
+                        entidad.categoria,
+                        entidad.titulo,
+                        entidad.resumen,
+                        entidad.contenido,
+                        entidad.imagen_url
                     );
 
                     db.SaveChanges();
@@ -81,6 +115,7 @@ namespace Api.Controllers
         }
 
 
+
         [HttpPut]
         [Route("Blog/Actualizar")]
         public Confirmacion Actualizar(BlogArticulo entidad)
@@ -91,14 +126,13 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Llamada al procedimiento almacenado para actualizar
                     var filasAfectadas = db.UpdateBlog(
-                        entidad.Id,
-                        entidad.Categoria,
-                        entidad.Titulo,
-                        entidad.Resumen,
-                        entidad.Contenido,
-                        entidad.Imagen_url
+                        entidad.id,
+                        entidad.categoria,
+                        entidad.titulo,
+                        entidad.resumen,
+                        entidad.contenido,
+                        entidad.imagen_url
                     );
 
                     if (filasAfectadas > 0)
@@ -122,7 +156,44 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        // Eliminar un artículo por ID
+
+
+
+        [HttpPut]
+        [Route("Blog/ActualizarImagenBlog")]
+        public BlogRespuesta ActualizarImagenBlog(BlogArticulo entidad)
+        {
+            var respuesta = new BlogRespuesta();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var resp = db.ActualizarImagenBlog(entidad.id, entidad.imagen_url);
+
+                    if (resp > 0)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se pudo actualizar la imagen. Verifique que el blog exista.";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+
         [HttpDelete]
         [Route("Blog/Eliminar")]
         public Confirmacion Eliminar(int id)

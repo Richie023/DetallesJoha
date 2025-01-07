@@ -15,9 +15,7 @@ namespace Api.Models
     {
         public int id { get; set; }
         public string titulo_seccion { get; set; }
-        public string subtitulo_seccion { get; set; }
         public string contenido { get; set; }
-        public int orden { get; set; }
         public Nullable<System.DateTime> ultima_actualizacion { get; set; }
     }
 }

@@ -16,10 +16,29 @@ namespace Web.Models
                 string url = ConfigurationManager.AppSettings["urlWebApi"] + "PoliticaDevolucion/ConsultarTodos";
                 var respuesta = client.GetAsync(url).Result;
 
-                if (respuesta.IsSuccessStatusCode)
+                if (respuesta.IsSuccessStatusCode) 
                     return respuesta.Content.ReadFromJsonAsync<PoliticaDevolucionRespuesta>().Result;
                 else
                     return null;
+            }
+        }
+
+
+        public PoliticaDevolucionRespuesta ConsultarPorId(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "PoliticaDevolucion/ConsultarPorId?id=" + id;
+                var respuesta = client.GetAsync(url).Result;
+
+                if (respuesta.IsSuccessStatusCode)
+                    return respuesta.Content.ReadFromJsonAsync<PoliticaDevolucionRespuesta>().Result;
+                else
+                    return new PoliticaDevolucionRespuesta
+                    {
+                        Codigo = -1,
+                        Detalle = "Error al consultar la política de devolución"
+                    };
             }
         }
 
@@ -40,6 +59,8 @@ namespace Web.Models
             }
         }
 
+
+
         public Confirmacion Actualizar(PoliticaDevolucion entidad)
         {
             using (var client = new HttpClient())
@@ -54,6 +75,7 @@ namespace Web.Models
                     return null;
             }
         }
+
 
 
         public Confirmacion Eliminar(int id)

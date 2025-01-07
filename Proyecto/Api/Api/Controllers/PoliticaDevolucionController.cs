@@ -46,7 +46,43 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        // Insertar una nueva sección en la política de devolución
+
+        [HttpGet]
+        [Route("PoliticaDevolucion/ConsultarPorId")]
+        public PoliticaDevolucionRespuesta ConsultarPorId(int id)
+        {
+            var respuesta = new PoliticaDevolucionRespuesta();
+
+            try
+            {
+                using (var db = new DetallesJohaEntities())
+                {
+                    var datos = db.ColsultarPoliticaDevolucionPorId(id).FirstOrDefault();
+
+                    if (datos != null)
+                    {
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Dato = datos;
+                    }
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron resultados";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
+            }
+
+            return respuesta;
+        }
+
+
+
         [HttpPost]
         [Route("PoliticaDevolucion/Insertar")]
         public Confirmacion Insertar(PoliticaDevolucion entidad)
@@ -58,10 +94,8 @@ namespace Api.Controllers
                 using (var db = new DetallesJohaEntities())
                 {
                     db.InsertPoliticaDevolucion(
-                        entidad.TituloSeccion,
-                        entidad.SubtituloSeccion,
-                        entidad.Contenido,
-                        entidad.Orden
+                        entidad.titulo_seccion,
+                        entidad.contenido
                     );
 
                     respuesta.Codigo = 0;
@@ -77,7 +111,8 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        // Actualizar una sección de la política de devolución
+        
+
         [HttpPut]
         [Route("PoliticaDevolucion/Actualizar")]
         public Confirmacion Actualizar(PoliticaDevolucion entidad)
@@ -89,11 +124,9 @@ namespace Api.Controllers
                 using (var db = new DetallesJohaEntities())
                 {
                     var filasAfectadas = db.UpdatePoliticaDevolucion(
-                        entidad.Id,
-                        entidad.TituloSeccion,
-                        entidad.SubtituloSeccion,
-                        entidad.Contenido,
-                        entidad.Orden
+                        entidad.id,
+                        entidad.titulo_seccion,
+                        entidad.contenido
                     );
 
                     if (filasAfectadas > 0)
@@ -117,7 +150,8 @@ namespace Api.Controllers
             return respuesta;
         }
 
-        // Eliminar una sección de la política de devolución
+       
+
         [HttpDelete]
         [Route("PoliticaDevolucion/Eliminar")]
         public Confirmacion Eliminar(int id)

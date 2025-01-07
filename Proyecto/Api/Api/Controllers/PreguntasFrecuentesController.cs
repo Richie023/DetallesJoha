@@ -22,7 +22,7 @@ namespace Api.Controllers
                 {
                     var datos = db.ColsutarPGF().ToList();
 
-                    if (datos.Count > 0)
+                    if (datos.Any())
                     {
                         respuesta.Codigo = 0;
                         respuesta.Detalle = "Consulta exitosa.";
@@ -44,33 +44,44 @@ namespace Api.Controllers
             return respuesta;
         }
 
+
+
         [HttpGet]
-        [Route("PreguntasFrecuentes/Consultar/{id}")]
-        public IHttpActionResult Consultar(int id)
+        [Route("PreguntasFrecuentes/ConsultarPorId")]
+        public FaqRespuesta ConsultarPorId(int id)
         {
+            var respuesta = new FaqRespuesta();
+
             try
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Buscar la pregunta frecuente en la base de datos por ID
-                    var pregunta = db.ConsultarPreguntaFrecuente(id);
+                    var datos = db.ConsultarPGFPorId(id).FirstOrDefault();
 
-                    // Validar si se encontró la pregunta
-                    if (pregunta == null)
+                    if (datos != null)
                     {
-                        return NotFound(); // Devuelve 404 si no existe
+                        respuesta.Codigo = 0;
+                        respuesta.Detalle = string.Empty;
+                        respuesta.Dato = datos;
                     }
-
-                    // Devuelve la pregunta encontrada
-                    return Ok(pregunta);
+                    else
+                    {
+                        respuesta.Codigo = -1;
+                        respuesta.Detalle = "No se encontraron resultados";
+                    }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Manejar errores inesperados
-                return InternalServerError(new Exception($"Error al consultar la pregunta frecuente: {ex.Message}"));
+                respuesta.Codigo = -1;
+                respuesta.Detalle = "Se presentó un error en el sistema";
             }
+
+            return respuesta;
         }
+
+
+
 
 
         [HttpPost]
@@ -116,7 +127,6 @@ namespace Api.Controllers
             {
                 using (var db = new DetallesJohaEntities())
                 {
-                    // Llamada al procedimiento almacenado para actualizar
                     var filasAfectadas = db.UpdatePGF(
                         entidad.id,
                         entidad.categoria,

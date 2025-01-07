@@ -7,11 +7,11 @@ namespace Web.Entidades
 {
     public class PreguntasFrecuentes
     {
-        public int Id { get; set; }
-        public string Categoria { get; set; }
-        public string Pregunta { get; set; }
-        public string Respuesta { get; set; }
-        public DateTime UltimaActualizacion { get; set; }
+        public int id { get; set; }
+        public string categoria { get; set; }
+        public string pregunta { get; set; }
+        public string respuesta { get; set; }
+        public DateTime? ultima_actualizacion { get; set; }
     }
 
     public class FaqRespuesta
