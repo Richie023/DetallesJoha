@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <style>
     canvas {
         border: 4px solid #323232;
@@ -56,32 +58,33 @@
 
 <div class="section">
     <div class="container">
-        <h2 class="text-center">Personaliza tu Producto</h2>
+        <h2 class="text-center">Personaliza tu @Model.NombreProducto</h2>
         <div class="row">
-            <!-- Editor de diseño -->
+
             <div class="col-md-8">
                 <div id="design-canvas-container">
-                    <!-- Canvas para la edición del producto -->
                     <canvas id="designCanvas" width="600" height="600"></canvas>
                 </div>
             </div>
 
-            <!-- Herramientas de personalización -->
+           
             <div class="col-md-4">
                 <div class="design-tools">
                     <h4>Herramientas de Diseño</h4>
 
-                    <!-- Subir archivos -->
                     <div class="tool-section">
                         <h5>Subir Archivos</h5>
                         <input type="file" id="uploadFile" accept="image/*" class="form-control" />
                     </div>
 
-                    <!-- Agregar Texto -->
+
+                    <br>
+
+
                     <div class="tool-section">
-                        <h5>Agregar Texto</h5>
-                        <input type="text" id="textInput" placeholder="Escribe tu texto" class="form-control" />
-                        <button id="addText" class="btn btn-primary btn-block mt-2">Agregar Texto</button>
+                        <h5>Agregar Color, Fuente y el texto que desees!</h5>
+                        <label for="textColor">Color:</label>
+                        <input type="color" id="textColor" value="#000000" class="form-control" />
 
                         <label for="fontSelect">Fuente:</label>
                         <select id="fontSelect" class="form-control">
@@ -89,57 +92,71 @@
                             <option value="Courier New">Courier New</option>
                             <option value="Georgia">Georgia</option>
                             <option value="Verdana">Verdana</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Trebuchet MS">Trebuchet MS</option>
+                            <option value="Comic Sans MS">Comic Sans MS</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Palatino Linotype">Palatino Linotype</option>
+                            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                            <option value="Brush Script MT">Brush Script MT</option>
+                            <option value="Gill Sans">Gill Sans</option>
+                            <option value="Century Gothic">Century Gothic</option>
+                            <option value="Candara">Candara</option>
+                            <option value="Lucida Console">Lucida Console</option>
+                            <option value="Helvetica">Helvetica</option>
                         </select>
+                        <h5>Agregar Texto:</h5>
+                        <input type="text" id="textInput" placeholder="Escribe tu texto" class="form-control" />
+                        <button id="addText" class="btn btn-primary btn-block mt-2">Agregar Texto</button>
 
-                        <label for="textColor">Color:</label>
-                        <input type="color" id="textColor" value="#000000" class="form-control" />
                     </div>
 
-                    <!-- Agregar Arte -->
+                    <br>
+
+                   
                     <div class="tool-section">
                         <h5>Agregar Arte</h5>
                         <button onclick="openArtCategories()" class="btn btn-primary btn-block">Seleccionar Arte</button>
 
-                        <!-- Contenedor de categorías -->
+                    
                         <div id="categories-container" style="display: none; margin-top: 10px;">
                             <h6>Categorías</h6>
-                            <button onclick="showCategory('emojis', 'emoji-container')" class="btn btn-secondary btn-sm">Emojis</button>
-                            <button onclick="showCategory('shapes', 'shape-container')" class="btn btn-secondary btn-sm">Formas</button>
-                            <button onclick="showCategory('sports', 'sports-container')" class="btn btn-secondary btn-sm">Deportes</button>
-                            <button onclick="showCategory('animals', 'animal-container')" class="btn btn-secondary btn-sm">Animales</button>
-                            <button onclick="showCategory('nature', 'nature-container')" class="btn btn-secondary btn-sm">Naturaleza</button>
-                            <button onclick="showCategory('letter', 'letter-container')" class="btn btn-secondary btn-sm">Letras</button>
+                            <button onclick="showCategory('emojis', 'emoji-container')" class="btn btn-secondary btn-info">Emojis</button>
+                            <button onclick="showCategory('shapes', 'shape-container')" class="btn btn-secondary btn-info">Formas</button>
+                            <button onclick="showCategory('sports', 'sports-container')" class="btn btn-secondary btn-info">Deportes</button>
+                            <button onclick="showCategory('animals', 'animal-container')" class="btn btn-secondary btn-info">Animales</button>
+                            <button onclick="showCategory('letter', 'letter-container')" class="btn btn-secondary btn-info">Letras</button>
+                            <button onclick="showCategory('nature', 'nature-container')" class="btn btn-secondary btn-info">Naturaleza</button>
                         </div>
 
-                        <!-- Contenedor de elementos dentro de cada categoría -->
+                 
                         <div id="emoji-container" class="category-container" style="display: none; margin-top: 10px;"></div>
                         <div id="shape-container" class="category-container" style="display: none; margin-top: 10px;"></div>
                         <div id="sports-container" class="category-container" style="display: none; margin-top: 10px;"></div>
                         <div id="animal-container" class="category-container" style="display: none; margin-top: 10px;"></div>
-                        <div id="nature-container" class="category-container" style="display: none; margin-top: 10px;"></div>
                         <div id="letter-container" class="category-container" style="display: none; margin-top: 10px;"></div>
+                        <div id="nature-container" class="category-container" style="display: none; margin-top: 10px;"></div>
                     </div>
 
+                    <br>
 
-
-                    <!-- Cambiar Colores del Producto -->
+                    
                     <div class="tool-section">
-                        <h5>Colores del Producto</h5>
-                        <input type="color" id="productColor" value="#ffffff" class="form-control" />
+                        <button id="saveDesign" class="btn btn-primary btn-block">Guardar Diseño</button>
+                        <!--<a id="lnkDownload" href="" class="btn btn-secondary btn-block">Descargar Diseño</a> -->
                     </div>
 
+                    <br>
 
-                    <!-- Botón para eliminar el objeto seleccionado -->
+                    
                     <div class="tool-section">
-                        <button id="deleteObject" class="btn btn-danger btn-block">Eliminar Elemento</button>
+                        <button id="deleteObject" class="btn btn-danger btn-block"><i class="fa fa-trash-o fa-2x"></i>Eliminar Elemento</button>
                     </div>
 
-
-                    <!-- Guardar y Compartir -->
-                    <div class="tool-section">
-                        <button id="saveDesign" class="btn btn-success btn-block">Guardar Diseño</button>
-                        <a id="lnkDownload" href="" class="btn btn-secondary btn-block">Descargar Diseño</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -148,59 +165,130 @@
 
 <img id="my-image" src="@Model.RutaImagen" alt="Producto" style="display: none;">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.6.0/fabric.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const canvas = new fabric.Canvas('designCanvas');
 
-        // Establecer la imagen base del producto
+        // Cargar la imagen base del producto
         const imgElement = document.getElementById('my-image');
-        const fabricImage = new fabric.Image(imgElement, {
-            left: 0,
-            top: 0,
-            selectable: false
-        });
+        if (imgElement) {
+            const fabricImage = new fabric.Image(imgElement, {
+                left: 0,
+                top: 0,
+                selectable: false,
+            });
+            fabricImage.scaleToWidth(canvas.width);
+            fabricImage.scaleToHeight(canvas.height);
+            canvas.add(fabricImage);
+            canvas.renderAll();
+        }
 
-        // Escalar y centrar la imagen
-        fabricImage.scaleToWidth(canvas.width);
-        fabricImage.scaleToHeight(canvas.height);
-        canvas.add(fabricImage);
 
-        // Cambiar color base del producto
-        document.getElementById('productColor').addEventListener('input', function (e) {
-            canvas.setBackgroundColor(e.target.value, canvas.renderAll.bind(canvas));
-        });
 
-        // Subir imagen
-        document.getElementById('uploadFile').addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
+
+
+
+        //Agregar Imgane
+       
+        const uploadFileInput = document.getElementById('uploadFile');
+
+        if (uploadFileInput) {
+            uploadFileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0]; 
+                if (!file) {
+                    console.log('No se seleccionó ningún archivo.');
+                    return;
+                }
+
+                console.log('Archivo seleccionado:', file);
+
                 const reader = new FileReader();
+
                 reader.onload = function (event) {
-                    fabric.Image.fromURL(event.target.result, function (img) {
-                        img.scaleToWidth(200);
-                        canvas.add(img);
-                    });
+                    console.log('Contenido del archivo leído:', event.target.result);
+
+                    const img = new Image();
+                    img.onload = function () {
+                        console.log('Imagen cargada correctamente.');
+
+                        const fabricImg = new fabric.Image(img, {
+                            left: canvas.width / 4,
+                            top: canvas.height / 4,
+                            scaleX: canvas.width / 2 / img.width,
+                            scaleY: canvas.height / 2 / img.height,
+                            selectable: true,
+                        });
+
+                        canvas.add(fabricImg);
+                        canvas.setActiveObject(fabricImg); 
+                        canvas.renderAll(); 
+                        console.log('Imagen agregada al lienzo:', fabricImg);
+                    };
+
+                    img.onerror = function () {
+                        console.error('Error al cargar la imagen.');
+                    };
+
+                    img.src = event.target.result; 
                 };
-                reader.readAsDataURL(file);
+
+                reader.onerror = function () {
+                    console.error('Error al leer el archivo:', reader.error);
+                };
+
+                reader.readAsDataURL(file); 
+            });
+        } else {
+            console.error('El input de archivo no se encontró. Verifica el ID en tu HTML.');
+        }
+
+
+
+
+        // Agregar texto al canvas
+        document.getElementById('addText')?.addEventListener('click', function () {
+            const text = document.getElementById('textInput').value;
+            const font = document.getElementById('fontSelect').value;
+            const color = document.getElementById('textColor').value;
+
+            const textObject = new fabric.IText(text, {
+                left: 50,
+                top: 50,
+                fontFamily: font,
+                fill: color,
+                fontSize: 20,
+            });
+
+            canvas.add(textObject);
+            canvas.setActiveObject(textObject);
+            canvas.renderAll();
+        });
+
+
+        // Cambiar color y fuente del texto seleccionado
+        document.getElementById('textColor')?.addEventListener('input', function () {
+            const activeObject = canvas.getActiveObject();
+            if (activeObject && activeObject.type === 'i-text') {
+                activeObject.set('fill', this.value);
+                canvas.renderAll();
             }
         });
 
-        // Agregar texto
-        document.getElementById('addText').addEventListener('click', function () {
-            const text = new fabric.IText(document.getElementById('textInput').value, {
-                left: 50,
-                top: 50,
-                fontFamily: document.getElementById('fontSelect').value,
-                fill: document.getElementById('textColor').value,
-                fontSize: 20,
-            });
-            canvas.add(text);
+        document.getElementById('fontSelect')?.addEventListener('change', function () {
+            const activeObject = canvas.getActiveObject();
+            if (activeObject && activeObject.type === 'i-text') {
+                activeObject.set('fontFamily', this.value);
+                canvas.renderAll();
+            }
         });
 
 
-        // Función para eliminar el objeto seleccionado
-        document.getElementById('deleteObject').addEventListener('click', function () {
+        // Eliminar el objeto seleccionado
+        document.getElementById('deleteObject')?.addEventListener('click', function () {
             const activeObject = canvas.getActiveObject();
             if (activeObject) {
                 canvas.remove(activeObject);
@@ -211,97 +299,63 @@
         });
 
 
-        // Guardar diseño
-        document.getElementById('saveDesign').addEventListener('click', function () {
+        // Guardar el diseño del canvas
+        document.getElementById('saveDesign')?.addEventListener('click', function () {
             const link = document.createElement('a');
             link.download = 'diseño-personalizado.png';
             link.href = canvas.toDataURL();
             link.click();
         });
 
-        // Descargar diseño
-        document.getElementById('lnkDownload').addEventListener('click', function (e) {
-            e.target.href = canvas.toDataURL({ format: 'png', quality: 0.8 });
-            e.target.download = 'canvas.png';
-        });
 
-        // Función para limpiar canvas
-        window.clearAll = function () {
-            if (window.confirm('¿Seguro que quieres limpiar el canvas?')) {
-                canvas.clear();
-            }
-        };
-
-        // Función para agregar texto desde otro input
-        window.addText = function () {
-            const text = document.getElementById('text-input').value;
-            const textObject = new fabric.IText(text, { left: 50, top: 50, fontSize: 30 });
-            canvas.add(textObject);
-        };
-    });
-</script>
-
-
-
-<script>
-
-   
         // Mostrar las categorías de arte
-        function openArtCategories() {
+        window.openArtCategories = function () {
             document.getElementById('categories-container').style.display = 'block';
-        }
+        };
+
 
         // Mostrar una categoría específica
-        function showCategory(categoryId, containerId) {
+        window.showCategory = function (categoryId, containerId) {
             document.querySelectorAll('.category-container').forEach(container => {
                 container.style.display = 'none';
             });
 
-            document.getElementById(containerId).style.display = 'grid';
-
-            // Cargar elementos de la categoría seleccionada
-            const dataCategory = data[categoryId];
             const container = document.getElementById(containerId);
-            container.innerHTML = ''; // Limpiar el contenedor
+            const dataCategory = data[categoryId];
+            container.innerHTML = '';
 
             for (const subCategory in dataCategory) {
                 const button = document.createElement('button');
                 button.innerHTML = subCategory;
                 button.classList.add('btn', 'btn-outline-primary', 'btn-sm', 'm-1');
-                button.onclick = function () {
-                    showSubCategoryItems(subCategory, dataCategory, container);
-                };
+                button.onclick = () => showSubCategoryItems(subCategory, dataCategory, container);
                 container.appendChild(button);
             }
-        }
+
+            container.style.display = 'grid';
+        };
+
 
         // Mostrar los elementos de una subcategoría
         function showSubCategoryItems(category, items, container) {
-            container.innerHTML = ''; // Limpiar los elementos actuales
-
+            container.innerHTML = '';
             items[category].forEach(item => {
                 const button = document.createElement('button');
                 button.innerHTML = item;
                 button.classList.add('btn', 'btn-outline-secondary', 'btn-sm', 'm-1');
-                button.onclick = function () {
-                    placeShape(item); // Agregar el elemento al canvas
-                };
+                button.onclick = () => placeShape(item);
                 container.appendChild(button);
             });
         }
 
-        // Función para colocar emojis o formas en el canvas
+        // Agregar elementos como emojis o formas al canvas
         function placeShape(art) {
-            console.log('Emoji seleccionado:', art);
-
-
             const textObject = new fabric.Text(art, {
-                left: 0,
-                top: 0,
+                left: 50,
+                top: 50,
                 fontSize: 40,
                 fill: '#000',
                 fontFamily: 'Arial',
-                selectable: true,
             });
 
             canvas.add(textObject);
@@ -389,11 +443,8 @@
                 'Ver Todos': ['A', 'B', 'C', 'D', 'E', '👩‍🦰', '👨‍🦱', '🧑‍🦯', '🧑‍🦳', '👵', 'α', 'β', 'γ', 'δ', 'ε', 'G', 'H', 'Z', 'M', 'R',
                     'AA', 'WW', 'FF', 'DD', 'SS', '1', '2', '3', '4', '5', '.', ',', '!', '?', ';', '&', '#', '$', '%']
 
-            }
+            },
         };
-
-
-        const canvas = new fabric.Canvas('designCanvas');
-  
-
+    });
 </script>
+
