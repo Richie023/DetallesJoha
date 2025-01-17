@@ -65,6 +65,7 @@
                         SubTotal :   @item.SubTotal.ToString("N2")&nbsp&nbsp<br />
                         Impuestos : @item.Impuesto.ToString("N2")&nbsp&nbsp<br />
                         Total :  @item.Total.ToString("N2")&nbsp&nbsp<br />
+                        @item.RutaImagen.ToString()
 
 
                         @if (Session["RolUsuario"].ToString() != "1")

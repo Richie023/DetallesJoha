@@ -106,7 +106,7 @@ ul, ol {
 
 .primary-btn:hover, .primary-btn:focus {
   opacity: 0.9;
-  color: #FFF;
+  color: #FfF;
 }
 
 /*----------------------------*\
@@ -876,14 +876,14 @@ textarea.input {
 
 .product .product-img .product-label {
   position: absolute;
-  top: 15px;
+  top: 8px;
   right: 15px;
 }
 
 .product .product-img .product-label>span {
   border: 2px solid;
   padding: 2px 10px;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .product .product-img .product-label>span.sale {
@@ -914,7 +914,7 @@ textarea.input {
 
 .product .product-body .product-name {
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .product .product-body .product-name>a {
@@ -1090,7 +1090,7 @@ textarea.input {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 60px;
+  width: 50px;
 }
 
 .product-widget .product-img>img {
@@ -2211,7 +2211,7 @@ textarea.input {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .product-img {

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Productos";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
 }
 
 
@@ -50,7 +50,8 @@
                                 <!-- Contenido de la tarjeta -->
                                 <div class="product-body">
                                     <h5 class="product-name">
-                                        <a href="@Url.Action("DetalleProducto", "Productos", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
+                                        <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="text-decoration-none text-dark">
+                                            <br />
                                             @producto.NombreProducto
                                         </a>
                                     </h5>

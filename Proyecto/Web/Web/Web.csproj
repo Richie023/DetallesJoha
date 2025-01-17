@@ -289,6 +289,13 @@
     <Content Include="Estilos\css\Ayuda.css" />
     <Content Include="Estilos\css\Blog.css" />
     <Content Include="Estilos\css\bootstrap.min.css" />
+    <Content Include="Estilos\css\cssfooter.css" />
+    <Content Include="Estilos\css\cssfooteravisoprivacidad.css" />
+    <Content Include="Estilos\css\cssfooterayuda.css" />
+    <Content Include="Estilos\css\cssfooterblog.css" />
+    <Content Include="Estilos\css\cssfootercliente.css" />
+    <Content Include="Estilos\css\cssfooterpoliticadevolucion.css" />
+    <Content Include="Estilos\css\cssfooterpreguntasfrecuentes.css" />
     <Content Include="Estilos\css\Filtros.css" />
     <Content Include="Estilos\css\font-awesome.min.css" />
     <Content Include="Estilos\css\Footer.css" />
@@ -303,6 +310,20 @@
     <Content Include="Estilos\fonts\fontawesome-webfont.eot" />
     <Content Include="Estilos\fonts\fontawesome-webfont.svg" />
     <Content Include="Estilos\fonts\slick.svg" />
+    <Content Include="Estilos\img\hotdeal.png" />
+    <Content Include="Estilos\img\logo.png" />
+    <Content Include="Estilos\img\product01.png" />
+    <Content Include="Estilos\img\product02.png" />
+    <Content Include="Estilos\img\product03.png" />
+    <Content Include="Estilos\img\product04.png" />
+    <Content Include="Estilos\img\product05.png" />
+    <Content Include="Estilos\img\product06.png" />
+    <Content Include="Estilos\img\product07.png" />
+    <Content Include="Estilos\img\product08.png" />
+    <Content Include="Estilos\img\product09.png" />
+    <Content Include="Estilos\img\shop01.png" />
+    <Content Include="Estilos\img\shop02.png" />
+    <Content Include="Estilos\img\shop03.png" />
     <Content Include="Estilos\js\canvas.js" />
     <Content Include="Estilos\js\disenno.js" />
     <Content Include="Estilos\js\Filtros.js" />
@@ -323,6 +344,7 @@
     <Content Include="Imagenes\7.png" />
     <Content Include="Imagenes\8.jpg" />
     <Content Include="img\hotdeal.png" />
+    <Content Include="img\logo.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\product01.png" />
     <Content Include="img\product02.png" />
@@ -572,6 +594,15 @@
     <Content Include="Views\PreguntasFrecuentes\Editar.cshtml" />
     <Content Include="Views\Producto\Disenno.cshtml" />
     <Content Include="Views\Producto\DisenoProducto.cshtml" />
+    <Content Include="Views\Shared\_LayoutCliente.cshtml" />
+    <Content Include="Views\AvisoPrivacidad\Insertar.cshtml" />
+    <Content Include="Views\Ayuda\Editar.cshtml" />
+    <Content Include="Views\Ayuda\Insertar.cshtml" />
+    <Content Include="Views\Blog\Editar.cshtml" />
+    <Content Include="Views\Blog\Insertar.cshtml" />
+    <Content Include="Views\PoliticaDevolucion\Editar.cshtml" />
+    <Content Include="Views\PoliticaDevolucion\Insertar.cshtml" />
+    <Content Include="Views\PreguntasFrecuentes\Insertar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

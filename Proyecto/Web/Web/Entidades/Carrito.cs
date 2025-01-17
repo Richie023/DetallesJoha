@@ -25,6 +25,7 @@ namespace Web.Entidades
         public string Material { get; set; }
 
         public string Tamanio { get; set; }
+        public string RutaImagen { get; set; }
 
        
 

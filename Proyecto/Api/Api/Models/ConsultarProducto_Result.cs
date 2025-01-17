@@ -24,6 +24,7 @@ namespace Api.Models
         public string Material { get; set; }
         public string Tamanio { get; set; }
         public string ColorBase { get; set; }
+        public string Descripcion { get; set; }
         public bool En_promocion { get; set; }
         public Nullable<int> porcentaje_descuento { get; set; }
         public Nullable<System.DateTime> fecha_inicio { get; set; }

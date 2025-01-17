@@ -101,7 +101,7 @@
     .product-card .product-title {
         font-size: 18px;
         font-weight: 600;
-        color: #333;
+        color: #ff0000;
         margin-bottom: 15px;
     }
 
@@ -124,12 +124,12 @@
     }
 
         .product-card .view-button:hover {
-            background: #1976D2; /* Slightly darker blue on hover */
+            background: #1976Df; /* Slightly darker blue on hover */
         }
 
 /* Filter item hover effect */
 .filter-list a {
-    color: #666;
+    color: #000;
     text-decoration: none;
     font-size: 16px;
     padding: 8px 0;
@@ -137,7 +137,7 @@
 }
 
     .filter-list a:hover {
-        background-color: #2196F3; /* Blue background on hover */
+        background-color: #ff0000; /* Blue background on hover */
         color: white; /* Change text color to white */
         border-radius: 4px;
         padding-left: 10px; /* Add slight padding on hover */
