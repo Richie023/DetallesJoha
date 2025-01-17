@@ -2559,3 +2559,6 @@ textarea.input {
 .inputfile-5 + label {
     color: #fff;
 }
+.form-control {
+    border-radius: 20px;
+}

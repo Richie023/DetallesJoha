@@ -3,35 +3,39 @@
   "WorkspaceRootPath": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\producto\\disenno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\producto\\disenno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\carrito\\consultarpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\carrito\\consultarpedidos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\estilos\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\estilos\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\producto\\verproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\producto\\verproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\controllers\\ventascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\ventas\\consultaventas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\views\\ventas\\consultaventas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\ventas\\consultaventas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\shared\\_layoutexterno.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\inicio\\pantallaprincipal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\views\\inicio\\pantallaprincipal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\inicio\\pantallaprincipal.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\views\\carrito\\consultarfacturas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\views\\carrito\\consultarfacturas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\views\\carrito\\consultarfacturas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\estilos\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\estilos\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\web\\web\\estilos\\css\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\web\\estilos\\css\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{88A90F28-9337-4C9E-82D7-4F9A67B2296C}|Web\\Web.csproj|solutionrelative:web\\estilos\\css\\filtros.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
@@ -42,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,65 +70,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConsultarPedidos.cshtml",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarPedidos.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Carrito\\ConsultarPedidos.cshtml",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarPedidos.cshtml",
+              "RelativeToolTip": "Web\\Views\\Carrito\\ConsultarPedidos.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAIoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-17T01:58:58.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VentasController.cs",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Controllers\\VentasController.cs",
-              "RelativeDocumentMoniker": "Web\\Controllers\\VentasController.cs",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Controllers\\VentasController.cs",
-              "RelativeToolTip": "Web\\Controllers\\VentasController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T06:24:45.362Z",
+              "Title": "Disenno.cshtml",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Producto\\Disenno.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Producto\\Disenno.cshtml",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Producto\\Disenno.cshtml",
+              "RelativeToolTip": "Web\\Views\\Producto\\Disenno.cshtml",
+              "ViewState": "AgIAAF0AAAAAAAAAAIAwwD4BAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-17T00:53:25.309Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_LayoutExterno.cshtml",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_LayoutExterno.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Shared\\_LayoutExterno.cshtml",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_LayoutExterno.cshtml",
-              "RelativeToolTip": "Web\\Views\\Shared\\_LayoutExterno.cshtml",
-              "ViewState": "AgIAAPAAAAAAAAAAAAAAAAQBAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T06:15:59.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConsultaVentas.cshtml",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Ventas\\ConsultaVentas.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Ventas\\ConsultaVentas.cshtml",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Ventas\\ConsultaVentas.cshtml",
-              "RelativeToolTip": "Web\\Views\\Ventas\\ConsultaVentas.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T06:12:28.352Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ConsultarFacturas.cshtml",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
-              "RelativeToolTip": "Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T06:01:53.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "style.css",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Estilos\\css\\style.css",
               "RelativeDocumentMoniker": "Web\\Estilos\\css\\style.css",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Estilos\\css\\style.css",
               "RelativeToolTip": "Web\\Estilos\\css\\style.css",
-              "ViewState": "AgIAAIUIAAAAAAAAAAAAAJ8IAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAOkJAAAAAAAAAAAAAAMKAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-01-09T05:36:57.42Z",
               "EditorCaption": ""
@@ -132,6 +110,56 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "VerProducto.cshtml",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Producto\\VerProducto.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Producto\\VerProducto.cshtml",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Producto\\VerProducto.cshtml",
+              "RelativeToolTip": "Web\\Views\\Producto\\VerProducto.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAiwDoAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-17T01:06:22.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VentasController.cs",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Controllers\\VentasController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\VentasController.cs",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Controllers\\VentasController.cs",
+              "RelativeToolTip": "Web\\Controllers\\VentasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T06:24:45.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ConsultaVentas.cshtml",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Ventas\\ConsultaVentas.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Ventas\\ConsultaVentas.cshtml",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Ventas\\ConsultaVentas.cshtml",
+              "RelativeToolTip": "Web\\Views\\Ventas\\ConsultaVentas.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T06:12:28.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ConsultarFacturas.cshtml",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
+              "RelativeToolTip": "Web\\Views\\Carrito\\ConsultarFacturas.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-09T06:01:53.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PantallaPrincipal.cshtml",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Inicio\\PantallaPrincipal.cshtml",
@@ -144,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Filtros.css",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Estilos\\css\\Filtros.css",
               "RelativeDocumentMoniker": "Web\\Estilos\\css\\Filtros.css",
@@ -152,21 +180,7 @@
               "RelativeToolTip": "Web\\Estilos\\css\\Filtros.css",
               "ViewState": "AgIAAFcAAAAAAAAAAAAuwGYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-01-09T05:19:15.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Web\\Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAO0AAAAAAAAAAAAUwAUBAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-09T05:17:27.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T05:19:15.902Z"
             }
           ]
         }
