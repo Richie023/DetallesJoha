@@ -1,0 +1,25 @@
+﻿@model Web.Entidades.PreguntasFrecuentes
+@{
+    ViewBag.Title = "Insertar";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Registrar Pregunta Frecuente</h2>
+
+    @using (Html.BeginForm("Insertar", "PreguntasFrecuentes", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="pregunta">Pregunta</label>
+            @Html.TextBoxFor(model => model.pregunta, new { @class = "form-control", @placeholder = "Pregunta" })
+        </div>
+        <div class="form-group">
+            <label for="respuesta">Respuesta</label>
+            @Html.TextAreaFor(model => model.respuesta, new { @class = "form-control", @placeholder = "Respuesta" })
+        </div>
+        <div class="text-right">
+            <button type="submit" class="primary-btn">Guardar</button>
+            <a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")" class="primary-btn">Cancelar</a>
+        </div>
+    }
+</div>

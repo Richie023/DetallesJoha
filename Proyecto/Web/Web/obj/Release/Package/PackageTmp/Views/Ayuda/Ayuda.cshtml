@@ -1,0 +1,50 @@
+﻿@model List<Web.Entidades.Ayuda>
+
+@{
+    ViewBag.Title = "Ayuda";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h3 class="text-center font-weight-bold">Sección de Ayuda</h3>
+    <h4 class="text-center text-muted">Encuentra respuestas a las preguntas más frecuentes y guías útiles.</h4>
+
+    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+    {
+        <div class="text-right mt-4">
+            <a href="@Url.Action("Insertar", "Ayuda")" class="primary-btn">Agregar Nueva Ayuda</a>
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="help-section">
+            @foreach (var item in Model)
+            {
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.categoria</h4>
+                        <p class="card-text">@item.titulo</p>
+                        <p class="card-text">@item.contenido</p>
+                        <div class="text-muted mb-3">Última actualización: @item.ultima_actualizacion.ToString()</div>
+                        <div class="text-right">
+                            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                            {
+                                <a href="@Url.Action("Editar", "Ayuda", new { id = @item.id })"><i class="fa fa-pencil-square-o fa-2x" tittle="Editar Ayuda"></i></a>
+                                <a href="@Url.Action("Eliminar", "Ayuda", new { id = @item.id })"><i class="fa fa-trash-o fa-2x" tittle="Eliminar Ayuda"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            No se encontraron entradas de ayuda en este momento.
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,153 @@
+﻿
+@model List<Web.Entidades.Carrito>
+
+@{
+    ViewBag.Title = "ConsultarPedidos";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+
+@if (ViewBag.MsjPantalla != null)
+{
+    <div class="alert alert-warning" role="alert" style="text-align:center">
+        @ViewBag.MsjPantalla
+    </div>
+}
+
+
+
+@foreach (var item in Model)
+{
+<div class="collapsed">
+    <div class="">
+    </div>
+
+    <div class="">
+        <div class="  "  >
+
+
+            <div class="" id="heading_@item.ConsecutivoMaestro">
+
+                <h5 class="">
+                    <button class="btn btn-danger collapsed btn-block " data-toggle="collapse" data-target="#collapse_@item.ConsecutivoMaestro" aria-expanded="false" aria-controls="collapse">
+                        <div class="col-lg-4">
+                            Fecha Del Pedido
+                            <div>
+                                @item.Fecha.ToString("dd/MM/yyyy hh:mm tt")
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            Total
+                            <div>
+                                @item.Total.ToString("N2")
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            Numero:
+                            <div>
+                                @item.ConsecutivoMaestro
+                            </div>
+
+                        </div>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse_@item.ConsecutivoMaestro" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+                <div class="">
+                    <h5>Detalles del pedido</h5>
+                    <div class="">
+                        Nombre Cliente:   @item.NombreUsuario &nbsp&nbsp <br />
+                        Id Producto : @item.Consecutivo<br />
+                        Producto :   @item.Nombre &nbsp&nbsp <br />
+                        Cantidad : @item.Cantidad&nbsp&nbsp<br />
+                        Precio : @item.Precio.ToString("N2")&nbsp&nbsp<br />
+                        SubTotal :   @item.SubTotal.ToString("N2")&nbsp&nbsp<br />
+                        Impuestos : @item.Impuesto.ToString("N2")&nbsp&nbsp<br />
+                        Total :  @item.Total.ToString("N2")&nbsp&nbsp<br />
+                        @item.RutaImagen.ToString()
+
+
+                        @if (Session["RolUsuario"].ToString() != "1")
+                        {
+
+                            <a href="@Url.Action("AgregarCarrito","Carrito", new {idProducto = item.Consecutivo,idCantidad=item.Cantidad})" class="btn btn-primary">Pedir de Nuevo</a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+}
+
+
+
+
+@*<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+    <thead>
+        <tr role="row">
+            <th># Factura</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>SubTotal</th>
+            <th>Impuestos</th>
+            <th>Total</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr class="odd">
+                <td>@item.ConsecutivoMaestro</td>
+                <td>@item.Fecha.ToString("dd/MM/yyyy hh:mm tt")</td>
+                <td>@item.Nombre</td>
+                <td>@item.Cantidad</td>
+                <td>@item.SubTotal.ToString("N2")</td>
+                <td>@item.Impuesto.ToString("N2")</td>
+                <td>@item.Total.ToString("N2")</td>
+                <td style="text-align:center" title="Revisar">
+                    <a href="@Url.Action("ConsultarPedidos","Carrito")"><i class="fa fa-file-text-o fa-2x"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+<script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myDataTable').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/es-ES.json',
+            }
+        });
+    });
+
+
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>

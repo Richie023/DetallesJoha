@@ -1,0 +1,26 @@
+﻿@model Web.Entidades.AvisoPrivacidad
+
+@{
+    ViewBag.Title = "Eliminar Aviso de Privacidad";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Registrar Aviso de Privacidad</h2>
+
+    @using (Html.BeginForm("Insertar", "AvisoPrivacidad", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label for="titulo_seccion">Título</label>
+            @Html.TextBoxFor(model => model.titulo_seccion, new { @class = "form-control", @placeholder = "Título" })
+        </div>
+        <div class="form-group">
+            <label for="contenido">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new { @class = "form-control", @placeholder = "Contenido" })
+        </div>
+        <div class="text-right">
+            <button type="submit" class="primary-btn">Guardar</button>
+            <a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")" class="primary-btn">Cancelar</a>
+        </div>
+    }
+</div>

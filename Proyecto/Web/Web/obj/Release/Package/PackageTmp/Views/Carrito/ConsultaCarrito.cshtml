@@ -1,0 +1,215 @@
+﻿@model List<Web.Entidades.Carrito>
+@{
+    ViewBag.Title = "ConsultaCarrito";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+      
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning" role="alert" style="text-align:center">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
+                        <div class="col-md-5 order-details ">
+                            <div class="section-title text-center">
+                                <h3 class="title">Mi Pedido</h3>
+                            </div>
+                            <div class="order-summary">
+                                <div class="order-col">
+                                    <div><strong>PRODUCTos</strong></div>
+                                    <div><strong>TOTAL</strong></div>
+                                </div>
+                                @foreach (var item in Model)
+                                {
+                                    <div class="odd"
+
+                                                <div class="order-products">
+                                                    <div class="order-col">
+                                                        <div>@item.Cantidad x @item.Nombre </div>
+                                                        <div>
+                                                            ¢@item.Total.ToString("N2")
+                                                            <button type="button" class="btn btn-icon-split AbrirModal" data-toggle="modal" data-target="#exampleModal" data-id="@item.ConsecutivoCarrito">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+
+                                 </div>
+                                        }
+
+
+                                @*<div class="order-col">
+            <div>Shiping</div>
+            <div><strong>FREE</strong></div>
+        </div>*@
+                                <div class="order-col">
+                                    <div><strong>TOTAL</strong></div>
+                                    <div><strong class="order-total">¢<b>@decimal.Parse(Session["Total"].ToString()).ToString("N2")</b></strong></div>
+                                </div>
+                            </div>
+                                    <div class="payment-method">
+                                        <div class="input-radio">
+                                            <input type="radio" name="payment" id="payment-1">
+                                            <label for="payment-1">
+                                                <span></span>
+                                                Sinpe Movil
+                                            </label>
+                                            <div class="caption">
+                                                <p>Numero de para el sinpe Movil: 8303-9384, Favor compartir comprobante la mismo Numero</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-radio">
+                                            <input type="radio" name="payment" id="payment-3">
+                                            <label for="payment-3">
+                                                <span></span>
+                                                Paypal Sistema.
+                                            </label>
+                                            <div class="caption">
+                                                <p>Link de pago.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="input-checkbox">
+                                        <input type="checkbox" id="terms">
+                                        <label for="terms">
+                                            <span></span>
+                                            He aceptado los <a href="#">Terminos &amp; Condiciones</a>
+                                        </label>
+                                    </div>
+                                    <div>
+                                    
+                                        @if (Session["Total"].ToString() != "0")
+                                        {
+                                            using (Html.BeginForm("PagarCarrito", "Carrito", FormMethod.Post))
+                                            {
+                                                <button type="submit" class="primary-btn order-submity" style="width:150px">Realizar Pedido</button>
+                                            }
+                                        }
+                                    </div>
+
+                                
+                        @*<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th>Fecha</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Impuesto</th>
+                                    <th>SubTotal</th>
+                                    <th>Total</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+
+                                        <div class="order-products">
+                                            <div class="order-col">
+                                                <div>@item.Cantidad x @item.Nombre</div>
+                                                <div>¢@item.Total.ToString("N2")</div>
+                                            </div>
+
+                                        <td>@item.Fecha.ToString("dd/MM/yyyy hh:mm tt")</td>
+                                        <td>@item.ConsecutivoProducto</td>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Cantidad</td>
+                                        <td>@item.Precio.ToString("N2")</td>
+                                        <td>@item.Impuesto.ToString("N2")</td>
+                                        <td>@item.SubTotal.ToString("N2")</td>
+                                        <td>@item.Total.ToString("N2")</td>
+                                        <td style="text-align:center">
+
+                                            <button type="button" class="btn btn-primary AbrirModal" data-toggle="modal" data-target="#exampleModal" data-id="@item.ConsecutivoCarrito">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <br /><br />
+
+                        <div class="row">
+                            <div class="col-3">
+                                <p style="font-size:14pt; margin-top:2%">El monto a cancelar es de: ¢<b>@decimal.Parse(Session["Total"].ToString()).ToString("N2")</b></p>
+                            </div>
+                            <div>
+
+                                @if (Session["Total"].ToString() != "0")
+                                {
+                                    using (Html.BeginForm("PagarCarrito", "Carrito", FormMethod.Post))
+                                    {
+                                        <button type="submit" class="btn btn-outline-primary" style="width:100px">Pagar</button>
+                                    }
+                                }
+                            </div>
+
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myDataTable').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/es-ES.json',
+            }
+        });
+    });
+
+    $(".AbrirModal").click(function () {
+        $("#ConsecutivoCarrito").val($(this).attr("data-id"));
+    });
+
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Desea eliminar la línea seleccionada?
+            </div>
+            <div class="modal-footer">
+
+                @using (Html.BeginForm("EliminarCarrito", "Carrito", FormMethod.Post))
+                {
+                    <input type="hidden" id="ConsecutivoCarrito" name="ConsecutivoCarrito" value="" />
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model List<Web.Entidades.AvisoPrivacidad>
+
+@{
+    ViewBag.Title = "Política de Privacidad";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Listado de Avisos de Privacidad</h2>
+    <p class="text-center text-muted">Consulta y administra los avisos de privacidad disponibles en nuestra plataforma.</p>
+
+    @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+    {
+        <div class="text-right mt-4">
+            <a href="@Url.Action("Insertar", "AvisoPrivacidad")" class="primary-btn">Agregar Nuevo Aviso</a>
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="privacy-section">
+            @foreach (var aviso in Model)
+            {
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title">@aviso.titulo_seccion</h3>
+                        <p class="card-text">@aviso.contenido</p>
+                        <small class="text-muted">Última actualización: @aviso.ultima_actualizacion.ToString()</small>
+                        <div class="text-right mt-3">
+                            @if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
+                            {
+                                <a href="@Url.Action("Editar", "AvisoPrivacidad", new { id = @aviso.id })"><i class="fa fa-pencil-square-o fa-2x" tittle="Editar Aviso de Privacidad"></i></a>
+                                <a href="@Url.Action("Eliminar", "AvisoPrivacidad", new { id = @aviso.id })"><i class="fa fa-trash-o fa-2x" tittle="Eliminar Aviso de Privacidad"></i></a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            No se encontraron avisos de privacidad en este momento.
+        </div>
+    }
+
+
+</div>

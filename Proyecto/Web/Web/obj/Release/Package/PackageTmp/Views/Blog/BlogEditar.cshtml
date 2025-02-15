@@ -1,0 +1,44 @@
+﻿@model Web.Entidades.BlogArticulo
+
+@{
+    ViewBag.Title = "Editar Artículo";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container">
+    <h1 class="text-center">@ViewBag.Title</h1>
+
+    <form method="post" action="@Url.Action("Editar", "Blog")">
+        <input type="hidden" name="Id" value="@Model?.Id">
+
+        <div class="form-group">
+            <label for="Categoria">Categoría</label>
+            <input type="text" class="form-control" id="Categoria" name="Categoria" value="@Model?.Categoria" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Titulo">Título</label>
+            <input type="text" class="form-control" id="Titulo" name="Titulo" value="@Model?.Titulo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Resumen">Resumen</label>
+            <textarea class="form-control" id="Resumen" name="Resumen" rows="3" required>@Model?.Resumen</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Contenido">Contenido</label>
+            <textarea class="form-control" id="Contenido" name="Contenido" rows="5" required>@Model?.Contenido</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="Imagen_url">URL de la Imagen</label>
+            <input type="text" class="form-control" id="Imagen_url" name="Imagen_url" value="@Model?.Imagen_url">
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="@Url.Action("Blog", "Blog")" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>

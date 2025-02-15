@@ -1,0 +1,26 @@
+﻿@model Web.Entidades.PreguntasFrecuentes
+@{
+    ViewBag.Title = "Editar Pregunta Frecuente";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center font-weight-bold">Editar Pregunta Frecuente</h2>
+
+    @using (Html.BeginForm("Editar", "PreguntasFrecuentes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.id) 
+        <div class="form-group">
+            <label for="pregunta">Pregunta</label>
+            @Html.TextBoxFor(model => model.pregunta, new { @class = "form-control", @placeholder = "Pregunta" })
+        </div>
+        <div class="form-group">
+            <label for="respuesta">Respuesta</label>
+            @Html.TextAreaFor(model => model.respuesta, new { @class = "form-control", @placeholder = "Respuesta" })
+        </div>
+        <div class="text-right">
+            <button type="submit" class="primary-btn">Actualizar</button>
+            <a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")" class="primary-btn">Cancelar</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,268 @@
+﻿@model Web.Entidades.Resena
+
+
+
+
+
+@{
+    ViewBag.Title = "ConsultaResena";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!-- Product tab -->
+<div class="col-md-12"> 
+    <div id="product-tab">
+
+        @if (ViewBag.MsjPantalla != null)
+        {
+            <div class="alert alert-warning" role="alert" style="text-align:center">
+                @ViewBag.MsjPantalla
+            </div>
+        }
+
+        <!-- product tab nav -->
+        <ul class="tab-nav">
+
+            <li><a data-toggle="tab" href="#tab3">Reviews</a></li>
+        </ul>
+
+        <!-- tab3 -->
+        <div id="tab3" class="tab-pane fade in">
+            <div class="row">
+                <!-- Rating -->
+                <div class="col-md-3">
+                    <div id="rating">
+                        <div class="rating-avg">
+                            <span>4.5</span>
+                            <div class="rating-stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                        </div>
+                        <ul class="rating">
+                            <li>
+                                <div class="rating-stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="rating-progress">
+                                    <div style="width: 80%;"></div>
+                                </div>
+                                <span class="sum">3</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /Rating -->
+                <!-- Reviews -->
+                <div class="col-md-6">
+                    <div id="reviews">
+                        <ul class="reviews">
+                            <li>
+                                <div class="review-heading">
+                                    <h5 class="name">John</h5>
+                                    <p class="date">27 DEC 2018, 8:0 PM</p>
+                                    <div class="review-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                </div>
+                                <div class="review-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="review-heading">
+                                    <h5 class="name">John</h5>
+                                    <p class="date">27 DEC 2018, 8:0 PM</p>
+                                    <div class="review-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                </div>
+                                <div class="review-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="review-heading">
+                                    <h5 class="name">John</h5>
+                                    <p class="date">27 DEC 2018, 8:0 PM</p>
+                                    <div class="review-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o empty"></i>
+                                    </div>
+                                </div>
+                                <div class="review-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="reviews-pagination">
+                            <li class="active">1</li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- /Reviews -->
+                <!-- Review Form -->
+                <div class="col-md-3">
+                    <div id="review-form">
+                        <div class="form-group">
+
+                            {
+
+                            @*<table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+                                <thead>
+                                    <tr role="row">
+                                        <th>Id Resena</th>
+                                        <th>Nombre de Usuario</th>
+                                        <th>Correo Electronico</th>
+                                        <th>Calificacion</th>
+                                        <th>Comentario</th>
+                                        <th>Fecha</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.listaResennas)
+                                    {
+                                        <tr class="odd">
+                                            <td>@item.IdResenna</td>
+                                            <td>@item.NombreUsuario</td>
+                                            <td>@item.CorreoElectronico</td>
+                                            <td>@item.Calificacion</td>
+                                            <td>@item.Comentario</td>
+                                            <td>@item.FechaResenna</td>
+
+                                            <td style="text-align:center">
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            }*@
+
+
+
+
+                            @using (Html.BeginForm("RegistrarResena", "Resena", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Calificacion, "Calificación")
+
+                                    <div class="rate">
+
+
+                                        <input id="star5" name="Calificacion" value="5" type="radio"><label for="star5"></label>
+                                        <input id="star4" name="Calificacion" value="4" type="radio"><label for="star4"></label>
+                                        <input id="star3" name="Calificacion" value="3" type="radio"><label for="star3"></label>
+                                        <input id="star2" name="Calificacion" value="2" type="radio"><label for="star2"></label>
+                                        <input id="star1" name="Calificacion" value="1" type="radio"><label for="star1"></label>
+                                        <input type="radio" id="star1" name="Calificacion" value="1" />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Comentario, "Comentario")
+                                    @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control", @rows = "4", placeholder = "Escribe tu reseña..." })
+                                </div>
+
+
+
+                                <button type="submit" class="primary-btn">Enviar Resena</button>
+
+                            }
+
+                        </div>
+                    </div>
+                    <!-- /Review Form -->
+                </div>
+            </div>
+            <!-- /tab3 -->
+        </div>
+        <!-- /product tab content -->
+    </div>
+    </div>
+
+
+    <script>
+    let stars =
+        document.getElementsByClassName("star");
+    let output =
+        document.getElementById("output");
+    let cal = document.getElementById("cal");
+    // Funtion to update rating
+    function gfg(n) {
+        remove();
+        for (let i = 0; i < n; i++) {
+            if (n == 1) cls = "one";
+            else if (n == 2) cls = "two";
+            else if (n == 3) cls = "three";
+            else if (n == 4) cls = "four";
+            else if (n == 5) cls = "five";
+            stars[i].className = "star " + cls;
+        }
+        cal.innerText = n;
+        output.innerText = "Rating is: " + n + "/5" ;
+    }
+
+    // To remove the pre-applied styling
+    function remove() {
+        let i = 0;
+        while (i < 5) {
+            stars[i].className = "star";
+            i++;
+        }
+    }
+
+
+     function AgregarResena( calificacion, inventario) {
+     let cantProducto = $("#prd-" + id).val();
+
+     
+
+     $.ajax({
+         url: '/Carrito/AgregarCarrito',
+         type: "POST",
+         data: {
+             "idProducto": id,
+             "cantProducto": cantProducto
+         },
+         success: function (data) {
+             if (data == "OK") {
+                 window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
+             } else {
+                 alert('Debes iniciar Sesión o registrarte para comprar este producto');
+             }
+         }
+     });
+ }
+
+
+
+    </script>

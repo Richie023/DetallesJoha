@@ -1,0 +1,146 @@
+﻿@model List<Web.Entidades.Carrito>
+
+@{
+    ViewBag.Title = "ConsultarDetalleFacturas";
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Factura # @Model.FirstOrDefault().ConsecutivoMaestro</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+
+                        @if (ViewBag.MsjPantalla != null)
+                        {
+                            <div class="alert alert-warning" role="alert" style="text-align:center">
+                                @ViewBag.MsjPantalla
+                            </div>
+                        }
+
+                        <table id="myDataTable" class="table table-bordered dataTable" style="width: 100%;">
+                            <thead>
+                                <tr role="row">
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>SubTotal</th>
+                                    <th>Impuestos</th>
+                                    <th>Total</th>
+                                    <th>Recompra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Cantidad</td>
+                                        <td>@item.Precio.ToString("N2")</td>
+                                        <td>@item.SubTotal.ToString("N2")</td>
+                                        <td>@item.Impuesto.ToString("N2")</td>
+                                        <td>@item.Total.ToString("N2")</td>
+                                        <td style="text-align:center">
+                                            @item.Consecutivo
+
+
+
+                                            @*@using (Html.BeginForm("VerProducto", "Producto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                                            {
+
+                                                @Html.HiddenFor(m => item.ConsecutivoProducto)
+                                                @Html.HiddenFor(m => item.Cantidad)
+
+                                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
+                                            }*@
+
+                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.Consecutivo})" class="btn-add">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                            </a>
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Estilos/vendor/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myDataTable').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/es-ES.json',
+            }
+        });
+    });
+
+
+</script>
+
+<script>
+    function ValidarNumeros(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode >= 48 && charCode <= 57) {
+            return true;
+        }
+        return false;
+    }
+
+    function AgregarCarrito(id, inventario) {
+        let cantProducto = $("#prd-" + id).val();
+
+        if (cantProducto > inventario) {
+            MostrarAlert("info", "Debes ingresar una cantidad inferior");
+            return;
+        }
+
+        if (cantProducto <= 0) {
+            MostrarAlert("info", "Debe ingresar una cantidad válida");
+            return;
+        }
+
+        $.ajax({
+            url: '/Carrito/AgregarCarrito',
+            type: "POST",
+            data: {
+                "idProducto": id,
+                "cantProducto": cantProducto
+            },
+            success: function (data) {
+                if (data == "OK") {
+                    window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
+                } else {
+                    alert('Debes iniciar Sesión o registrarte para comprar este producto');
+                }
+            }
+        });
+    }
+
+        function AgregarAFavoritos(productoId) {
+            // Aquí agregas tu lógica para agregar a favoritos
+        }
+
+        function MostrarAlert(icono, mensaje) {
+            Swal.fire({
+                position: "center",
+                icon: icono,
+                title: mensaje,
+                showConfirmButton: false,
+                timer: 2500
+            });
+        }
+
+</script>
