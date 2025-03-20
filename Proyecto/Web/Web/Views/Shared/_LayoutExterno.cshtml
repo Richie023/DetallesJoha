@@ -262,7 +262,7 @@
                         <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
                         <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
                         <li><a href="@Url.Action("RegistraInforE", "InfoE")">Info E</a></li>
-                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Resenas </a></li>
+                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Reseñas </a></li>
 
                     }
                     else if ((Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "2"))
@@ -273,6 +273,9 @@
                         </li>
                         <li>
                             <a href="@Url.Action("ConsultarFacturas", "Carrito")">Mis Compras</a>
+                        </li>
+                        <li>
+                        <li><a href="@Url.Action("RegistrarResena","Resena")"> Agregar Reseña</a></li>
                         </li>
 
                     }
@@ -399,7 +402,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="newsletter">
-                        <p>Regístrate al <strong>Bolitín</strong></p>
+                        <p>Regístrate al <strong>Boletín</strong></p>
                         <form>
                             <input class="input" type="email" placeholder="Ingrese su correo electrónico">
                             <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
@@ -451,7 +454,7 @@
                             <h3 class="footer-title">Categorías</h3>
                             <ul class="footer-links">
                                 <li><a href="#">Descuentos</a></li>
-                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads"</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
                                 <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
                                 <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1007})">Gorras</a></li>
                                 <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
@@ -465,7 +468,7 @@
                         <div class="footer">
                             <h3 class="footer-title">Información</h3>
                             <ul class="footer-links">
-                                <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
+                                <li><a href="@Url.Action("Acerca", "AcercaD")">Acerca de nosotros</a></li>
                                 <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
                                 <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
                                 <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
@@ -480,8 +483,6 @@
                             <ul class="footer-links">
                                 <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
                                 <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
-                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
-                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
                                 <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
