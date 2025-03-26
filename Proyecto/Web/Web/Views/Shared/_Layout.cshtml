@@ -18,6 +18,7 @@
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/bootstrap.min.css" />
 
+
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick.css" />
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick-theme.css" />
@@ -164,58 +165,60 @@
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Carrito</span>
                                     <div class="qty">
-                                        @if (Session["Cantidad"].ToString() != null)
+                                        @if (Session["Cantidad"] != null)
                                         {
                                             @Session["Cantidad"].ToString()
                                         }
                                         else
-                                        { <div class="qty">0</div>}
+                                        {
+
+                                        }
                                     </div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="/img/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product</a></h3>
-                                                <h4 class="product-price"><span class="qty">0x</span>0.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="/img/product02.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product</a></h3>
-                                                <h4 class="product-price"><span class="qty">0x</span>000</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
+                                        @if (Session["Carrito"] != null)
+                                        {
+                                            var carrito = (List<Web.Entidades.CarritoProducto>)Session["Carrito"];
+                                            foreach (var producto in carrito)
+                                            {
+                                                <div class="product-widget">
+                                                    <div class="product-img">
+                                                        <img src="@producto.RutaImagen" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-name"><a href="#">@producto.En_promocion</a></h3>
+                                                        <h4 class="product-price"><span class="qty">@producto. x</span> ¢@producto.Precio.ToString("N2")</h4>
+                                                    </div>
+                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p>Tu carrito está vacío</p>
+                                        }
                                     </div>
                                     <div class="cart-summary">
                                         <small>
-                                            @if (Session["Consecutivo"] != null)
+                                            @if (Session["Cantidad"] != null)
                                             {
                                                 @Session["Cantidad"].ToString()
                                             }
                                             else
-                                            { <i class="qty"> 0 </i>}
-                                            Productos selesccionados
+                                            {
+                                                <i class="qty">0</i>
+                                            }
                                         </small>
 
-                                        @if (Session["NombreRol"] != null)
+                                        @if (Session["SubTotal"] != null)
                                         {
-                                            <h5>
-                                                &nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva
-                                            </h5>
+                                            <h5>&nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva</h5>
                                         }
                                         else
-                                        {<div class="qty"><h5>0</h5></div>}
-
+                                        {
+                                            <h5>¢ 0.00</h5>
+                                        }
                                     </div>
                                     <div class="cart-btns">
                                         <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
@@ -535,6 +538,11 @@
     </footer>
 
     <!-- jQuery Plugins -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Otros scripts -->
     <script src="~/Estilos/js/jquery.min.js"></script>
     <script src="~/Estilos/js/bootstrap.min.js"></script>
     <script src="~/Estilos/js/slick.min.js"></script>
