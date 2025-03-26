@@ -1,4 +1,4 @@
-﻿@model Web.Entidades.Resena
+﻿﻿@model Web.Entidades.Resena
 
 
 
@@ -12,7 +12,7 @@
 
 
 <!-- Product tab -->
-<div class="col-md-12"> 
+<div class="col-md-12">
     <div id="product-tab">
 
         @if (ViewBag.MsjPantalla != null)
@@ -25,44 +25,56 @@
         <!-- product tab nav -->
         <ul class="tab-nav">
 
-            <li><a data-toggle="tab" href="#tab3">Agrega tu reseña del servicio</a></li>
+            <li><a data-toggle="tab" href="#tab3">Reseñas del servicio</a></li>
         </ul>
 
-      
-            @using (Html.BeginForm("RegistrarResena", "Resena", FormMethod.Post))
+        <!-- tab3 -->
+        <div id="tab3" class="tab-pane fade in">
+            <div class="row">
+              
+                <div class="col-md-3">
+                    <div id="review-form">
+                        <div class="form-group">
+
+
+                            @using (Html.BeginForm("RegistrarResena", "Resena", FormMethod.Post, new { id = "formResena" }))
                             {
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Calificacion, "Calificación")
 
                                     <div class="rate">
-
-
-                                        <input id="star5" name="Calificacion" value="5" type="radio"><label for="star5"></label>
-                                        <input id="star4" name="Calificacion" value="4" type="radio"><label for="star4"></label>
-                                        <input id="star3" name="Calificacion" value="3" type="radio"><label for="star3"></label>
-                                        <input id="star2" name="Calificacion" value="2" type="radio"><label for="star2"></label>
-                                        <input id="star1" name="Calificacion" value="1" type="radio"><label for="star1"></label>
-                                        <input type="radio" id="star1" name="Calificacion" value="1" />
-
+                                        <input id="star5" name="Calificacion" value="5" type="radio" required><label for="star5"></label>
+                                        <input id="star4" name="Calificacion" value="4" type="radio" required><label for="star4"></label>
+                                        <input id="star3" name="Calificacion" value="3" type="radio" required><label for="star3"></label>
+                                        <input id="star2" name="Calificacion" value="2" type="radio" required><label for="star2"></label>
+                                        <input id="star1" name="Calificacion" value="1" type="radio" required><label for="star1"></label>
                                     </div>
+
+                                    @Html.ValidationMessageFor(m => m.Calificacion, "", new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group">
                                     @Html.LabelFor(m => m.Comentario, "Comentario")
-                                    @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control", @rows = "4", placeholder = "Escribe tu reseña..." })
+                                    @Html.TextAreaFor(m => m.Comentario, new { @class = "form-control", @rows = "4", placeholder = "Escribe tu reseña...", required = "required" })
+
+                                    @Html.ValidationMessageFor(m => m.Comentario, "", new { @class = "text-danger" })
                                 </div>
 
-
-
-                                <button type="submit" class="primary-btn">Enviar Resena</button>
-
+                                <button type="submit" class="primary-btn">Enviar Reseña</button>
                             }
-
                         </div>
-      
+                    </div>
+                    <!-- /Review Form -->
+                </div>
+            </div>
+            <!-- /tab3 -->
+        </div>
+        <!-- /product tab content -->
+    </div>
+</div>
 
 
-    <script>
+<script>
     let stars =
         document.getElementsByClassName("star");
     let output =
@@ -96,10 +108,10 @@
      function AgregarResena( calificacion, inventario) {
      let cantProducto = $("#prd-" + id).val();
 
-     
+
 
      $.ajax({
-         url: '/Resena/RegistrarResena',
+         url: '/Carrito/AgregarCarrito',
          type: "POST",
          data: {
              "idProducto": id,
@@ -117,4 +129,4 @@
 
 
 
-    </script>
+</script>

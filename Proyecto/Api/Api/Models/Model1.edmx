@@ -53,6 +53,9 @@
           <Parameter Name="ConsecutivoProducto" Type="bigint" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
         </Function>
+        <Function Name="BuscarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="ColsultarAvisoPrivacidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ColsultarAyuda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ColsultarBlogs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -306,6 +309,9 @@
             <Parameter Name="ConsecutivoProducto" Mode="In" Type="Int64" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="BuscarProductos" ReturnType="Collection(DetallesJohaModel.BuscarProductos_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ColsultarAvisoPrivacidad" ReturnType="Collection(DetallesJohaModel.ColsultarAvisoPrivacidad_Result)" />
           <FunctionImport Name="ColsultarAyuda" ReturnType="Collection(DetallesJohaModel.ColsultarAyuda_Result)" />
           <FunctionImport Name="ColsultarBlogs" ReturnType="Collection(DetallesJohaModel.ColsultarBlogs_Result)" />
@@ -505,6 +511,21 @@
             <Parameter Name="Contenido" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="BuscarProductos_Result">
+          <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
+          <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Inventario" Nullable="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+          <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Promocion" Nullable="true" />
+          <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+        </ComplexType>
         <ComplexType Name="ColsultarAvisoPrivacidad_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />
@@ -862,6 +883,25 @@
           <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="DetallesJohaModel.Store.ActualizarProducto" />
           <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="DetallesJohaModel.Store.ActualizarUsuario" />
           <FunctionImportMapping FunctionImportName="AgregarCarrito" FunctionName="DetallesJohaModel.Store.AgregarCarrito" />
+          <FunctionImportMapping FunctionImportName="BuscarProductos" FunctionName="DetallesJohaModel.Store.BuscarProductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DetallesJohaModel.BuscarProductos_Result">
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Inventario" ColumnName="Inventario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+                <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+                <ScalarProperty Name="Id_Promocion" ColumnName="Id_Promocion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ColsultarAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.ColsultarAvisoPrivacidad">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarAvisoPrivacidad_Result">

@@ -199,6 +199,15 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarCarrito", consecutivoUsuarioParameter, consecutivoProductoParameter, cantidadParameter);
         }
     
+        public virtual ObjectResult<BuscarProductos_Result> BuscarProductos(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BuscarProductos_Result>("BuscarProductos", nombreParameter);
+        }
+    
         public virtual ObjectResult<ColsultarAvisoPrivacidad_Result> ColsultarAvisoPrivacidad()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ColsultarAvisoPrivacidad_Result>("ColsultarAvisoPrivacidad");

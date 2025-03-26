@@ -74,13 +74,15 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
+                        <form method="get" action="@Url.Action("ConsultarProductos", "Buscar")">
                             <select class="input-select">
                                 <option value="0">Categorías</option>
                                 <option value="1">Camisas</option>
                                 <option value="1">Gorras</option>
                             </select>
-                            <input class="input" placeholder="Busque Aquí">
+                            <input class="input" name="nombre" placeholder="Busque Aquí">
+
+
                             <button class="search-btn">Buscar</button>
                         </form>
                     </div>
