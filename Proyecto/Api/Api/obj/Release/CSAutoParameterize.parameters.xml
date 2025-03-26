@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DetallesJohaEntities-Web.config Connection String" description="DetallesJohaEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.Model1.csdl|res://*/Models.Model1.ssdl|res://*/Models.Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SQL1002.site4now.net;initial catalog=db_ab6c76_detallesjoha;persist security info=True;user id=db_ab6c76_detallesjoha_admin;password=$Q4g$$jg@ZaB#8h;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Documents\\Ufide\\SC-702\ Diseño\ y\ Desarrollo\ de\ Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DetallesJohaEntities']/@connectionString" />
+  </parameter>
+</parameters>

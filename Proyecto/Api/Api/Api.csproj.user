@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <UseIISExpress>true</UseIISExpress>
@@ -18,6 +18,7 @@
     <WebStackScaffolding_LayoutPageFile />
     <ProjectView>ShowAllFiles</ProjectView>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Api\Api\Properties\PublishProfiles\pruebadj-001-subsite2 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

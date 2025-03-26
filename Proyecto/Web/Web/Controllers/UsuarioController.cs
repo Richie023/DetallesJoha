@@ -37,14 +37,16 @@ namespace Web.Controllers
             if (respuesta.Codigo == 0)
             {
                 Session["NombreUsuario"] = entidad.Nombre;
-                return RedirectToAction("ActualizarUsuario", "Usuario");
+                return RedirectToAction("PantallaPrincipal", "Inicio");
             }
             else
             {
                 ViewBag.MsjPantalla = respuesta.Detalle;
                 return View();
             }
-        }   [HttpPost]
+        }  
+        
+        [HttpPost]
         public ActionResult ActualizaUsuario(Usuario entidad)
         {
             var respuesta = modelo.ActualizaUsuario(entidad);
