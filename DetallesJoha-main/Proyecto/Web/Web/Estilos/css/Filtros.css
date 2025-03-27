@@ -1,0 +1,74 @@
+﻿/* Sidebar de filtros acorde al template */
+.aside {
+    background: #f4f4f4; /* Fondo similar al de la sección aside del template */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Sección individual de filtro */
+.filter-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E4E7ED; /* Línea sutil para separar secciones */
+}
+
+/* Título de cada sección, usando tipografía y color del template */
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2B2D42; /* Color de encabezado ya usado en el template */
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #D10024; /* Línea que utiliza el color primario */
+}
+
+/* Listas de filtros sin viñetas */
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .filter-list li {
+        margin-bottom: 10px;
+    }
+
+        /* Enlaces de filtro que respetan la tipografía y el color base */
+        .filter-list li a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+            .filter-list li a:hover,
+            .filter-list li a:focus {
+                color: #D10024; /* Cambio al color primario al pasar el mouse */
+            }
+
+/* Formularios para filtrar por color o tamaño */
+.filter-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E4E7ED;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-form button {
+    padding: 10px 20px;
+    background-color: #D10024;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .filter-form button:hover {
+        background-color: #B9BABC;
+    }

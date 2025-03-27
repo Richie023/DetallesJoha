@@ -1,0 +1,134 @@
+
+/* Colores principales de la interfaz */
+:root {
+    --primary-color: #2c3e50; /* Color primario: usado en encabezados y acentos */
+    --secondary-color: #f8f9fa; /* Color de fondo secundario */
+    --accent-color: #e74c3c; /* Color de acento: para destacar elementos */
+    --text-color: #333; /* Color de texto general */
+    --border-color: #dee2e6; /* Color de bordes */
+}
+
+/* Reset de márgenes y rellenos, box-sizing aplicado a todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos globales del cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.role-user-2 {
+    margin-top: 100px;
+}
+
+.role-guest {
+    margin-top: 100px;
+}
+
+/* Contenedor principal para la política */
+.container {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+/* Encabezado de la política (título y descripción principal) */
+.policy-header {
+    background-color: var(--primary-color); /* Fondo del encabezado */
+    color: white; /* Texto en blanco */
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Secciones de la política */
+.policy-section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera */
+}
+
+/* Encabezado de primer nivel */
+h1 {
+    font-size: 2.5rem; /* Título principal */
+    margin-bottom: 1rem;
+}
+
+/* Encabezado de segundo nivel */
+h2 {
+    color: var(--primary-color); /* Color primario para destacar */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color); /* Línea inferior */
+}
+
+/* Párrafo general */
+p {
+    margin-bottom: 1rem; /* Espacio inferior */
+}
+
+/* Nota importante en la política */
+.important-note {
+    background-color: #fff3cd; /* Fondo amarillo claro */
+    border-left: 4px solid #ffc107; /* Línea de acento */
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Información de contacto */
+.contact-info {
+    background-color: var(--secondary-color); /* Fondo claro secundario */
+    padding: 1rem;
+    border-radius: 4px; /* Bordes redondeados */
+    margin-top: 1rem;
+}
+
+/* Lista de pasos (sin bullets y con contador numérico) */
+.steps {
+    list-style-type: none;
+    counter-reset: steps; /* Reinicio de contador */
+    margin: 1rem 0;
+}
+
+    /* Elementos de la lista de pasos */
+    .steps li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 1rem;
+        counter-increment: steps; /* Incremento de contador */
+    }
+
+        /* Números en círculo para los pasos */
+        .steps li::before {
+            content: counter(steps); /* Inserta el número */
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--primary-color); /* Fondo en color primario */
+            color: white; /* Número en blanco */
+            border-radius: 50%; /* Forma circular */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+/* Bloque de exclusiones en la política */
+.exclusions {
+    background-color: #ffe6e6; /* Fondo rosado claro */
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}

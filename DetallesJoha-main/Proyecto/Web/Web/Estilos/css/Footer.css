@@ -1,0 +1,39 @@
+﻿
+/* Estilos base para el menú de navegación */
+.main-nav .dropdown {
+    position: relative;
+}
+
+.main-nav .dropdown-menu {
+    display: none; /* Oculta el menú por defecto */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+/* Mostrar el menú cuando el usuario pasa el cursor sobre el elemento dropdown */
+.main-nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Estilos adicionales para los elementos de menú */
+.main-nav .dropdown-menu li {
+    list-style: none;
+}
+
+    .main-nav .dropdown-menu li a {
+        padding: 10px 20px;
+        display: block;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .main-nav .dropdown-menu li a:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
