@@ -8,6 +8,7 @@ using Web.Models;
 
 namespace Web.Controllers
 {
+    @*cambio*@
     public class BuscarController : Controller
     {
         BuscarModel model = new BuscarModel();
