@@ -8,6 +8,25 @@
     <FunctionImportMapping FunctionImportName="ActualizarProducto" FunctionName="DetallesJohaModel.Store.ActualizarProducto" />
     <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="DetallesJohaModel.Store.ActualizarUsuario" />
     <FunctionImportMapping FunctionImportName="AgregarCarrito" FunctionName="DetallesJohaModel.Store.AgregarCarrito" />
+    <FunctionImportMapping FunctionImportName="BuscarProductos" FunctionName="DetallesJohaModel.Store.BuscarProductos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DetallesJohaModel.BuscarProductos_Result">
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Inventario" ColumnName="Inventario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+          <ScalarProperty Name="ColorBase" ColumnName="ColorBase" />
+          <ScalarProperty Name="Id_Promocion" ColumnName="Id_Promocion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ColsultarAvisoPrivacidad" FunctionName="DetallesJohaModel.Store.ColsultarAvisoPrivacidad">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DetallesJohaModel.ColsultarAvisoPrivacidad_Result">

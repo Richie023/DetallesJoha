@@ -49,6 +49,9 @@
       <Parameter Name="ConsecutivoProducto" Mode="In" Type="Int64" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="BuscarProductos" ReturnType="Collection(DetallesJohaModel.BuscarProductos_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="ColsultarAvisoPrivacidad" ReturnType="Collection(DetallesJohaModel.ColsultarAvisoPrivacidad_Result)" />
     <FunctionImport Name="ColsultarAyuda" ReturnType="Collection(DetallesJohaModel.ColsultarAyuda_Result)" />
     <FunctionImport Name="ColsultarBlogs" ReturnType="Collection(DetallesJohaModel.ColsultarBlogs_Result)" />
@@ -248,6 +251,21 @@
       <Parameter Name="Contenido" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="BuscarProductos_Result">
+    <Property Type="Int64" Name="Consecutivo" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="Inventario" Nullable="false" />
+    <Property Type="Boolean" Name="Estado" Nullable="false" />
+    <Property Type="String" Name="RutaImagen" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="IdCategoria" Nullable="false" />
+    <Property Type="String" Name="Material" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Tamanio" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ColorBase" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Id_Promocion" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="NombreCategoria" Nullable="false" MaxLength="200" />
+  </ComplexType>
   <ComplexType Name="ColsultarAvisoPrivacidad_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="titulo_seccion" Nullable="false" MaxLength="5000" />

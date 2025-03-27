@@ -172,6 +172,7 @@
     <Compile Include="Entidades\BlogArticulo.cs" />
     <Compile Include="Entidades\Buscar.cs" />
     <Compile Include="Entidades\Carrito.cs" />
+    <Compile Include="Entidades\CarritoProducto.cs" />
     <Compile Include="Entidades\Confirmacion.cs" />
     <Compile Include="Entidades\Consulta.cs" />
     <Compile Include="Entidades\InforE.cs" />

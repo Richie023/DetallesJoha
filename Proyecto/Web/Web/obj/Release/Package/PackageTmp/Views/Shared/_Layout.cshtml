@@ -18,6 +18,7 @@
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/bootstrap.min.css" />
 
+
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick.css" />
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick-theme.css" />
@@ -52,12 +53,12 @@
         <div id="top-header">
             <div class="container">
                 <ul class="header-links pull-left">
-                    <li><a href="https://wa.me/50683039384" target="_blank"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
-                    <li><a href="mailto:joha-Guillen@Hotmail.com?Subject=Interesado%20en%20mas%20Informacion"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
-                    <li><a href="https://maps.app.goo.gl/cEAQK3aC4X8stMJJ9" target="_blank"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
                 </ul>
                 <ul class="header-links pull-right">
-                    <li><a href="#"><i class="fa-solid fa-colon-sign"></i> ¢ CRC</a></li>
+                    <li><a href="#"><i class="fa fa-dollar"></i> CRC</a></li>
 
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link">
@@ -134,14 +135,13 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form method="get" action="@Url.Action("ConsultarProductos", "Buscar")">
+                            <form>
                                 <select class="input-select">
                                     <option value="0">Categorías</option>
                                     <option value="1">Ropa de niño</option>
                                     <option value="1">Gorras</option>
                                 </select>
-                                <input class="input" name="nombre" placeholder="Busque Aquí">
-
+                                <input class="input" placeholder="Busque Aquí">
                                 <button class="search-btn">Buscar</button>
                             </form>
                         </div>
@@ -151,72 +151,74 @@
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
                             <!-- Wishlist -->
-                            @*<div>
+                            <div>
                                 <a href="#">
                                     <i class="fa fa-heart-o"></i>
                                     <span>Deseados</span>
                                     <div class="qty">2</div>
                                 </a>
-                            </div>*@
+                            </div>
                             <!-- /Wishlist -->
                             <!-- Cart -->
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                    <i class="fa fa-shopping-cart-x2"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span>Carrito</span>
                                     <div class="qty">
-                                        @if (Session["Cantidad"].ToString() != null)
+                                        @if (Session["Cantidad"] != null)
                                         {
                                             @Session["Cantidad"].ToString()
                                         }
                                         else
-                                        { <div class="qty">0</div>}
+                                        {
+
+                                        }
                                     </div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="/img/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product</a></h3>
-                                                <h4 class="product-price"><span class="qty">0x</span>0.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
-
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="/img/product02.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product</a></h3>
-                                                <h4 class="product-price"><span class="qty">0x</span>000</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
+                                        @if (Session["Carrito"] != null)
+                                        {
+                                            var carrito = (List<Web.Entidades.CarritoProducto>)Session["Carrito"];
+                                            foreach (var producto in carrito)
+                                            {
+                                                <div class="product-widget">
+                                                    <div class="product-img">
+                                                        <img src="@producto.RutaImagen" alt="">
+                                                    </div>
+                                                    <div class="product-body">
+                                                        <h3 class="product-name"><a href="#">@producto.En_promocion</a></h3>
+                                                        <h4 class="product-price"><span class="qty">@producto. x</span> ¢@producto.Precio.ToString("N2")</h4>
+                                                    </div>
+                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p>Tu carrito está vacío</p>
+                                        }
                                     </div>
                                     <div class="cart-summary">
                                         <small>
-                                            @if (Session["Consecutivo"] != null)
+                                            @if (Session["Cantidad"] != null)
                                             {
                                                 @Session["Cantidad"].ToString()
                                             }
                                             else
-                                            { <i class="qty"> 0 </i>}
-                                            Productos selesccionados
+                                            {
+                                                <i class="qty">0</i>
+                                            }
                                         </small>
 
-                                        @if (Session["NombreRol"] != null)
+                                        @if (Session["SubTotal"] != null)
                                         {
-                                            <h5>
-                                                &nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva
-                                            </h5>
+                                            <h5>&nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva</h5>
                                         }
                                         else
-                                        {<div class="qty"><h5>0</h5></div>}
-
+                                        {
+                                            <h5>¢ 0.00</h5>
+                                        }
                                     </div>
                                     <div class="cart-btns">
                                         <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
@@ -263,10 +265,10 @@
                         <li><a href="@Url.Action("RegistrarCategoria", "Categoria")">Registra Categoria</a></li>
                         <li><a href="@Url.Action("ConsultaProductos", "Producto")">Productos</a></li>
                         <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
-                        <li><a href="@Url.Action("ConsultarVentasMensuales", "Ventas")">Ventas</a></li>
+                        <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
                         <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
-                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Agregar Informacion Empresa</a></li>
-                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Reseñas </a></li>
+                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Info E</a></li>
+                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Resenas </a></li>
 
                     }
                     else if ((Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "2"))
@@ -411,7 +413,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="newsletter">
-                        <p>Regístrate al <strong>Boletin</strong></p>
+                        <p>Regístrate al <strong>Bolitín</strong></p>
                         <form>
                             <input class="input" type="email" placeholder="Ingrese su correo electrónico">
                             <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
@@ -451,9 +453,9 @@
                             <h3 class="footer-title">Acercas de Nosotros</h3>
                             <p>Somos una Pyme de didicada a la Sublimación</p>
                             <ul class="footer-links">
-                                <li><a href="https://wa.me/50683039384" target="_blank" ><i class="fa fa-phone"></i> +506-8303-9384</a></li>
-                                <li><a href="mailto:joha-Guillen@Hotmail.com?Subject=Interesado%20en%20mas%20Informacion"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
-                                <li><a href="https://maps.app.goo.gl/cEAQK3aC4X8stMJJ9" target="_blank"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
+                                <li><a href="https://wa.me/50683039384"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i> joha-Guillen@Hotmail.com</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i> Costado norte de la plaza de cipreses de Oreamuno</a></li>
                             </ul>
                         </div>
                     </div>
@@ -477,7 +479,7 @@
                         <div class="footer">
                             <h3 class="footer-title">Información</h3>
                             <ul class="footer-links">
-                                <li><a href="@Url.Action("Acerca", "AcercaD")">Acerca de nosotros</a></li>
+                                <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
                                 <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
                                 <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
                                 <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
@@ -492,6 +494,8 @@
                             <ul class="footer-links">
                                 <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
                                 <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
+                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
                                 <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
@@ -510,18 +514,18 @@
                 <!-- row -->
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        @*<ul class="footer-payments">
+                        <ul class="footer-payments">
                             <li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
                             <li><a href="#"><i class="fa fa-credit-card"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
                             <li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-                        </ul>*@
+                        </ul>
                         <span class="copyright">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href=#></a>
+                            <script>document.write(new Date().getFullYear());</script> Derechos Reservados<i aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </span>
                     </div>
@@ -534,6 +538,11 @@
     </footer>
 
     <!-- jQuery Plugins -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Otros scripts -->
     <script src="~/Estilos/js/jquery.min.js"></script>
     <script src="~/Estilos/js/bootstrap.min.js"></script>
     <script src="~/Estilos/js/slick.min.js"></script>
