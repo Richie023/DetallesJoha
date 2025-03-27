@@ -1,0 +1,50 @@
+﻿@model Web.Entidades.AvisoPrivacidad
+
+@{
+    ViewBag.Title = "Editar Aviso de Privacidad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="politicas-container">
+    <div class="politicas-header">
+        <h3>Editar Aviso de Privacidad</h3>
+        <h4>Modifica el título y el contenido del aviso. Usa una línea por cada viñeta.</h4>
+    </div>
+
+    @using (Html.BeginForm("Editar", "AvisoPrivacidad", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group mb-4">
+            <label for="titulo_seccion" class="font-weight-bold">Título del Aviso</label>
+            @Html.TextBoxFor(model => model.titulo_seccion, new
+            {
+                @class = "form-control",
+                @placeholder = "Ej. Derechos de los usuarios"
+            })
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="contenido" class="font-weight-bold">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new
+            {
+                @class = "form-control",
+                rows = "8",
+                @placeholder = "Cada punto en una línea. Se convertirá automáticamente en viñetas al guardar."
+            })
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="primary-btn bg-primary text-white">Actualizar</button>
+            <a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")" class="primary-btn bg-secondary text-white">Cancelar</a>
+        </div>
+    }
+
+    @if (ViewBag.MsjPantalla != null)
+    {
+        <div class="alert alert-danger mt-4 text-center">
+            @ViewBag.MsjPantalla
+        </div>
+    }
+</div>
+
