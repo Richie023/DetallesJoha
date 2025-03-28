@@ -39,7 +39,7 @@
                                     {
                                         <div style="visibility: hidden;">⬇️ REBAJA</div> <!-- Espacio reservado -->
                                     }
-                                    <i class="fa-solid fa-heart product-heart"></i>
+                                    @*<i class="fa-solid fa-heart product-heart"></i>*@
                                 </div>
 
                                 <!-- Imagen del producto -->
@@ -78,12 +78,12 @@
                                     </div>
 
                                     <!-- Estrellas -->
-                                    <div class="stars" data-product-id="@producto.Consecutivo">
+                                    <!--<div class="stars" data-product-id="@producto.Consecutivo">
                                         @for (int i = 1; i <= 5; i++)
                                         {
                                             <i class="fa fa-star star" data-star="@i"></i>
                                         }
-                                    </div>
+                                    </div>-->
 
                                     <!-- Botón de agregar al carrito -->
                                     <a href="@Url.Action("VerProducto", "Producto", new { id = producto.Consecutivo })" class="btn-add">
