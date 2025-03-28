@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    @*cambio*@
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,14 +76,13 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form method="get" action="@Url.Action("ConsultarProductos", "Buscar")">
-                            <select class="input-select">
-                                <option value="0">Categorías</option>
-                                <option value="1">Camisas</option>
-                                <option value="1">Gorras</option>
-                            </select>
+
+                            @*<select class="input-select">
+                                    <option value="0">Categorías</option>
+                                    <option value="1">Ropa de niño</option>
+                                    <option value="1">Gorras</option>
+                                </select>*@
                             <input class="input" name="nombre" placeholder="Busque Aquí">
-
-
                             <button class="search-btn">Buscar</button>
                         </form>
                     </div>
@@ -91,67 +90,67 @@
                 <!-- /SEARCH BAR -->
                 <!-- ACCOUNT -->
                 <!--<div class="col-md-3 clearfix">
-                    <div class="header-ctn">-->
-                        <!-- Wishlist -->
-                        <!--<div>
-                            <a href="#">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Deseados</span>
-                                <div class="qty">2</div>
-                            </a>
-                        </div>-->
-                        <!-- /Wishlist -->
-                        <!-- Cart -->
-                        <!--<div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>Carrito</span>
-                                <div class="qty">4</div>
-                            </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="/img/product01.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="/img/product02.png" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
+                <div class="header-ctn">-->
+                <!-- Wishlist -->
+                <!--<div>
+                    <a href="#">
+                        <i class="fa fa-heart-o"></i>
+                        <span>Deseados</span>
+                        <div class="qty">2</div>
+                    </a>
+                </div>-->
+                <!-- /Wishlist -->
+                <!-- Cart -->
+                <!--<div class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Carrito</span>
+                        <div class="qty">4</div>
+                    </a>
+                    <div class="cart-dropdown">
+                        <div class="cart-list">
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="/img/product01.png" alt="">
                                 </div>
-                                <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                <div class="product-body">
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
                                 </div>
-                                <div class="cart-btns">
-                                    <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
-                                    <a href="#">Pagar <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                                <button class="delete"><i class="fa fa-close"></i></button>
                             </div>
-                        </div>-->
-                        <!-- /Cart -->
-                        <!-- Menu Toogle -->
-                        <!--<div class="menu-toggle">
-                            <a href="#">
-                                <i class="fa fa-bars"></i>
-                                <span>Menu</span>
-                            </a>
-                        </div>-->
-                        <!-- /Menu Toogle -->
-                    <!--</div>
+
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="/img/product02.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                </div>
+                                <button class="delete"><i class="fa fa-close"></i></button>
+                            </div>
+                        </div>
+                        <div class="cart-summary">
+                            <small>3 Item(s) selected</small>
+                            <h5>SUBTOTAL: $2940.00</h5>
+                        </div>
+                        <div class="cart-btns">
+                            <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
+                            <a href="#">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- /Cart -->
+                <!-- Menu Toogle -->
+                <!--<div class="menu-toggle">
+                    <a href="#">
+                        <i class="fa fa-bars"></i>
+                        <span>Menu</span>
+                    </a>
+                </div>-->
+                <!-- /Menu Toogle -->
+                <!--</div>
 
                 </div>-->
                 <!-- /ACCOUNT -->
@@ -164,23 +163,23 @@
 </header>
 <!-- NAVIGATION -->
 <!--<nav id="navigation">-->
-    <!-- container -->
-    <!--<div class="container">-->
-        <!-- responsive-nav -->
-        <!--<div id="responsive-nav">-->
-            <!-- NAV -->
-            <!--<ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
-                <li><a href="#">Descuentos</a></li>
-                <li><a href="#">Caminisas</a></li>
-                <li><a href="#">Tazas</a></li>
-                <li><a href="#">Gorras</a></li>
-                <li><a href="#">Accesorios</a></li>-->
-                <!-- /NAV -->
-        <!--</div>-->
-        <!-- /responsive-nav -->
-    <!--</div>-->
-    <!-- /container -->
+<!-- container -->
+<!--<div class="container">-->
+<!-- responsive-nav -->
+<!--<div id="responsive-nav">-->
+<!-- NAV -->
+<!--<ul class="main-nav nav navbar-nav">
+    <li class="active"><a href="@Url.Action("PantallaPrincipal","Inicio")">Principal</a></li>
+    <li><a href="#">Descuentos</a></li>
+    <li><a href="#">Caminisas</a></li>
+    <li><a href="#">Tazas</a></li>
+    <li><a href="#">Gorras</a></li>
+    <li><a href="#">Accesorios</a></li>-->
+<!-- /NAV -->
+<!--</div>-->
+<!-- /responsive-nav -->
+<!--</div>-->
+<!-- /container -->
 <!--</nav>-->
 <!-- /NAVIGATION -->
 
@@ -247,18 +246,18 @@
                     </div>
                 </div>
 
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Categorías</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Descuentos</a></li>
-                            <li><a href="#">Caminisas</a></li>
-                            <li><a href="#">Tazas</a></li>
-                            <li><a href="#">Gorras</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @*<div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Categorías</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Descuentos</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1007})">Gorras</a></li>
+                                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
+                            </ul>
+                        </div>
+                    </div>*@
 
                 <div class="clearfix visible-xs"></div>
 
@@ -322,13 +321,97 @@
     <!-- /bottom footer -->
 </footer>
 <!-- /FOOTER -->
-<!-- jQuery Plugins -->
-<script src="~/Estilos/js/jquery.min.js"></script>
-<script src="~/Estilos/js/bootstrap.min.js"></script>
-<script src="~/Estilos/js/slick.min.js"></script>
-<script src="~/Estilos/js/nouislider.min.js"></script>
-<script src="~/Estilos/js/jquery.zoom.min.js"></script>
-<script src="~/Estilos/js/main.js"></script>
+<!-- Bootstrap (Depende de jQuery, debe ir después) -->
 
+<script src="~/Estilos/js/jquery.zoom.min.js"></script>
+<script src="~/Estilos/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Seleccionar todos los títulos de las secciones de filtro
+        const filterTitles = document.querySelectorAll('.filter-title');
+
+        // Inicializar todos los acordeones cerrados al cargar la página
+        filterTitles.forEach(function (title) {
+            const filterContent = title.nextElementSibling;
+            filterContent.style.maxHeight = '0';
+        });
+
+        // Función para cerrar todos los acordeones excepto el actual
+        function closeOtherAccordions(currentTitle) {
+            filterTitles.forEach(function (title) {
+                if (title !== currentTitle && title.classList.contains('active')) {
+                    // Quitar clase active del título
+                    title.classList.remove('active');
+
+                    // Cerrar el contenido
+                    const content = title.nextElementSibling;
+                    content.style.maxHeight = '0';
+
+                    // Quitar clase active de la sección padre si existe
+                    const parentSection = title.parentElement;
+                    if (parentSection.classList.contains('filter-section')) {
+                        parentSection.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // Agregar evento click a cada título
+        filterTitles.forEach(function (title) {
+            title.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevenir comportamiento predeterminado
+
+                // Primero cerrar los otros acordeones
+                closeOtherAccordions(this);
+
+                // Luego alternar el estado del acordeón actual
+                this.classList.toggle('active');
+
+                // Obtener el contenido asociado a este título
+                const content = this.nextElementSibling;
+
+                // Obtener la sección padre
+                const parentSection = this.parentElement;
+
+                // Alternar la visibilidad del contenido y la clase active de la sección
+                if (this.classList.contains('active')) {
+                    // Si está activo, mostrar el contenido
+                    content.style.maxHeight = content.scrollHeight + 'px';
+
+                    if (parentSection.classList.contains('filter-section')) {
+                        parentSection.classList.add('active');
+                    }
+                } else {
+                    // Si no está activo, ocultar el contenido
+                    content.style.maxHeight = '0';
+
+                    if (parentSection.classList.contains('filter-section')) {
+                        parentSection.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        console.log('Script de acordeón exclusivo inicializado con ' + filterTitles.length + ' secciones');
+    });</script>
+<!-- Slick Carousel (Depende de jQuery, debe ir después) -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<!-- Otros Plugins -->
+<script src="~/Estilos/js/nouislider.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+<!-- Fabric.js (Eliminar duplicados y cargar solo la versión estable) -->
+<script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/fabric.min.js"></script>
+
+<!-- Tidio Chat (Cargar de manera asíncrona) -->
+<script src="//code.tidio.co/ev5k2qby77nmug8a4ys49isxfacwux5j.js" async></script>
+
+<!-- SweetAlert2 (No tiene dependencias, se puede cargar aquí) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+</body>
 
 </html>

@@ -162,10 +162,11 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Disenno(long id) {
+        public ActionResult Disenno(long id)
+        {
 
             var resp = modelo.ConsultarProducto(id);
-          
+
             ViewBag.urlImagen = resp.Dato.RutaImagen;
 
             return View(resp.Dato);

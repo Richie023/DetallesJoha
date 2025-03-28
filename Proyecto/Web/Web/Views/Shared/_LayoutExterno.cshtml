@@ -6,39 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    @*cambio*@
+
     <title>Detalles JOHA</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Pacifico&family=Dancing+Script&family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+
+
+
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="~/Estilos/css/bootstrap.min.css" />
 
     <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick.css" />
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick-theme.css" />
+    <link type="text/css" rel="stylesheet" href="~/Estilos/css/slick.css?v=2" />
 
     <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/nouislider.min.css" />
+    <link type="text/css" rel="stylesheet" href="~/Estilos/css/nouislider.min.css?v=2" />
 
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="~/Estilos/css/font-awesome.min.css">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/Footer.css" />
-    <link type="text/css" rel="stylesheet" href="~/Estilos/css/Filtros.css" />
+    <link type="text/css" rel="stylesheet" href="~/Estilos/css/style.css?v=2" />
     <!-- DataTable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css" />
 
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- jQuery (Cargar primero, solo una vez) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -130,13 +126,14 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form>
-                                <select class="input-select">
-                                    <option value="0">Categorías</option>
-                                    <option value="1">Ropa de niño</option>
-                                    <option value="1">Gorras</option>
-                                </select>
-                                <input class="input" placeholder="Busque Aquí">
+                            <form method="get" action="@Url.Action("ConsultarProductos", "Buscar")">
+
+                                @*<select class="input-select">
+                                        <option value="0">Categorías</option>
+                                        <option value="1">Ropa de niño</option>
+                                        <option value="1">Gorras</option>
+                                    </select>*@
+                                <input class="input" name="nombre" placeholder="Busque Aquí">
                                 <button class="search-btn">Buscar</button>
                             </form>
                         </div>
@@ -146,81 +143,102 @@
                     <div class="col-md-3 clearfix">
                         <div class="header-ctn">
                             <!-- Wishlist -->
-                            <div>
-                                <a href="#">
-                                    <i class="fa fa-heart-o"></i>
-                                    <span>Deseados</span>
-                                    <div class="qty">2</div>
-                                </a>
-                            </div>
+                            @*<div>
+                                    <a href="#">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span>Deseados</span>
+                                        <div class="qty">2</div>
+                                    </a>
+                                </div>*@
                             <!-- /Wishlist -->
                             <!-- Cart -->
+                            @{
+                                var carritoProductosRegistrado = Session["CarritoProductos"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductosInvitado = Session["CarritoInvitado"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductos = new List<Web.Models.CarritoProductoViewModel>();
+
+                                if (carritoProductosRegistrado != null && carritoProductosRegistrado.Any())
+                                {
+                                    carritoProductos = carritoProductosRegistrado;
+                                }
+                                else if (carritoProductosInvitado != null && carritoProductosInvitado.Any())
+                                {
+                                    carritoProductos = carritoProductosInvitado;
+                                }
+                            }
+
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Carrito</span>
                                     <div class="qty">
-                                        @if (Session["Cantidad"] != null)
-                                        {
-                                            @Session["Cantidad"].ToString()
-                                        }
-                                        else
-                                        {
-                                            
-                                        }
+                                        @(Session["Cantidad"]?.ToString() ?? "0")
                                     </div>
                                 </a>
                                 <div class="cart-dropdown">
                                     <div class="cart-list">
-                                        @if (Session["Carrito"] != null)
+                                        @if (carritoProductos != null && carritoProductos.Any())
                                         {
-                                            var carrito = (List<Web.Entidades.Carrito>)Session["Carrito"];
-                                            foreach (var producto in carrito)
+                                            foreach (var item in carritoProductos)
                                             {
                                                 <div class="product-widget">
                                                     <div class="product-img">
-                                                        <img src="@producto.RutaImagen" alt="@producto.Nombre">
+                                                        <img src="@item.ProductoItem.RutaImagen" alt="@item.ProductoItem.NombreProducto">
                                                     </div>
                                                     <div class="product-body">
-                                                        <h3 class="product-name"><a href="#">@producto.Nombre</a></h3>
-                                                        <h4 class="product-price"><span class="qty">@producto.Cantidad x</span> ¢@producto.Precio.ToString("N2")</h4>
+                                                        <h3 class="product-name">
+                                                            <a href="#">@item.ProductoItem.NombreProducto</a>
+                                                        </h3>
+                                                        <h4 class="product-price">
+                                                            <span class="qty">@item.CarritoItem.Cantidad x</span>
+                                                            @if (item.ProductoItem.En_promocion)
+                                                            {
+                                                                <span>₡@item.ProductoItem.PrecioConDescuento.ToString("N2")</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>₡@item.CarritoItem.Precio.ToString("N2")</span>
+                                                            }
+                                                        </h4>
                                                     </div>
-                                                    <button class="delete"><i class="fa fa-close"></i></button>
+                                                    <form action="@Url.Action("EliminarCarritos", "Carrito")" method="post" style="display: inline;">
+                                                        @Html.Hidden("ConsecutivoCarrito", item.CarritoItem.ConsecutivoCarrito)
+                                                        <button type="submit" class="delete" onclick="return confirm('¿Está seguro que desea eliminar este producto?');">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             }
                                         }
                                         else
                                         {
-                                            <p>Tu carrito está vacío</p>
+                                            <div class="empty-cart">
+                                                <p>No hay productos en el carrito</p>
+                                            </div>
                                         }
                                     </div>
                                     <div class="cart-summary">
                                         <small>
-                                            @if (Session["Cantidad"] != null)
-                                            {
-                                                @Session["Cantidad"].ToString() 
-                                                }
-                                            else
-                                            {
-                                                <i class="qty">0</i>
-                                                }
+                                            @(Session["Cantidad"]?.ToString() ?? "0") Productos seleccionados
                                         </small>
-
-                                        @if (Session["SubTotal"] != null)
-                                        {
-                                            <h5>&nbsp; ¢ @decimal.Parse(Session["SubTotal"].ToString()).ToString("N2") + iva</h5>
-                                        }
-                                        else
-                                        {
-                                            <h5>¢ 0.00</h5>
-                                        }
+                                        <h5>
+                                            ₡@(decimal.Parse(Session["SubTotal"]?.ToString() ?? "0").ToString("N2")) + IVA
+                                        </h5>
                                     </div>
                                     <div class="cart-btns">
-                                        <a href="@Url.Action("ConsultaCarrito", "Carrito")">View Cart</a>
-                                        <a href="#">Pagar <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="@Url.Action("ConsultaCarrito", "Carrito")">Ver Carrito</a>
+                                        @if (carritoProductos != null && carritoProductos.Any())
+                                        {
+                                            <a href="@Url.Action("PagarCarrito", "Carrito")">
+                                                Pagar <i class="fa fa-arrow-circle-right"></i>
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>
+
                             <!-- /Cart -->
                             <!-- Menu Toogle -->
                             <div class="menu-toggle">
@@ -262,8 +280,8 @@
                         <li><a href="@Url.Action("ConsultarUsuarios", "Usuario")">Usuarios</a></li>
                         <li><a href="@Url.Action("ConsultaVentas", "Ventas")">Ventas</a></li>
                         <li><a href="@Url.Action("ConsultarPedidos", "Carrito")">Pedidos</a></li>
-                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Info E</a></li>
-                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Resenas </a></li>
+                        <li><a href="@Url.Action("RegistraInforE", "InfoE")">Agregar Informacion Empresa</a></li>
+                        <li><a href="@Url.Action("ConsultarResenas", "Resena")">Reseñas </a></li>
 
                     }
                     else if ((Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "2"))
@@ -275,6 +293,7 @@
                         <li>
                             <a href="@Url.Action("ConsultarFacturas", "Carrito")">Mis Compras</a>
                         </li>
+                        <li><a href="@Url.Action("RegistrarResena","Resena")"> Agregar Reseña</a></li>
 
                     }
 
@@ -290,114 +309,107 @@
         <div class="aside">
             <h3>Filtrar Productos</h3>
             <div class="filters-sidebar">-->
-                <!-- Categorías -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Tipo de Ropa</h3>
-                    <div class="filter-content">
-                        <ul class="filter-list">
+    <!-- Categorías -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Tipo de Ropa</h3>
+        <div class="filter-content">
+            <ul class="filter-list">
 
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño  </a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 4 })">Ropa de mujer</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1 })">Ropa de niño  </a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 2 })">Ropa de niña</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 3 })">Ropa de hombre</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 4 })">Ropa de mujer</a></li>
 
-                        </ul>
-                    </div>
-                </div>-->
-
-                <!-- Artículos de Oficina -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Artículos de Oficina</h3>
-                    <div class="filter-content">
-                        <ul class="filter-list">
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 15 })">Cuadernos personalizados</a></li>
-                        </ul>
-                    </div>
-                </div>-->
-
-                <!-- Artículos Decorativos -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Artículos Decorativos</h3>
-                    <div class="filter-content">
-                        <ul class="filter-list">
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 9 })">Cojines</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 13 })">Platos decorativos</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 14 })">Almohadas</a></li>
-                        </ul>
-                    </div>
-                </div>-->
-
-                <!-- Accesorios Personales -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Accesorios Personales</h3>
-                    <div class="filter-content">
-                        <ul class="filter-list">
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 11 })">Botellas térmicas</a></li>
-                            <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 12 })">Fundas de teléfono</a></li>
-                        </ul>
-                    </div>
-                </div>-->
-
-                <!-- Precio -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Rango de Precio</h3>
-                    <div class="filter-content">
-                        <ul class="filter-list">
-                            <li class="price-range">
-                                <a href="@Url.Action("FiltrarPorPrecio", "Inicio", new { PrecioMinimo = 2500, PrecioMaximo = 3000 })">
-                                    ₡2.500 - ₡3.000
-                                </a>
-                            </li>
-                            <li class="price-range">
-                                <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 4000, PrecioMaximo = 4500 })">
-                                    ₡4.000 - ₡4.500
-                                </a>
-                            </li>
-                            <li class="price-range">
-                                <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 5000, PrecioMaximo = (decimal?)null })">
-                                    ₡5.000 y superior
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>-->
-
-                <!-- Color -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Color</h3>
-                    <div class="filter-content">
-                        <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
-                            <input type="text" id="Color" name="Color" placeholder="Buscar por color..." />
-                            <button type="submit">Aplicar</button>
-                        </form>
-                    </div>
-                </div>-->
-
-                <!-- Tamaño -->
-                <!--<div class="filter-section">
-                    <h3 class="filter-title">Tamaño</h3>
-                    <div class="filter-content">
-                        <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
-                            <input type="text" id="Tamanio" name="Tamanio" placeholder="Buscar por tamaño..." />
-                            <button type="submit">Aplicar</button>
-                        </form>
-                    </div>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Artículos de Oficina -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Artículos de Oficina</h3>
+        <div class="filter-content">
+            <ul class="filter-list">
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 15 })">Cuadernos personalizados</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Artículos Decorativos -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Artículos Decorativos</h3>
+        <div class="filter-content">
+            <ul class="filter-list">
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 9 })">Cojines</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 13 })">Platos decorativos</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 14 })">Almohadas</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Accesorios Personales -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Accesorios Personales</h3>
+        <div class="filter-content">
+            <ul class="filter-list">
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 11 })">Botellas térmicas</a></li>
+                <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 12 })">Fundas de teléfono</a></li>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Precio -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Rango de Precio</h3>
+        <div class="filter-content">
+            <ul class="filter-list">
+                <li class="price-range">
+                    <a href="@Url.Action("FiltrarPorPrecio", "Inicio", new { PrecioMinimo = 2500, PrecioMaximo = 3000 })">
+                        ₡2.500 - ₡3.000
+                    </a>
+                </li>
+                <li class="price-range">
+                    <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 4000, PrecioMaximo = 4500 })">
+                        ₡4.000 - ₡4.500
+                    </a>
+                </li>
+                <li class="price-range">
+                    <a href="@Url.Action("PantallaPrincipal", "Inicio", new { PrecioMinimo = 5000, PrecioMaximo = (decimal?)null })">
+                        ₡5.000 y superior
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>-->
+    <!-- Color -->
+    <!--<div class="filter-section">
+        <h3 class="filter-title">Color</h3>
+        <div class="filter-content">
+            <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
+                <input type="text" id="Color" name="Color" placeholder="Buscar por color..." />
+                <button type="submit">Aplicar</button>
+            </form>
+        </div>
+    </div>-->
+    <!-- Tamaño -->
+    <!--<div class="filter-section">
+                <h3 class="filter-title">Tamaño</h3>
+                <div class="filter-content">
+                    <form class="filter-form" method="get" action="@Url.Action("PantallaPrincipal", "Inicio")">
+                        <input type="text" id="Tamanio" name="Tamanio" placeholder="Buscar por tamaño..." />
+                        <button type="submit">Aplicar</button>
+                    </form>
                 </div>
-
             </div>
-        </div>-->
 
-        <!-- /NAVIGATION -->
+        </div>
+    </div>-->
+    <!-- /NAVIGATION -->
 
-        
-            <div class="container align-items-center">
-                @RenderBody()
-            </div>
-     
-   
+
+    <div class="container align-items-center">
+        @RenderBody()
+    </div>
+
+
 
     <!-- NEWSLETTER -->
     <div id="newsletter" class="section">
@@ -407,7 +419,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="newsletter">
-                        <p>Regístrate al <strong>Bolitín</strong></p>
+                        <p>Regístrate al <strong>Boletín</strong></p>
                         <form>
                             <input class="input" type="email" placeholder="Ingrese su correo electrónico">
                             <button class="newsletter-btn"><i class="fa fa-envelope"></i> Suscribirse</button>
@@ -416,15 +428,15 @@
                             <li>
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                             </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </li>
+                            @*<li>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </li>*@
                         </ul>
                     </div>
                 </div>
@@ -444,7 +456,7 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-6">
                         <div class="footer">
-                            <h3 class="footer-title">Acercas de Nosotros</h3>
+                            <h3 class="footer-title">Contáctenos</h3>
                             <p>Somos una Pyme de didicada a la Sublimación</p>
                             <ul class="footer-links">
                                 <li><a href="#"><i class="fa fa-phone"></i> +506-8303-9384</a></li>
@@ -454,18 +466,18 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-xs-6">
-                        <div class="footer">
-                            <h3 class="footer-title">Categorías</h3>
-                            <ul class="footer-links">
-                                <li><a href="#">Descuentos</a></li>
-                                <li><a href="#">Caminisas</a></li>
-                                <li><a href="#">Tazas</a></li>
-                                <li><a href="#">Gorras</a></li>
-                                <li><a href="#">Accesorios</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @*<div class="col-md-3 col-xs-6">
+                            <div class="footer">
+                                <h3 class="footer-title">Categorías</h3>
+                                <ul class="footer-links">
+                                    <li><a href="#">Descuentos</a></li>
+                                    <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 8 })">Mousepads</a></li>
+                                    <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 6 })">Tazas</a></li>
+                                    <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 1007})">Gorras</a></li>
+                                    <li><a href="@Url.Action("FiltrarPorCategoria", "Inicio", new { IdCategoria = 10 })">Llaveros</a></li>
+                                </ul>
+                            </div>
+                        </div>*@
 
                     <div class="clearfix visible-xs"></div>
 
@@ -473,8 +485,7 @@
                         <div class="footer">
                             <h3 class="footer-title">Información</h3>
                             <ul class="footer-links">
-                                <li><a href="@Url.Action("Nosotros", "Informacion")">Acerca de nosotros</a></li>
-                                <li><a href="@Url.Action("Contactos", "Informacion")">Contáctanos</a></li>
+                                <li><a href="@Url.Action("Acerca", "AcercaD")">Acerca de nosotros</a></li>
                                 <li><a href="@Url.Action("Blog", "Blog")">Blogs</a></li>
                                 <li><a href="@Url.Action("PoliticaDevolucion", "PoliticaDevolucion")">Politica de devoluciones</a></li>
                                 <li><a href="@Url.Action("AvisoPrivacidad", "AvisoPrivacidad")">Avisos & Privacidad</a></li>
@@ -488,8 +499,8 @@
                             <ul class="footer-links">
                                 <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Mi Cuenta</a></li>
                                 <li><a href="@Url.Action("Ayuda", "Ayuda")">Ayuda</a></li>
-                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
-                                <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>
+                                @*<li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Lista de deseos</a></li>
+                                    <li><a href="@Url.Action("PantallaPrincipal", "Inicio")">Seguimientos de Envios</a></li>*@
                                 <li><a href="@Url.Action("PreguntasFrecuentes", "PreguntasFrecuentes")">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
@@ -531,15 +542,98 @@
         <!-- /bottom footer -->
     </footer>
 
-    <!-- jQuery Plugins -->
-    <script src="~/Estilos/js/jquery.min.js"></script>
-    <script src="~/Estilos/js/bootstrap.min.js"></script>
-    <script src="~/Estilos/js/slick.min.js"></script>
-    <script src="~/Estilos/js/nouislider.min.js"></script>
+
+    <!-- Bootstrap (Depende de jQuery, debe ir después) -->
+
     <script src="~/Estilos/js/jquery.zoom.min.js"></script>
-    <script src="~/Estilos/js/main.js"></script>
-    <script src="~/Estilos/js/Filtros.js"></script>
+    <script src="~/Estilos/js/bootstrap.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            // Seleccionar todos los títulos de las secciones de filtro
+            const filterTitles = document.querySelectorAll('.filter-title');
+
+            // Inicializar todos los acordeones cerrados al cargar la página
+            filterTitles.forEach(function (title) {
+                const filterContent = title.nextElementSibling;
+                filterContent.style.maxHeight = '0';
+            });
+
+            // Función para cerrar todos los acordeones excepto el actual
+            function closeOtherAccordions(currentTitle) {
+                filterTitles.forEach(function (title) {
+                    if (title !== currentTitle && title.classList.contains('active')) {
+                        // Quitar clase active del título
+                        title.classList.remove('active');
+
+                        // Cerrar el contenido
+                        const content = title.nextElementSibling;
+                        content.style.maxHeight = '0';
+
+                        // Quitar clase active de la sección padre si existe
+                        const parentSection = title.parentElement;
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            // Agregar evento click a cada título
+            filterTitles.forEach(function (title) {
+                title.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevenir comportamiento predeterminado
+
+                    // Primero cerrar los otros acordeones
+                    closeOtherAccordions(this);
+
+                    // Luego alternar el estado del acordeón actual
+                    this.classList.toggle('active');
+
+                    // Obtener el contenido asociado a este título
+                    const content = this.nextElementSibling;
+
+                    // Obtener la sección padre
+                    const parentSection = this.parentElement;
+
+                    // Alternar la visibilidad del contenido y la clase active de la sección
+                    if (this.classList.contains('active')) {
+                        // Si está activo, mostrar el contenido
+                        content.style.maxHeight = content.scrollHeight + 'px';
+
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.add('active');
+                        }
+                    } else {
+                        // Si no está activo, ocultar el contenido
+                        content.style.maxHeight = '0';
+
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            console.log('Script de acordeón exclusivo inicializado con ' + filterTitles.length + ' secciones');
+        });</script>
+    <!-- Slick Carousel (Depende de jQuery, debe ir después) -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Otros Plugins -->
+    <script src="~/Estilos/js/nouislider.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
+
+    <!-- Fabric.js (Eliminar duplicados y cargar solo la versión estable) -->
+    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/fabric.min.js"></script>
+
+    <!-- Tidio Chat (Cargar de manera asíncrona) -->
+    <script src="//code.tidio.co/ev5k2qby77nmug8a4ys49isxfacwux5j.js" async></script>
+
+    <!-- SweetAlert2 (No tiene dependencias, se puede cargar aquí) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
 </body>
+
 </html>

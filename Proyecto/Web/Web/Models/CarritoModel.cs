@@ -114,7 +114,7 @@ namespace Web.Models
         {
             using (var client = new HttpClient())
             {
-                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Carrito/ConsultarPedidos" ;
+                string url = ConfigurationManager.AppSettings["urlWebApi"] + "Carrito/ConsultarPedidos";
                 var respuesta = client.GetAsync(url).Result;
 
                 if (respuesta.IsSuccessStatusCode)

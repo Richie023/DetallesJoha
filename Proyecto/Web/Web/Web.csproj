@@ -192,6 +192,7 @@
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\BuscarModel.cs" />
     <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\CarritoProductoViewModel.cs" />
     <Compile Include="Models\CategoriaModel.cs" />
     <Compile Include="Models\ConsultaModel.cs" />
     <Compile Include="Models\FiltroAdmin.cs" />

@@ -9,7 +9,7 @@
 <div class="section">
     <div class="container">
         <div class="row">
-            <!-- Product main img -->
+
             <div class="col-md-5 col-md-push-2">
                 <div id="product-main-img">
                     <div class="product-preview">
@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <!-- Product thumb imgs -->
+
             <div class="col-md-2 col-md-pull-5">
                 <div id="product-imgs">
                     <div class="product-preview">
@@ -27,92 +27,92 @@
                 </div>
             </div>
 
-           
-    <div class="col-md-5">
-        <div class="product-details">
-            <h2 class="product-name">@Model.NombreProducto</h2>
 
-            <div>
-                @if (Model.En_promocion)
-                {
-                    <h3 class="product-price">
-                        ₡@Model.PrecioConDescuento.ToString("N0")
-                        <del class="product-old-price">₡@Model.Precio.ToString("N0")</del>
-                    </h3>
-                    <span class="product-available text-danger">-@Model.Porcentaje_descuento% OFF</span>
-                }
-                else
-                {
-                    <h3 class="product-price">₡@Model.Precio.ToString("N0")</h3>
-                }
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">@Model.NombreProducto</h2>
 
-                <span class="product-available">@(Model.Inventario) en inventario</span>
-            </div>
+                    <div>
+                        @if (Model.En_promocion)
+                        {
+                            <h3 class="product-price">
+                                ₡@Model.PrecioConDescuento.ToString("N0")
+                                <del class="product-old-price">₡@Model.Precio.ToString("N0")</del>
+                            </h3>
+                            <span class="product-available text-danger">-@Model.Porcentaje_descuento% OFF</span>
+                        }
+                        else
+                        {
+                            <h3 class="product-price">₡@Model.Precio.ToString("N0")</h3>
+                        }
 
-         
-
-
-            <div class="add-to-cart">
-                <div class="qty-label">
-                    Cantidad
-                    <div class="input-number">
-                        <input type="number" id="prd-@Model.Consecutivo" onkeypress="return ValidarNumeros(this.id)" class="form-control" value="1" min="1" max="@Model.Inventario">
-
-                        <span class="qty-up">+</span>
-                        <span class="qty-down">-</span>
+                        <span class="product-available">@(Model.Inventario) en inventario</span>
                     </div>
+
+
+
+
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Cantidad
+                            <div class="input-number">
+                                <input type="number" id="prd-@Model.Consecutivo" onkeypress="return ValidarNumeros(this.id)" class="form-control" value="1" min="1" max="@Model.Inventario">
+
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+
+                        <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
+                            <i class="fa fa-shopping-cart"></i> Agregar al carrito
+                        </button>
+                    </div>
+
+
+                    <ul class="product-btns">
+                        <li>
+                            <a href="#" onclick="AgregarAFavoritos(@Model.Consecutivo)">
+                                <i class="fa fa-heart-o"></i> Agregar a favoritos
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Categoría:</li>
+                        <li><a href="#">@Model.NombreCategoria</a></li>
+                    </ul>
+                    <ul class="product-links">
+                        <li>Diseneo: </li>
+                        <li><a href="@Url.Action("Disenno", "Producto",new { id =Model.Consecutivo })">Agregar diseño</a></li>
+
+                    </ul>
                 </div>
-
-                <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
-                    <i class="fa fa-shopping-cart"></i> Agregar al carrito
-                </button>
             </div>
 
 
-            <ul class="product-btns">
-                <li>
-                    <a href="#" onclick="AgregarAFavoritos(@Model.Consecutivo)">
-                        <i class="fa fa-heart-o"></i> Agregar a favoritos
-                    </a>
-                </li>
-            </ul>
-
-            <ul class="product-links">
-                <li>Categoría:</li>
-                <li><a href="#">@Model.NombreCategoria</a></li>
-            </ul>
-            <ul class="product-links">
-                <li>Diseneo: </li>
-                <li><a href="@Url.Action("Disenno", "Producto",new { id =Model.Consecutivo })">Agregar diseño</a></li> 
-             
-            </ul>
-        </div>
-            </div>
-
-            <!-- Product tab -->
             <div class="col-md-12">
                 <div id="product-tab">
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Descripción</a></li>
                         <li><a data-toggle="tab" href="#tab2">Detalles</a></li>
-                      
+                        <li><a href="@Url.Action("RegistrarResena","Resena")">Reseñas</a></li>
                     </ul>
 
                     <div class="tab-content">
                         <div id="tab1" class="tab-pane fade in active" style="text-align:center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <table id="myDataTable" class="table table-bordered dataTable " style="width: 75%; " >
-                                        <thead >
+                                    <table id="myDataTable" class="table table-bordered dataTable " style="width: 75%; ">
+                                        <thead>
                                             <tr role="row">
                                                 <th>COLOR</th>
                                                 <th>TAMAÑO</th>
                                                 <th>MATERIAL</th>
-                                               
+
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="odd" >
+                                            <tr class="odd">
                                                 <td>
                                                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                                          width="50" height="50" viewBox="0 0 50 50">
@@ -122,16 +122,16 @@
                                                 </td>
                                                 <td> @Model.Tamanio</td>
                                                 <td>@Model.Material</td>
-                                                
-                                                                                           
+
+
                                             </tr>
-                                            
+
                                         </tbody>
                                     </table>
 
 
-                                 
-                                  
+
+
                                 </div>
                             </div>
                         </div>
@@ -139,12 +139,12 @@
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Detalles adicionales del producto...</p>
+                                    <p>@Model.Descripcion</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- El tab3 se mantiene igual para las reseñas -->
+
                     </div>
                 </div>
             </div>
@@ -154,6 +154,7 @@
 
 
 <script>
+
     function ValidarNumeros(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
         if (charCode >= 48 && charCode <= 57) {
@@ -162,16 +163,17 @@
         return false;
     }
 
+
     function AgregarCarrito(id, inventario) {
         let cantProducto = $("#prd-" + id).val();
 
         if (cantProducto > inventario) {
-            MostrarAlert("info", "Debes ingresar una cantidad inferior");
+            MostrarAlert("info", "Debes ingresar una cantidad menor o igual al inventario disponible.");
             return;
         }
 
         if (cantProducto <= 0) {
-            MostrarAlert("info", "Debe ingresar una cantidad válida");
+            MostrarAlert("info", "Debe ingresar una cantidad válida.");
             return;
         }
 
@@ -179,31 +181,92 @@
             url: '/Carrito/AgregarCarrito',
             type: "POST",
             data: {
-                "idProducto": id,
-                "cantProducto": cantProducto
+                idProducto: id,
+                cantProducto: cantProducto
             },
             success: function (data) {
-                if (data == "OK") {
-                    window.location.href = '@Url.Action("PantallaPrincipal", "Inicio")';
+                if (data === "OK") {
+                    Swal.fire({
+                        title: "Éxito",
+                        text: "Producto agregado al carrito.",
+                        icon: "success",
+                        timer: 3000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        ActualizarCantidadCarrito();
+                        location.reload();
+                    });
+
+                } else if (data.indexOf("Error") === 0) {
+                    Swal.fire("Error", data, "error");
                 } else {
-                    alert('Debes iniciar Sesión o registrarte para comprar este producto');
+                    Swal.fire("Información", data, "info");
                 }
+            },
+            error: function () {
+                Swal.fire("Error", "Ocurrió un problema al agregar el producto al carrito.", "error");
+            }
+
+        });
+    }
+
+
+    function ActualizarCantidadCarrito() {
+        $.ajax({
+            url: '/Carrito/ObtenerCantidadCarrito',
+            type: 'GET',
+            success: function (cantidad) {
+                $("#contadorCarrito").text(cantidad);
+            },
+            error: function () {
+                console.error("Error al actualizar la cantidad del carrito.");
             }
         });
     }
 
-        function AgregarAFavoritos(productoId) {
-            // Aquí agregas tu lógica para agregar a favoritos
-        }
 
-        function MostrarAlert(icono, mensaje) {
-            Swal.fire({
-                position: "center",
-                icon: icono,
-                title: mensaje,
-                showConfirmButton: false,
-                timer: 2500
-            });
-        }
+    function MostrarAlert(icono, mensaje) {
+        Swal.fire({
+            position: "center",
+            icon: icono,
+            title: mensaje,
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
 
+    $(document).ready(function () {
+        $('.qty-up').on('click', function () {
+            var $input = $(this).siblings('input[type="number"]');
+            var currentVal = parseInt($input.val());
+            var maxVal = parseInt($input.attr('max'));
+
+            if (!isNaN(currentVal) && currentVal < maxVal) {
+                $input.val(currentVal + 1).trigger('change');
+            }
+        });
+
+
+        $('.qty-down').on('click', function () {
+            var $input = $(this).siblings('input[type="number"]');
+            var currentVal = parseInt($input.val());
+            var minVal = parseInt($input.attr('min'));
+
+            if (!isNaN(currentVal) && currentVal > minVal) {
+                $input.val(currentVal - 1).trigger('change');
+            }
+        });
+    });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+

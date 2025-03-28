@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @*cambio*@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,13 +99,13 @@
                     <div class="col-md-6">
                         <div class="header-search">
                             <form method="get" action="@Url.Action("ConsultarProductos", "Buscar")">
-                                <select class="input-select">
-                                    <option value="0">Categorías</option>
-                                    <option value="1">Camisas</option>
-                                    <option value="1">Gorras</option>
-                                </select>
-                                <input class="input" name="nombre" placeholder="Busque Aquí">
 
+                                @*<select class="input-select">
+                                        <option value="0">Categorías</option>
+                                        <option value="1">Ropa de niño</option>
+                                        <option value="1">Gorras</option>
+                                    </select>*@
+                                <input class="input" name="nombre" placeholder="Busque Aquí">
                                 <button class="search-btn">Buscar</button>
                             </form>
                         </div>
@@ -504,16 +505,97 @@
     </footer>
 
 
-    <!-- jQuery Plugins -->
-    <script src="~/Estilos/js/jquery.min.js"></script>
-    <script src="~/Estilos/js/bootstrap.min.js"></script>
-    <script src="~/Estilos/js/slick.min.js"></script>
-    <script src="~/Estilos/js/nouislider.min.js"></script>
+    <!-- Bootstrap (Depende de jQuery, debe ir después) -->
+
     <script src="~/Estilos/js/jquery.zoom.min.js"></script>
-    <script src="~/Estilos/js/main.js"></script>
-    <script src="~/Estilos/js/Filtros.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/Estilos/js/bootstrap.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+            // Seleccionar todos los títulos de las secciones de filtro
+            const filterTitles = document.querySelectorAll('.filter-title');
+
+            // Inicializar todos los acordeones cerrados al cargar la página
+            filterTitles.forEach(function (title) {
+                const filterContent = title.nextElementSibling;
+                filterContent.style.maxHeight = '0';
+            });
+
+            // Función para cerrar todos los acordeones excepto el actual
+            function closeOtherAccordions(currentTitle) {
+                filterTitles.forEach(function (title) {
+                    if (title !== currentTitle && title.classList.contains('active')) {
+                        // Quitar clase active del título
+                        title.classList.remove('active');
+
+                        // Cerrar el contenido
+                        const content = title.nextElementSibling;
+                        content.style.maxHeight = '0';
+
+                        // Quitar clase active de la sección padre si existe
+                        const parentSection = title.parentElement;
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            // Agregar evento click a cada título
+            filterTitles.forEach(function (title) {
+                title.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevenir comportamiento predeterminado
+
+                    // Primero cerrar los otros acordeones
+                    closeOtherAccordions(this);
+
+                    // Luego alternar el estado del acordeón actual
+                    this.classList.toggle('active');
+
+                    // Obtener el contenido asociado a este título
+                    const content = this.nextElementSibling;
+
+                    // Obtener la sección padre
+                    const parentSection = this.parentElement;
+
+                    // Alternar la visibilidad del contenido y la clase active de la sección
+                    if (this.classList.contains('active')) {
+                        // Si está activo, mostrar el contenido
+                        content.style.maxHeight = content.scrollHeight + 'px';
+
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.add('active');
+                        }
+                    } else {
+                        // Si no está activo, ocultar el contenido
+                        content.style.maxHeight = '0';
+
+                        if (parentSection.classList.contains('filter-section')) {
+                            parentSection.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            console.log('Script de acordeón exclusivo inicializado con ' + filterTitles.length + ' secciones');
+        });</script>
+    <!-- Slick Carousel (Depende de jQuery, debe ir después) -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Otros Plugins -->
+    <script src="~/Estilos/js/nouislider.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
+    <!-- Fabric.js (Eliminar duplicados y cargar solo la versión estable) -->
+    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/fabric.min.js"></script>
+
+    <!-- Tidio Chat (Cargar de manera asíncrona) -->
+    <script src="//code.tidio.co/ev5k2qby77nmug8a4ys49isxfacwux5j.js" async></script>
+
+    <!-- SweetAlert2 (No tiene dependencias, se puede cargar aquí) -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
 </body>
+
 </html>

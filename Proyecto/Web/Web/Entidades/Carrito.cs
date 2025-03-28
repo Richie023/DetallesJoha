@@ -9,15 +9,15 @@ namespace Web.Entidades
     {
         public long ConsecutivoCarrito { get; set; }
         public long ConsecutivoUsuario { get; set; }
-        public long Consecutivo { get; set; }
+        public long ConsecutivoProducto { get; set; }
 
-        public DateTime Fecha { get; set; }
+        public DateTime FechaCarrito { get; set; }
         public int Cantidad { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Impuesto { get; set; }
         public decimal Total { get; set; }
         public decimal Precio { get; set; }
-        public string Nombre { get; set; } 
+        public string Nombre { get; set; }
         public string Correo { get; set; }
         public string NombreUsuario { get; set; }
         public long ConsecutivoMaestro { get; set; }
@@ -27,7 +27,7 @@ namespace Web.Entidades
         public string Tamanio { get; set; }
         public string RutaImagen { get; set; }
 
-       
+
 
     }
 

@@ -52,7 +52,285 @@
                     </div>
                 </div>
             }
+        </div>@model List<Web.Entidades.Ayuda>
+
+        @{
+            ViewBag.Title = "Ayuda";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <div class="ayuda-container">
+            <div class="ayuda-header">
+                <h2>Sección de Ayuda</h2>
+                <h3>Encuentra respuestas a las preguntas más frecuentes y guías útiles.</h3>
+            </div>
+
+            @if (Session["RolUsuario"]?.ToString() == "1")
+            {
+                <div class="text-right mt-4">
+                    <a href="@Url.Action("Insertar", "Ayuda")" class="primary-btn bg-danger text-white">Agregar Nueva Ayuda</a>
+                </div>
+            }
+
+            @if (Model != null && Model.Any())
+            {
+                <div class="accordion">
+                    @foreach (var item in Model)
+                    {
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>@item.categoria - @item.titulo</h3>
+                            </div>
+                            <div class="accordion-content">
+                                <div class="policy-content">
+                                    @if (!string.IsNullOrEmpty(item.imagen_url))
+                                    {
+                                        <div class="mb-3 text-center">
+                                            <img src="@Url.Content(item.imagen_url)" alt="Imagen de ayuda" class="img-fluid ayuda-imagen" />
+                                        </div>
+                                    }
+                                    @Html.Raw(item.contenido)
+
+                                    <div class="policy-footer">
+                                        <span class="policy-date">Última actualización: @item.ultima_actualizacion.ToString()</span>
+
+                                        @if (Session["RolUsuario"]?.ToString() == "1")
+                                        {
+                                            <div class="policy-actions">
+                                                <a href="@Url.Action("Editar", "Ayuda", new { id = item.id })" title="Editar">
+                                                    <i class="fa fa-pencil-square-o fa-lg"></i>
+                                                </a>
+                                                <a href="@Url.Action("Eliminar", "Ayuda", new { id = item.id })" title="Eliminar">
+                                                    <i class="fa fa-trash-o fa-lg"></i>
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="no-policies">
+                    No se encontraron entradas de ayuda en este momento.
+                </div>
+            }
         </div>
+
+
+        <style>
+            /* Estilos generales de la página */
+            .ayuda-container {
+                max-width: 1140px;
+                margin: 0 auto;
+                padding: 1rem 1rem;
+            }
+
+
+            .ayuda-header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+                .ayuda-header h2 {
+                    color: #333;
+                    font-size: 2.2rem;
+                    margin-bottom: 2rem;
+                    position: relative;
+                }
+
+                    .ayuda-header h2:after {
+                        content: '';
+                        position: absolute;
+                        width: 60px;
+                        height: 3px;
+                        background-color: #e74c3c;
+                        bottom: -10px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                .ayuda-header h3 {
+                    color: #666;
+                    font-size: 1.5rem;
+                    font-weight: normal;
+                }
+
+            /* Botón de agregar nueva política */
+            .primary-btn {
+                display: inline-block;
+                padding: 0.7rem 1.5rem;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 300;
+                transition: all 0.3s ease;
+                margin-bottom: 2rem;
+                border: none;
+                cursor: pointer;
+            }
+
+
+            /* Estilos del acordeón */
+            .accordion {
+                border: none;
+                margin-top: 2rem;
+            }
+
+            .accordion-item {
+                margin-bottom: 1rem;
+                border: none;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+                transition: all 0.3s ease;
+            }
+
+                .accordion-item:hover {
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                }
+
+            .accordion-header {
+                background-color: #fff;
+                border-left: 4px solid #e74c3c;
+                padding: 1.2rem 1.5rem;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: all 0.3s ease;
+            }
+
+                .accordion-header h3 {
+                    margin: 0;
+                    font-size: 1.5rem;
+                    color: #333;
+                    font-weight: 600;
+                }
+
+                .accordion-header:hover {
+                    background-color: #f9f9f9;
+                }
+
+                .accordion-header::after {
+                    content: '\f107';
+                    font-family: 'Font Awesome 5 Free';
+                    font-weight: 900;
+                    font-size: 1.2rem;
+                    color: #d4af37;
+                    transition: transform 0.3s ease;
+                }
+
+            .accordion-item.active .accordion-header {
+                background-color: #f9f9f9;
+            }
+
+                .accordion-item.active .accordion-header::after {
+                    transform: rotate(180deg);
+                }
+
+            .accordion-content {
+                background-color: #fff;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .accordion-item.active .accordion-content {
+                max-height: 1000px;
+                padding: 1.5rem;
+            }
+
+            /* Estilos para el contenido dentro del acordeón */
+            .policy-content {
+                color: #555;
+                line-height: 1.6;
+            }
+
+                .policy-content ul {
+                    padding-left: 1.5rem;
+                    margin: 1rem 0;
+                }
+
+                .policy-content li {
+                    margin-bottom: 0.5rem;
+                    position: relative;
+                    padding-left: 1rem;
+                }
+
+                    .policy-content li::before {
+                        content: "•";
+                        position: absolute;
+                        left: -1rem;
+                        color: #d4af37;
+                    }
+
+            .ayuda-imagen {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+
+            .policy-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+                border-top: 1px solid #eee;
+            }
+
+            .policy-date {
+                font-size: 0.9rem;
+                color: #888;
+            }
+
+            .policy-actions a {
+                margin-left: 1rem;
+                color: #666;
+                transition: color 0.3s ease;
+            }
+
+                .policy-actions a:hover {
+                    color: #d4af37;
+                }
+
+            /* Mensaje cuando no hay políticas */
+            .no-policies {
+                background-color: #fff;
+                border: 1px solid #eee;
+                border-radius: 8px;
+                padding: 2rem;
+                text-align: center;
+                color: #888;
+                margin-top: 2rem;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
+        </style>
+
+
+        <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.accordion-header').forEach(function (header) {
+            header.addEventListener('click', function () {
+                var currentItem = header.parentElement;
+
+                if (!currentItem.classList.contains('active')) {
+                    document.querySelectorAll('.accordion-item.active').forEach(function (item) {
+                        item.classList.remove('active');
+                    });
+                }
+
+                currentItem.classList.toggle('active');
+            });
+        });
+    });
+        </script>
     }
     else
     {
