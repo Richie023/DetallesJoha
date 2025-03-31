@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,7 +57,8 @@ namespace Web.Controllers
                 {
                     ConsecutivoUsuario = idUsuario.Value,
                     ConsecutivoProducto = idProducto,
-                    Cantidad = cantProducto
+                    Cantidad = cantProducto,
+                    RutaDiseno = Session["UltimoDiseno"] as string
                 };
 
                 var respuesta = modelo.AgregarCarrito(nuevoCarrito);
@@ -126,7 +128,8 @@ namespace Web.Controllers
                         Precio = precioFinal,
                         SubTotal = precioFinal * cantProducto,
                         Impuesto = (precioFinal * cantProducto) * 0.13M,
-                        Total = (precioFinal * cantProducto) * 1.13M
+                        Total = (precioFinal * cantProducto) * 1.13M,
+                        RutaDiseno = Session["UltimoDiseno"] as string
                     };
 
                     carritoTemporal.Add(new CarritoProductoViewModel
@@ -141,6 +144,7 @@ namespace Web.Controllers
                 Session["SubTotal"] = carritoTemporal.Sum(x => x.CarritoItem.SubTotal);
                 Session["IVA"] = carritoTemporal.Sum(x => x.CarritoItem.Impuesto);
                 Session["Total"] = carritoTemporal.Sum(x => x.CarritoItem.Total);
+                Session["UltimoDiseno"] = null;
                 Session.Timeout = 30;
 
                 return Json("OK", JsonRequestBehavior.AllowGet);
@@ -495,16 +499,13 @@ namespace Web.Controllers
         {
             try
             {
-                // 1. Verificamos si hay usuario logueado
                 long? idUsuario = Session["UsuarioID"] as long?;
 
                 if (idUsuario == null)
                 {
-                    // Actualización para usuario invitado: se actualiza la lista en sesión
                     var carritoInvitado = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
                                           ?? new List<CarritoProductoViewModel>();
 
-                    // Buscamos el ítem según su consecutivoCarrito (aquí asumimos que éste es el id del producto)
                     var item = carritoInvitado.FirstOrDefault(x =>
                         x.CarritoItem.ConsecutivoCarrito == consecutivoCarrito);
 
@@ -527,12 +528,8 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    // 2. Si el usuario está logueado, se llama al mismo método AgregarCarrito
-                    // (que en el backend actúa como upsert: inserta si no existe, o actualiza la cantidad)
                     var carritoModel = new CarritoModel();
 
-                    // Construimos la entidad Carrito. Aquí asumimos que "consecutivoCarrito"
-                    // representa el identificador del producto (ConsecutivoProducto) para el SP.
                     Carrito carrito = new Carrito
                     {
                         ConsecutivoUsuario = (long)idUsuario,
@@ -540,15 +537,11 @@ namespace Web.Controllers
                         Cantidad = cantidad
                     };
 
-                    // Este método invoca el stored procedure [dbo].[AgregarCarrito] que se encarga
-                    // de insertar o actualizar el registro en la base de datos.
                     var respuesta = carritoModel.AgregarCarrito(carrito);
 
-                    // Recalculamos y actualizamos las variables de sesión, si es necesario.
                     ActualizarVariablesCarrito();
                 }
 
-                // 3. Devolvemos un JSON indicando éxito
                 return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -558,9 +551,42 @@ namespace Web.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult AgregarCarritoConDiseno(CarritoDisenoDto model)
+        {
+            try
+            {
+                if (model.CantProducto <= 0)
+                    return Json("Error: Debe ingresar una cantidad mayor que 0.", JsonRequestBehavior.AllowGet);
+
+                string rutaArchivo = null;
+                if (!string.IsNullOrEmpty(model.DesignBase64))
+                {
+                    var base64 = model.DesignBase64.Replace("data:image/png;base64,", "");
+                    byte[] imageBytes = Convert.FromBase64String(base64);
+
+                    var fileName = $"diseno_{Guid.NewGuid()}.png";
+                    var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", fileName);
+                    System.IO.File.WriteAllBytes(path, imageBytes);
+
+                    rutaArchivo = "/Imagenes/" + fileName;
+                }
+
+                Session["UltimoDiseno"] = rutaArchivo;
+
+                return AgregarCarrito(model.IdProducto, model.CantProducto);
+            }
+            catch (Exception ex)
+            {
+                return Json("Error: " + ex.Message, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
+
+
 
 
     }
-
-
 }

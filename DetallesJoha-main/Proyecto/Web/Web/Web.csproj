@@ -601,6 +601,7 @@
     <Content Include="Views\PoliticaDevolucion\Editar.cshtml" />
     <Content Include="Views\PoliticaDevolucion\Insertar.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\Insertar.cshtml" />
+    <Content Include="Views\Blog\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -122,11 +122,24 @@
                             </div>
                             <!-- /Wishlist -->
 
+                            <!-- Cart -->
                             @{
-                                var carritoProductos = Session["CarritoProductos"] as List<Web.Models.CarritoProductoViewModel>;
+                                var carritoProductosRegistrado = Session["CarritoProductos"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductosInvitado = Session["CarritoInvitado"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductos = new List<Web.Models.CarritoProductoViewModel>();
+
+                                if (carritoProductosRegistrado != null && carritoProductosRegistrado.Any())
+                                {
+                                    carritoProductos = carritoProductosRegistrado;
+                                }
+                                else if (carritoProductosInvitado != null && carritoProductosInvitado.Any())
+                                {
+                                    carritoProductos = carritoProductosInvitado;
+                                }
                             }
 
-                            <!-- Cart -->
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     <i class="fa fa-shopping-cart"></i>
@@ -161,9 +174,12 @@
                                                             }
                                                         </h4>
                                                     </div>
-                                                    <button class="delete" onclick="eliminarDelCarrito(@item.CarritoItem.ConsecutivoCarrito)">
-                                                        <i class="fa fa-close"></i>
-                                                    </button>
+                                                    <form action="@Url.Action("EliminarCarritos", "Carrito")" method="post" style="display: inline;">
+                                                        @Html.Hidden("ConsecutivoCarrito", item.CarritoItem.ConsecutivoCarrito)
+                                                        <button type="submit" class="delete" onclick="return confirm('¿Está seguro que desea eliminar este producto?');">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             }
                                         }
@@ -179,7 +195,7 @@
                                             @(Session["Cantidad"]?.ToString() ?? "0") Productos seleccionados
                                         </small>
                                         <h5>
-                                            ₡@(Session["SubTotal"]?.ToString() ?? "0.00") + IVA
+                                            ₡@(decimal.Parse(Session["SubTotal"]?.ToString() ?? "0").ToString("N2")) + IVA
                                         </h5>
                                     </div>
                                     <div class="cart-btns">

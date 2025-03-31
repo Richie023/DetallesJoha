@@ -26,8 +26,16 @@
                 {
                     <div class="cart-item">
                         <div class="item-image">
-                            <img src="@item.ProductoItem.RutaImagen" alt="@item.ProductoItem.NombreProducto"
-                                 onerror="this.src='/img/default-product.png'">
+                            @if (!string.IsNullOrEmpty(item.CarritoItem.RutaDiseno))
+                            {
+                                <img src="@item.CarritoItem.RutaDiseno" alt="Diseño personalizado" style="max-width:200px;" />
+                            }
+                            else
+                            {
+                             <img src="@item.ProductoItem.RutaImagen" alt="@item.ProductoItem.NombreProducto"
+                                     onerror="this.src='/img/default-product.png'">
+                            }
+
                         </div>
                         <div class="item-details">
                             <h3 class="item-name">@item.ProductoItem.NombreProducto</h3>

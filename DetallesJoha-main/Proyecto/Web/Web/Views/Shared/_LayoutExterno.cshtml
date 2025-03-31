@@ -147,7 +147,20 @@
                             <!-- /Wishlist -->
                             <!-- Cart -->
                             @{
-                                var carritoProductos = Session["CarritoProductos"] as List<Web.Models.CarritoProductoViewModel>;
+                                var carritoProductosRegistrado = Session["CarritoProductos"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductosInvitado = Session["CarritoInvitado"] as List<Web.Models.CarritoProductoViewModel>;
+
+                                var carritoProductos = new List<Web.Models.CarritoProductoViewModel>();
+
+                                if (carritoProductosRegistrado != null && carritoProductosRegistrado.Any())
+                                {
+                                    carritoProductos = carritoProductosRegistrado;
+                                }
+                                else if (carritoProductosInvitado != null && carritoProductosInvitado.Any())
+                                {
+                                    carritoProductos = carritoProductosInvitado;
+                                }
                             }
 
                             <div class="dropdown">
@@ -184,7 +197,7 @@
                                                             }
                                                         </h4>
                                                     </div>
-                                                    <form action="@Url.Action("EliminarCarrito", "Carrito")" method="post" style="display: inline;">
+                                                    <form action="@Url.Action("EliminarCarritos", "Carrito")" method="post" style="display: inline;">
                                                         @Html.Hidden("ConsecutivoCarrito", item.CarritoItem.ConsecutivoCarrito)
                                                         <button type="submit" class="delete" onclick="return confirm('¿Está seguro que desea eliminar este producto?');">
                                                             <i class="fa fa-close"></i>

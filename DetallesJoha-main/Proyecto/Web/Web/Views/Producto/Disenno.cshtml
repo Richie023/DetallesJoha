@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Personalización de Producto";
-    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -153,7 +153,8 @@
 
                     <div class="tool-section">
                         <button id="saveDesign" class="btn btn-primary btn-block">Guardar Diseño</button>
-                        <!--<a id="lnkDownload" href="" class="btn btn-secondary btn-block">Descargar Diseño</a> -->
+
+                        <button id="addToCart" class="btn btn-primary btn-block">Agregar al Carrito</button>
                     </div>
 
                     <br>
@@ -176,6 +177,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 
 <script>
+
     document.addEventListener('DOMContentLoaded', function () {
         const canvas = new fabric.Canvas('designCanvas');
 
@@ -195,16 +197,13 @@
 
 
 
-
-
-
         //Agregar Imgane
-       
+
         const uploadFileInput = document.getElementById('uploadFile');
 
         if (uploadFileInput) {
             uploadFileInput.addEventListener('change', function (e) {
-                const file = e.target.files[0]; 
+                const file = e.target.files[0];
                 if (!file) {
                     console.log('No se seleccionó ningún archivo.');
                     return;
@@ -230,8 +229,8 @@
                         });
 
                         canvas.add(fabricImg);
-                        canvas.setActiveObject(fabricImg); 
-                        canvas.renderAll(); 
+                        canvas.setActiveObject(fabricImg);
+                        canvas.renderAll();
                         console.log('Imagen agregada al lienzo:', fabricImg);
                     };
 
@@ -239,14 +238,14 @@
                         console.error('Error al cargar la imagen.');
                     };
 
-                    img.src = event.target.result; 
+                    img.src = event.target.result;
                 };
 
                 reader.onerror = function () {
                     console.error('Error al leer el archivo:', reader.error);
                 };
 
-                reader.readAsDataURL(file); 
+                reader.readAsDataURL(file);
             });
         } else {
             console.error('El input de archivo no se encontró. Verifica el ID en tu HTML.');
@@ -314,13 +313,50 @@
         });
 
 
+        // agregar el diseño del canvas al Carrito
+document.getElementById('addToCart')?.addEventListener('click', function () {
+    const designData = canvas.toDataURL();
+
+    $.ajax({
+        url: '@Url.Action("AgregarCarritoConDiseno", "Carrito")',
+        type: 'POST',
+
+        data: {
+            idProducto: '@Model.Consecutivo',
+            cantProducto: 1,
+            designBase64: designData
+        },
+        success: function (response) {
+            if (response === "OK") {
+                Swal.fire({
+                    title: "Éxito",
+                    text: "Producto agregado al carrito.",
+                    icon: "success",
+                    timer: 3000,
+                    showConfirmButton: false
+                }).then(() => {
+                    ActualizarCantidadCarrito();
+                    location.reload();
+                });
+            } else if (response.indexOf("Error") === 0) {
+                Swal.fire("Error", response, "error");
+            } else {
+                Swal.fire("Información", response, "info");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+            Swal.fire("Error", "Hubo un problema al agregar el producto al carrito.", "error");
+        }
+    });
+});
+
+
+
+
         // Mostrar las categorías de arte
         window.openArtCategories = function () {
             document.getElementById('categories-container').style.display = 'block';
-
-       
-
-
 
         };
 

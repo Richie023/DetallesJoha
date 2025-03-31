@@ -197,5 +197,32 @@ namespace Web.Controllers
 
 
 
+
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {
+            try
+            {
+                var respuesta = modelo.ConsultarBlogPorId(id);
+                if (respuesta != null && respuesta.Codigo == 0)
+                {
+                    return View(respuesta.Dato);
+                }
+                else
+                {
+                    ViewBag.MsjPantalla = respuesta?.Detalle ?? "No se pudo obtener el artículo.";
+                    return View("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MsjPantalla = $"Error al obtener el artículo: {ex.Message}";
+                return View("Error");
+            }
+        }
+
+
+
+
     }
 }

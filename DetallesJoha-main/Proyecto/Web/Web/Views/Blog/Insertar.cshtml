@@ -38,7 +38,7 @@
 
         <div class="form-group mb-4">
             <label for="ImagenBlog" class="font-weight-bold">Imagen</label>
-            <input type="file" name="ImagenBlog" id="ImagenBlog" class="form-control-file" accept="image/*" />
+            @Html.TextBox("ImagenBlog", null, new { type = "file", accept = "image/*", @class = "form-control-file" })
         </div>
 
         <div class="text-right">

@@ -27,9 +27,21 @@ namespace Web.Entidades
         public string Tamanio { get; set; }
         public string RutaImagen { get; set; }
 
-       
+        public string RutaDiseno { get; set; }
+
+
 
     }
+
+    public class CarritoDisenoDto
+    {
+        public long IdProducto { get; set; }
+        public int CantProducto { get; set; }
+        public string DesignBase64 { get; set; }
+        public string RutaImagen { get; set; }
+        public string RutaDiseno { get; set; }
+    }
+
 
     public class ConfirmacionCarrito
     {
