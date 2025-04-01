@@ -45,7 +45,7 @@ namespace Web.Controllers
                 }
 
 
-                long? idUsuario = Session["UsuarioID"] as long?;
+                long? idUsuario = Session["Consecutivo"] as long?;
 
                 if (idUsuario == null)
                 {
@@ -157,6 +157,8 @@ namespace Web.Controllers
 
 
 
+
+
         [HttpGet]
         public ActionResult ObtenerCantidadCarrito()
         {
@@ -165,132 +167,108 @@ namespace Web.Controllers
         }
 
 
-        public ActionResult ConsultaCarrito()
-        {
-            var carritoTemporal = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
-                ?? new List<CarritoProductoViewModel>();
-
-            return View(carritoTemporal);
-        }
-
-
         [HttpPost]
         public ActionResult EliminarCarrito(long ConsecutivoCarrito)
         {
-            long? idUsuario = Session["UsuarioID"] as long?;
-
-            if (idUsuario == null)
-            {
-                var carritoTemporal = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
-                                      ?? new List<CarritoProductoViewModel>();
-
-                carritoTemporal = carritoTemporal
-                    .Where(x => x.CarritoItem.ConsecutivoCarrito != ConsecutivoCarrito)
-                    .ToList();
-
-                Session["CarritoInvitado"] = carritoTemporal;
-                Session["Cantidad"] = carritoTemporal.Sum(x => x.CarritoItem.Cantidad);
-                Session["SubTotal"] = carritoTemporal.Sum(x => x.CarritoItem.SubTotal);
-                Session["IVA"] = carritoTemporal.Sum(x => x.CarritoItem.Impuesto);
-                Session["Total"] = carritoTemporal.Sum(x => x.CarritoItem.Total);
-            }
-            else
-            {
-                var respuesta = modelo.EliminarCarrito(ConsecutivoCarrito);
-                if (respuesta.Codigo != 0)
-                {
-                    ViewBag.MsjPantalla = respuesta.Detalle;
-                }
-
-                ActualizarVariablesCarrito();
-               
-            }
-
-            var referrer = Request.UrlReferrer;
-            if (referrer != null)
-                return Redirect(referrer.ToString());
-            else
-                return RedirectToAction("ConsultaCarrito");
-        }
-
-
-
-
-        [HttpGet]
-        public ActionResult ConsultaCarritos()
-        {
             try
             {
-                if (Session["Consecutivo"] != null)
-                {
-                    var respuesta = modelo.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
-                    System.Diagnostics.Debug.WriteLine($"Respuesta API: {respuesta?.Codigo}, Items: {respuesta?.Datos?.Count ?? 0}");
+                // Detectar usuario logueado mediante sesión
+                long? idUsuario = Session["Consecutivo"] as long?;
 
-                    if (respuesta?.Codigo == 0 && respuesta.Datos != null && respuesta.Datos.Any())
+                if (idUsuario.HasValue)
+                {
+                    // Usuario logueado - eliminar desde base de datos
+                    var respuesta = modelo.EliminarCarrito(ConsecutivoCarrito);
+                    if (respuesta.Codigo != 0)
                     {
-                        var viewModel = CarritoHelper.ConvertirAViewModel(respuesta.Datos);
-                        System.Diagnostics.Debug.WriteLine($"Productos convertidos: {viewModel.Count}");
-
-                        if (viewModel.Any())
-                        {
-                            Session["CarritoProductos"] = viewModel;
-                            Session["Cantidad"] = viewModel.Sum(x => x.CarritoItem.Cantidad);
-                            Session["SubTotal"] = viewModel.Sum(x => x.CarritoItem.SubTotal);
-                            Session["Total"] = viewModel.Sum(x => x.CarritoItem.Total);
-                            return View(viewModel);
-                        }
+                        ViewBag.MsjPantalla = respuesta.Detalle;
                     }
-                }
 
-                return View(new List<CarritoProductoViewModel>());
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
-                return View(new List<CarritoProductoViewModel>());
-            }
-        }
-
-
-
-        [HttpPost]
-        public ActionResult EliminarCarritos(long ConsecutivoCarrito)
-        {
-            long? idUsuario = Session["UsuarioID"] as long?;
-
-            if (idUsuario != null)
-            {
-                var respuesta = modelo.EliminarCarrito(ConsecutivoCarrito);
-                if (respuesta.Codigo == 0)
-                {
+                    // Actualiza variables de sesión desde base de datos
                     ActualizarVariablesCarrito();
-
-                    return RedirigirAPaginaAnterior();
                 }
                 else
                 {
-                    ViewBag.MsjPantalla = respuesta.Detalle;
-                    return RedirigirAPaginaAnterior();
+                    // Usuario no logueado - eliminar desde sesión local
+                    var carritoTemporal = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
+                                          ?? new List<CarritoProductoViewModel>();
+
+                    carritoTemporal = carritoTemporal
+                        .Where(x => x.CarritoItem.ConsecutivoCarrito != ConsecutivoCarrito)
+                        .ToList();
+
+                    Session["CarritoInvitado"] = carritoTemporal;
+
+                    // Actualizar variables generales de sesión
+                    Session["Cantidad"] = carritoTemporal.Sum(x => x.CarritoItem.Cantidad);
+                    Session["SubTotal"] = carritoTemporal.Sum(x => x.CarritoItem.SubTotal);
+                    Session["IVA"] = carritoTemporal.Sum(x => x.CarritoItem.Impuesto);
+                    Session["Total"] = carritoTemporal.Sum(x => x.CarritoItem.Total);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                var carritoTemporal = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
-                                     ?? new List<CarritoProductoViewModel>();
+                System.Diagnostics.Debug.WriteLine($"Error al eliminar producto del carrito: {ex.Message}");
+                ViewBag.MsjPantalla = "Error al eliminar producto del carrito.";
+            }
 
-                carritoTemporal = carritoTemporal
-                    .Where(x => x.CarritoItem.ConsecutivoCarrito != ConsecutivoCarrito)
-                    .ToList();
+            // Redirige siempre a la página anterior o por defecto a "ConsultaCarrito"
+            var referrer = Request.UrlReferrer;
+            if (referrer != null)
+                return Redirect(referrer.ToString());
 
-                Session["CarritoInvitado"] = carritoTemporal;
-                Session["Cantidad"] = carritoTemporal.Sum(x => x.CarritoItem.Cantidad);
-                Session["SubTotal"] = carritoTemporal.Sum(x => x.CarritoItem.SubTotal);
-                Session["IVA"] = carritoTemporal.Sum(x => x.CarritoItem.Impuesto);
-                Session["Total"] = carritoTemporal.Sum(x => x.CarritoItem.Total);
+            return RedirectToAction("ConsultaCarrito");
 
-                return RedirigirAPaginaAnterior();
+        }
+        
+
+
+        [HttpGet]
+        public ActionResult ConsultaCarrito()
+        {
+            try
+            {
+                List<CarritoProductoViewModel> carritoProductos;
+
+                if (Session["Consecutivo"] != null)
+                {
+                    // Usuario logueado: consulta desde la base de datos usando el consecutivo.
+                    var respuesta = modelo.ConsultarCarrito(long.Parse(Session["Consecutivo"].ToString()));
+
+                    if (respuesta?.Codigo == 0 && respuesta.Datos != null && respuesta.Datos.Any())
+                    {
+                        carritoProductos = CarritoHelper.ConvertirAViewModel(respuesta.Datos);
+                        Session["CarritoProductos"] = carritoProductos;
+                    }
+                    else
+                    {
+                        carritoProductos = new List<CarritoProductoViewModel>();
+                    }
+                }
+                else
+                {
+                    // Usuario no logueado: recupera desde sesión local.
+                    carritoProductos = Session["CarritoInvitado"] as List<CarritoProductoViewModel>
+                        ?? new List<CarritoProductoViewModel>();
+                }
+
+                // Actualiza variables de sesión generales (Cantidad, SubTotal y Total).
+                Session["Cantidad"] = carritoProductos.Sum(x => x.CarritoItem.Cantidad);
+                Session["SubTotal"] = carritoProductos.Sum(x => x.CarritoItem.SubTotal);
+                Session["Total"] = carritoProductos.Sum(x => x.CarritoItem.Total);
+
+                return View(carritoProductos);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error en ConsultaCarrito: {ex.Message}");
+                return View(new List<CarritoProductoViewModel>());
             }
         }
+
+
+
+
 
        
         private ActionResult RedirigirAPaginaAnterior()
@@ -551,6 +529,8 @@ namespace Web.Controllers
         }
 
 
+
+
         [HttpPost]
         public ActionResult AgregarCarritoConDiseno(CarritoDisenoDto model)
         {
@@ -581,7 +561,6 @@ namespace Web.Controllers
                 return Json("Error: " + ex.Message, JsonRequestBehavior.AllowGet);
             }
         }
-
 
 
 
