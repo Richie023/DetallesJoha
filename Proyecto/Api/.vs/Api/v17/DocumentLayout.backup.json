@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\controllers\\buscarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\controllers\\buscarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\entidades\\buscar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\entidades\\buscar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\entidades\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\entidades\\carrito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\models\\utilitariosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\models\\utilitariosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\api\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\controllers\\carritocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|d:\\documents\\ufide\\sc-702 dise\u00F1o y desarrollo de sistemas\\detallesjoha\\proyecto\\api\\api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\api\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\models\\model1.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\api\\controllers\\buscarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\controllers\\buscarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\api\\entidades\\buscar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CC3E162-1F1C-406D-BC42-4367385516A3}|Api\\Api.csproj|solutionrelative:api\\entidades\\buscar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,6 +40,19 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UtilitariosModel.cs",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Models\\UtilitariosModel.cs",
+              "RelativeDocumentMoniker": "Api\\Models\\UtilitariosModel.cs",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Models\\UtilitariosModel.cs",
+              "RelativeToolTip": "Api\\Models\\UtilitariosModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T16:55:03.636Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -51,6 +76,43 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Carrito.cs",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Entidades\\Carrito.cs",
+              "RelativeDocumentMoniker": "Api\\Entidades\\Carrito.cs",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Entidades\\Carrito.cs",
+              "RelativeToolTip": "Api\\Entidades\\Carrito.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:47:40.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Web.config",
+              "RelativeDocumentMoniker": "Api\\Web.config",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Web.config",
+              "RelativeToolTip": "Api\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-03-28T02:28:53.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Model1.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Models\\Model1.edmx",
+              "RelativeDocumentMoniker": "Api\\Models\\Model1.edmx",
+              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Models\\Model1.edmx [Diagram1]",
+              "RelativeToolTip": "Api\\Models\\Model1.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2025-04-03T07:23:53.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Buscar.cs",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Entidades\\Buscar.cs",
               "RelativeDocumentMoniker": "Api\\Entidades\\Buscar.cs",
@@ -58,47 +120,31 @@
               "RelativeToolTip": "Api\\Entidades\\Buscar.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T03:01:00.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T03:01:00.21Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CarritoController.cs",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Controllers\\CarritoController.cs",
               "RelativeDocumentMoniker": "Api\\Controllers\\CarritoController.cs",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Controllers\\CarritoController.cs",
               "RelativeToolTip": "Api\\Controllers\\CarritoController.cs",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAqwCoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T02:48:10.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T02:48:10.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "BuscarController.cs",
               "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Controllers\\BuscarController.cs",
               "RelativeDocumentMoniker": "Api\\Controllers\\BuscarController.cs",
               "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Controllers\\BuscarController.cs",
               "RelativeToolTip": "Api\\Controllers\\BuscarController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwAkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T02:32:08.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Web.config",
-              "RelativeDocumentMoniker": "Api\\Web.config",
-              "ToolTip": "D:\\Documents\\Ufide\\SC-702 Dise\u00F1o y Desarrollo de Sistemas\\DetallesJoha\\Proyecto\\Api\\Api\\Web.config",
-              "RelativeToolTip": "Api\\Web.config",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-03-28T02:28:53.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T02:32:08.594Z"
             }
           ]
         }

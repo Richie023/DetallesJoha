@@ -17,7 +17,7 @@ namespace Api.Models
             message.Priority = MailPriority.Normal;
             message.IsBodyHtml = true;
 
-            SmtpClient client = new SmtpClient("smtp.office365.com", 587);
+            SmtpClient client = new SmtpClient("mail.detallesjoha.com", 587);
             client.Credentials = new System.Net.NetworkCredential(ConfigurationManager.AppSettings["cuentaCorreo"],
                                                                   ConfigurationManager.AppSettings["claveCorreo"]);
             client.EnableSsl = true;

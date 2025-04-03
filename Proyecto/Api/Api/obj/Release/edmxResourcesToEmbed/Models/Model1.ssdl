@@ -46,6 +46,7 @@
   <Function Name="AgregarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ConsecutivoUsuario" Type="bigint" Mode="In" />
     <Parameter Name="ConsecutivoProducto" Type="bigint" Mode="In" />
+    <Parameter Name="RutaImagen" Type="varchar" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
   </Function>
   <Function Name="BuscarProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

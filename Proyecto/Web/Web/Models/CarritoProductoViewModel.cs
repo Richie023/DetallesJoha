@@ -34,7 +34,7 @@ namespace Web.Models
                         ConsecutivoUsuario = item.ConsecutivoUsuario,
                         ConsecutivoProducto = item.ConsecutivoProducto,
                         Cantidad = item.Cantidad,
-                        FechaCarrito = item.FechaCarrito,
+                        Fecha = item.Fecha,
                         SubTotal = item.SubTotal,
                         Impuesto = item.Impuesto,
                         Total = item.Total,

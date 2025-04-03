@@ -42,7 +42,7 @@ namespace Web.Controllers
         public ActionResult ConsultarPedidos()
         {
             var respuesta = modelo.ConsultarPedidos();
-       
+
 
             if (Session["RolUsuario"] != null && Session["RolUsuario"].ToString() == "1")
             {

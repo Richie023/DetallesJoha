@@ -318,12 +318,14 @@
     <Content Include="Imagenes\10002.png" />
     <Content Include="Imagenes\19.jpg" />
     <Content Include="Imagenes\2.jpg" />
+    <Content Include="Imagenes\2.png" />
     <Content Include="Imagenes\25.jpg" />
     <Content Include="Imagenes\26.jpg" />
     <Content Include="Imagenes\3.jpg" />
     <Content Include="Imagenes\4.jpg" />
     <Content Include="Imagenes\4.png" />
     <Content Include="Imagenes\5.jpg" />
+    <Content Include="Imagenes\5.png" />
     <Content Include="Imagenes\6.png" />
     <Content Include="Imagenes\7.jpg" />
     <Content Include="Imagenes\7.png" />
@@ -873,8 +875,6 @@
     <Content Include="Views\PoliticaDevolucion\PoliticaDevolucion.cshtml" />
     <Content Include="Views\PreguntasFrecuentes\PreguntasFrecuentes.cshtml" />
     <Content Include="Views\Blog\Blog.cshtml" />
-    <Content Include="Views\Blog\BlogEditar.cshtml" />
-    <Content Include="Views\Blog\BlogInsertar.cshtml" />
     <Content Include="Views\Ayuda\Ayuda.cshtml" />
     <Content Include="Views\AvisoPrivacidad\AvisoPrivacidad.cshtml" />
     <Content Include="Views\AvisoPrivacidad\Borrar.cshtml" />
@@ -896,6 +896,7 @@
     <Content Include="Views\PreguntasFrecuentes\Insertar.cshtml" />
     <Content Include="Views\AcercaD\Acerca.cshtml" />
     <Content Include="Views\Buscar\ConsultarProductos.cshtml" />
+    <Content Include="Views\Blog\Detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

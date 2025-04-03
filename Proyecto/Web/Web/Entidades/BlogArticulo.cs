@@ -8,7 +8,7 @@ namespace Web.Entidades
     public class BlogArticulo
     {
         public int id { get; set; }
-        public string categoria { get; set; }
+        //public string categoria { get; set; }
         public string titulo { get; set; }
         public string resumen { get; set; }
         public string contenido { get; set; }

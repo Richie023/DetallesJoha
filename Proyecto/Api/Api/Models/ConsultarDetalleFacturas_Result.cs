@@ -24,5 +24,6 @@ namespace Api.Models
         public decimal Total { get; set; }
         public string Material { get; set; }
         public string Tamanio { get; set; }
+        public string RutaImagen { get; set; }
     }
 }

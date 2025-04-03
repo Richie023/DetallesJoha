@@ -182,7 +182,7 @@ namespace Api.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizarUsuario", consecutivoParameter, contrasennaParameter, nombreParameter, correoElectronicoParameter, consecutivoRolParameter);
         }
     
-        public virtual int AgregarCarrito(Nullable<long> consecutivoUsuario, Nullable<long> consecutivoProducto, Nullable<int> cantidad)
+        public virtual int AgregarCarrito(Nullable<long> consecutivoUsuario, Nullable<long> consecutivoProducto, string rutaImagen, Nullable<int> cantidad)
         {
             var consecutivoUsuarioParameter = consecutivoUsuario.HasValue ?
                 new ObjectParameter("ConsecutivoUsuario", consecutivoUsuario) :
@@ -192,11 +192,15 @@ namespace Api.Models
                 new ObjectParameter("ConsecutivoProducto", consecutivoProducto) :
                 new ObjectParameter("ConsecutivoProducto", typeof(long));
     
+            var rutaImagenParameter = rutaImagen != null ?
+                new ObjectParameter("RutaImagen", rutaImagen) :
+                new ObjectParameter("RutaImagen", typeof(string));
+    
             var cantidadParameter = cantidad.HasValue ?
                 new ObjectParameter("Cantidad", cantidad) :
                 new ObjectParameter("Cantidad", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarCarrito", consecutivoUsuarioParameter, consecutivoProductoParameter, cantidadParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarCarrito", consecutivoUsuarioParameter, consecutivoProductoParameter, rutaImagenParameter, cantidadParameter);
         }
     
         public virtual ObjectResult<BuscarProductos_Result> BuscarProductos(string nombre)

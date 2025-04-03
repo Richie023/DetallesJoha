@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-                        <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
+                        <button onclick="AgregarCarrito(@Model.Consecutivo,@Model.Inventario )" class="add-to-cart-btn">
                             <i class="fa fa-shopping-cart"></i> Agregar al carrito
                         </button>
                     </div>
@@ -95,7 +95,7 @@
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Descripción</a></li>
                         <li><a data-toggle="tab" href="#tab2">Detalles</a></li>
-                        @*<li><a href="@Url.Action("RegistrarResena","Resena")">Reseñas</a></li>*@
+                        <li><a href="@Url.Action("RegistrarResena","Resena")">Reseñas</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -139,7 +139,7 @@
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>@Model.Descripcion</p>
+                                    <p>Detalles adicionales del producto...</p>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
     }
 
 
-    function AgregarCarrito(id, inventario) {
+    function AgregarCarrito(id,inventario) {
         let cantProducto = $("#prd-" + id).val();
 
         if (cantProducto > inventario) {
@@ -181,8 +181,10 @@
             url: '/Carrito/AgregarCarrito',
             type: "POST",
             data: {
+
                 idProducto: id,
-                cantProducto: cantProducto
+                cantProducto: cantProducto,
+                RutaImagen: '@Model.RutaImagen'
             },
             success: function (data) {
                 if (data === "OK") {

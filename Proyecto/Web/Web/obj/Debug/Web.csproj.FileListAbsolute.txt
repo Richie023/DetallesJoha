@@ -136,3 +136,4 @@ D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.csproj.Up2Date
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.dll
 D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\obj\Debug\Web.pdb
+D:\Documents\Ufide\SC-702 Diseño y Desarrollo de Sistemas\DetallesJoha\Proyecto\Web\Web\bin\Antlr3.Runtime.pdb

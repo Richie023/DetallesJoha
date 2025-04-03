@@ -6,30 +6,53 @@
 }
 
 <div class="container mt-5">
-    <h2 class="text-center font-weight-bold">Registrar Artículo</h2>
+    <h3 class="text-center font-weight-bold">Registrar Artículo</h3>
+    <h4 class="text-center text-muted">Completa la información del nuevo artículo del blog.</h4>
 
     @using (Html.BeginForm("Insertar", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <div class="form-group">
-            <label for="titulo">Título</label>
-            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control", @placeholder = "Título" })
+        <div class="form-group mb-4">
+            <label for="titulo" class="font-weight-bold">Título</label>
+            @Html.TextBoxFor(model => model.titulo, new { @class = "form-control", @placeholder = "Ej. Novedades de la plataforma" })
         </div>
-        <div class="form-group">
-            <label for="resumen">Resumen</label>
-            @Html.TextAreaFor(model => model.resumen, new { @class = "form-control", @placeholder = "Resumen" })
+
+        <div class="form-group mb-4">
+            <label for="resumen" class="font-weight-bold">Resumen</label>
+            @Html.TextAreaFor(model => model.resumen, new
+            {
+                @class = "form-control",
+                rows = "3",
+                @placeholder = "Escribe un resumen breve del artículo"
+            })
         </div>
-        <div class="form-group">
-            <label for="contenido">Contenido</label>
-            @Html.TextAreaFor(model => model.contenido, new { @class = "form-control", @placeholder = "Contenido" })
+
+        <div class="form-group mb-4">
+            <label for="contenido" class="font-weight-bold">Contenido</label>
+            @Html.TextAreaFor(model => model.contenido, new
+            {
+                @class = "form-control",
+                rows = "8",
+                @placeholder = "Escribe el contenido completo del artículo"
+            })
         </div>
-        <div class="form-group">
-            <label for="imagen">Imagen</label>
-            <input type="file" name="ImagenBlog" class="form-control-file" />
+
+        <div class="form-group mb-4">
+            <label for="ImagenBlog" class="font-weight-bold">Imagen</label>
+            @Html.TextBox("ImagenBlog", null, new { type = "file", accept = "image/*", @class = "form-control-file" })
         </div>
+
         <div class="text-right">
-            <button type="submit" class="primary-btn">Guardar</button>
-            <a href="@Url.Action("Blog", "Blog")" class="primary-btn">Cancelar</a>
+            <button type="submit" class="primary-btn bg-success text-white">Guardar</button>
+            <a href="@Url.Action("Blog", "Blog")" class="primary-btn bg-secondary text-white">Cancelar</a>
+        </div>
+    }
+
+    @if (ViewBag.MsjPantalla != null)
+    {
+        <div class="alert alert-danger mt-4 text-center">
+            @ViewBag.MsjPantalla
         </div>
     }
 </div>
+
 

@@ -8,14 +8,14 @@ using Web.Models;
 
 namespace Web.Controllers
 {
-    
-         
+
+
     [OutputCache(NoStore = true, VaryByParam = "*", Duration = 0)]
     public class BlogController : Controller
     {
         BlogModel modelo = new BlogModel();
 
-        
+
 
         [HttpGet]
         public ActionResult Blog()
@@ -24,7 +24,7 @@ namespace Web.Controllers
 
             if (respuesta != null && respuesta.Codigo == 0)
             {
-                return View(respuesta.Datos); 
+                return View(respuesta.Datos);
             }
             else
             {
@@ -71,14 +71,21 @@ namespace Web.Controllers
 
                 if (respuesta != null && respuesta.Codigo == 0)
                 {
-                    if (ImagenBlog != null)
+                    if (ImagenBlog != null && ImagenBlog.ContentLength > 0)
                     {
-                        string extension = Path.GetExtension(Path.GetFileName(ImagenBlog.FileName));
-                        string ruta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes", respuesta.ConsecutivoGeneradoAB + extension);
+                        string extension = Path.GetExtension(ImagenBlog.FileName);
+                        string nombreArchivo = respuesta.ConsecutivoGeneradoAB + extension;
+
+                        string carpeta = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Imagenes");
+                        if (!Directory.Exists(carpeta))
+                            Directory.CreateDirectory(carpeta);
+
+                        string ruta = Path.Combine(carpeta, nombreArchivo);
                         ImagenBlog.SaveAs(ruta);
 
                         entidad.id = respuesta.ConsecutivoGeneradoAB;
-                        entidad.imagen_url = "/Imagenes/" + respuesta.ConsecutivoGeneradoAB + extension;
+                        entidad.imagen_url = "/Imagenes/" + nombreArchivo;
+
                         modelo.ActualizarImagenBlog(entidad);
                     }
 
@@ -86,7 +93,7 @@ namespace Web.Controllers
                 }
                 else
                 {
-                    ViewBag.MsjPantalla = respuesta.Detalle;
+                    ViewBag.MsjPantalla = respuesta?.Detalle ?? "Error al registrar el artículo.";
                 }
             }
             catch (Exception ex)
@@ -97,7 +104,8 @@ namespace Web.Controllers
             return View(entidad);
         }
 
-        
+
+
         [HttpGet]
         public ActionResult Editar(int id)
         {
@@ -108,7 +116,7 @@ namespace Web.Controllers
         }
 
 
-        
+
         [HttpPost]
         public ActionResult Editar(HttpPostedFileBase ImagenBlog, BlogArticulo entidad)
         {
@@ -120,7 +128,7 @@ namespace Web.Controllers
 
             try
             {
-                 var respuesta = modelo.Actualizar(entidad);
+                var respuesta = modelo.Actualizar(entidad);
 
                 if (respuesta != null && respuesta.Codigo == 0)
                 {
@@ -139,8 +147,8 @@ namespace Web.Controllers
                         string extension = Path.GetExtension(Path.GetFileName(ImagenBlog.FileName));
                         string ruta = AppDomain.CurrentDomain.BaseDirectory + "Imagenes\\" + entidad.id + extension;
                         ImagenBlog.SaveAs(ruta);
-                         
-                        entidad.imagen_url = "/Imagenes/" + entidad.id +   extension;
+
+                        entidad.imagen_url = "/Imagenes/" + entidad.id + extension;
                         modelo.ActualizarImagenBlog(entidad);
                     }
 
@@ -186,6 +194,33 @@ namespace Web.Controllers
 
             return RedirectToAction("Blog", "Blog");
         }
+
+
+
+
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {
+            try
+            {
+                var respuesta = modelo.ConsultarBlogPorId(id);
+                if (respuesta != null && respuesta.Codigo == 0)
+                {
+                    return View(respuesta.Dato);
+                }
+                else
+                {
+                    ViewBag.MsjPantalla = respuesta?.Detalle ?? "No se pudo obtener el artículo.";
+                    return View("Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.MsjPantalla = $"Error al obtener el artículo: {ex.Message}";
+                return View("Error");
+            }
+        }
+
 
 
 

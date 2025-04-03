@@ -32,6 +32,7 @@
                                     <th>Impuestos</th>
                                     <th>Total</th>
                                     <th>Recompra</th>
+                                    <th>Imagen</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,25 +45,15 @@
                                         <td>@item.SubTotal.ToString("N2")</td>
                                         <td>@item.Impuesto.ToString("N2")</td>
                                         <td>@item.Total.ToString("N2")</td>
+
                                         <td style="text-align:center">
-                                            @item.Consecutivo
-
-
-
-                                            @*@using (Html.BeginForm("VerProducto", "Producto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-                                            {
-
-                                                @Html.HiddenFor(m => item.ConsecutivoProducto)
-                                                @Html.HiddenFor(m => item.Cantidad)
-
-                                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Procesar">
-                                            }*@
-
-                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.Consecutivo})" class="btn-add">
-                                                <i class="fa fa-shopping-cart"></i> 
+                                          
+                                            <a href="@Url.Action("VerProducto", "Producto", new { id = item.ConsecutivoProducto})" class="btn-add">
+                                                <i class="fa fa-shopping-cart"></i>
                                             </a>
                                         </td>
 
+                                        <td style="text-align:center"><img src="@item.RutaImagen" style="width:125px; height:125px;"></td>
 
                                     </tr>
                                 }

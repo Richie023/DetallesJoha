@@ -26,8 +26,16 @@
                 {
                     <div class="cart-item">
                         <div class="item-image">
-                            <img src="@item.ProductoItem.RutaImagen" alt="@item.ProductoItem.NombreProducto"
-                                 onerror="this.src='/img/default-product.png'">
+                            @if (!string.IsNullOrEmpty(item.CarritoItem.RutaDiseno))
+                            {
+                                <img src="@Session["Ultimo"]" alt="Diseño personalizado" style="max-width:200px;" />
+                            }
+                            else
+                            {
+                                <img src="@item.CarritoItem.RutaImagen" alt="@item.ProductoItem.NombreProducto"
+                                     onerror="this.src='/img/default-product.png'">
+                            }
+
                         </div>
                         <div class="item-details">
                             <h3 class="item-name">@item.ProductoItem.NombreProducto</h3>
@@ -103,13 +111,13 @@
                             </div>
                         </div>
 
-                        @*<div class="payment-method">
-                                <input type="radio" id="paypal" name="payment" required>
-                                <label for="paypal">
-                                    <span class="radio-custom"></span>
-                                    PayPal
-                                </label>
-                            </div>*@
+                        <div class="payment-method">
+                            <input type="radio" id="paypal" name="payment" required>
+                            <label for="paypal">
+                                <span class="radio-custom"></span>
+                                PayPal
+                            </label>
+                        </div>
                     </div>
 
                     <div class="terms-agreement">
@@ -124,7 +132,7 @@
                     @using (Html.BeginForm("PagarCarrito", "Carrito", FormMethod.Post))
                     {
                         <button type="submit" class="checkout-button" id="btnPagar" disabled>
-                            Realizar Pedido
+                            Proceder al Pago
                             <i class="fa fa-arrow-right"></i>
                         </button>
                     }

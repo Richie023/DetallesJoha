@@ -11,7 +11,7 @@ namespace Web.Entidades
         public long ConsecutivoUsuario { get; set; }
         public long ConsecutivoProducto { get; set; }
 
-        public DateTime FechaCarrito { get; set; }
+        public DateTime Fecha { get; set; }
         public int Cantidad { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Impuesto { get; set; }
@@ -27,9 +27,21 @@ namespace Web.Entidades
         public string Tamanio { get; set; }
         public string RutaImagen { get; set; }
 
+        public string RutaDiseno { get; set; }
+
 
 
     }
+
+    public class CarritoDisenoDto
+    {
+        public long IdProducto { get; set; }
+        public int CantProducto { get; set; }
+        public string DesignBase64 { get; set; }
+        public string RutaImagen { get; set; }
+        public string RutaDiseno { get; set; }
+    }
+
 
     public class ConfirmacionCarrito
     {

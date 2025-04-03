@@ -1,0 +1,165 @@
+﻿@model Web.Entidades.BlogArticulo
+
+@{
+    ViewBag.Title = "Detalle del Artículo | " + Model.titulo;
+    Layout = "~/Views/Shared/_LayoutExterno.cshtml";
+}
+
+<!-- Hero o cabecera del artículo -->
+<section class="article-hero">
+    <div class="container">
+        <h1 class="article-title">@Model.titulo</h1>
+    </div>
+</section>
+
+
+<section class="article-content-section">
+    <div class="container">
+        <!-- Imagen principal del artículo (si existe) -->
+        @if (!string.IsNullOrEmpty(Model.imagen_url))
+        {
+            <div class="article-image">
+                <img src="@Url.Content(Model.imagen_url)" alt="@Model.titulo" />
+            </div>
+            <div class="article-meta">
+                <span class="article-date">
+                    <i class="fa fa-calendar-o"></i>
+                    @Model.fecha_publicacion.ToString()
+                </span>
+            </div>
+        }
+
+        <!-- Resumen (opcional) -->
+        @if (!string.IsNullOrEmpty(Model.resumen))
+        {
+            <p class="article-resumen">
+                @Model.resumen
+            </p>
+        }
+
+        <!-- Contenido completo del artículo -->
+        @if (!string.IsNullOrEmpty(Model.contenido))
+        {
+            <div class="article-body">
+                @Html.Raw(Model.contenido)
+            </div>
+        }
+        else
+        {
+            <p class="no-content">
+                Este artículo no tiene contenido para mostrar.
+            </p>
+        }
+
+        <!-- Botón para volver al listado de blog -->
+        <div class="back-to-blog">
+            <a href="@Url.Action("Blog", "Blog")" class="btn-back">
+                <i class="fa fa-arrow-left"></i> Volver al Blog
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Estilos propios de la vista -->
+<style>
+    /* Hero / Cabecera */
+    .article-hero {
+        max-width: 1140px;
+        margin: 30px;
+        padding: 1rem 1rem;
+    }
+
+    .article-hero .article-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+
+    .article-meta {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .article-date {
+        font-size: 1.2rem;
+        color: black;
+    }
+
+        .article-date i {
+            margin-right: 5px;
+        }
+
+    /* Sección de contenido */
+    .article-content-section {
+        padding: 0 0 80px;
+    }
+
+    .article-image {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .article-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .article-resumen {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    .article-body {
+        line-height: 1.8;
+        color: #444;
+        font-size: 1.8rem;
+    }
+
+    .article-body p {
+        margin-bottom: 15px;
+    }
+
+    .no-content {
+        color: #999;
+        font-style: italic;
+        text-align: center;
+        margin: 40px 0;
+    }
+
+    /* Botón para regresar al blog */
+    .back-to-blog {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        background-color: #e74c3c;
+        color: #fff;
+        padding: 0.7rem 1.2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-back i {
+        margin-right: 5px;
+    }
+
+    .btn-back:hover {
+        background-color: #c0392b;
+    }
+
+    /* Responsivo */
+    @@media (max-width: 768px) {
+        .article-hero .article-title {
+            font-size: 2rem;
+        }
+    }
+</style>

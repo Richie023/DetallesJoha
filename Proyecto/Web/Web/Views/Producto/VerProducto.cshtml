@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-                        <button onclick="AgregarCarrito(@Model.Consecutivo, @Model.Inventario);" class="add-to-cart-btn">
+                        <button onclick="AgregarCarrito(@Model.Consecutivo,@Model.Inventario )" class="add-to-cart-btn">
                             <i class="fa fa-shopping-cart"></i> Agregar al carrito
                         </button>
                     </div>
@@ -164,7 +164,7 @@
     }
 
 
-    function AgregarCarrito(id, inventario) {
+    function AgregarCarrito(id,inventario) {
         let cantProducto = $("#prd-" + id).val();
 
         if (cantProducto > inventario) {
@@ -181,8 +181,10 @@
             url: '/Carrito/AgregarCarrito',
             type: "POST",
             data: {
+
                 idProducto: id,
-                cantProducto: cantProducto
+                cantProducto: cantProducto,
+                RutaImagen: '@Model.RutaImagen'
             },
             success: function (data) {
                 if (data === "OK") {
